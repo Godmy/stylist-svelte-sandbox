@@ -99,7 +99,7 @@
 		'../../../../../architecture/idef-zero/component/**/index.svelte',
 		'../../../../../architecture/workspace/component/**/index.svelte',
 		'../../../../../architecture/canvas/component/**/index.svelte',
-		'../../../../../architecture/presentation/component/**/index.svelte',
+		'../../../../../prototype/presentation/component/**/index.svelte',
 		'../../../../../architecture/webgl/component/**/index.svelte',
 		'../../../../../observer/domain/component/**/index.svelte',
 		'../../../../../observer/token/component/**/index.svelte',
