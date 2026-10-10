@@ -1,8 +1,8 @@
 import type { Token } from '$stylist/token/type/object/token';
 import { TOKEN_COMPONENT_TYPE } from '$stylist/token/const/array/component-type';
 import { TOKEN_CONNECTOR } from '$stylist/animation/const/array/connector';
-import { TOKEN_FOUNDATION_AXES } from '$stylist/presentation/const/array/foundation-axes';
-import { TOKEN_FOUNDATION_AXIS_DIRECTIONS } from '$stylist/presentation/const/array/foundation-axis-directions';
+import { TOKEN_FOUNDATION_AXES } from '$stylist/canvas/const/array/foundation-axes';
+import { TOKEN_FOUNDATION_AXIS_DIRECTIONS } from '$stylist/canvas/const/array/foundation-axis-directions';
 import { TOKEN_FUNCTIONAL_TAXONOMY } from '$stylist/token/const/array/functional-taxonomy';
 import { GRAPH_GRID_MODE } from '$stylist/graph/const/array/graph-grid-mode';
 import { GRAPH_NODE_CATEGORY } from '$stylist/graph/const/array/graph-node-category';
@@ -19,7 +19,7 @@ import { SELECTION_MODE } from '$stylist/control/const/array/selection-mode';
 import { TOKEN_ARCHITECTURE_SHADER_FRAGMENT } from '$stylist/webgl/const/array/shader-fragment';
 import { TOKEN_ARCHITECTURE_SHADER_VERTEX } from '$stylist/webgl/const/array/shader-vertex';
 import { TOKEN_SKELETON } from '$stylist/layout/const/array/skeleton';
-import { TOKEN_TIER_CONTENT } from '$stylist/presentation/const/array/tier';
+import { TOKEN_TIER_CONTENT } from '$stylist/layout/const/array/tier';
 import { TOKEN_TRAJECTORY } from '$stylist/workspace/const/array/trajectory';
 
 export const TOKEN_ARCHITECTURE_SETTING = [
