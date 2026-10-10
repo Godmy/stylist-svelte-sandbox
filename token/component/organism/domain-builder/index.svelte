@@ -99,11 +99,10 @@
 		'../../../../../architecture/idef-zero/component/**/index.svelte',
 		'../../../../../architecture/workspace/component/**/index.svelte',
 		'../../../../../architecture/canvas/component/**/index.svelte',
-		'../../../../../prototype/presentation/component/**/index.svelte',
 		'../../../../../architecture/webgl/component/**/index.svelte',
-		'../../../../../observer/domain/component/**/index.svelte',
-		'../../../../../observer/token/component/**/index.svelte',
-		'../../../../../observer/development/component/**/index.svelte'
+		'../../../../../sandbox/domain/component/**/index.svelte',
+		'../../../../../sandbox/token/component/**/index.svelte',
+		'../../../../../sandbox/development/component/**/index.svelte'
 	]) as Record<string, () => Promise<SvelteModule>>;
 
 	const availableComponentJoints = ['atom', 'molecule', 'organism'] as const;

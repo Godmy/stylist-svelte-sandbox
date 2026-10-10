@@ -46,7 +46,7 @@
 				name: 'architecture',
 				path: 'modules/architecture',
 				visibility: 'public',
-				domains: ['graph', 'erd', 'idef-zero', 'workspace', 'canvas', 'presentation', 'webgl'],
+				domains: ['graph', 'erd', 'idef-zero', 'workspace', 'canvas', 'webgl'],
 				nested: [],
 				note: 'Diagrams, canvases and modelling surfaces.'
 			},
@@ -89,6 +89,14 @@
 				domains: [],
 				nested: ['travel', 'wbd', 'spanish', 'sakartvelo', 'farm'],
 				note: 'A container with no domains of its own. travel and sakartvelo are separate private Yarn packages.'
+			},
+			{
+				name: 'prototype',
+				path: 'modules/prototype',
+				visibility: 'private',
+				domains: [],
+				nested: ['presentation', 'scratch'],
+				note: 'A container with no domains of its own: Prezi-style presentation and Scratch-style blocks.'
 			}
 		],
 		resolution = [

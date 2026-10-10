@@ -62,7 +62,7 @@
 			{
 				name: 'architecture',
 				description: 'Diagrams, canvases and modelling surfaces.',
-				examples: ['graph', 'erd', 'idef-zero', 'workspace', 'canvas', 'presentation', 'webgl']
+				examples: ['graph', 'erd', 'idef-zero', 'workspace', 'canvas', 'webgl']
 			},
 			{
 				name: 'sandbox',

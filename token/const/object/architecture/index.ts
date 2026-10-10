@@ -12,7 +12,6 @@ import { TOKEN_MARKER } from '$stylist/notification/const/array/marker';
 import { NODE_TITLE_VARIANT } from '$stylist/workspace/const/array/node-title-variant';
 import { TOKEN_NODE_TYPE } from '$stylist/workspace/const/array/node-type';
 import { TOKEN_PAN_MODES } from '$stylist/workspace/const/array/pan-mode';
-import { PRESENTATION_MODE } from '$stylist/presentation/const/array/presentation-mode';
 import { TOKEN_PROPERTY_TYPE } from '$stylist/workspace/const/array/property-type';
 import { TOKEN_RELATIONSHIP } from '$stylist/workspace/const/array/relationship';
 import { SELECTION_MODE } from '$stylist/control/const/array/selection-mode';
@@ -113,13 +112,6 @@ export const TOKEN_ARCHITECTURE_SETTING = [
 		domain: 'architecture',
 		controlKind: 'radio',
 		values: TOKEN_PAN_MODES
-	},
-	{
-		key: 'presentation-mode',
-		label: 'Presentation Mode',
-		domain: 'architecture',
-		controlKind: 'radio',
-		values: PRESENTATION_MODE
 	},
 	{
 		key: 'property-type',
