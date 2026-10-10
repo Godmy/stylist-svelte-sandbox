@@ -47,6 +47,9 @@ export {
 	SamoRiskBoard,
 	SamoSolidGrid,
 	SamoUmbrellaMap,
+	StoryCanvas,
+	StoryControl,
+	StoryControls,
 	StylistHero,
 	StylistHeroIntro,
 	StylistMission,
@@ -128,6 +131,7 @@ export type {
 	TypeFilePreset
 } from './type';
 export type {
+	ContractStory,
 	RecipeClusterToolbar,
 	RecipeCtaButtons,
 	RecipeDeviceFrame,
@@ -175,9 +179,13 @@ export type {
 	RecipeSamoRiskBoard,
 	RecipeSamoSolidGrid,
 	RecipeSamoUmbrellaMap,
+	RecipeStoryCanvas,
+	RecipeStoryControl,
+	RecipeStoryControls,
 	RecipeStylistHero,
 	RecipeStylistHeroIntro,
 	RecipeStylistMission,
 	RecipeTaxonomyBreadcrumbs,
-	SlotDomainEntity
+	SlotDomainEntity,
+	SlotStoryControl
 } from './interface';

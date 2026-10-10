@@ -25,6 +25,8 @@ export { SamoPractice } from './samo-practice/index';
 export { SamoRiskBoard } from './samo-risk-board/index';
 export { SamoSolidGrid } from './samo-solid-grid/index';
 export { SamoUmbrellaMap } from './samo-umbrella-map/index';
+export { StoryCanvas } from './story-canvas/index';
+export { StoryControls } from './story-controls/index';
 export { StylistHeroIntro } from './stylist-hero-intro/index';
 export { StylistMission } from './stylist-mission/index';
 export { TaxonomyBreadcrumbs } from './taxonomy-breadcrumbs/index';

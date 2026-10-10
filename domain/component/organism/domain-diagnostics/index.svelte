@@ -1,5 +1,6 @@
 <script lang="ts">
 	import DomainFileDiagnostics from '$stylist/domain/component/organism/domain-file-diagnostics/index.svelte';
+	import StoryCanvas from '$stylist/domain/component/molecule/story-canvas/index.svelte';
 	import type { RecipeDomainDiagnostics } from '$stylist/domain/interface/recipe/domain-diagnostics';
 	import createDomainDiagnosticsState, { formatDuration, getTimingTone } from './state.svelte';
 
@@ -153,7 +154,9 @@
 </div>
 
 <div class="diagnostics-runner" aria-hidden="true">
-	{#if state.diagnosticsComponent}
+	{#if state.diagnosticsStory}
+		<StoryCanvas story={state.diagnosticsStory.story} render={state.diagnosticsStory.render} />
+	{:else if state.diagnosticsComponent}
 		{@const DiagnosticsComponent = state.diagnosticsComponent}
 		<DiagnosticsComponent />
 	{/if}

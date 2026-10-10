@@ -1,4 +1,5 @@
-import { tick } from 'svelte';
+import { tick, type Component } from 'svelte';
+import type { ContractStory } from '$stylist/domain/interface/contract/story';
 
 type StoryModule = {
 	default: unknown;
@@ -13,6 +14,8 @@ type StoryEntry = {
 	section: string;
 	family: string;
 	load: () => Promise<StoryModule>;
+	/** `index.story.ts` only: sibling `index.story.svelte` used as its custom render. */
+	loadRender?: () => Promise<StoryModule>;
 };
 
 type DiagnosticError = {
@@ -58,12 +61,16 @@ export function getTimingTone(totalMs: number): 'fast' | 'medium' | 'slow' {
 
 export function createDomainDiagnosticsState() {
 	const storyModules = import.meta.glob([
-		'/src/lib/**/component/**/*.story.svelte',
-		'/modules/*/*/component/**/*.story.svelte',
-		'/modules/*/component/**/*.story.svelte'
+		'/src/lib/**/component/**/*.story.{svelte,ts}',
+		'/modules/*/*/component/**/*.story.{svelte,ts}',
+		'/modules/*/component/**/*.story.{svelte,ts}'
 	]) as Record<string, () => Promise<StoryModule>>;
 
 	const allStories: StoryEntry[] = Object.entries(storyModules)
+		// A `.story.svelte` next to a `.story.ts` is that story's render, not a story of its own.
+		.filter(
+			([path]) => !(path.endsWith('.svelte') && storyModules[path.replace(/\.svelte$/, '.ts')])
+		)
 		.map(([path, load]) => {
 			const normalizedPath = path
 				.replace(/\\/g, '/')
@@ -85,7 +92,10 @@ export function createDomainDiagnosticsState() {
 				level,
 				section,
 				family,
-				load
+				load,
+				loadRender: path.endsWith('.ts')
+					? storyModules[path.replace(/\.ts$/, '.svelte')]
+					: undefined
 			};
 		})
 		.sort(
@@ -102,6 +112,7 @@ export function createDomainDiagnosticsState() {
 	let selectedDomain = $state('all');
 	let diagnosticsRunning = $state(false);
 	let diagnosticsComponent = $state<any>(null);
+	let diagnosticsStory = $state<{ story: ContractStory; render: Component | null } | null>(null);
 	let diagnosticsResults = $state<DiagnosticResult[]>([]);
 	let diagnosticsProgress = $state(0);
 	let diagnosticsActiveEntryId = $state<string | null>(null);
@@ -160,12 +171,14 @@ export function createDomainDiagnosticsState() {
 		diagnosticsResults = [];
 		diagnosticsProgress = 0;
 		diagnosticsComponent = null;
+		diagnosticsStory = null;
 
 		for (const entry of entries) {
 			pendingErrors = [];
 			diagnosticsActiveEntryId = entry.id;
 			diagnosticsActivePath = entry.path;
 			diagnosticsComponent = null;
+			diagnosticsStory = null;
 			let importMs = 0;
 			let mountMs = 0;
 			await tick();
@@ -181,7 +194,12 @@ export function createDomainDiagnosticsState() {
 				} else {
 					try {
 						const mountStart = performance.now();
-						diagnosticsComponent = component;
+						if (entry.path.endsWith('.story.ts'))
+							diagnosticsStory = {
+								story: component as ContractStory,
+								render: entry.loadRender ? ((await entry.loadRender()).default as Component) : null
+							};
+						else diagnosticsComponent = component;
 						await tick();
 						await new Promise((resolve) => setTimeout(resolve, 250));
 						mountMs = performance.now() - mountStart;
@@ -209,6 +227,7 @@ export function createDomainDiagnosticsState() {
 			console[result.status === 'failed' ? 'error' : 'log']('[library diagnostics]', result);
 
 			diagnosticsComponent = null;
+			diagnosticsStory = null;
 			diagnosticsProgress += 1;
 			await tick();
 			await new Promise((resolve) => setTimeout(resolve, 20));
@@ -269,6 +288,9 @@ export function createDomainDiagnosticsState() {
 		},
 		get diagnosticsComponent() {
 			return diagnosticsComponent;
+		},
+		get diagnosticsStory() {
+			return diagnosticsStory;
 		},
 		get diagnosticsProgress() {
 			return diagnosticsProgress;

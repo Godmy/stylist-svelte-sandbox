@@ -11,10 +11,10 @@ export function countDomainStories(tree: TypeDomainTreeInput): number {
 			for (const joint of cluster.joint ?? cluster.joints ?? []) {
 				if (!['atom', 'molecule', 'organism', 'template', 'page'].includes(joint.name)) continue;
 				for (const entity of resolveTreeFamilies(joint)) {
-					const explicit = entity.files?.some((file) => file.name === 'index.story.svelte');
+					const explicit = entity.files?.some((file) => file.name.startsWith('index.story.'));
 					const key = entity.preset ?? entity.component_type;
 					const preset =
-						key && resolveFilePreset(key).files.some((name) => name === 'index.story.svelte');
+						key && resolveFilePreset(key).files.some((name) => name.startsWith('index.story.'));
 					if (explicit || preset) count += 1;
 				}
 			}

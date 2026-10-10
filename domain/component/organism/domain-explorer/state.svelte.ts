@@ -78,8 +78,11 @@ export function createDomainPageState(input: DomainPageInput) {
 			activeEntity?.files.find((f) => f.name === 'index.md') ??
 			null
 	);
+	// `index.story.ts` describes the story; a sibling `index.story.svelte` is then only its render.
 	const storyFile = $derived(
-		activeEntity?.files.find((f) => f.name === 'index.story.svelte') ?? null
+		activeEntity?.files.find((f) => f.name === 'index.story.ts') ??
+			activeEntity?.files.find((f) => f.name === 'index.story.svelte') ??
+			null
 	);
 	const activeFamily = $derived(activeEntity?.name.split('/').at(-1) ?? '');
 	const activeFamilyName = $derived(activeEntity?.name ?? '');
@@ -338,7 +341,9 @@ export function createDomainPageState(input: DomainPageInput) {
 			}
 		}
 
-		const story = files.find((f) => f.name === 'index.story.svelte');
+		const story =
+			files.find((f) => f.name === 'index.story.ts') ??
+			files.find((f) => f.name === 'index.story.svelte');
 		if (story) {
 			activeFilePath = story.path;
 			previewMode = 'story';

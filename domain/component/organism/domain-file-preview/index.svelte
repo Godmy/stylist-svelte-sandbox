@@ -2,8 +2,10 @@
 	import MarkdownRenderer from '$stylist/domain/component/organism/markdown-renderer/index.svelte';
 	import JsonTreeViewer from '$stylist/domain/component/molecule/json-tree-viewer/index.svelte';
 	import FlatTree from '$stylist/tree/component/molecule/flat-tree/index.svelte';
+	import StoryControls from '$stylist/domain/component/molecule/story-controls/index.svelte';
 	import { ManagerStoryViewportContext } from '$stylist/theme/class/manager/story-viewport-context';
 	import type { RecipeDomainFilePreview } from '$stylist/domain/interface/recipe/domain-file-preview';
+	import type { ContractStory } from '$stylist/domain/interface/contract/story';
 
 	let {
 		previewMode = 'file',
@@ -55,15 +57,29 @@
 	const frameUrl = $derived(
 		`/preview?story=${encodeURIComponent(storyPath.replace(/^\/?src\/lib\//, '').replace(/^\//, ''))}`
 	);
+	// `index.story.ts`: controls live here, the iframe only renders the component with args.
+	const story = $derived(
+		storyPath.endsWith('.story.ts') ? (storyPreviewComponent as ContractStory) : null
+	);
+	let storyArgs: Record<string, unknown> | undefined;
+	// The frame stays transparent until it has the theme and the story painted: no white flash.
+	let readyUrl = $state('');
+	const frameReady = $derived(readyUrl === frameUrl);
+	function sendArgs(args: Record<string, unknown>) {
+		storyArgs = args;
+		frame?.contentWindow?.postMessage({ type: 'stylist:story-args', args }, window.location.origin);
+	}
 	function syncFrame() {
 		frame?.contentWindow?.postMessage(
 			{ type: 'stylist:viewport', device: storyDevice, fullscreen },
 			window.location.origin
 		);
+		if (storyArgs) sendArgs(storyArgs);
 	}
 	function receiveFrame(event: MessageEvent) {
 		if (event.origin !== window.location.origin || event.source !== frame?.contentWindow) return;
 		if (event.data?.type === 'stylist:preview-ready') syncFrame();
+		if (event.data?.type === 'stylist:story-ready') readyUrl = frameUrl;
 		if (event.data?.type === 'stylist:exit-fullscreen')
 			window.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
 	}
@@ -102,25 +118,45 @@
 	class:fullscreen
 	class:c-domain-file-preview--story={previewMode === 'story'}
 >
+	<!-- One loader for both stages (story module, then frame): same shell, place and text. -->
+	{#snippet storyLoading()}
+		<p class="empty-state story-frame-loading" role="status">Loading story…</p>
+	{/snippet}
+
 	{#if previewMode === 'story' && storyPreviewLoading}
-		<p class="empty-state">Loading playground...</p>
+		<div class="story-preview-shell">
+			<div class="story-frame-scroll">{@render storyLoading()}</div>
+		</div>
 	{:else if previewMode === 'story' && storyPreviewError}
-		<p class="empty-state">{storyPreviewError}</p>
+		<div class="story-preview-shell">
+			<div class="story-frame-scroll">
+				<p class="empty-state story-frame-loading" role="alert">{storyPreviewError}</p>
+			</div>
+		</div>
 	{:else if previewMode === 'story' && storyPreviewComponent}
 		{@const StoryPreviewComponent = storyPreviewComponent}
-		<div class="story-preview-shell">
+		<div class="story-preview-shell" class:story-preview-shell--controls={story && !fullscreen}>
 			{#if storyPath}
 				<div class="story-frame-scroll" bind:this={frameHost}>
+					{#if !frameReady}
+						{@render storyLoading()}
+					{/if}
 					<iframe
 						bind:this={frame}
 						src={frameUrl}
 						title="Component story preview"
+						class:story-frame--pending={!frameReady}
 						onload={syncFrame}
 						style:width={viewportWidth ? `${viewportWidth}px` : '100%'}
 						style:height={availableHeight ? `${availableHeight / frameScale}px` : '100%'}
 						style:transform={`translateX(-50%) scale(${frameScale})`}
 					></iframe>
 				</div>
+				{#if story && !fullscreen}
+					{#key storyPath}
+						<StoryControls class="story-controls" {story} onChange={sendArgs} />
+					{/key}
+				{/if}
 			{:else}
 				<StoryPreviewComponent />
 			{/if}
@@ -247,6 +283,32 @@
 		height: 100%;
 		background: var(--color-background-primary);
 	}
+	.story-preview-shell--controls {
+		display: grid;
+		grid-template-rows: minmax(0, 1fr) auto;
+	}
+
+	.story-preview-shell--controls :global(.story-controls) {
+		max-height: 40vh;
+		margin: 1rem -1rem -1rem;
+	}
+
+	.story-frame-scroll iframe {
+		transition: opacity 120ms ease;
+	}
+
+	.story-frame-scroll iframe.story-frame--pending {
+		opacity: 0;
+	}
+
+	.story-frame-loading {
+		position: absolute;
+		inset: 0;
+		display: grid;
+		place-items: center;
+		margin: 0;
+	}
+
 	.fullscreen .story-preview-shell {
 		padding: 0;
 	}

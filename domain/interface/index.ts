@@ -1,4 +1,5 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
+export type { ContractStory } from './contract';
 export type {
 	RecipeClusterToolbar,
 	RecipeCtaButtons,
@@ -47,9 +48,15 @@ export type {
 	RecipeSamoRiskBoard,
 	RecipeSamoSolidGrid,
 	RecipeSamoUmbrellaMap,
+	RecipeStoryCanvas,
+	RecipeStoryControl,
+	RecipeStoryControls,
 	RecipeStylistHero,
 	RecipeStylistHeroIntro,
 	RecipeStylistMission,
 	RecipeTaxonomyBreadcrumbs
 } from './recipe';
-export type { SlotDomainEntity } from './slot';
+export type {
+	SlotDomainEntity,
+	SlotStoryControl
+} from './slot';

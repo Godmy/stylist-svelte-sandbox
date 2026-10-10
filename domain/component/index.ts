@@ -3,7 +3,8 @@ export {
 	DomainEntity,
 	DomainListHeader,
 	DomainSearchField,
-	DomainSearchToggle
+	DomainSearchToggle,
+	StoryControl
 } from './atom';
 export {
 	ClusterToolbar,
@@ -32,6 +33,8 @@ export {
 	SamoRiskBoard,
 	SamoSolidGrid,
 	SamoUmbrellaMap,
+	StoryCanvas,
+	StoryControls,
 	StylistHeroIntro,
 	StylistMission,
 	TaxonomyBreadcrumbs,

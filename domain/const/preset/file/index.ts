@@ -31,6 +31,14 @@ export const PRESET_FILE = {
 		files: ['index.story.svelte', 'index.svelte', 'index.ts', 'readme.md', 'state.svelte.ts']
 	},
 	STORY_COMPONENT: { type: 'component', files: ['index.story.svelte'] },
+	DEFINED_STORY_COMPONENT: {
+		type: 'component',
+		files: ['index.story.ts', 'index.svelte', 'index.ts']
+	},
+	DEFINED_RENDERED_STORY_COMPONENT: {
+		type: 'component',
+		files: ['index.story.svelte', 'index.story.ts', 'index.svelte', 'index.ts']
+	},
 	INDEX_CODE: { type: 'code', files: ['index.ts'] },
 	INDEX_BARREL: { type: 'barrel', files: ['index.ts'] },
 	INDEXED_CLASS: { type: 'class', files: ['index.ts'] },
@@ -69,12 +77,16 @@ export const PRESET_FILE = {
 		files: [
 			'architecture.svg',
 			'business.svg',
+			'customer.svg',
 			'default.svg',
 			'design-system.svg',
 			'farm.svg',
 			'geo.svg',
+			'global.svg',
 			'information.svg',
 			'interaction.svg',
+			'management.svg',
+			'prototype.svg',
 			'sandbox.svg',
 			'spanish.svg',
 			'travel.svg',
