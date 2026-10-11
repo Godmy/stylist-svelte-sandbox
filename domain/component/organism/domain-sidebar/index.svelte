@@ -4,10 +4,11 @@
 	import JointToolbar from '$stylist/domain/component/molecule/joint-toolbar/index.svelte';
 	import DomainList from '$stylist/domain/component/molecule/domain-list/index.svelte';
 	import type { RecipeDomainSidebar } from '$stylist/domain/interface/recipe/domain-sidebar';
+	import { resolveModuleGroup } from '$stylist/domain/function/resolve/module-group';
 	const registries = import.meta.glob('/modules.json', {
 		eager: true,
 		import: 'default'
-	}) as Record<string, Record<string, { domains: string[] }>>;
+	}) as Record<string, Record<string, { path?: string; domains: string[] }>>;
 	const moduleIcons = import.meta.glob('../../../data/icon/module/*.svg', {
 		eager: true,
 		query: '?raw',
@@ -31,14 +32,7 @@
 		onEntityDragStart,
 		class: className = ''
 	}: RecipeDomainSidebar = $props();
-	const modules = $derived(
-		Object.entries(registries['/modules.json'] ?? {})
-			.map(([name, entry]) => ({
-				name,
-				domains: entry.domains.filter((domain) => availableDomains.includes(domain))
-			}))
-			.filter((entry) => entry.domains.length > 0)
-	);
+	const modules = $derived(resolveModuleGroup(registries['/modules.json'] ?? {}, availableDomains));
 	const activeModule = $derived(
 		modules.find((entry) => entry.domains.includes(activeDomain ?? ''))?.name
 	);

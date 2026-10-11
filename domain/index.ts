@@ -74,6 +74,7 @@ export {
 	normalizeDomainTree,
 	resolveComponentDescriptor,
 	resolveFilePreset,
+	resolveModuleGroup,
 	resolveTreeFamilies,
 	serializeUnknownError
 } from './function';

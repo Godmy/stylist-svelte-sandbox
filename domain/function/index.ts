@@ -3,6 +3,7 @@ export { countDomainStories } from './count';
 export {
 	resolveComponentDescriptor,
 	resolveFilePreset,
+	resolveModuleGroup,
 	resolveTreeFamilies
 } from './resolve';
 export { serializeUnknownError } from './serialize';
