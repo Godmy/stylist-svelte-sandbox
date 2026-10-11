@@ -1,7 +1,8 @@
 import { ClassNamesManager } from '$stylist/layout/class/manager/class-names';
 import type { RecipeSyntaxHighlightedCode } from '$stylist/development/interface/recipe/syntax-highlighted-code';
 
-export function createSyntaxHighlightedCodeState(props: RecipeSyntaxHighlightedCode) {
+export function createSyntaxHighlightedCodeState(getProps: () => RecipeSyntaxHighlightedCode) {
+	const props = $derived(getProps());
 	const SIZE_CLASS: Record<string, string> = {
 		xs: 'shc--xs',
 		sm: 'shc--sm',

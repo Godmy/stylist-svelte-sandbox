@@ -9,7 +9,7 @@
 		...restProps
 	}: RecipePrivacySettings = $props();
 
-	const state = createPrivacySettingsState({ settings, onSave, class: className });
+	const state = createPrivacySettingsState(() => ({ settings, onSave, class: className }));
 </script>
 
 <div class={state.containerClass} {...restProps}>

@@ -1,11 +1,9 @@
 import { ClassNamesManager } from '$stylist/layout/class/manager/class-names';
 import type { RecipePrivacySettings } from '$stylist/development/interface/recipe/privacy-settings';
 
-export function createPrivacySettingsState(props: RecipePrivacySettings) {
-	let localSettings = $state([...(props.settings ?? [])]);
-	$effect(() => {
-		localSettings = [...(props.settings ?? [])];
-	});
+export function createPrivacySettingsState(getProps: () => RecipePrivacySettings) {
+	const props = $derived(getProps());
+	let localSettings = $derived([...(props.settings ?? [])]);
 
 	const containerClass = $derived(ClassNamesManager.merge('c-privacy-settings', props.class ?? ''));
 	const titleClass = $derived('c-privacy-settings__title');
@@ -32,10 +30,9 @@ export function createPrivacySettingsState(props: RecipePrivacySettings) {
 	function toggleSetting(id: string) {
 		const index = localSettings.findIndex((s) => s.id === id);
 		if (index !== -1) {
-			localSettings[index] = {
-				...localSettings[index],
-				enabled: !localSettings[index].enabled
-			};
+			localSettings = localSettings.map((setting, at) =>
+				at === index ? { ...setting, enabled: !setting.enabled } : setting
+			);
 		}
 	}
 

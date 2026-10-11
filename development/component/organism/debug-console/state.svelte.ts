@@ -1,9 +1,11 @@
+import { untrack } from 'svelte';
 import { ClassNamesManager } from '$stylist/layout/class/manager/class-names';
 import type { RecipeDebugConsole } from '$stylist/development/interface/recipe/debug-console';
 import type { DebugConsoleLogLevel } from '$stylist/development/type/alias/debug-console-log-level';
 import type { DebugConsoleLogEntry as SlotDebugConsoleLogEntry } from '$stylist/development/interface/slot/debug-console-log-entry';
 
-export function createDebugConsoleState(props: RecipeDebugConsole) {
+export function createDebugConsoleState(getProps: () => RecipeDebugConsole) {
+	const props = $derived(getProps());
 	const Terminal = 'terminal';
 	const Bug = 'bug';
 	const Play = 'play';
@@ -12,8 +14,10 @@ export function createDebugConsoleState(props: RecipeDebugConsole) {
 	const Search = 'search';
 	const Filter = 'filter';
 
-	let filteredLogs = $state<SlotDebugConsoleLogEntry[]>(props.logs ?? []);
-	let logLevelFilter = $state<DebugConsoleLogLevel[]>(props.initialLogLevelFilter ?? []);
+	let filteredLogs = $state<SlotDebugConsoleLogEntry[]>(untrack(() => props.logs) ?? []);
+	let logLevelFilter = $state<DebugConsoleLogLevel[]>(
+		untrack(() => props.initialLogLevelFilter) ?? []
+	);
 	let searchQuery = $state('');
 	let isRunning = $state(false);
 

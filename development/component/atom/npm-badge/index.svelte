@@ -2,13 +2,13 @@
 	import createNpmBadgeState from './state.svelte';
 	import type { HTMLAttributes } from 'svelte/elements';
 	import type { SlotThemeBorder } from '$stylist/theme/interface/slot/theme-border';
-	import type { SlotTypography } from '$stylist/theme/interface/slot/typography';
+	import type { SlotTypography } from '$stylist/typography/interface/slot/typography';
 	import type { RecipeNpmBadge } from '$stylist/development/interface/recipe/npm-badge';
 
 	let props: RecipeNpmBadge & HTMLAttributes<HTMLElement> & SlotThemeBorder & SlotTypography =
 		$props();
 
-	const state = createNpmBadgeState(props);
+	const state = createNpmBadgeState(() => props);
 	const value = $derived(props.value);
 	const link = $derived(props.link);
 	const restProps = $derived(

@@ -4,7 +4,7 @@
 	import { onMount } from 'svelte';
 	import { createErrorBoundaryState } from './state.svelte';
 	let props: RecipeErrorBoundary & HTMLAttributes<HTMLDivElement> = $props();
-	const state = createErrorBoundaryState(props);
+	const state = createErrorBoundaryState(() => props);
 
 	onMount(() => {
 		const handleError = (event: ErrorEvent) => {

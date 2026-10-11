@@ -4,7 +4,7 @@
 	import BaseIcon from '$stylist/svg/component/atom/icon/index.svelte';
 
 	let { ...props }: RecipeMockDataSelector = $props();
-	const state = createMockDataSelectorState(props);
+	const state = createMockDataSelectorState(() => props);
 </script>
 
 <div class={state.containerClass}>

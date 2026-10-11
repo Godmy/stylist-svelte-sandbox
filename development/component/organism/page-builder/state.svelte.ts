@@ -1,10 +1,12 @@
+import { untrack } from 'svelte';
 import type { TokenComponentType } from '$stylist/development/type/alias/component-type';
 import { PageBuilderManager } from '$stylist/development/class/manager/page-builder';
 import type { PageBuilderElement as SlotPageBuilderElement } from '$stylist/development/interface/slot/page-builder-element';
 import type { RecipePageBuilder } from '$stylist/development/interface/recipe/page-builder';
 
-export function createPageBuilderState(props: RecipePageBuilder) {
-	let elements = $state<SlotPageBuilderElement[]>(props.initialElements ?? []);
+export function createPageBuilderState(getProps: () => RecipePageBuilder) {
+	const props = $derived(getProps());
+	let elements = $state<SlotPageBuilderElement[]>(untrack(() => props.initialElements) ?? []);
 	let selectedElementId = $state<string | null>(null);
 	let dragIndex = $state<number | null>(null);
 	let isPreviewMode = $state(false);

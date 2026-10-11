@@ -288,6 +288,47 @@
       ]
     },
     {
+      "name": "design-token",
+      "value": 0,
+      "atom": 0,
+      "molecule": 0,
+      "organism": 0,
+      "template": 0,
+      "page": 0,
+      "intervals": [
+        {
+          "name": "atom",
+          "value": 0,
+          "start": 0,
+          "end": 0
+        },
+        {
+          "name": "molecule",
+          "value": 0,
+          "start": 0,
+          "end": 0
+        },
+        {
+          "name": "organism",
+          "value": 0,
+          "start": 0,
+          "end": 0
+        },
+        {
+          "name": "template",
+          "value": 0,
+          "start": 0,
+          "end": 0
+        },
+        {
+          "name": "page",
+          "value": 0,
+          "start": 0,
+          "end": 0
+        }
+      ]
+    },
+    {
       "name": "development",
       "value": 19,
       "atom": 3,
@@ -371,42 +412,42 @@
     },
     {
       "name": "domain",
-      "value": 52,
-      "atom": 4,
-      "molecule": 30,
+      "value": 56,
+      "atom": 5,
+      "molecule": 33,
       "organism": 15,
       "template": 0,
       "page": 3,
       "intervals": [
         {
           "name": "atom",
-          "value": 4,
+          "value": 5,
           "start": 0,
-          "end": 4
+          "end": 5
         },
         {
           "name": "molecule",
-          "value": 30,
-          "start": 4,
-          "end": 34
+          "value": 33,
+          "start": 5,
+          "end": 38
         },
         {
           "name": "organism",
           "value": 15,
-          "start": 34,
-          "end": 49
+          "start": 38,
+          "end": 53
         },
         {
           "name": "template",
           "value": 0,
-          "start": 49,
-          "end": 49
+          "start": 53,
+          "end": 53
         },
         {
           "name": "page",
           "value": 3,
-          "start": 49,
-          "end": 52
+          "start": 53,
+          "end": 56
         }
       ]
     },
@@ -571,6 +612,47 @@
           "value": 0,
           "start": 14,
           "end": 14
+        }
+      ]
+    },
+    {
+      "name": "html",
+      "value": 139,
+      "atom": 92,
+      "molecule": 22,
+      "organism": 21,
+      "template": 3,
+      "page": 1,
+      "intervals": [
+        {
+          "name": "atom",
+          "value": 92,
+          "start": 0,
+          "end": 92
+        },
+        {
+          "name": "molecule",
+          "value": 22,
+          "start": 92,
+          "end": 114
+        },
+        {
+          "name": "organism",
+          "value": 21,
+          "start": 114,
+          "end": 135
+        },
+        {
+          "name": "template",
+          "value": 3,
+          "start": 135,
+          "end": 138
+        },
+        {
+          "name": "page",
+          "value": 1,
+          "start": 138,
+          "end": 139
         }
       ]
     },
@@ -940,47 +1022,6 @@
           "value": 0,
           "start": 11,
           "end": 11
-        }
-      ]
-    },
-    {
-      "name": "presentation",
-      "value": 5,
-      "atom": 0,
-      "molecule": 2,
-      "organism": 2,
-      "template": 0,
-      "page": 1,
-      "intervals": [
-        {
-          "name": "atom",
-          "value": 0,
-          "start": 0,
-          "end": 0
-        },
-        {
-          "name": "molecule",
-          "value": 2,
-          "start": 0,
-          "end": 2
-        },
-        {
-          "name": "organism",
-          "value": 2,
-          "start": 2,
-          "end": 4
-        },
-        {
-          "name": "template",
-          "value": 0,
-          "start": 4,
-          "end": 4
-        },
-        {
-          "name": "page",
-          "value": 1,
-          "start": 4,
-          "end": 5
         }
       ]
     },
@@ -1437,12 +1478,12 @@
     }
   ],
   "totals": {
-    "domains": 35,
-    "components": 480,
-    "atoms": 183,
-    "molecules": 166,
-    "organisms": 127,
-    "templates": 0,
+    "domains": 36,
+    "components": 618,
+    "atoms": 276,
+    "molecules": 189,
+    "organisms": 146,
+    "templates": 3,
     "pages": 4
   }
 }

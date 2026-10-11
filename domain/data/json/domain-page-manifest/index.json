@@ -325,6 +325,8 @@
         "manager": {
           "canvas": "INDEXED_CLASS",
           "color-palette": "INDEXED_CLASS",
+          "foundation": "INDEXED_CLASS",
+          "semantic-zoom": "INDEXED_CLASS",
           "shared-canvas": "INDEXED_CLASS"
         }
       },
@@ -343,13 +345,27 @@
       },
       "const": {
         "array": {
-          "canvas-toolbar-drawing-tool": "INDEXED_CONST"
+          "canvas-toolbar-drawing-tool": "INDEXED_CONST",
+          "foundation-axes": "INDEXED_CONST",
+          "foundation-axis-directions": "INDEXED_CONST",
+          "foundation-depth-thresholds": "INDEXED_CONST",
+          "foundation-semantic-zoom-stages": "INDEXED_CONST"
         },
         "map": {
           "canvas-action-icons": "INDEXED_CONST"
         },
         "record": {
-          "canvas-tool-definitions": "INDEXED_CONST"
+          "canvas-tool-definitions": "INDEXED_CONST",
+          "semantic-zoom-density": "INDEXED_CONST",
+          "semantic-zoom-frame": "INDEXED_CONST",
+          "semantic-zoom-layer": "INDEXED_CONST",
+          "semantic-zoom-level": "INDEXED_CONST",
+          "semantic-zoom-shape": "INDEXED_CONST",
+          "semantic-zoom-size": "INDEXED_CONST"
+        },
+        "value": {
+          "default-foundation-camera": "INDEXED_CONST",
+          "foundation-depth-range": "INDEXED_CONST"
         }
       },
       "interface": {
@@ -371,14 +387,22 @@
           "drawing-surface-expose-methods-event": "INDEXED_INTERFACE",
           "point-2d": "INDEXED_INTERFACE",
           "point-2d-path": "INDEXED_INTERFACE",
+          "scene-node": "INDEXED_INTERFACE",
+          "scene-node-point": "INDEXED_INTERFACE",
+          "semantic-zoom": "INDEXED_INTERFACE",
           "shared-canvas-object-bounds": "INDEXED_INTERFACE"
         }
       },
       "type": {
         "alias": {
           "canvas-toolbar-drawing-tool": "INDEXED_TYPE",
+          "foundation-axis": "INDEXED_TYPE",
+          "foundation-semantic-zoom-stage": "INDEXED_TYPE",
           "shared-canvas-tool": "INDEXED_TYPE",
           "shared-canvas-tool-definition": "INDEXED_TYPE"
+        },
+        "struct": {
+          "foundation-depth-threshold": "INDEXED_TYPE"
         }
       }
     },
@@ -647,6 +671,101 @@
         }
       }
     },
+    "design-token": {
+      "const": {
+        "array": {
+          "color-tone": "INDEXED_CONST",
+          "direction": "INDEXED_CONST",
+          "shape": "INDEXED_CONST",
+          "size": "INDEXED_CONST",
+          "size-px": "INDEXED_CONST",
+          "size-rem": "INDEXED_CONST",
+          "token-value": "INDEXED_CONST"
+        },
+        "object": {
+          "animation": "INDEXED_CONST",
+          "border-radius": "INDEXED_CONST",
+          "border-width": "INDEXED_CONST",
+          "color": "INDEXED_CONST",
+          "duration": "INDEXED_CONST",
+          "easing": "INDEXED_CONST",
+          "font-family": "INDEXED_CONST",
+          "font-size": "INDEXED_CONST",
+          "font-size-relative": "INDEXED_CONST",
+          "font-weight": "INDEXED_CONST",
+          "gradient-custom": "INDEXED_CONST",
+          "gradient-linear": "INDEXED_CONST",
+          "gradient-radial": "INDEXED_CONST",
+          "letter-spacing": "INDEXED_CONST",
+          "line-height": "INDEXED_CONST",
+          "opacity": "INDEXED_CONST",
+          "z-index": "INDEXED_CONST"
+        },
+        "preset": {
+          "content-size": "INDEXED_CONST",
+          "density": "INDEXED_CONST",
+          "focus": "INDEXED_CONST",
+          "html-supplement": "INDEXED_CONST"
+        },
+        "record": {
+          "colors-scales": "INDEX_BARREL",
+          "elevation": "INDEXED_CONST",
+          "html-requirement": "INDEXED_CONST",
+          "spacing": "INDEXED_CONST",
+          "transition": "INDEXED_CONST"
+        }
+      },
+      "data": {
+        "json": {
+          "html-requirement": "INDEX_JSON"
+        },
+        "md": {
+          "coverage": "DATA_MARKDOWN"
+        }
+      },
+      "function": {
+        "check": {
+          "style-token-coverage": "INDEXED_FUNCTION"
+        },
+        "resolve": {
+          "style-token-usage": "INDEXED_FUNCTION"
+        }
+      },
+      "interface": {
+        "contract": {
+          "style-rule": "INDEXED_INTERFACE"
+        }
+      },
+      "test": {
+        "unit": {
+          "html-coverage": "FUNCTION_TEST"
+        }
+      },
+      "type": {
+        "alias": {
+          "animation": "INDEXED_TYPE",
+          "color": "INDEXED_TYPE",
+          "color-tone": "INDEXED_TYPE",
+          "direction": "INDEXED_TYPE",
+          "duration": "INDEXED_TYPE",
+          "easing": "INDEXED_TYPE",
+          "font-family": "INDEXED_TYPE",
+          "font-size": "INDEXED_TYPE",
+          "font-weight": "INDEXED_TYPE",
+          "letter-spacing": "INDEXED_TYPE",
+          "line-height": "INDEXED_TYPE",
+          "opacity": "INDEXED_TYPE",
+          "shape": "INDEXED_TYPE",
+          "size": "INDEXED_TYPE",
+          "size-rem": "INDEXED_TYPE",
+          "token-value": "INDEXED_TYPE",
+          "z-index": "INDEXED_TYPE"
+        },
+        "struct": {
+          "usage": "INDEXED_TYPE"
+        }
+      }
+    },
     "development": {
       "class": {
         "manager": {
@@ -754,6 +873,11 @@
           "page-builder-text-attributes": "INDEXED_INTERFACE"
         }
       },
+      "test": {
+        "render": {
+          "privacy-settings": "FUNCTION_TEST"
+        }
+      },
       "type": {
         "alias": {
           "code-language": "INDEXED_TYPE",
@@ -857,7 +981,8 @@
           "domain-entity": "INDEXED_STORY_COMPONENT",
           "domain-list-header": "INDEXED_STORY_COMPONENT",
           "domain-search-field": "INDEXED_STORY_COMPONENT",
-          "domain-search-toggle": "INDEXED_STORY_COMPONENT"
+          "domain-search-toggle": "INDEXED_STORY_COMPONENT",
+          "story-control": "INDEXED_COMPONENT"
         },
         "molecule": {
           "cluster-toolbar": "INDEXED_STORY_COMPONENT",
@@ -871,6 +996,7 @@
           "joint-tab-buttons": "INDEXED_STORY_COMPONENT",
           "joint-toolbar": "INDEXED_STORY_COMPONENT",
           "json-tree-viewer": "INDEXED_STORY_COMPONENT",
+          "preview-settings": "INDEXED_COMPONENT",
           "samo-adoption-roadmap": "INDEXED_STORY_COMPONENT",
           "samo-architecture-compare": "INDEXED_STORY_COMPONENT",
           "samo-assembly-pipeline": "INDEXED_STORY_COMPONENT",
@@ -886,6 +1012,8 @@
           "samo-risk-board": "INDEXED_STORY_COMPONENT",
           "samo-solid-grid": "INDEXED_STORY_COMPONENT",
           "samo-umbrella-map": "INDEXED_STORY_COMPONENT",
+          "story-canvas": "INDEXED_COMPONENT",
+          "story-controls": "INDEXED_REACTIVE_COMPONENT",
           "stylist-hero-intro": "INDEXED_COMPONENT",
           "stylist-mission": "INDEXED_COMPONENT",
           "taxonomy-breadcrumbs": "INDEXED_STORY_COMPONENT",
@@ -925,7 +1053,8 @@
         },
         "object": {
           "controller-type": "INDEXED_CONST",
-          "domain-screen": "INDEXED_CONST"
+          "domain-screen": "INDEXED_CONST",
+          "preview-controls": "INDEXED_CONST"
         },
         "preset": {
           "file": "INDEXED_CONST"
@@ -948,6 +1077,9 @@
         "resolve": {
           "component-descriptor": "INDEXED_FUNCTION",
           "file-preset": "INDEXED_FUNCTION",
+          "module-group": "INDEXED_FUNCTION",
+          "preview-skin": "INDEXED_FUNCTION",
+          "preview-variables": "INDEXED_FUNCTION",
           "tree-families": "INDEXED_FUNCTION"
         },
         "serialize": {
@@ -960,6 +1092,9 @@
         }
       },
       "interface": {
+        "contract": {
+          "preview-environment": "INDEXED_INTERFACE"
+        },
         "recipe": {
           "cluster-toolbar": "INDEXED_INTERFACE",
           "cta-buttons": "INDEXED_INTERFACE",
@@ -992,6 +1127,7 @@
           "joint-toolbar": "INDEXED_INTERFACE",
           "json-tree-viewer": "INDEXED_INTERFACE",
           "markdown-renderer": "INDEXED_INTERFACE",
+          "preview-settings": "INDEXED_INTERFACE",
           "samo-adoption-roadmap": "INDEXED_INTERFACE",
           "samo-architecture-compare": "INDEXED_INTERFACE",
           "samo-assembly-pipeline": "INDEXED_INTERFACE",
@@ -1008,6 +1144,9 @@
           "samo-risk-board": "INDEXED_INTERFACE",
           "samo-solid-grid": "INDEXED_INTERFACE",
           "samo-umbrella-map": "INDEXED_INTERFACE",
+          "story-canvas": "INDEXED_INTERFACE",
+          "story-control": "INDEXED_INTERFACE",
+          "story-controls": "INDEXED_INTERFACE",
           "stylist-hero": "INDEXED_INTERFACE",
           "stylist-hero-intro": "INDEXED_INTERFACE",
           "stylist-mission": "INDEXED_INTERFACE",
@@ -1015,6 +1154,16 @@
         },
         "slot": {
           "domain-entity": "INDEXED_INTERFACE"
+        }
+      },
+      "test": {
+        "render": {
+          "preview-environment": "FUNCTION_TEST",
+          "story-canvas": "FUNCTION_TEST",
+          "story-controls": "FUNCTION_TEST"
+        },
+        "unit": {
+          "module-group": "FUNCTION_TEST"
         }
       },
       "type": {
@@ -1418,6 +1567,410 @@
         }
       }
     },
+    "html": {
+      "component": {
+        "atom": {
+          "a": "DEFINED_STORY_COMPONENT",
+          "abbr": "DEFINED_STORY_COMPONENT",
+          "area": "DEFINED_STORY_COMPONENT",
+          "b": "DEFINED_STORY_COMPONENT",
+          "base": "DEFINED_STORY_COMPONENT",
+          "bdi": "DEFINED_STORY_COMPONENT",
+          "bdo": "DEFINED_STORY_COMPONENT",
+          "br": "DEFINED_STORY_COMPONENT",
+          "button": "DEFINED_STORY_COMPONENT",
+          "canvas": "DEFINED_STORY_COMPONENT",
+          "cite": "DEFINED_STORY_COMPONENT",
+          "code": "DEFINED_STORY_COMPONENT",
+          "col": "DEFINED_STORY_COMPONENT",
+          "data": "DEFINED_STORY_COMPONENT",
+          "del": "DEFINED_STORY_COMPONENT",
+          "dfn": "DEFINED_STORY_COMPONENT",
+          "em": "DEFINED_STORY_COMPONENT",
+          "embed": "DEFINED_STORY_COMPONENT",
+          "h1": "DEFINED_STORY_COMPONENT",
+          "h2": "DEFINED_STORY_COMPONENT",
+          "h3": "DEFINED_STORY_COMPONENT",
+          "h4": "DEFINED_STORY_COMPONENT",
+          "h5": "DEFINED_STORY_COMPONENT",
+          "h6": "DEFINED_STORY_COMPONENT",
+          "hr": "DEFINED_STORY_COMPONENT",
+          "i": "DEFINED_STORY_COMPONENT",
+          "iframe": "DEFINED_STORY_COMPONENT",
+          "img": "DEFINED_STORY_COMPONENT",
+          "input": "DEFINED_STORY_COMPONENT",
+          "input-button": "DEFINED_STORY_COMPONENT",
+          "input-checkbox": "DEFINED_STORY_COMPONENT",
+          "input-color": "DEFINED_STORY_COMPONENT",
+          "input-date": "DEFINED_STORY_COMPONENT",
+          "input-datetime-local": "DEFINED_STORY_COMPONENT",
+          "input-email": "DEFINED_STORY_COMPONENT",
+          "input-file": "DEFINED_STORY_COMPONENT",
+          "input-hidden": "DEFINED_STORY_COMPONENT",
+          "input-image": "DEFINED_STORY_COMPONENT",
+          "input-month": "DEFINED_STORY_COMPONENT",
+          "input-number": "DEFINED_STORY_COMPONENT",
+          "input-password": "DEFINED_STORY_COMPONENT",
+          "input-radio": "DEFINED_STORY_COMPONENT",
+          "input-range": "DEFINED_STORY_COMPONENT",
+          "input-reset": "DEFINED_STORY_COMPONENT",
+          "input-search": "DEFINED_STORY_COMPONENT",
+          "input-submit": "DEFINED_STORY_COMPONENT",
+          "input-tel": "DEFINED_STORY_COMPONENT",
+          "input-text": "DEFINED_STORY_COMPONENT",
+          "input-time": "DEFINED_STORY_COMPONENT",
+          "input-url": "DEFINED_STORY_COMPONENT",
+          "input-week": "DEFINED_STORY_COMPONENT",
+          "ins": "DEFINED_STORY_COMPONENT",
+          "kbd": "DEFINED_STORY_COMPONENT",
+          "label": "DEFINED_STORY_COMPONENT",
+          "legend": "DEFINED_STORY_COMPONENT",
+          "link": "DEFINED_STORY_COMPONENT",
+          "mark": "DEFINED_STORY_COMPONENT",
+          "math": "DEFINED_RENDERED_STORY_COMPONENT",
+          "meta": "DEFINED_STORY_COMPONENT",
+          "meter": "DEFINED_STORY_COMPONENT",
+          "noscript": "DEFINED_STORY_COMPONENT",
+          "object": "DEFINED_STORY_COMPONENT",
+          "option": "DEFINED_STORY_COMPONENT",
+          "output": "DEFINED_STORY_COMPONENT",
+          "p": "DEFINED_STORY_COMPONENT",
+          "pre": "DEFINED_STORY_COMPONENT",
+          "progress": "DEFINED_STORY_COMPONENT",
+          "q": "DEFINED_STORY_COMPONENT",
+          "raw-text": "DEFINED_STORY_COMPONENT",
+          "rp": "DEFINED_STORY_COMPONENT",
+          "rt": "DEFINED_STORY_COMPONENT",
+          "s": "DEFINED_STORY_COMPONENT",
+          "samp": "DEFINED_STORY_COMPONENT",
+          "script": "DEFINED_STORY_COMPONENT",
+          "selectedcontent": "DEFINED_STORY_COMPONENT",
+          "slot": "DEFINED_STORY_COMPONENT",
+          "small": "DEFINED_STORY_COMPONENT",
+          "source": "DEFINED_STORY_COMPONENT",
+          "span": "DEFINED_STORY_COMPONENT",
+          "strong": "DEFINED_STORY_COMPONENT",
+          "style": "DEFINED_STORY_COMPONENT",
+          "sub": "DEFINED_STORY_COMPONENT",
+          "summary": "DEFINED_STORY_COMPONENT",
+          "sup": "DEFINED_STORY_COMPONENT",
+          "svg": "DEFINED_RENDERED_STORY_COMPONENT",
+          "textarea": "DEFINED_STORY_COMPONENT",
+          "time": "DEFINED_STORY_COMPONENT",
+          "title": "DEFINED_STORY_COMPONENT",
+          "track": "DEFINED_STORY_COMPONENT",
+          "u": "DEFINED_STORY_COMPONENT",
+          "var": "DEFINED_STORY_COMPONENT",
+          "wbr": "DEFINED_STORY_COMPONENT"
+        },
+        "molecule": {
+          "audio": "DEFINED_STORY_COMPONENT",
+          "colgroup": "DEFINED_STORY_COMPONENT",
+          "datalist": "DEFINED_STORY_COMPONENT",
+          "details": "DEFINED_STORY_COMPONENT",
+          "dl": "DEFINED_STORY_COMPONENT",
+          "fieldset": "DEFINED_STORY_COMPONENT",
+          "figure": "DEFINED_STORY_COMPONENT",
+          "hgroup": "DEFINED_STORY_COMPONENT",
+          "map": "DEFINED_STORY_COMPONENT",
+          "menu": "DEFINED_STORY_COMPONENT",
+          "ol": "DEFINED_STORY_COMPONENT",
+          "optgroup": "DEFINED_STORY_COMPONENT",
+          "picture": "DEFINED_STORY_COMPONENT",
+          "ruby": "DEFINED_STORY_COMPONENT",
+          "select": "DEFINED_STORY_COMPONENT",
+          "table": "DEFINED_STORY_COMPONENT",
+          "tbody": "DEFINED_STORY_COMPONENT",
+          "tfoot": "DEFINED_STORY_COMPONENT",
+          "thead": "DEFINED_STORY_COMPONENT",
+          "tr": "DEFINED_STORY_COMPONENT",
+          "ul": "DEFINED_STORY_COMPONENT",
+          "video": "DEFINED_STORY_COMPONENT"
+        },
+        "organism": {
+          "address": "DEFINED_STORY_COMPONENT",
+          "article": "DEFINED_STORY_COMPONENT",
+          "aside": "DEFINED_STORY_COMPONENT",
+          "blockquote": "DEFINED_STORY_COMPONENT",
+          "caption": "DEFINED_STORY_COMPONENT",
+          "dd": "DEFINED_STORY_COMPONENT",
+          "dialog": "DEFINED_STORY_COMPONENT",
+          "div": "DEFINED_STORY_COMPONENT",
+          "dt": "DEFINED_STORY_COMPONENT",
+          "figcaption": "DEFINED_STORY_COMPONENT",
+          "footer": "DEFINED_STORY_COMPONENT",
+          "form": "DEFINED_STORY_COMPONENT",
+          "header": "DEFINED_STORY_COMPONENT",
+          "li": "DEFINED_STORY_COMPONENT",
+          "main": "DEFINED_STORY_COMPONENT",
+          "nav": "DEFINED_STORY_COMPONENT",
+          "search": "DEFINED_STORY_COMPONENT",
+          "section": "DEFINED_STORY_COMPONENT",
+          "td": "DEFINED_STORY_COMPONENT",
+          "template": "DEFINED_STORY_COMPONENT",
+          "th": "DEFINED_STORY_COMPONENT"
+        },
+        "page": {
+          "html": "DEFINED_STORY_COMPONENT"
+        },
+        "template": {
+          "body": "DEFINED_STORY_COMPONENT",
+          "head": "DEFINED_STORY_COMPONENT",
+          "node": "DEFINED_RENDERED_STORY_COMPONENT"
+        }
+      },
+      "const": {
+        "array": {
+          "html-block-shape": "INDEXED_CONST",
+          "html-boolean-attribute": "INDEXED_CONST",
+          "html-content": "INDEXED_CONST",
+          "html-input-type": "INDEXED_CONST",
+          "html-issue-code": "INDEXED_CONST",
+          "html-level": "INDEXED_CONST",
+          "html-namespace": "INDEXED_CONST",
+          "html-render": "INDEXED_CONST",
+          "html-style": "INDEXED_CONST"
+        },
+        "record": {
+          "html-element": "INDEXED_CONST",
+          "html-interactive-condition": "INDEXED_CONST"
+        },
+        "value": {
+          "html-skin-scope": "INDEXED_CONST"
+        }
+      },
+      "data": {
+        "json": {
+          "html-hydration-sample": "INDEX_JSON",
+          "html-node-sample": "INDEX_JSON",
+          "html-spec-snapshot": "INDEX_JSON"
+        }
+      },
+      "function": {
+        "check": {
+          "html-child": "INDEXED_FUNCTION",
+          "html-constraints": "INDEXED_FUNCTION",
+          "html-node": "INDEXED_FUNCTION",
+          "html-raw-text": "INDEXED_FUNCTION"
+        },
+        "create": {
+          "html-block": "INDEXED_FUNCTION",
+          "html-block-list": "INDEXED_FUNCTION",
+          "html-story-node": "INDEXED_FUNCTION"
+        },
+        "resolve": {
+          "html-address": "INDEXED_FUNCTION",
+          "html-style-selector": "INDEXED_FUNCTION",
+          "html-text": "INDEXED_FUNCTION",
+          "html-validation": "INDEXED_FUNCTION"
+        },
+        "script": {
+          "html-attributes": "INDEXED_FUNCTION"
+        },
+        "serialize": {
+          "html-attributes": "INDEXED_FUNCTION",
+          "html-document": "INDEXED_FUNCTION",
+          "html-markup": "INDEXED_FUNCTION",
+          "html-node": "INDEXED_FUNCTION",
+          "html-raw-text": "INDEXED_FUNCTION",
+          "html-stylesheet": "INDEXED_FUNCTION"
+        },
+        "transform": {
+          "html-outlet": "INDEXED_FUNCTION",
+          "html-text": "INDEXED_FUNCTION"
+        }
+      },
+      "interface": {
+        "contract": {
+          "html-component": "INDEXED_INTERFACE",
+          "html-composite": "INDEXED_INTERFACE",
+          "story": "INDEXED_INTERFACE"
+        },
+        "recipe": {
+          "a": "INDEXED_INTERFACE",
+          "abbr": "INDEXED_INTERFACE",
+          "address": "INDEXED_INTERFACE",
+          "area": "INDEXED_INTERFACE",
+          "article": "INDEXED_INTERFACE",
+          "aside": "INDEXED_INTERFACE",
+          "audio": "INDEXED_INTERFACE",
+          "b": "INDEXED_INTERFACE",
+          "base": "INDEXED_INTERFACE",
+          "bdi": "INDEXED_INTERFACE",
+          "bdo": "INDEXED_INTERFACE",
+          "blockquote": "INDEXED_INTERFACE",
+          "body": "INDEXED_INTERFACE",
+          "br": "INDEXED_INTERFACE",
+          "button": "INDEXED_INTERFACE",
+          "canvas": "INDEXED_INTERFACE",
+          "caption": "INDEXED_INTERFACE",
+          "cite": "INDEXED_INTERFACE",
+          "code": "INDEXED_INTERFACE",
+          "col": "INDEXED_INTERFACE",
+          "colgroup": "INDEXED_INTERFACE",
+          "data": "INDEXED_INTERFACE",
+          "datalist": "INDEXED_INTERFACE",
+          "dd": "INDEXED_INTERFACE",
+          "del": "INDEXED_INTERFACE",
+          "details": "INDEXED_INTERFACE",
+          "dfn": "INDEXED_INTERFACE",
+          "dialog": "INDEXED_INTERFACE",
+          "div": "INDEXED_INTERFACE",
+          "dl": "INDEXED_INTERFACE",
+          "dt": "INDEXED_INTERFACE",
+          "em": "INDEXED_INTERFACE",
+          "embed": "INDEXED_INTERFACE",
+          "fieldset": "INDEXED_INTERFACE",
+          "figcaption": "INDEXED_INTERFACE",
+          "figure": "INDEXED_INTERFACE",
+          "footer": "INDEXED_INTERFACE",
+          "form": "INDEXED_INTERFACE",
+          "h1": "INDEXED_INTERFACE",
+          "h2": "INDEXED_INTERFACE",
+          "h3": "INDEXED_INTERFACE",
+          "h4": "INDEXED_INTERFACE",
+          "h5": "INDEXED_INTERFACE",
+          "h6": "INDEXED_INTERFACE",
+          "head": "INDEXED_INTERFACE",
+          "header": "INDEXED_INTERFACE",
+          "hgroup": "INDEXED_INTERFACE",
+          "hr": "INDEXED_INTERFACE",
+          "html": "INDEXED_INTERFACE",
+          "i": "INDEXED_INTERFACE",
+          "iframe": "INDEXED_INTERFACE",
+          "img": "INDEXED_INTERFACE",
+          "input": "INDEXED_INTERFACE",
+          "input-button": "INDEXED_INTERFACE",
+          "input-checkbox": "INDEXED_INTERFACE",
+          "input-color": "INDEXED_INTERFACE",
+          "input-date": "INDEXED_INTERFACE",
+          "input-datetime-local": "INDEXED_INTERFACE",
+          "input-email": "INDEXED_INTERFACE",
+          "input-file": "INDEXED_INTERFACE",
+          "input-hidden": "INDEXED_INTERFACE",
+          "input-image": "INDEXED_INTERFACE",
+          "input-month": "INDEXED_INTERFACE",
+          "input-number": "INDEXED_INTERFACE",
+          "input-password": "INDEXED_INTERFACE",
+          "input-radio": "INDEXED_INTERFACE",
+          "input-range": "INDEXED_INTERFACE",
+          "input-reset": "INDEXED_INTERFACE",
+          "input-search": "INDEXED_INTERFACE",
+          "input-submit": "INDEXED_INTERFACE",
+          "input-tel": "INDEXED_INTERFACE",
+          "input-text": "INDEXED_INTERFACE",
+          "input-time": "INDEXED_INTERFACE",
+          "input-url": "INDEXED_INTERFACE",
+          "input-week": "INDEXED_INTERFACE",
+          "ins": "INDEXED_INTERFACE",
+          "kbd": "INDEXED_INTERFACE",
+          "label": "INDEXED_INTERFACE",
+          "legend": "INDEXED_INTERFACE",
+          "li": "INDEXED_INTERFACE",
+          "link": "INDEXED_INTERFACE",
+          "main": "INDEXED_INTERFACE",
+          "map": "INDEXED_INTERFACE",
+          "mark": "INDEXED_INTERFACE",
+          "math": "INDEXED_INTERFACE",
+          "menu": "INDEXED_INTERFACE",
+          "meta": "INDEXED_INTERFACE",
+          "meter": "INDEXED_INTERFACE",
+          "nav": "INDEXED_INTERFACE",
+          "node": "INDEXED_INTERFACE",
+          "noscript": "INDEXED_INTERFACE",
+          "object": "INDEXED_INTERFACE",
+          "ol": "INDEXED_INTERFACE",
+          "optgroup": "INDEXED_INTERFACE",
+          "option": "INDEXED_INTERFACE",
+          "output": "INDEXED_INTERFACE",
+          "p": "INDEXED_INTERFACE",
+          "picture": "INDEXED_INTERFACE",
+          "pre": "INDEXED_INTERFACE",
+          "progress": "INDEXED_INTERFACE",
+          "q": "INDEXED_INTERFACE",
+          "raw-text": "INDEXED_INTERFACE",
+          "rp": "INDEXED_INTERFACE",
+          "rt": "INDEXED_INTERFACE",
+          "ruby": "INDEXED_INTERFACE",
+          "s": "INDEXED_INTERFACE",
+          "samp": "INDEXED_INTERFACE",
+          "script": "INDEXED_INTERFACE",
+          "search": "INDEXED_INTERFACE",
+          "section": "INDEXED_INTERFACE",
+          "select": "INDEXED_INTERFACE",
+          "selectedcontent": "INDEXED_INTERFACE",
+          "slot": "INDEXED_INTERFACE",
+          "small": "INDEXED_INTERFACE",
+          "source": "INDEXED_INTERFACE",
+          "span": "INDEXED_INTERFACE",
+          "strong": "INDEXED_INTERFACE",
+          "style": "INDEXED_INTERFACE",
+          "sub": "INDEXED_INTERFACE",
+          "summary": "INDEXED_INTERFACE",
+          "sup": "INDEXED_INTERFACE",
+          "svg": "INDEXED_INTERFACE",
+          "table": "INDEXED_INTERFACE",
+          "tbody": "INDEXED_INTERFACE",
+          "td": "INDEXED_INTERFACE",
+          "template": "INDEXED_INTERFACE",
+          "textarea": "INDEXED_INTERFACE",
+          "tfoot": "INDEXED_INTERFACE",
+          "th": "INDEXED_INTERFACE",
+          "thead": "INDEXED_INTERFACE",
+          "time": "INDEXED_INTERFACE",
+          "title": "INDEXED_INTERFACE",
+          "tr": "INDEXED_INTERFACE",
+          "track": "INDEXED_INTERFACE",
+          "u": "INDEXED_INTERFACE",
+          "ul": "INDEXED_INTERFACE",
+          "var": "INDEXED_INTERFACE",
+          "video": "INDEXED_INTERFACE",
+          "wbr": "INDEXED_INTERFACE"
+        },
+        "slot": {
+          "html-text": "INDEXED_INTERFACE",
+          "story-control": "INDEXED_INTERFACE"
+        }
+      },
+      "test": {
+        "render": {
+          "html-outlet": "FUNCTION_TEST",
+          "html-render": "FUNCTION_TEST",
+          "html-story": "FUNCTION_TEST"
+        },
+        "unit": {
+          "html-element": "FUNCTION_TEST",
+          "html-markup": "FUNCTION_TEST",
+          "html-node": "FUNCTION_TEST",
+          "html-outlet": "FUNCTION_TEST",
+          "html-stylesheet": "FUNCTION_TEST"
+        }
+      },
+      "type": {
+        "alias": {
+          "html-attribute-value": "INDEXED_TYPE",
+          "html-block-shape": "INDEXED_TYPE",
+          "html-content": "INDEXED_TYPE",
+          "html-input-type": "INDEXED_TYPE",
+          "html-issue-code": "INDEXED_TYPE",
+          "html-level": "INDEXED_TYPE",
+          "html-namespace": "INDEXED_TYPE",
+          "html-node": "INDEXED_TYPE",
+          "html-render": "INDEXED_TYPE",
+          "html-tag": "INDEXED_TYPE"
+        },
+        "struct": {
+          "html-element-node": "INDEXED_TYPE",
+          "html-element-spec": "INDEXED_TYPE",
+          "html-node-issue": "INDEXED_TYPE",
+          "html-outlet-node": "INDEXED_TYPE",
+          "html-style-rule": "INDEXED_TYPE",
+          "html-text-node": "INDEXED_TYPE",
+          "html-validation-context": "INDEXED_TYPE",
+          "html-validation-result": "INDEXED_TYPE"
+        }
+      }
+    },
     "idef-zero": {
       "component": {
         "atom": {
@@ -1640,6 +2193,7 @@
           "skeleton": "INDEXED_CONST",
           "split-layout-gap": "INDEXED_CONST",
           "stack-direction": "INDEXED_CONST",
+          "tier": "INDEXED_CONST",
           "trigger": "INDEXED_CONST"
         },
         "map": {
@@ -1737,6 +2291,7 @@
           "skeleton": "INDEXED_TYPE",
           "split-layout-gap": "INDEXED_TYPE",
           "stack-direction": "INDEXED_TYPE",
+          "tier": "INDEXED_TYPE",
           "trigger": "INDEXED_TYPE"
         },
         "object": {
@@ -1980,88 +2535,6 @@
           "notification-item": "INDEXED_TYPE",
           "notification-settings-preference": "INDEXED_TYPE",
           "scheduled-notification-item": "INDEXED_TYPE"
-        }
-      }
-    },
-    "presentation": {
-      "class": {
-        "manager": {
-          "foundation": "INDEXED_CLASS",
-          "semantic-zoom": "INDEXED_CLASS"
-        }
-      },
-      "component": {
-        "molecule": {
-          "presenter-node-shell": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "scene-inspector": "INDEXED_STORY_COMPONENT"
-        },
-        "organism": {
-          "presentation-workspace": "INDEXED_STORY_COMPONENT",
-          "prezi-scene": "INDEXED_REACTIVE_STORY_COMPONENT"
-        },
-        "page": {
-          "presentation-workplace": "INDEXED_STORY_COMPONENT"
-        }
-      },
-      "const": {
-        "array": {
-          "foundation-axes": "INDEXED_CONST",
-          "foundation-axis-directions": "INDEXED_CONST",
-          "foundation-depth-thresholds": "INDEXED_CONST",
-          "foundation-semantic-zoom-stages": "INDEXED_CONST",
-          "presentation-mode": "INDEXED_CONST",
-          "tier": "INDEXED_CONST"
-        },
-        "record": {
-          "density": "INDEXED_CONST",
-          "frame": "INDEXED_CONST",
-          "layer": "INDEXED_CONST",
-          "level": "INDEXED_CONST",
-          "shape": "INDEXED_CONST",
-          "size": "INDEXED_CONST"
-        },
-        "value": {
-          "default-foundation-camera": "INDEXED_CONST",
-          "foundation-depth-range": "INDEXED_CONST",
-          "prezi-scene": "INDEXED_CONST"
-        }
-      },
-      "function": {
-        "script": {
-          "scene": "INDEX_BARREL",
-          "use-semantic-zoom": "INDEXED_FUNCTION"
-        }
-      },
-      "interface": {
-        "behavior": {
-          "prezi-scene-methods": "INDEXED_INTERFACE"
-        },
-        "recipe": {
-          "presentation-state": "INDEXED_INTERFACE",
-          "presenter-node-shell": "INDEXED_INTERFACE",
-          "prezi-scene": "INDEXED_INTERFACE",
-          "prezi-scene-state": "INDEXED_INTERFACE"
-        },
-        "slot": {
-          "prezi-camera": "INDEXED_INTERFACE",
-          "scene-node": "INDEXED_INTERFACE",
-          "scene-node-point": "INDEXED_INTERFACE",
-          "semantic-zoom": "INDEXED_INTERFACE"
-        }
-      },
-      "type": {
-        "alias": {
-          "axis": "INDEXED_TYPE",
-          "foundation-semantic-zoom-stage": "INDEXED_TYPE",
-          "presentation-mode": "INDEXED_TYPE",
-          "tier": "INDEXED_TYPE"
-        },
-        "object": {
-          "presenter-scene-link": "INDEXED_TYPE",
-          "prezi-scene": "INDEXED_TYPE"
-        },
-        "struct": {
-          "foundation-depth-threshold": "INDEXED_TYPE"
         }
       }
     },
@@ -2490,6 +2963,7 @@
           "hero": "INDEX_SVG",
           "hook": "INDEX_SVG",
           "horizontal-layout": "INDEX_SVG",
+          "html": "INDEX_SVG",
           "icon": "INDEX_SVG",
           "icons": "INDEX_SVG",
           "idef-zero": "INDEX_SVG",
@@ -3038,41 +3512,17 @@
       },
       "const": {
         "array": {
-          "color-tone": "INDEXED_CONST",
-          "direction": "INDEXED_CONST",
-          "shape": "INDEXED_CONST",
-          "size": "INDEXED_CONST",
-          "size-px": "INDEXED_CONST",
-          "size-rem": "INDEXED_CONST",
           "story-viewport": "INDEXED_CONST",
           "theme-mode": "INDEXED_CONST",
-          "theme-scheme": "INDEXED_CONST",
-          "token-value": "INDEXED_CONST"
+          "theme-scheme": "INDEXED_CONST"
         },
         "map": {
           "color-tone-icon": "INDEXED_CONST"
         },
         "object": {
-          "animation": "INDEXED_CONST",
-          "border-radius": "INDEXED_CONST",
-          "color": "INDEXED_CONST",
-          "duration": "INDEXED_CONST",
-          "easing": "INDEXED_CONST",
-          "font-family": "INDEXED_CONST",
-          "font-size": "INDEXED_CONST",
-          "font-weight": "INDEXED_CONST",
-          "gradient-custom": "INDEXED_CONST",
-          "gradient-linear": "INDEXED_CONST",
-          "gradient-radial": "INDEXED_CONST",
-          "letter-spacing": "INDEXED_CONST",
-          "line-height": "INDEXED_CONST",
-          "opacity": "INDEXED_CONST",
-          "theme-typography": "INDEXED_CONST",
-          "z-index": "INDEXED_CONST"
+          "theme-typography": "INDEXED_CONST"
         },
         "record": {
-          "colors-scales": "INDEX_BARREL",
-          "elevation": "INDEXED_CONST",
           "interaction-motion": "INDEXED_CONST",
           "layout-elevation-semantic": "INDEXED_CONST",
           "layout-gradients": "INDEXED_CONST",
@@ -3081,15 +3531,13 @@
           "scheme-ocean": "INDEXED_CONST",
           "scheme-sunset": "INDEXED_CONST",
           "scheme-weoracle": "INDEXED_CONST",
-          "spacing": "INDEXED_CONST",
           "theme-layout": "INDEXED_CONST",
           "theme-mode-dark": "INDEXED_CONST",
           "theme-mode-default": "INDEXED_CONST",
           "theme-mode-light": "INDEXED_CONST",
           "theme-scheme": "INDEXED_CONST",
           "theme-schemes": "INDEXED_CONST",
-          "theme-storage-contract": "INDEXED_CONST",
-          "transition": "INDEXED_CONST"
+          "theme-storage-contract": "INDEXED_CONST"
         },
         "value": {
           "story-viewport-context": "INDEXED_CONST",
@@ -3142,34 +3590,16 @@
           "theme-border": "INDEXED_INTERFACE",
           "theme-children": "INDEXED_INTERFACE",
           "theme-palette-color": "INDEXED_INTERFACE",
-          "theme-settings": "INDEXED_INTERFACE",
-          "typography": "INDEXED_INTERFACE"
+          "theme-settings": "INDEXED_INTERFACE"
         }
       },
       "type": {
         "alias": {
-          "animation": "INDEXED_TYPE",
-          "color": "INDEXED_TYPE",
-          "color-tone": "INDEXED_TYPE",
-          "direction": "INDEXED_TYPE",
-          "duration": "INDEXED_TYPE",
-          "easing": "INDEXED_TYPE",
-          "font-family": "INDEXED_TYPE",
-          "font-size": "INDEXED_TYPE",
-          "font-weight": "INDEXED_TYPE",
-          "letter-spacing": "INDEXED_TYPE",
-          "line-height": "INDEXED_TYPE",
-          "opacity": "INDEXED_TYPE",
-          "shape": "INDEXED_TYPE",
-          "size": "INDEXED_TYPE",
-          "size-rem": "INDEXED_TYPE",
           "story-viewport": "INDEXED_TYPE",
           "theme-mode": "INDEXED_TYPE",
           "theme-scheme": "INDEXED_TYPE",
           "theme-tone": "INDEXED_TYPE",
-          "token-value": "INDEXED_TYPE",
-          "tone": "INDEXED_TYPE",
-          "z-index": "INDEXED_TYPE"
+          "tone": "INDEXED_TYPE"
         },
         "compute": {
           "intersect-all": "INDEXED_TYPE"
@@ -3332,6 +3762,11 @@
           "rich-text": "INDEXED_REACTIVE_STORY_COMPONENT"
         }
       },
+      "const": {
+        "preset": {
+          "typography": "INDEXED_CONST"
+        }
+      },
       "function": {
         "script": {
           "inline-style": "INDEXED_FUNCTION",
@@ -3356,7 +3791,8 @@
         "slot": {
           "link": "INDEXED_INTERFACE",
           "rich-text": "INDEXED_INTERFACE",
-          "text": "INDEXED_INTERFACE"
+          "text": "INDEXED_INTERFACE",
+          "typography": "INDEXED_INTERFACE"
         }
       }
     },

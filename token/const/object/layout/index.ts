@@ -17,9 +17,9 @@ import { ITEM_LAYOUT_SHAPE } from '$stylist/layout/const/array/item-layout-shape
 import { TOKEN_JUSTIFICATION } from '$stylist/layout/const/array/justification';
 import { TOKEN_ORIENTATION } from '$stylist/layout/const/array/orientation';
 import { TOKEN_SHAPE } from '$stylist/layout/const/array/shape';
-import { TOKEN_SIZE } from '$stylist/theme/const/array/size';
-import { TOKEN_SIZE_PX } from '$stylist/theme/const/array/size-px';
-import { TOKEN_SIZE_REM } from '$stylist/theme/const/array/size-rem';
+import { TOKEN_SIZE } from '$stylist/design-token/const/array/size';
+import { TOKEN_SIZE_PX } from '$stylist/design-token/const/array/size-px';
+import { TOKEN_SIZE_REM } from '$stylist/design-token/const/array/size-rem';
 import { SPLIT_LAYOUT_GAP } from '$stylist/layout/const/array/split-layout-gap';
 import { TOKEN_STACK_DIRECTION } from '$stylist/layout/const/array/stack-direction';
 

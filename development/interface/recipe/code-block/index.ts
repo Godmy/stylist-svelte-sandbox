@@ -1,7 +1,7 @@
 import type { HTMLAttributes } from 'svelte/elements';
 import type { SlotThemeBorder } from '$stylist/theme/interface/slot/theme-border';
-import type { SlotTypography } from '$stylist/theme/interface/slot/typography';
-import type { TokenSize } from '$stylist/theme/type/alias/size';
+import type { SlotTypography } from '$stylist/typography/interface/slot/typography';
+import type { TokenSize } from '$stylist/design-token/type/alias/size';
 import type { TokenCodeLanguage } from '$stylist/development/type/alias/code-language';
 import type { TokenCodeView } from '$stylist/development/type/alias/code-view';
 import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';

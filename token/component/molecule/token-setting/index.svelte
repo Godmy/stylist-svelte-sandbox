@@ -1,6 +1,7 @@
 <script lang="ts">
+	import { untrack } from 'svelte';
 	import type { TokenControlDefinition } from '$stylist/token/type/object/token-control-definition';
-	import type { TokenTokenValue as TokenValue } from '$stylist/theme/type/alias/token-value';
+	import type { TokenTokenValue as TokenValue } from '$stylist/design-token/type/alias/token-value';
 
 	type Props = {
 		definition: TokenControlDefinition;
@@ -96,7 +97,7 @@
 	}
 
 	let internalValue = $state<TokenValue>(
-		value ?? definition.defaultValue ?? firstOptionValue(definition)
+		untrack(() => value ?? definition.defaultValue ?? firstOptionValue(definition))
 	);
 	let dataOnlyOpened = $state(false);
 

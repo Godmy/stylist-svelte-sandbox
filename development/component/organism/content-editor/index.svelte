@@ -18,7 +18,7 @@
 	const Eye = 'eye';
 
 	let props: RecipeContentEditorStateProps & HTMLAttributes<HTMLDivElement> = $props();
-	const state = createContentEditorState(props);
+	const state = createContentEditorState(() => props);
 </script>
 
 <div class={state.rootClasses} {...props}>

@@ -5,7 +5,7 @@
 	import { createDomainAiAgentState } from './state.svelte';
 
 	let props: RecipeDomainAiAgent = $props();
-	const state = createDomainAiAgentState(props);
+	const state = createDomainAiAgentState(() => props);
 </script>
 
 {#if props.open}

@@ -1,13 +1,15 @@
+import { untrack } from 'svelte';
 import { ClassNamesManager } from '$stylist/layout/class/manager/class-names';
 
 type ContentType = string;
 type ContentElement = { [key: string]: any; id: string; type: ContentType; content: string };
 type ContentEditorStateProps = { [key: string]: any };
 
-export const createContentEditorState = (props: ContentEditorStateProps) => {
+export const createContentEditorState = (getProps: () => ContentEditorStateProps) => {
+	const props = $derived(getProps());
 	// SlotState
 	let contentElements = $state<ContentElement[]>(
-		props.initialContent ?? [{ id: '1', type: 'text', content: '' }]
+		untrack(() => props.initialContent) ?? [{ id: '1', type: 'text', content: '' }]
 	);
 	let activeElementId: string | null = $state(null);
 	let isPreviewMode = $state(false);

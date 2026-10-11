@@ -73,8 +73,12 @@ export function createTokenControlComposerState(getProps: () => RecipeToken) {
 		get textDefinition() {
 			return textDefinition;
 		},
-		definition: props.definition,
-		onChange: props.onChange
+		get definition() {
+			return props.definition;
+		},
+		get onChange() {
+			return props.onChange;
+		}
 	};
 }
 

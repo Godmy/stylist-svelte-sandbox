@@ -1,8 +1,10 @@
+import { untrack } from 'svelte';
 import { ClassNamesManager } from '$stylist/layout/class/manager/class-names';
 import type { RecipeComponentPreview } from '$stylist/development/interface/recipe/component-preview';
 
-export function createComponentPreviewState(props: RecipeComponentPreview) {
-	let activeTab = $state(props.showCode ? 'code' : 'preview');
+export function createComponentPreviewState(getProps: () => RecipeComponentPreview) {
+	const props = $derived(getProps());
+	let activeTab = $state(untrack(() => props.showCode) ? 'code' : 'preview');
 
 	const classes = $derived(ClassNamesManager.merge('c-component-preview', props.class ?? ''));
 	const headerClasses = 'c-component-preview__header';

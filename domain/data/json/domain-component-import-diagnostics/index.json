@@ -412,6 +412,1969 @@
       ]
     },
     {
+      "path": "html/component/atom/a/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "a",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeA",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/a"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/abbr/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "abbr",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeAbbr",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/abbr"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/area/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "area",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeArea",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/area"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/b/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "b",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeB",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/b"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/base/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "base",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeBase",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/base"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/bdi/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "bdi",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeBdi",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/bdi"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/bdo/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "bdo",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeBdo",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/bdo"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/br/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "br",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeBr",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/br"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/button/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "button",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeButton",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/button"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/canvas/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "canvas",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeCanvas",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/canvas"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/cite/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "cite",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeCite",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/cite"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/code/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "code",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeCode",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/code"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/col/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "col",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeCol",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/col"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/data/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "data",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeData",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/data"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/del/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "del",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeDel",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/del"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/dfn/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "dfn",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeDfn",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/dfn"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/em/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "em",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeEm",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/em"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/embed/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "embed",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeEmbed",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/embed"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/h1/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "h1",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeH1",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/h1"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/h2/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "h2",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeH2",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/h2"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/h3/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "h3",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeH3",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/h3"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/h4/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "h4",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeH4",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/h4"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/h5/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "h5",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeH5",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/h5"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/h6/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "h6",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeH6",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/h6"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/hr/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "hr",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeHr",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/hr"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/i/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "i",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeI",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/i"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/iframe/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "iframe",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeIframe",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/iframe"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/img/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "img",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeImg",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/img"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/input/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "input",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeInput",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/input"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/input-button/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "input-button",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeInputButton",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/input-button"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/input-checkbox/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "input-checkbox",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeInputCheckbox",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/input-checkbox"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/input-color/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "input-color",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeInputColor",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/input-color"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/input-date/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "input-date",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeInputDate",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/input-date"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/input-datetime-local/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "input-datetime-local",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeInputDatetimeLocal",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/input-datetime-local"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/input-email/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "input-email",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeInputEmail",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/input-email"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/input-file/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "input-file",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeInputFile",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/input-file"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/input-hidden/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "input-hidden",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeInputHidden",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/input-hidden"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/input-image/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "input-image",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeInputImage",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/input-image"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/input-month/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "input-month",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeInputMonth",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/input-month"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/input-number/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "input-number",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeInputNumber",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/input-number"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/input-password/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "input-password",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeInputPassword",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/input-password"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/input-radio/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "input-radio",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeInputRadio",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/input-radio"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/input-range/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "input-range",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeInputRange",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/input-range"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/input-reset/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "input-reset",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeInputReset",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/input-reset"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/input-search/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "input-search",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeInputSearch",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/input-search"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/input-submit/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "input-submit",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeInputSubmit",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/input-submit"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/input-tel/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "input-tel",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeInputTel",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/input-tel"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/input-text/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "input-text",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeInputText",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/input-text"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/input-time/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "input-time",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeInputTime",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/input-time"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/input-url/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "input-url",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeInputUrl",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/input-url"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/input-week/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "input-week",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeInputWeek",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/input-week"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/ins/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "ins",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeIns",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/ins"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/kbd/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "kbd",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeKbd",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/kbd"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/label/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "label",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeLabel",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/label"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/legend/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "legend",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeLegend",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/legend"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/link/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "link",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeLink",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/link"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/mark/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "mark",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeMark",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/mark"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/math/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "math",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeMath",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/math"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/meta/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "meta",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeMeta",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/meta"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/meter/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "meter",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeMeter",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/meter"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/noscript/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "noscript",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeNoscript",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/noscript"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/object/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "object",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeObject",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/object"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/option/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "option",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeOption",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/option"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/output/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "output",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeOutput",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/output"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/p/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "p",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeP",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/p"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/pre/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "pre",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipePre",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/pre"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/progress/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "progress",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeProgress",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/progress"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/q/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "q",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeQ",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/q"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/raw-text/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "raw-text",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeRawText",
+      "importCount": 3,
+      "recipeImports": [
+        "../../../interface/recipe/raw-text"
+      ],
+      "otherImports": [
+        "../../../function/serialize/html-raw-text",
+        "../../../function/script/html-attributes"
+      ]
+    },
+    {
+      "path": "html/component/atom/rp/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "rp",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeRp",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/rp"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/rt/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "rt",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeRt",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/rt"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/s/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "s",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeS",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/s"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/samp/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "samp",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeSamp",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/samp"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/script/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "script",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeScript",
+      "importCount": 2,
+      "recipeImports": [
+        "../../../interface/recipe/script"
+      ],
+      "otherImports": [
+        "../raw-text/index.svelte"
+      ]
+    },
+    {
+      "path": "html/component/atom/selectedcontent/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "selectedcontent",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeSelectedcontent",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/selectedcontent"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/slot/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "slot",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeSlot",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/slot"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/small/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "small",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeSmall",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/small"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/source/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "source",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeSource",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/source"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/span/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "span",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeSpan",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/span"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/strong/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "strong",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeStrong",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/strong"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/style/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "style",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeStyle",
+      "importCount": 2,
+      "recipeImports": [
+        "../../../interface/recipe/style"
+      ],
+      "otherImports": [
+        "../raw-text/index.svelte"
+      ]
+    },
+    {
+      "path": "html/component/atom/sub/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "sub",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeSub",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/sub"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/summary/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "summary",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeSummary",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/summary"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/sup/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "sup",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeSup",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/sup"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/svg/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "svg",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeSvg",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/svg"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/textarea/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "textarea",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeTextarea",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/textarea"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/time/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "time",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeTime",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/time"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/title/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "title",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeTitle",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/title"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/track/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "track",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeTrack",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/track"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/u/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "u",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeU",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/u"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/var/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "var",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeVar",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/var"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/atom/wbr/index.svelte",
+      "domain": "html",
+      "joint": "atom",
+      "family": "wbr",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeWbr",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/wbr"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/molecule/audio/index.svelte",
+      "domain": "html",
+      "joint": "molecule",
+      "family": "audio",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeAudio",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/audio"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/molecule/colgroup/index.svelte",
+      "domain": "html",
+      "joint": "molecule",
+      "family": "colgroup",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeColgroup",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/colgroup"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/molecule/datalist/index.svelte",
+      "domain": "html",
+      "joint": "molecule",
+      "family": "datalist",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeDatalist",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/datalist"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/molecule/details/index.svelte",
+      "domain": "html",
+      "joint": "molecule",
+      "family": "details",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeDetails",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/details"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/molecule/dl/index.svelte",
+      "domain": "html",
+      "joint": "molecule",
+      "family": "dl",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeDl",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/dl"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/molecule/fieldset/index.svelte",
+      "domain": "html",
+      "joint": "molecule",
+      "family": "fieldset",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeFieldset",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/fieldset"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/molecule/figure/index.svelte",
+      "domain": "html",
+      "joint": "molecule",
+      "family": "figure",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeFigure",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/figure"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/molecule/hgroup/index.svelte",
+      "domain": "html",
+      "joint": "molecule",
+      "family": "hgroup",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeHgroup",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/hgroup"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/molecule/map/index.svelte",
+      "domain": "html",
+      "joint": "molecule",
+      "family": "map",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeMap",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/map"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/molecule/menu/index.svelte",
+      "domain": "html",
+      "joint": "molecule",
+      "family": "menu",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeMenu",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/menu"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/molecule/ol/index.svelte",
+      "domain": "html",
+      "joint": "molecule",
+      "family": "ol",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeOl",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/ol"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/molecule/optgroup/index.svelte",
+      "domain": "html",
+      "joint": "molecule",
+      "family": "optgroup",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeOptgroup",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/optgroup"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/molecule/picture/index.svelte",
+      "domain": "html",
+      "joint": "molecule",
+      "family": "picture",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipePicture",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/picture"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/molecule/ruby/index.svelte",
+      "domain": "html",
+      "joint": "molecule",
+      "family": "ruby",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeRuby",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/ruby"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/molecule/select/index.svelte",
+      "domain": "html",
+      "joint": "molecule",
+      "family": "select",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeSelect",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/select"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/molecule/table/index.svelte",
+      "domain": "html",
+      "joint": "molecule",
+      "family": "table",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeTable",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/table"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/molecule/tbody/index.svelte",
+      "domain": "html",
+      "joint": "molecule",
+      "family": "tbody",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeTbody",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/tbody"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/molecule/tfoot/index.svelte",
+      "domain": "html",
+      "joint": "molecule",
+      "family": "tfoot",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeTfoot",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/tfoot"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/molecule/thead/index.svelte",
+      "domain": "html",
+      "joint": "molecule",
+      "family": "thead",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeThead",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/thead"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/molecule/tr/index.svelte",
+      "domain": "html",
+      "joint": "molecule",
+      "family": "tr",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeTr",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/tr"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/molecule/ul/index.svelte",
+      "domain": "html",
+      "joint": "molecule",
+      "family": "ul",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeUl",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/ul"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/molecule/video/index.svelte",
+      "domain": "html",
+      "joint": "molecule",
+      "family": "video",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeVideo",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/video"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/organism/address/index.svelte",
+      "domain": "html",
+      "joint": "organism",
+      "family": "address",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeAddress",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/address"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/organism/article/index.svelte",
+      "domain": "html",
+      "joint": "organism",
+      "family": "article",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeArticle",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/article"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/organism/aside/index.svelte",
+      "domain": "html",
+      "joint": "organism",
+      "family": "aside",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeAside",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/aside"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/organism/blockquote/index.svelte",
+      "domain": "html",
+      "joint": "organism",
+      "family": "blockquote",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeBlockquote",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/blockquote"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/organism/caption/index.svelte",
+      "domain": "html",
+      "joint": "organism",
+      "family": "caption",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeCaption",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/caption"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/organism/dd/index.svelte",
+      "domain": "html",
+      "joint": "organism",
+      "family": "dd",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeDd",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/dd"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/organism/dialog/index.svelte",
+      "domain": "html",
+      "joint": "organism",
+      "family": "dialog",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeDialog",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/dialog"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/organism/div/index.svelte",
+      "domain": "html",
+      "joint": "organism",
+      "family": "div",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeDiv",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/div"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/organism/dt/index.svelte",
+      "domain": "html",
+      "joint": "organism",
+      "family": "dt",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeDt",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/dt"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/organism/figcaption/index.svelte",
+      "domain": "html",
+      "joint": "organism",
+      "family": "figcaption",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeFigcaption",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/figcaption"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/organism/footer/index.svelte",
+      "domain": "html",
+      "joint": "organism",
+      "family": "footer",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeFooter",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/footer"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/organism/form/index.svelte",
+      "domain": "html",
+      "joint": "organism",
+      "family": "form",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeForm",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/form"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/organism/header/index.svelte",
+      "domain": "html",
+      "joint": "organism",
+      "family": "header",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeHeader",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/header"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/organism/li/index.svelte",
+      "domain": "html",
+      "joint": "organism",
+      "family": "li",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeLi",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/li"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/organism/main/index.svelte",
+      "domain": "html",
+      "joint": "organism",
+      "family": "main",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeMain",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/main"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/organism/nav/index.svelte",
+      "domain": "html",
+      "joint": "organism",
+      "family": "nav",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeNav",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/nav"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/organism/search/index.svelte",
+      "domain": "html",
+      "joint": "organism",
+      "family": "search",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeSearch",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/search"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/organism/section/index.svelte",
+      "domain": "html",
+      "joint": "organism",
+      "family": "section",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeSection",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/section"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/organism/td/index.svelte",
+      "domain": "html",
+      "joint": "organism",
+      "family": "td",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeTd",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/td"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/organism/template/index.svelte",
+      "domain": "html",
+      "joint": "organism",
+      "family": "template",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeTemplate",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/template"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/organism/th/index.svelte",
+      "domain": "html",
+      "joint": "organism",
+      "family": "th",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeTh",
+      "importCount": 1,
+      "recipeImports": [
+        "../../../interface/recipe/th"
+      ],
+      "otherImports": []
+    },
+    {
+      "path": "html/component/page/html/index.svelte",
+      "domain": "html",
+      "joint": "page",
+      "family": "html",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeHtml",
+      "importCount": 2,
+      "recipeImports": [
+        "../../../interface/recipe/html"
+      ],
+      "otherImports": [
+        "../../../function/script/html-attributes"
+      ]
+    },
+    {
+      "path": "html/component/template/body/index.svelte",
+      "domain": "html",
+      "joint": "template",
+      "family": "body",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeBody",
+      "importCount": 2,
+      "recipeImports": [
+        "../../../interface/recipe/body"
+      ],
+      "otherImports": [
+        "../../../function/script/html-attributes"
+      ]
+    },
+    {
+      "path": "html/component/template/head/index.svelte",
+      "domain": "html",
+      "joint": "template",
+      "family": "head",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeHead",
+      "importCount": 2,
+      "recipeImports": [
+        "../../../interface/recipe/head"
+      ],
+      "otherImports": [
+        "../../../function/script/html-attributes"
+      ]
+    },
+    {
+      "path": "html/component/template/node/index.svelte",
+      "domain": "html",
+      "joint": "template",
+      "family": "node",
+      "status": "missing-recipe",
+      "expectedRecipe": "RecipeNode",
+      "importCount": 143,
+      "recipeImports": [
+        "../../../interface/recipe/node"
+      ],
+      "otherImports": [
+        "svelte",
+        "../../../const/record/html-element",
+        "../../../const/array/html-input-type",
+        "../../../function/check/html-raw-text",
+        "./index.svelte",
+        "../../atom/a/index.svelte",
+        "../../atom/abbr/index.svelte",
+        "../../organism/address/index.svelte",
+        "../../atom/area/index.svelte",
+        "../../organism/article/index.svelte",
+        "../../organism/aside/index.svelte",
+        "../../molecule/audio/index.svelte",
+        "../../atom/b/index.svelte",
+        "../../atom/base/index.svelte",
+        "../../atom/bdi/index.svelte",
+        "../../atom/bdo/index.svelte",
+        "../../organism/blockquote/index.svelte",
+        "../../template/body/index.svelte",
+        "../../atom/br/index.svelte",
+        "../../atom/button/index.svelte",
+        "../../atom/canvas/index.svelte",
+        "../../organism/caption/index.svelte",
+        "../../atom/cite/index.svelte",
+        "../../atom/code/index.svelte",
+        "../../atom/col/index.svelte",
+        "../../molecule/colgroup/index.svelte",
+        "../../atom/data/index.svelte",
+        "../../molecule/datalist/index.svelte",
+        "../../organism/dd/index.svelte",
+        "../../atom/del/index.svelte",
+        "../../molecule/details/index.svelte",
+        "../../atom/dfn/index.svelte",
+        "../../organism/dialog/index.svelte",
+        "../../organism/div/index.svelte",
+        "../../molecule/dl/index.svelte",
+        "../../organism/dt/index.svelte",
+        "../../atom/em/index.svelte",
+        "../../atom/embed/index.svelte",
+        "../../molecule/fieldset/index.svelte",
+        "../../organism/figcaption/index.svelte",
+        "../../molecule/figure/index.svelte",
+        "../../organism/footer/index.svelte",
+        "../../organism/form/index.svelte",
+        "../../atom/h1/index.svelte",
+        "../../atom/h2/index.svelte",
+        "../../atom/h3/index.svelte",
+        "../../atom/h4/index.svelte",
+        "../../atom/h5/index.svelte",
+        "../../atom/h6/index.svelte",
+        "../../template/head/index.svelte",
+        "../../organism/header/index.svelte",
+        "../../molecule/hgroup/index.svelte",
+        "../../atom/hr/index.svelte",
+        "../../page/html/index.svelte",
+        "../../atom/i/index.svelte",
+        "../../atom/iframe/index.svelte",
+        "../../atom/img/index.svelte",
+        "../../atom/input/index.svelte",
+        "../../atom/ins/index.svelte",
+        "../../atom/kbd/index.svelte",
+        "../../atom/label/index.svelte",
+        "../../atom/legend/index.svelte",
+        "../../organism/li/index.svelte",
+        "../../atom/link/index.svelte",
+        "../../organism/main/index.svelte",
+        "../../molecule/map/index.svelte",
+        "../../atom/mark/index.svelte",
+        "../../atom/math/index.svelte",
+        "../../molecule/menu/index.svelte",
+        "../../atom/meta/index.svelte",
+        "../../atom/meter/index.svelte",
+        "../../organism/nav/index.svelte",
+        "../../atom/noscript/index.svelte",
+        "../../atom/object/index.svelte",
+        "../../molecule/ol/index.svelte",
+        "../../molecule/optgroup/index.svelte",
+        "../../atom/option/index.svelte",
+        "../../atom/output/index.svelte",
+        "../../atom/p/index.svelte",
+        "../../molecule/picture/index.svelte",
+        "../../atom/pre/index.svelte",
+        "../../atom/progress/index.svelte",
+        "../../atom/q/index.svelte",
+        "../../atom/rp/index.svelte",
+        "../../atom/rt/index.svelte",
+        "../../molecule/ruby/index.svelte",
+        "../../atom/s/index.svelte",
+        "../../atom/samp/index.svelte",
+        "../../atom/script/index.svelte",
+        "../../organism/search/index.svelte",
+        "../../organism/section/index.svelte",
+        "../../molecule/select/index.svelte",
+        "../../atom/selectedcontent/index.svelte",
+        "../../atom/slot/index.svelte",
+        "../../atom/small/index.svelte",
+        "../../atom/source/index.svelte",
+        "../../atom/span/index.svelte",
+        "../../atom/strong/index.svelte",
+        "../../atom/style/index.svelte",
+        "../../atom/sub/index.svelte",
+        "../../atom/summary/index.svelte",
+        "../../atom/sup/index.svelte",
+        "../../atom/svg/index.svelte",
+        "../../molecule/table/index.svelte",
+        "../../molecule/tbody/index.svelte",
+        "../../organism/td/index.svelte",
+        "../../organism/template/index.svelte",
+        "../../atom/textarea/index.svelte",
+        "../../molecule/tfoot/index.svelte",
+        "../../organism/th/index.svelte",
+        "../../molecule/thead/index.svelte",
+        "../../atom/time/index.svelte",
+        "../../atom/title/index.svelte",
+        "../../molecule/tr/index.svelte",
+        "../../atom/track/index.svelte",
+        "../../atom/u/index.svelte",
+        "../../molecule/ul/index.svelte",
+        "../../atom/var/index.svelte",
+        "../../molecule/video/index.svelte",
+        "../../atom/wbr/index.svelte",
+        "../../atom/input-hidden/index.svelte",
+        "../../atom/input-text/index.svelte",
+        "../../atom/input-search/index.svelte",
+        "../../atom/input-tel/index.svelte",
+        "../../atom/input-url/index.svelte",
+        "../../atom/input-email/index.svelte",
+        "../../atom/input-password/index.svelte",
+        "../../atom/input-date/index.svelte",
+        "../../atom/input-month/index.svelte",
+        "../../atom/input-week/index.svelte",
+        "../../atom/input-time/index.svelte",
+        "../../atom/input-datetime-local/index.svelte",
+        "../../atom/input-number/index.svelte",
+        "../../atom/input-range/index.svelte",
+        "../../atom/input-color/index.svelte",
+        "../../atom/input-checkbox/index.svelte",
+        "../../atom/input-radio/index.svelte",
+        "../../atom/input-file/index.svelte",
+        "../../atom/input-submit/index.svelte",
+        "../../atom/input-image/index.svelte",
+        "../../atom/input-reset/index.svelte",
+        "../../atom/input-button/index.svelte"
+      ]
+    },
+    {
       "path": "idef-zero/component/molecule/idef0-inputs/index.svelte",
       "domain": "idef-zero",
       "joint": "molecule",
@@ -474,48 +2437,6 @@
       ]
     },
     {
-      "path": "presentation/component/molecule/scene-inspector/index.svelte",
-      "domain": "presentation",
-      "joint": "molecule",
-      "family": "scene-inspector",
-      "status": "missing-recipe",
-      "expectedRecipe": "RecipeSceneInspector",
-      "importCount": 2,
-      "recipeImports": [],
-      "otherImports": [
-        "$stylist/presentation/interface/slot/scene-node",
-        "$stylist/svg/component/atom/icon/index.svelte"
-      ]
-    },
-    {
-      "path": "presentation/component/organism/presentation-workspace/index.svelte",
-      "domain": "presentation",
-      "joint": "organism",
-      "family": "presentation-workspace",
-      "status": "missing-recipe",
-      "expectedRecipe": "RecipePresentationWorkspace",
-      "importCount": 3,
-      "recipeImports": [],
-      "otherImports": [
-        "$stylist/presentation/component/organism/prezi-scene/index.svelte",
-        "$stylist/presentation/component/molecule/scene-inspector/index.svelte",
-        "$stylist/presentation/interface/slot/scene-node"
-      ]
-    },
-    {
-      "path": "presentation/component/page/presentation-workplace/index.svelte",
-      "domain": "presentation",
-      "joint": "page",
-      "family": "presentation-workplace",
-      "status": "missing-recipe",
-      "expectedRecipe": "RecipePresentationWorkplace",
-      "importCount": 1,
-      "recipeImports": [],
-      "otherImports": [
-        "$stylist/presentation/component/organism/presentation-workspace/index.svelte"
-      ]
-    },
-    {
       "path": "token/component/atom/card-close/index.svelte",
       "domain": "token",
       "joint": "atom",
@@ -574,13 +2495,14 @@
       "family": "orbit-token-node",
       "status": "missing-recipe",
       "expectedRecipe": "RecipeOrbitTokenNode",
-      "importCount": 4,
+      "importCount": 5,
       "recipeImports": [],
       "otherImports": [
+        "svelte",
         "$stylist/svg/component/atom/icon/index.svelte",
         "$stylist/token/component/molecule/token/index.svelte",
         "$stylist/token/type/object/token-control-definition",
-        "$stylist/theme/type/alias/token-value"
+        "$stylist/design-token/type/alias/token-value"
       ]
     },
     {
@@ -649,11 +2571,12 @@
       "family": "token-setting",
       "status": "missing-recipe",
       "expectedRecipe": "RecipeTokenSetting",
-      "importCount": 2,
+      "importCount": 3,
       "recipeImports": [],
       "otherImports": [
+        "svelte",
         "$stylist/token/type/object/token-control-definition",
-        "$stylist/theme/type/alias/token-value"
+        "$stylist/design-token/type/alias/token-value"
       ]
     },
     {
@@ -837,10 +2760,10 @@
     }
   ],
   "summary": {
-    "total": 59,
+    "total": 195,
     "none": 6,
-    "missingRecipe": 53,
-    "valid": 421,
-    "scanned": 480
+    "missingRecipe": 189,
+    "valid": 423,
+    "scanned": 618
   }
 }

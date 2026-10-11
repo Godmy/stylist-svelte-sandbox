@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { untrack } from 'svelte';
 	import DomainFilePreview from '$stylist/domain/component/organism/domain-file-preview/index.svelte';
 	import DomainSearch from '$stylist/domain/component/molecule/domain-search/index.svelte';
 	import DomainSidebar from '$stylist/domain/component/organism/domain-sidebar/index.svelte';
@@ -37,14 +38,17 @@
 		class: className = ''
 	}: RecipeDomainExplorer = $props();
 
-	const s = createDomainPageState({
-		tree,
-		storyModules,
-		initialDomain,
-		initialCluster,
-		initialJoint,
-		initialPreviewMode
-	});
+	// The tree and initial* props seed the explorer once; later navigation is internal state.
+	const s = untrack(() =>
+		createDomainPageState({
+			tree,
+			storyModules,
+			initialDomain,
+			initialCluster,
+			initialJoint,
+			initialPreviewMode
+		})
+	);
 
 	$effect(() => {
 		onSelectionChange?.({

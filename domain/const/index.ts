@@ -5,7 +5,10 @@ export {
 	DOMAIN_CLUSTER
 } from './array';
 export { TOKEN_CONTROLLER_TYPE } from './map';
-export { DOMAIN_SCREEN } from './object';
+export {
+	DOMAIN_SCREEN,
+	PREVIEW_CONTROLS
+} from './object';
 export { PRESET_FILE } from './preset';
 export {
 	DOMAIN_REGIME,

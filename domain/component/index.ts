@@ -18,6 +18,7 @@ export {
 	JointTabButtons,
 	JointToolbar,
 	JsonTreeViewer,
+	PreviewSettings,
 	SamoAdoptionRoadmap,
 	SamoArchitectureCompare,
 	SamoAssemblyPipeline,

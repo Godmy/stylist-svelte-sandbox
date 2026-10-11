@@ -1,5 +1,5 @@
 import type { TokenRadioControlDefinition } from '$stylist/token/type/object/radio-control-definition';
-import type { TokenTokenValue as TokenValue } from '$stylist/theme/type/alias/token-value';
+import type { TokenTokenValue as TokenValue } from '$stylist/design-token/type/alias/token-value';
 
 export interface RecipeTokenRadio {
 	definition: TokenRadioControlDefinition;

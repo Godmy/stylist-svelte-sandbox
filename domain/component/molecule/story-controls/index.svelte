@@ -4,40 +4,90 @@
 	import createStoryControlsState from './state.svelte';
 
 	let props: RecipeStoryControls = $props();
-	const state = createStoryControlsState(() => props);
+	const controlsState = createStoryControlsState(() => props);
+	const TEXT = { type: 'text', label: 'Text content' } as const;
+	let copied = $state(false);
+	let copyError = $state('');
+
+	async function copy() {
+		if (!controlsState.markup) return;
+		copyError = '';
+		try {
+			if (!navigator.clipboard)
+				throw new Error('Clipboard is unavailable. Select the HTML to copy it.');
+			await navigator.clipboard.writeText(controlsState.markup);
+			copied = true;
+			setTimeout(() => (copied = false), 1200);
+		} catch {
+			copyError = 'Unable to copy. Select the HTML to copy it.';
+		}
+	}
 </script>
 
 <section class="c-story-controls {props.class ?? ''}" aria-label="Story controls">
 	<header class="bar">
-		{#if state.presets.length}
+		{#if controlsState.markup !== null}
+			<div class="tabs" role="group" aria-label="Story panel">
+				<button
+					type="button"
+					aria-pressed={controlsState.tab === 'controls'}
+					onclick={() => controlsState.selectTab('controls')}>Controls</button
+				>
+				<button
+					type="button"
+					aria-pressed={controlsState.tab === 'html'}
+					onclick={() => controlsState.selectTab('html')}>HTML</button
+				>
+			</div>
+		{/if}
+		{#if controlsState.presets.length}
 			<div class="presets" role="group" aria-label="Presets">
 				<button
 					type="button"
-					aria-pressed={state.preset === ''}
-					onclick={() => state.selectPreset('')}>Default</button
+					aria-pressed={controlsState.preset === ''}
+					onclick={() => controlsState.selectPreset('')}>Default</button
 				>
-				{#each state.presets as name (name)}
+				{#each controlsState.presets as name (name)}
 					<button
 						type="button"
-						aria-pressed={state.preset === name}
-						onclick={() => state.selectPreset(name)}>{name}</button
+						aria-pressed={controlsState.preset === name}
+						onclick={() => controlsState.selectPreset(name)}>{name}</button
 					>
 				{/each}
 			</div>
 		{/if}
-		<button type="button" class="reset" disabled={!state.changed} onclick={state.reset}>
+		<button
+			type="button"
+			class="reset"
+			disabled={!controlsState.changed}
+			onclick={controlsState.reset}
+		>
 			Reset
 		</button>
 	</header>
 
-	{#if state.controls.length}
+	{#if controlsState.tab === 'html' && controlsState.markup !== null}
+		<div class="markup">
+			<button type="button" class="copy" onclick={copy}>{copied ? 'Copied' : 'Copy'}</button>
+			<pre><code>{controlsState.markup}</code></pre>
+			{#if copyError}<p role="status">{copyError}</p>{/if}
+		</div>
+	{:else if controlsState.controls.length || controlsState.text !== null}
 		<div class="grid">
-			{#each state.controls as [name, control] (name)}
+			{#if controlsState.text !== null}
+				<StoryControl
+					name="content-text"
+					control={TEXT}
+					value={controlsState.text}
+					onChange={controlsState.setText}
+				/>
+			{/if}
+			{#each controlsState.controls as [name, control] (name)}
 				<StoryControl
 					{name}
 					control={control!}
-					value={state.args[name]}
-					onChange={(value) => state.set(name, value)}
+					value={controlsState.args[name]}
+					onChange={(value) => controlsState.set(name, value)}
 				/>
 			{/each}
 		</div>
@@ -62,6 +112,41 @@
 		align-items: center;
 		justify-content: space-between;
 		gap: 0.5rem;
+	}
+
+	.tabs {
+		display: flex;
+		gap: 0.25rem;
+	}
+
+	.tabs button[aria-pressed='true'] {
+		border-color: var(--color-primary-500);
+		color: var(--color-text-primary);
+	}
+
+	.markup {
+		position: relative;
+		min-width: 0;
+	}
+
+	.markup pre {
+		margin: 0;
+		padding: 0.75rem 1rem;
+		border: 1px solid var(--color-border-primary);
+		border-radius: 0.375rem;
+		background: var(--color-background-secondary);
+		overflow: auto;
+		font-family: var(--font-family-mono, ui-monospace, monospace);
+		font-size: 0.78rem;
+		line-height: 1.5;
+		color: var(--color-text-primary);
+		white-space: pre;
+	}
+
+	.copy {
+		position: absolute;
+		top: 0.5rem;
+		right: 0.5rem;
 	}
 
 	.presets {

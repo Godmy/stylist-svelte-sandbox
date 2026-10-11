@@ -2,7 +2,8 @@ import { ClassNamesManager } from '$stylist/layout/class/manager/class-names';
 import type { RecipeCodeBlock } from '$stylist/development/interface/recipe/code-block';
 import { CodeBlockManager } from '$stylist/development/class/manager/code-block';
 
-export function createCodeBlockState(props: RecipeCodeBlock) {
+export function createCodeBlockState(getProps: () => RecipeCodeBlock) {
+	const props = $derived(getProps());
 	let copied = $state(false);
 	const codeLines = $derived(props.code?.split('\n') ?? []);
 	const languageClass = $derived(`language-${props.language ?? 'text'}`);

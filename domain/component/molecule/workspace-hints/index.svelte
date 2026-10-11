@@ -9,12 +9,15 @@
 	let anchor: HTMLElement | null = null;
 	let originalDescription: string | null = null;
 
-	function hide() {
+	function restoreAnchor() {
 		if (anchor) {
 			if (originalDescription === null) anchor.removeAttribute('aria-describedby');
 			else anchor.setAttribute('aria-describedby', originalDescription);
 		}
 		anchor = null;
+	}
+	function hide() {
+		restoreAnchor();
 		hint = '';
 	}
 	function show(target: EventTarget | null) {
@@ -59,6 +62,7 @@
 		);
 	});
 	onMount(() => {
+		let mounted = true;
 		const converted = new Map<HTMLElement, string>();
 		const convert = () => {
 			for (const element of document.querySelectorAll<HTMLElement>(`${root} [title]`)) {
@@ -87,24 +91,30 @@
 			if (!anchor?.contains(event.relatedTarget as Node | null)) hide();
 		};
 		const focus = (event: FocusEvent) => show(event.target);
+		// Removing a focused node can dispatch focusout during a Svelte render.
+		const blur = () =>
+			queueMicrotask(() => {
+				if (mounted) hide();
+			});
 		const key = (event: KeyboardEvent) => {
 			if (event.key === 'Escape') hide();
 		};
 		document.addEventListener('pointerover', over);
 		document.addEventListener('pointerout', out);
 		document.addEventListener('focusin', focus);
-		document.addEventListener('focusout', hide);
+		document.addEventListener('focusout', blur);
 		document.addEventListener('pointerdown', hide);
 		document.addEventListener('keydown', key);
 		window.addEventListener('scroll', hide, true);
 		window.addEventListener('resize', hide);
 		return () => {
-			hide();
+			mounted = false;
+			restoreAnchor();
 			observer.disconnect();
 			document.removeEventListener('pointerover', over);
 			document.removeEventListener('pointerout', out);
 			document.removeEventListener('focusin', focus);
-			document.removeEventListener('focusout', hide);
+			document.removeEventListener('focusout', blur);
 			document.removeEventListener('pointerdown', hide);
 			document.removeEventListener('keydown', key);
 			window.removeEventListener('scroll', hide, true);

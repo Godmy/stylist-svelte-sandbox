@@ -4,6 +4,8 @@ export {
 	resolveComponentDescriptor,
 	resolveFilePreset,
 	resolveModuleGroup,
+	resolvePreviewSkin,
+	resolvePreviewVariables,
 	resolveTreeFamilies
 } from './resolve';
 export { serializeUnknownError } from './serialize';

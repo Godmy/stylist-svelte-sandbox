@@ -11,7 +11,7 @@
 	const Radiation = 'radiation';
 
 	let props: RecipeCubeControl = $props();
-	const state = createCubeControlState(props);
+	const state = createCubeControlState(() => props);
 
 	const restProps = $derived.by(() => {
 		const {

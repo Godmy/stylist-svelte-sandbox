@@ -2,4 +2,6 @@
 export { resolveComponentDescriptor } from './component-descriptor';
 export { resolveFilePreset } from './file-preset';
 export { resolveModuleGroup } from './module-group';
+export { resolvePreviewSkin } from './preview-skin';
+export { resolvePreviewVariables } from './preview-variables';
 export { resolveTreeFamilies } from './tree-families';

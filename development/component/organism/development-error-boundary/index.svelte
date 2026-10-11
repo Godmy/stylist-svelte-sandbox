@@ -4,7 +4,7 @@
 	import BaseIcon from '$stylist/svg/component/atom/icon/index.svelte';
 
 	let { ...props }: RecipeDevelopmentErrorBoundary = $props();
-	const state = createDevelopmentErrorBoundaryState(props);
+	const state = createDevelopmentErrorBoundaryState(() => props);
 </script>
 
 {#if state.hasError}

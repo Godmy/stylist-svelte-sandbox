@@ -1,13 +1,15 @@
+import { untrack } from 'svelte';
 import type { RecipeTokenRange } from '$stylist/token/interface/recipe/token-range';
 
 export function createTokenRangeState(getProps: () => RecipeTokenRange) {
 	const props = $derived(getProps());
-	const initialValue =
+	const initialValue = untrack(() =>
 		typeof props.value === 'number'
 			? props.value
 			: typeof props.definition.defaultValue === 'number'
 				? props.definition.defaultValue
-				: props.definition.min;
+				: props.definition.min
+	);
 
 	let internalValue = $state<number>(initialValue);
 
@@ -28,8 +30,12 @@ export function createTokenRangeState(getProps: () => RecipeTokenRange) {
 			return internalValue;
 		},
 		handleInput,
-		definition: props.definition,
-		onChange: props.onChange
+		get definition() {
+			return props.definition;
+		},
+		get onChange() {
+			return props.onChange;
+		}
 	};
 }
 

@@ -1,8 +1,9 @@
 import type { HTMLAttributes } from 'svelte/elements';
 import type { RecipeEnhancedExportPanel } from '$stylist/development/interface/recipe/enhanced-export-panel';
 export function createEnhancedExportPanelState(
-	props: RecipeEnhancedExportPanel & HTMLAttributes<HTMLDivElement>
+	getProps: () => RecipeEnhancedExportPanel & HTMLAttributes<HTMLDivElement>
 ) {
+	const props = $derived(getProps());
 	const componentName = $derived(props.componentName ?? '');
 	const svelteCode = $derived(props.svelteCode ?? '');
 	const componentProps = $derived(props.props ?? {});

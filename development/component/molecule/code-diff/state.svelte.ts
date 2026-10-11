@@ -1,7 +1,8 @@
 import { ClassNamesManager } from '$stylist/layout/class/manager/class-names';
 import type { RecipeCodeDiff } from '$stylist/development/interface/recipe/code-diff';
 
-export function createCodeDiffState(props: RecipeCodeDiff) {
+export function createCodeDiffState(getProps: () => RecipeCodeDiff) {
+	const props = $derived(getProps());
 	function computeDiffLines(
 		original: string,
 		modified: string

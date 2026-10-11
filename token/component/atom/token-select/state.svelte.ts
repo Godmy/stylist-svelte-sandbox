@@ -1,5 +1,6 @@
+import { untrack } from 'svelte';
 import type { RecipeTokenSelect } from '$stylist/token/interface/recipe/token-select';
-import type { TokenTokenValue as TokenValue } from '$stylist/theme/type/alias/token-value';
+import type { TokenTokenValue as TokenValue } from '$stylist/design-token/type/alias/token-value';
 
 export function createTokenSelectState(getProps: () => RecipeTokenSelect) {
 	const props = $derived(getProps());
@@ -10,8 +11,10 @@ export function createTokenSelectState(getProps: () => RecipeTokenSelect) {
 		);
 
 	let internalIndex = $state<number>(
-		valueToIndex(
-			props.value ?? props.definition.defaultValue ?? props.definition.options[0]?.value ?? ''
+		untrack(() =>
+			valueToIndex(
+				props.value ?? props.definition.defaultValue ?? props.definition.options[0]?.value ?? ''
+			)
 		)
 	);
 
@@ -38,8 +41,12 @@ export function createTokenSelectState(getProps: () => RecipeTokenSelect) {
 		},
 		handleChange,
 		valueToIndex,
-		definition: props.definition,
-		onChange: props.onChange
+		get definition() {
+			return props.definition;
+		},
+		get onChange() {
+			return props.onChange;
+		}
 	};
 }
 

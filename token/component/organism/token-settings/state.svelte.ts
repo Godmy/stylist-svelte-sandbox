@@ -1,6 +1,7 @@
 import type { Token } from '$stylist/token/type/object/token';
 
-export function createTokenSettingsState(props: { settings: readonly Token[] }) {
+export function createTokenSettingsState(getProps: () => { settings: readonly Token[] }) {
+	const props = $derived(getProps());
 	let search = $state('');
 	let domain = $state('all');
 	let values = $state<Record<string, string>>({});

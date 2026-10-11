@@ -31,6 +31,7 @@ export {
 	JointToolbar,
 	JsonTreeViewer,
 	MarkdownRenderer,
+	PreviewSettings,
 	SamoAdoptionRoadmap,
 	SamoArchitectureCompare,
 	SamoAssemblyPipeline,
@@ -64,6 +65,7 @@ export {
 	DOMAIN_SCREEN,
 	JOINT_TOOLBAR_ITEMS,
 	PRESET_FILE,
+	PREVIEW_CONTROLS,
 	STYLIST_GRAPH_WORKSPACE_SEED,
 	TOKEN_CONTROLLER_TYPE
 } from './const';
@@ -75,6 +77,8 @@ export {
 	resolveComponentDescriptor,
 	resolveFilePreset,
 	resolveModuleGroup,
+	resolvePreviewSkin,
+	resolvePreviewVariables,
 	resolveTreeFamilies,
 	serializeUnknownError
 } from './function';
@@ -132,6 +136,7 @@ export type {
 	TypeFilePreset
 } from './type';
 export type {
+	ContractPreviewEnvironment,
 	RecipeClusterToolbar,
 	RecipeCtaButtons,
 	RecipeDeviceFrame,
@@ -163,6 +168,7 @@ export type {
 	RecipeJointToolbar,
 	RecipeJsonTreeViewer,
 	RecipeMarkdownRenderer,
+	RecipePreviewSettings,
 	RecipeSamoAdoptionRoadmap,
 	RecipeSamoArchitectureCompare,
 	RecipeSamoAssemblyPipeline,

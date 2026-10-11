@@ -13,8 +13,8 @@ describe('StoryCanvas', () => {
 		{ eager: true }
 	);
 	const instances: ReturnType<typeof mount>[] = [];
-	/** Elements that act on the document itself or are never rendered in the canvas. */
-	const DOCUMENT = new Set(['html', 'head', 'body', 'raw-text', 'node', 'input']);
+	/** Elements that act on the document itself, go to its head or are not rendered in place. */
+	const DOCUMENT = new Set(['html', 'head', 'body', 'title', 'base', 'raw-text', 'node', 'input']);
 
 	afterEach(async () => {
 		for (const instance of instances.splice(0)) await unmount(instance);
@@ -44,6 +44,18 @@ describe('StoryCanvas', () => {
 			for (const preset of Object.values(story.presets ?? {}))
 				render(path, { ...story.args, ...preset });
 		}
+	});
+
+	it('renders the component inside its context', () => {
+		const at = (family: string) => `/modules/design-system/html/component/${family}/index.story.ts`;
+		const cell = render(at('organism/td')).querySelector('table > tbody > tr > td');
+		expect(cell?.textContent).toBe('Cell');
+		const option = render(at('atom/option')).querySelector('select > option');
+		expect(option?.textContent).toBe('Option');
+		const area = render(at('atom/area')).querySelector('div > map[name="story-map"] > area');
+		expect(area?.getAttribute('href')).toBe('#area');
+		const item = render(at('organism/li'), { value: 3 }).querySelector('ul > li');
+		expect(item?.getAttribute('value')).toBe('3');
 	});
 
 	it('applies args sent by the host', () => {

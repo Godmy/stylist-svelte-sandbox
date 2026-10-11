@@ -1,10 +1,13 @@
+import { untrack } from 'svelte';
 import type { RecipeTokenRadio } from '$stylist/token/interface/recipe/token-radio';
-import type { TokenTokenValue as TokenValue } from '$stylist/theme/type/alias/token-value';
+import type { TokenTokenValue as TokenValue } from '$stylist/design-token/type/alias/token-value';
 
 export function createTokenRadioState(getProps: () => RecipeTokenRadio) {
 	const props = $derived(getProps());
 	let internalValue = $state<TokenValue>(
-		props.value ?? props.definition.defaultValue ?? props.definition.options[0]?.value ?? ''
+		untrack(
+			() => props.value ?? props.definition.defaultValue ?? props.definition.options[0]?.value ?? ''
+		)
 	);
 
 	$effect(() => {
@@ -23,8 +26,12 @@ export function createTokenRadioState(getProps: () => RecipeTokenRadio) {
 			return internalValue;
 		},
 		selectOption,
-		definition: props.definition,
-		onChange: props.onChange
+		get definition() {
+			return props.definition;
+		},
+		get onChange() {
+			return props.onChange;
+		}
 	};
 }
 

@@ -19,7 +19,7 @@
 		...restProps
 	}: RecipeCodeEditor & HTMLAttributes<HTMLDivElement> = $props();
 
-	const state = createCodeEditorState({
+	const state = createCodeEditorState(() => ({
 		code,
 		language,
 		height,
@@ -31,7 +31,7 @@
 		class: className as any,
 		onCodeChange,
 		...restProps
-	});
+	}));
 </script>
 
 <div class={state.containerClass}>

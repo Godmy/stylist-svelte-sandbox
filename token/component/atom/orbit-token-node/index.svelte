@@ -1,8 +1,9 @@
 <script lang="ts">
+	import { untrack } from 'svelte';
 	import Icon from '$stylist/svg/component/atom/icon/index.svelte';
 	import TokenControlComposer from '$stylist/token/component/molecule/token/index.svelte';
 	import type { TokenControlDefinition } from '$stylist/token/type/object/token-control-definition';
-	import type { TokenTokenValue as TokenValue } from '$stylist/theme/type/alias/token-value';
+	import type { TokenTokenValue as TokenValue } from '$stylist/design-token/type/alias/token-value';
 
 	let {
 		id,
@@ -21,7 +22,7 @@
 	} = $props();
 
 	let active = $state(false);
-	let value = $state<TokenValue>(definition.defaultValue ?? '');
+	let value = $state<TokenValue>(untrack(() => definition.defaultValue ?? ''));
 
 	$effect(() => {
 		if (!opened) {

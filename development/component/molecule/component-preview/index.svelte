@@ -13,7 +13,7 @@
 		class: className = ''
 	}: RecipeComponentPreview = $props();
 
-	const state = createComponentPreviewState({
+	const state = createComponentPreviewState(() => ({
 		title,
 		description,
 		code,
@@ -21,7 +21,7 @@
 		componentDemo,
 		showCode,
 		class: className
-	});
+	}));
 </script>
 
 <div class={state.classes}>

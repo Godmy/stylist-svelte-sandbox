@@ -1,6 +1,9 @@
 import type { RecipeDevelopmentErrorBoundary } from '$stylist/development/interface/recipe/development-error-boundary';
 
-export function createDevelopmentErrorBoundaryState(props: RecipeDevelopmentErrorBoundary) {
+export function createDevelopmentErrorBoundaryState(
+	getProps: () => RecipeDevelopmentErrorBoundary
+) {
+	const props = $derived(getProps());
 	const Bug = 'bug';
 	const RotateCcw = 'rotate-ccw';
 	const Copy = 'copy';

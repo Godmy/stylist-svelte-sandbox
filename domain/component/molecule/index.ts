@@ -10,6 +10,7 @@ export { FeatureGrid } from './feature-grid/index';
 export { JointTabButtons } from './joint-tab-buttons/index';
 export { JointToolbar } from './joint-toolbar/index';
 export { JsonTreeViewer } from './json-tree-viewer/index';
+export { PreviewSettings } from './preview-settings/index';
 export { SamoAdoptionRoadmap } from './samo-adoption-roadmap/index';
 export { SamoArchitectureCompare } from './samo-architecture-compare/index';
 export { SamoAssemblyPipeline } from './samo-assembly-pipeline/index';

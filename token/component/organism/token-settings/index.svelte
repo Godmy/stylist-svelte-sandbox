@@ -15,13 +15,9 @@
 		showColumnControl?: boolean;
 	} = $props();
 
-	const settingsState = createTokenSettingsState({ settings });
-	let gridColumns = $state(columns);
+	const settingsState = createTokenSettingsState(() => ({ settings }));
+	let gridColumns = $derived(columns);
 	const columnOptions = [1, 2, 3, 4, 5, 6];
-
-	$effect(() => {
-		gridColumns = columns;
-	});
 
 	function taxonomyFor(domain: string) {
 		if (domain === 'interaction') return 'interaction';

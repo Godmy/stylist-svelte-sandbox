@@ -54,6 +54,7 @@ export const PRESET_FILE = {
 		files: ['index.story.svelte', 'index.svelte', 'index.test.ts', 'index.ts']
 	},
 	SCHEMA_MARKDOWN: { type: 'markdown', files: ['schema.md'] },
+	DATA_MARKDOWN: { type: 'data', files: ['index.md'] },
 	INDEX_STYLESHEET: { type: 'stylesheet', files: ['index.css'] },
 	INDEX_JSON: { type: 'json', files: ['index.json'] },
 	LANDING_IMAGE: { type: 'image', files: ['2026-09-17-otono.jpg'] },

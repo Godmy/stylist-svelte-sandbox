@@ -1,8 +1,9 @@
 import type { HTMLAttributes } from 'svelte/elements';
 import type { RecipeErrorBoundary } from '$stylist/development/interface/recipe/error-boundary';
 export function createErrorBoundaryState(
-	props: RecipeErrorBoundary & HTMLAttributes<HTMLDivElement>
+	getProps: () => RecipeErrorBoundary & HTMLAttributes<HTMLDivElement>
 ) {
+	const props = $derived(getProps());
 	const component = $derived(props.component);
 	const componentProps = $derived(props.props ?? {});
 	const children = $derived(props.children);

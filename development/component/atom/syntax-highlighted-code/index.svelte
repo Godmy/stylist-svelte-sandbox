@@ -5,7 +5,7 @@
 
 	let props: RecipeSyntaxHighlightedCode = $props();
 
-	const state = createSyntaxHighlightedCodeState(props);
+	const state = createSyntaxHighlightedCodeState(() => props);
 </script>
 
 <div {...props}>

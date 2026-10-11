@@ -13,7 +13,7 @@
 	const Terminal = 'terminal';
 
 	let props: RecipeEnhancedExportPanel & HTMLAttributes<HTMLDivElement> = $props();
-	const state = createEnhancedExportPanelState(props);
+	const state = createEnhancedExportPanelState(() => props);
 </script>
 
 <div class="export-panel">

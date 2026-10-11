@@ -31,6 +31,6 @@ export const JOINT_TOOLBAR_ITEMS = [
 	{ name: 'atom' },
 	{ name: 'molecule' },
 	{ name: 'organism' },
-	{ name: 'page' },
-	{ name: 'template' }
+	{ name: 'template' },
+	{ name: 'page' }
 ] as const;

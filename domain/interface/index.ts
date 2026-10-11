@@ -1,4 +1,5 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
+export type { ContractPreviewEnvironment } from './contract';
 export type {
 	RecipeClusterToolbar,
 	RecipeCtaButtons,
@@ -31,6 +32,7 @@ export type {
 	RecipeJointToolbar,
 	RecipeJsonTreeViewer,
 	RecipeMarkdownRenderer,
+	RecipePreviewSettings,
 	RecipeSamoAdoptionRoadmap,
 	RecipeSamoArchitectureCompare,
 	RecipeSamoAssemblyPipeline,

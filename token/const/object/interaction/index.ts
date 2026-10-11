@@ -6,7 +6,7 @@ import { TOKEN_LOADING } from '$stylist/animation/const/array/loading';
 import { TOKEN_SEVERITY } from '$stylist/workspace/const/array/sevetity';
 import { TOKEN_SORT_DIRECTION } from '$stylist/table/const/array/sort-direction';
 import { TOKEN_TRIGGER } from '$stylist/layout/const/array/trigger';
-import { TOKEN_COLOR_TONE } from '$stylist/theme/const/array/color-tone';
+import { TOKEN_COLOR_TONE } from '$stylist/design-token/const/array/color-tone';
 
 export const TOKEN_INTERACTION_SETTING = [
 	{

@@ -13,7 +13,7 @@
 		...restProps
 	}: RecipeCodeDiff = $props();
 
-	const state = createCodeDiffState({
+	const state = createCodeDiffState(() => ({
 		original,
 		modified,
 		language,
@@ -22,7 +22,7 @@
 		headerClass,
 		showLineNumbers,
 		...restProps
-	});
+	}));
 </script>
 
 <div class={state.containerClass} {...restProps}>

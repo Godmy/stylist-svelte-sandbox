@@ -5,7 +5,7 @@
 	import BaseIcon from '$stylist/svg/component/atom/icon/index.svelte';
 
 	let { ...props }: RecipeDebugConsole = $props();
-	const state = createDebugConsoleState(props);
+	const state = createDebugConsoleState(() => props);
 </script>
 
 <div class={state.containerClass}>

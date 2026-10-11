@@ -30,6 +30,7 @@ export type { RecipeJointTabButtons } from './joint-tab-buttons';
 export type { RecipeJointToolbar } from './joint-toolbar';
 export type { RecipeJsonTreeViewer } from './json-tree-viewer';
 export type { RecipeMarkdownRenderer } from './markdown-renderer';
+export type { RecipePreviewSettings } from './preview-settings';
 export type { RecipeSamoAdoptionRoadmap } from './samo-adoption-roadmap';
 export type { RecipeSamoArchitectureCompare } from './samo-architecture-compare';
 export type { RecipeSamoAssemblyPipeline } from './samo-assembly-pipeline';

@@ -15,7 +15,7 @@
 		...restProps
 	}: RecipeDocumentationBlock = $props();
 
-	const state = createDocumentationBlockState({
+	const state = createDocumentationBlockState(() => ({
 		title,
 		content,
 		variant,
@@ -23,7 +23,7 @@
 		tags,
 		class: className,
 		...restProps
-	});
+	}));
 </script>
 
 <div {...restProps} class={state.containerClass}>

@@ -7,7 +7,7 @@
 	const ArrowRight = 'arrow-right';
 
 	let props: RecipeLiveCodeSection & HTMLAttributes<HTMLDivElement> = $props();
-	const state = createLiveCodeSectionState(props);
+	const state = createLiveCodeSectionState(() => props);
 </script>
 
 <section class={`plcs-section ${state.className}`}>

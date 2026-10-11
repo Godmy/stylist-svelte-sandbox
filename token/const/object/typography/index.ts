@@ -1,7 +1,7 @@
 import type { Token } from '$stylist/token/type/object/token';
-import { TOKEN_FONT_SIZE } from '$stylist/theme/const/object/font-size';
-import { TOKEN_FONT_WEIGHT } from '$stylist/theme/const/object/font-weight';
-import { TOKEN_COLOR_TONE } from '$stylist/theme/const/array/color-tone';
+import { TOKEN_FONT_SIZE } from '$stylist/design-token/const/object/font-size';
+import { TOKEN_FONT_WEIGHT } from '$stylist/design-token/const/object/font-weight';
+import { TOKEN_COLOR_TONE } from '$stylist/design-token/const/array/color-tone';
 
 export const TOKEN_TYPOGRAPHY_SETTING = [
 	{

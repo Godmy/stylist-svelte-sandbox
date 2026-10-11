@@ -1,7 +1,8 @@
 import { ClassNamesManager } from '$stylist/layout/class/manager/class-names';
 import type { RecipeDocumentationBlock } from '$stylist/development/interface/recipe/documentation-block';
 
-export function createDocumentationBlockState(props: RecipeDocumentationBlock) {
+export function createDocumentationBlockState(getProps: () => RecipeDocumentationBlock) {
+	const props = $derived(getProps());
 	const variant = $derived(props.variant ?? 'default');
 	const containerClass = $derived(
 		ClassNamesManager.merge(

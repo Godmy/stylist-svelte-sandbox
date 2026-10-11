@@ -4,7 +4,8 @@ import type { SlotTranscriptionResult } from '$stylist/audio/interface/slot/tran
 const OWN_FILE_NAMES = ['index.svelte', 'index.story.svelte', 'index.ts'];
 const DEPENDENCY_ATTACH_LIMIT = 20;
 
-export function createDomainAiAgentState(props: RecipeDomainAiAgent) {
+export function createDomainAiAgentState(getProps: () => RecipeDomainAiAgent) {
+	const props = $derived(getProps());
 	let messages = $state<
 		{
 			role: 'user' | 'assistant';

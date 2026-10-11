@@ -23,7 +23,7 @@
 		...restProps
 	}: RecipeCodeBlock = $props();
 
-	const state = createCodeBlockState({
+	const state = createCodeBlockState(() => ({
 		code,
 		language,
 		showLineNumbers,
@@ -37,7 +37,7 @@
 		lineNumberClass,
 		codeClass,
 		headerClass
-	});
+	}));
 </script>
 
 <div class={state.containerClass} {...restProps}>

@@ -7,7 +7,8 @@ import { CUBE_FACE_THEMES } from '$stylist/development/const/record/cube-face-th
 import { CUBE_HORIZONTAL_ICONS } from '$stylist/development/const/record/cube-horizontal-icon';
 import { CUBE_VERTICAL_ICONS } from '$stylist/development/const/record/cube-vertical-icon';
 
-export function createCubeControlState(props: RecipeCubeControl) {
+export function createCubeControlState(getProps: () => RecipeCubeControl) {
+	const props = $derived(getProps());
 	const size = $derived(props.size ?? 380);
 	const perspective = $derived(props.perspective ?? 700);
 	const autoRotate = $derived(props.autoRotate ?? true);
@@ -348,9 +349,15 @@ export function createCubeControlState(props: RecipeCubeControl) {
 		resetRotation,
 		selectionState,
 		rotationState,
-		onRotate: props.onRotate,
-		onSelectionChange: props.onSelectionChange,
-		onDebugLog: props.onDebugLog
+		get onRotate() {
+			return props.onRotate;
+		},
+		get onSelectionChange() {
+			return props.onSelectionChange;
+		},
+		get onDebugLog() {
+			return props.onDebugLog;
+		}
 	};
 }
 

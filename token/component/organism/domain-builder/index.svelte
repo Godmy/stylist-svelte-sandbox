@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { onMount, untrack } from 'svelte';
 	import DomainDescriptorPanel from '$stylist/token/component/molecule/domain-descriptor-panel/index.svelte';
 	import DomainSidebar from '$stylist/domain/component/organism/domain-sidebar/index.svelte';
 	import type { TypeDomainComponentDescriptor } from '$stylist/domain/type/object/domain-component-descriptor';
@@ -117,11 +117,13 @@
 		class?: string;
 	} = $props();
 
-	const componentDomains = tree.filter((domain: BuilderDomain) =>
-		domain.clusters.some((cluster: BuilderCluster) => cluster.name === 'component')
-	) as BuilderDomain[];
+	const componentDomains = $derived(
+		tree.filter((domain: BuilderDomain) =>
+			domain.clusters.some((cluster: BuilderCluster) => cluster.name === 'component')
+		) as BuilderDomain[]
+	);
 
-	let activeDomain = $state(componentDomains[0]?.name ?? 'domain');
+	let activeDomain = $state(untrack(() => componentDomains[0]?.name ?? 'domain'));
 	let activeCluster = $state('component');
 	let activeJoint = $state<(typeof availableComponentJoints)[number]>('molecule');
 	let activeEntityPath = $state('');
@@ -135,7 +137,7 @@
 	let hasLoadedLayout = $state(false);
 
 	const SLUG_PATTERN = /^[a-z][a-z0-9]*(-[a-z0-9]+)*$/;
-	let templateDomain = $state(componentDomains[0]?.name ?? '');
+	let templateDomain = $state(untrack(() => componentDomains[0]?.name ?? ''));
 	let templateFamily = $state('');
 	let exportState = $state<'idle' | 'saving' | 'saved' | 'error'>('idle');
 	let exportMessage = $state('');
@@ -767,7 +769,11 @@
 		}}
 	>
 		<div class="builder-stage">
-			<div class="export-bar" onpointerdown={(event) => event.stopPropagation()}>
+			<div
+				class="export-bar"
+				role="presentation"
+				onpointerdown={(event) => event.stopPropagation()}
+			>
 				<select class="export-input" bind:value={templateDomain} aria-label="Template domain">
 					{#each componentDomains as domain (domain.name)}
 						<option value={domain.name}>{domain.name}</option>
@@ -856,7 +862,11 @@
 						}
 					}}
 				>
-					<div class="section-toolbar" onpointerdown={(event) => event.stopPropagation()}>
+					<div
+						class="section-toolbar"
+						role="presentation"
+						onpointerdown={(event) => event.stopPropagation()}
+					>
 						<button
 							type="button"
 							class="section-action"
@@ -971,6 +981,7 @@
 											{#if selectedInstanceId === instance.id}
 												<div
 													class="component-toolbar"
+													role="presentation"
 													onpointerdown={(event) => event.stopPropagation()}
 												>
 													<button

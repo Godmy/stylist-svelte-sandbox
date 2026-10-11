@@ -18,10 +18,18 @@ export function createTokenChipSetState(getProps: () => RecipeTokenChipSet) {
 		get className() {
 			return className;
 		},
-		tokens: props.tokens,
-		value: props.value,
-		dedupe: props.dedupe ?? true,
-		onSelect: props.onSelect
+		get tokens() {
+			return props.tokens;
+		},
+		get value() {
+			return props.value;
+		},
+		get dedupe() {
+			return props.dedupe ?? true;
+		},
+		get onSelect() {
+			return props.onSelect;
+		}
 	};
 }
 

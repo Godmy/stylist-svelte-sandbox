@@ -6,6 +6,12 @@
 	import { ManagerStoryViewportContext } from '$stylist/theme/class/manager/story-viewport-context';
 	import type { RecipeDomainFilePreview } from '$stylist/domain/interface/recipe/domain-file-preview';
 	import type { ContractStory } from '$stylist/html/interface/contract/story';
+	import type { HtmlNode } from '$stylist/html/type/alias/html-node';
+	import { createHtmlStoryNode } from '$stylist/html/function/create/html-story-node';
+	import { serializeHtmlMarkup } from '$stylist/html/function/serialize/html-markup';
+	import PreviewSettings from '$stylist/domain/component/molecule/preview-settings/index.svelte';
+	import { resolvePreviewSkin } from '$stylist/domain/function/resolve/preview-skin';
+	import type { ContractPreviewEnvironment } from '$stylist/domain/interface/contract/preview-environment';
 
 	let {
 		previewMode = 'file',
@@ -62,19 +68,56 @@
 		storyPath.endsWith('.story.ts') ? (storyPreviewComponent as ContractStory) : null
 	);
 	let storyArgs: Record<string, unknown> | undefined;
+	let storyContent: readonly HtmlNode[] | undefined;
+	let environment = $state<ContractPreviewEnvironment>({});
+	const visualHtml = $derived(resolvePreviewSkin(storyPath));
+	$effect(() => {
+		// Story args are per story. Appearance is a shared explicit environment choice.
+		// eslint-disable-next-line @typescript-eslint/no-unused-expressions
+		storyPath;
+		storyArgs = undefined;
+		storyContent = undefined;
+	});
+	// html stories are elements: the HTML tab shows the story tree (context included) as markup.
+	const storyMarkup = $derived.by(() => {
+		if (!story || !storyPath.includes('/html/component/')) return undefined;
+		const family = storyPath.split('/').at(-2) ?? '';
+		// Foreign content is supplied by custom render components, not HtmlNode.
+		if (family === 'svg' || family === 'math') return undefined;
+		const current = story;
+		return (args: Record<string, unknown>, content?: readonly HtmlNode[]) => {
+			try {
+				const node = createHtmlStoryNode(family, current, args, content);
+				return node ? serializeHtmlMarkup(node) : null;
+			} catch {
+				return 'Unable to serialize this content as HTML.';
+			}
+		};
+	});
 	// The frame stays transparent until it has the theme and the story painted: no white flash.
 	let readyUrl = $state('');
 	const frameReady = $derived(readyUrl === frameUrl);
-	function sendArgs(args: Record<string, unknown>) {
+	function sendArgs(args: Record<string, unknown>, content?: readonly HtmlNode[]) {
 		storyArgs = args;
-		frame?.contentWindow?.postMessage({ type: 'stylist:story-args', args }, window.location.origin);
+		storyContent = content;
+		frame?.contentWindow?.postMessage(
+			{ type: 'stylist:story-args', args, content },
+			window.location.origin
+		);
 	}
 	function syncFrame() {
 		frame?.contentWindow?.postMessage(
 			{ type: 'stylist:viewport', device: storyDevice, fullscreen },
 			window.location.origin
 		);
-		if (storyArgs) sendArgs(storyArgs);
+		if (storyArgs) sendArgs(storyArgs, storyContent);
+		frame?.contentWindow?.postMessage(
+			{
+				type: 'stylist:preview-environment',
+				settings: visualHtml ? $state.snapshot(environment) : {}
+			},
+			window.location.origin
+		);
 	}
 	function receiveFrame(event: MessageEvent) {
 		if (event.origin !== window.location.origin || event.source !== frame?.contentWindow) return;
@@ -89,6 +132,10 @@
 		storyDevice;
 		// eslint-disable-next-line @typescript-eslint/no-unused-expressions
 		fullscreen;
+		// eslint-disable-next-line @typescript-eslint/no-unused-expressions
+		environment;
+		// eslint-disable-next-line @typescript-eslint/no-unused-expressions
+		visualHtml;
 		syncFrame();
 	});
 	$effect(() => {
@@ -153,11 +200,17 @@
 					></iframe>
 				</div>
 				{#if story && !fullscreen}
-					{#key storyPath}
-						<StoryControls class="story-controls" {story} onChange={sendArgs} />
-					{/key}
+					<div class="story-controls">
+						{#if visualHtml}<PreviewSettings
+								value={environment}
+								onChange={(next) => (environment = next)}
+							/>{/if}
+						{#key storyPath}
+							<StoryControls {story} onChange={sendArgs} markup={storyMarkup} />
+						{/key}
+					</div>
 				{/if}
-			{:else}
+			{:else if typeof StoryPreviewComponent === 'function'}
 				<StoryPreviewComponent />
 			{/if}
 		</div>
@@ -290,6 +343,7 @@
 
 	.story-preview-shell--controls :global(.story-controls) {
 		max-height: 40vh;
+		overflow: auto;
 		margin: 1rem -1rem -1rem;
 	}
 

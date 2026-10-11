@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { untrack } from 'svelte';
 	import { DOMAIN_SCREEN } from '$stylist/domain/const/object/domain-screen';
 	import DomainMenu from '$stylist/domain/component/molecule/domain-menu/index.svelte';
 	import DeviceViewport from '$stylist/domain/component/molecule/device-viewport/index.svelte';
@@ -19,7 +20,7 @@
 		class: className = ''
 	}: RecipeDomainPlayground = $props();
 
-	const screenState = createDomainPlaygroundState(initialScreen);
+	const screenState = createDomainPlaygroundState(untrack(() => initialScreen));
 	let storyDevice = $state<DeviceFrameViewport>('desktop');
 	let storyWidths = $state<Record<DeviceFrameViewport, number | null>>({
 		mobile: 375,

@@ -5,11 +5,7 @@ export function createTokenTextState(getProps: () => TokenTextStateProps) {
 	const definition = $derived(props.definition);
 	const placeholder = $derived(props.placeholder ?? definition.placeholder ?? 'Enter value');
 	const onChange = $derived(props.onChange);
-	let internalValue = $state(props.value ?? '');
-
-	$effect(() => {
-		internalValue = props.value ?? '';
-	});
+	let internalValue = $derived(props.value ?? '');
 
 	return {
 		get definition() {

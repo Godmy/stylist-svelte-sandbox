@@ -11,7 +11,7 @@
 	import type { RecipePageBuilder } from '$stylist/development/interface/recipe/page-builder';
 
 	let props: RecipePageBuilder = $props();
-	const state = createPageBuilderState(props);
+	const state = createPageBuilderState(() => props);
 </script>
 
 <div
