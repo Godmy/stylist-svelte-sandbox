@@ -53,7 +53,7 @@
 				actor: 'CLI',
 				description:
 					'One errors CLI runs the TypeScript and Svelte analyzers in sequence and writes a single aggregated report.',
-				command: 'python -u ".../stylist/errors/cli.py"',
+				command: 'node ".../stylist-svelte-tools/scripts/errors.mjs"',
 				result: 'errors/output/<timestamp>/README.md — one list of files with errors.'
 			},
 			{
