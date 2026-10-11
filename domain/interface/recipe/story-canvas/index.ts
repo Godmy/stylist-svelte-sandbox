@@ -1,5 +1,5 @@
 import type { Component } from 'svelte';
-import type { ContractStory } from '$stylist/domain/interface/contract/story';
+import type { ContractStory } from '$stylist/html/interface/contract/story';
 export interface RecipeStoryCanvas {
 	story: ContractStory;
 	/** Current args; `story.args` when the host has not sent any yet. */

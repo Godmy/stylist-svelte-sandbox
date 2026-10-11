@@ -1,5 +1,5 @@
 import { tick, type Component } from 'svelte';
-import type { ContractStory } from '$stylist/domain/interface/contract/story';
+import type { ContractStory } from '$stylist/html/interface/contract/story';
 
 type StoryModule = {
 	default: unknown;

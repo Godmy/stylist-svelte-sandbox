@@ -1,4 +1,4 @@
-import type { ContractStory } from '$stylist/domain/interface/contract/story';
+import type { ContractStory } from '$stylist/html/interface/contract/story';
 export interface RecipeStoryControls {
 	story: ContractStory;
 	/** Receives the full current args after every change, including the initial ones. */

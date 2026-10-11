@@ -1,7 +1,7 @@
 import { afterEach, describe, expect, it } from 'vitest';
 import { flushSync, mount, unmount, type Component } from 'svelte';
 import StoryCanvas from '$stylist/domain/component/molecule/story-canvas/index.svelte';
-import type { ContractStory } from '$stylist/domain/interface/contract/story';
+import type { ContractStory } from '$stylist/html/interface/contract/story';
 
 describe('StoryCanvas', () => {
 	const stories = import.meta.glob<{ default: ContractStory }>(

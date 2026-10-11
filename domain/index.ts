@@ -131,7 +131,6 @@ export type {
 	TypeFilePreset
 } from './type';
 export type {
-	ContractStory,
 	RecipeClusterToolbar,
 	RecipeCtaButtons,
 	RecipeDeviceFrame,
@@ -186,6 +185,5 @@ export type {
 	RecipeStylistHeroIntro,
 	RecipeStylistMission,
 	RecipeTaxonomyBreadcrumbs,
-	SlotDomainEntity,
-	SlotStoryControl
+	SlotDomainEntity
 } from './interface';

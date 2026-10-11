@@ -5,7 +5,7 @@
 	import StoryControls from '$stylist/domain/component/molecule/story-controls/index.svelte';
 	import { ManagerStoryViewportContext } from '$stylist/theme/class/manager/story-viewport-context';
 	import type { RecipeDomainFilePreview } from '$stylist/domain/interface/recipe/domain-file-preview';
-	import type { ContractStory } from '$stylist/domain/interface/contract/story';
+	import type { ContractStory } from '$stylist/html/interface/contract/story';
 
 	let {
 		previewMode = 'file',
