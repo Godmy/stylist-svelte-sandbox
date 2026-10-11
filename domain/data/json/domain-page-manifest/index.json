@@ -1158,6 +1158,7 @@
       },
       "test": {
         "render": {
+          "domain-file-preview": "FUNCTION_TEST",
           "preview-environment": "FUNCTION_TEST",
           "story-canvas": "FUNCTION_TEST",
           "story-controls": "FUNCTION_TEST"

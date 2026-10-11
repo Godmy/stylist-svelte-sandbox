@@ -1017,7 +1017,7 @@
     },
     {
       "name": "domain",
-      "fileCount": 342,
+      "fileCount": 343,
       "components": {
         "atoms": 5,
         "molecules": 33,
@@ -1148,12 +1148,12 @@
         },
         {
           "name": "test",
-          "fileCount": 4,
+          "fileCount": 5,
           "joints": [
             {
               "name": "render",
-              "entityCount": 3,
-              "fileCount": 3
+              "entityCount": 4,
+              "fileCount": 4
             },
             {
               "name": "unit",
@@ -3304,7 +3304,7 @@
   ],
   "totals": {
     "domains": 36,
-    "files": 4977,
+    "files": 4978,
     "atoms": 276,
     "molecules": 189,
     "organisms": 146,
