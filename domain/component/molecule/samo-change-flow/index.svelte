@@ -61,7 +61,7 @@
 				actor: 'CLI',
 				description:
 					'The auditor regenerates the sandbox manifest so new components and stories appear in the workspace.',
-				command: 'python -u ".../stylist/auditor/cli.py" --manifest-only',
+				command: 'node ".../stylist-svelte-tools/scripts/auditor.mjs" --manifest-only',
 				result: 'The story sits next to its source, ready for review.'
 			},
 			{
