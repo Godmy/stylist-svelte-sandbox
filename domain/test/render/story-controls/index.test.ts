@@ -12,7 +12,7 @@ describe('story content controls', () => {
 		render(StoryControls, {
 			story: ButtonStory,
 			onChange,
-			markup: (args, content) =>
+			markup: (args: Record<string, unknown>, content?: readonly HtmlNode[]) =>
 				serializeHtmlMarkup(createHtmlStoryNode('button', ButtonStory, args, content)!)
 		});
 		const input = screen.getByLabelText('Text content');
