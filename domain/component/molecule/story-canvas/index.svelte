@@ -73,6 +73,7 @@
 		box-sizing: border-box;
 		min-height: 100%;
 		padding: 1.5rem;
+		background: var(--color-background-primary);
 		/* Previewed components can react to the iframe width with @container. */
 		container-type: inline-size;
 	}

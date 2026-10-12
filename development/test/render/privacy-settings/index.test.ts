@@ -4,7 +4,9 @@ import PrivacySettings from '../../../component/molecule/privacy-settings/index.
 
 describe('privacy settings reactivity', () => {
 	it('updates the switch after local edits without mutating props, and follows later settings', async () => {
-		const settings = [{ id: 'analytics', label: 'Analytics', description: 'Usage statistics', enabled: true }];
+		const settings = [
+			{ id: 'analytics', label: 'Analytics', description: 'Usage statistics', enabled: true }
+		];
 		const { rerender } = render(PrivacySettings, { settings });
 		const checkbox = screen.getByRole('checkbox') as HTMLInputElement;
 		await fireEvent.click(checkbox);
