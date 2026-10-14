@@ -29,7 +29,7 @@ describe('resolveModuleGroup', () => {
 		expect(byName.prototype).toEqual(['presentation', 'scratch']);
 		expect(byName.global).toEqual(['commerce', 'product', 'geo']);
 		expect(byName.business).toEqual(
-			expect.arrayContaining(['booking', 'tea-commerce', 'wbd', 'spanish', 'farm'])
+			expect.arrayContaining(['booking', 'sakartvelo', 'wbd', 'spanish', 'farm'])
 		);
 	});
 
