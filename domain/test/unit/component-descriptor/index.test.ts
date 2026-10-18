@@ -13,13 +13,17 @@ describe('resolveComponentDescriptor', () => {
 	});
 
 	it('keeps a legacy index.story.svelte as the story when no contract exists', () => {
-		const tree: TypeDomainTree = { button: { component: { atom: { button: 'INDEXED_STORY_COMPONENT' } } } };
+		const tree: TypeDomainTree = {
+			button: { component: { atom: { button: 'INDEXED_STORY_COMPONENT' } } }
+		};
 		const descriptor = resolveComponentDescriptor(tree, 'button/component/atom/button');
 		expect(descriptor?.storyModulePath).toBe('button/component/atom/button/index.story.svelte');
 	});
 
 	it('reports no story when the family has none', () => {
-		const tree: TypeDomainTree = { button: { component: { atom: { button: 'INDEXED_COMPONENT' } } } };
+		const tree: TypeDomainTree = {
+			button: { component: { atom: { button: 'INDEXED_COMPONENT' } } }
+		};
 		const descriptor = resolveComponentDescriptor(tree, 'button/component/atom/button');
 		expect(descriptor?.hasStoryPreview).toBe(false);
 		expect(descriptor?.storyModulePath).toBeUndefined();
