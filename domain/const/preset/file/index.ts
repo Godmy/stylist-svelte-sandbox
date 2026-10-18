@@ -84,6 +84,10 @@ export const PRESET_FILE = {
 		type: 'component',
 		files: ['index.story.svelte', 'index.svelte', 'index.test.ts', 'index.ts']
 	},
+	TESTED_DEFINED_RENDERED_STORY_COMPONENT: {
+		type: 'component',
+		files: ['index.story.svelte', 'index.story.ts', 'index.svelte', 'index.test.ts', 'index.ts']
+	},
 	SCHEMA_MARKDOWN: { type: 'markdown', files: ['schema.md'] },
 	DATA_MARKDOWN: { type: 'data', files: ['index.md'] },
 	INDEX_STYLESHEET: { type: 'stylesheet', files: ['index.css'] },
