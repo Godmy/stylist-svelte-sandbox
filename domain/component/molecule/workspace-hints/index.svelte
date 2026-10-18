@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	let { root = '.c-domain-playground' }: { root?: string } = $props();
+	import type { RecipeWorkspaceHints } from '$stylist/domain/interface/recipe/workspace-hints';
+	let { root = '.c-domain-playground' }: RecipeWorkspaceHints = $props();
 	const id = $props.id();
 	let hint = $state('');
 	let left = $state(0);
