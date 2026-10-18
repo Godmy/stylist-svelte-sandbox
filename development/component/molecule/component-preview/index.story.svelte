@@ -1,92 +1,43 @@
 <script lang="ts">
-	import Story from '$stylist/theme/component/molecule/story/index.svelte';
+	import ComponentPreview from './index.svelte';
+	import type { RecipeComponentPreview } from '$stylist/development/interface/recipe/component-preview';
 
-	import type { SlotStory } from '$stylist/theme/interface/slot/story';
-
-	import RecipeComponentPreview from './index.svelte';
-
-	const controls: SlotStory[] = [
-		{ name: 'title', type: 'text', defaultValue: 'Primary Button' },
-
-		{ name: 'description', type: 'text', defaultValue: 'Button used for key actions in forms.' },
-
-		{ name: 'code', type: 'text', defaultValue: '<Button variant="primary">Save</Button>' },
-
-		{
-			name: 'language',
-
-			type: 'select',
-
-			options: ['svelte', 'typescript', 'html'],
-
-			defaultValue: 'svelte'
-		},
-
-		{ name: 'showCode', type: 'boolean', defaultValue: false },
-
-		{
-			name: 'demoVariant',
-
-			type: 'select',
-
-			options: ['primary', 'secondary', 'danger'],
-
-			defaultValue: 'primary'
-		}
-	];
-
-	function variantClass(variant: string): string {
-		if (variant === 'secondary') return 'bg-gray-800 text-white';
-
-		if (variant === 'danger') return 'bg-red-600 text-white';
-
-		return 'bg-blue-600 text-white';
-	}
+	// Render of index.story.ts: the required componentDemo snippet cannot be passed as an arg.
+	let {
+		demoVariant = 'primary',
+		...args
+	}: Omit<RecipeComponentPreview, 'componentDemo'> & { demoVariant?: string } = $props();
 </script>
 
-<Story
-	id="molecules-component-preview"
-	title="Molecules / Information / Development / RecipeComponentPreview"
-	component={RecipeComponentPreview}
-	category="Molecules/Information/Development"
-	description="Preview card with demo/codetab switch and configurable snippet text."
-	{controls}
->
-	{#snippet children(args: any)}
-		<div class="_c1">
-			<RecipeComponentPreview
-				title={args.title}
-				description={args.description}
-				code={args.code}
-				language={args.language}
-				showCode={args.showCode}
-			>
-				{#snippet componentDemo()}
-					<button class={`${variantClass(args.demoVariant)} _c2`} type="button"
-						>Preview action</button
-					>
-				{/snippet}
-			</RecipeComponentPreview>
-		</div>
-	{/snippet}
-</Story>
+<div class="_c1">
+	<ComponentPreview {...args}>
+		{#snippet componentDemo()}
+			<button class={`_c2 _c2--${demoVariant}`} type="button">Preview action</button>
+		{/snippet}
+	</ComponentPreview>
+</div>
 
 <style>
 	._c1 {
 		border-radius: 0.75rem;
-
-		background-color: #f9fafb;
-
+		background-color: var(--color-background-secondary);
 		padding: 1rem;
 	}
 
 	._c2 {
 		border-radius: 0.25rem;
-		padding-left: 1rem;
-		padding-right: 1rem;
-		padding-top: 0.5rem;
-		padding-bottom: 0.5rem;
+		padding: 0.5rem 1rem;
 		font-size: 0.875rem;
 		line-height: 1.25rem;
+		color: var(--color-text-inverse);
+		background-color: var(--color-primary-600);
+	}
+
+	._c2--secondary {
+		background-color: var(--color-neutral-800);
+	}
+
+	._c2--danger {
+		background-color: var(--color-danger-600);
 	}
 </style>

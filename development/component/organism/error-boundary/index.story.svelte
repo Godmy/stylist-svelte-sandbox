@@ -1,23 +1,14 @@
 <script lang="ts">
-	import Story from '$stylist/theme/component/molecule/story/index.svelte';
-	import RecipeErrorBoundary from './index.svelte';
+	import ErrorBoundary from './index.svelte';
+	import type { RecipeErrorBoundary } from '$stylist/development/interface/recipe/error-boundary';
+
+	// Render of index.story.ts: without a component the boundary only shows its children snippet.
+	let args: RecipeErrorBoundary = $props();
 </script>
 
-<Story
-	component={RecipeErrorBoundary}
-	title="Error Boundary"
-	description="Development-domain wrapper for previewing fallback behavior around dynamic component rendering."
->
-	{#snippet children()}
-		<RecipeErrorBoundary component={null}>
-			{#snippet children()}
-				<div class="_c1">
-					Boundary active. Inject a runtime error in this area to test fallback UI.
-				</div>
-			{/snippet}
-		</RecipeErrorBoundary>
-	{/snippet}
-</Story>
+<ErrorBoundary {...args}>
+	<div class="_c1">Boundary active. Inject a runtime error in this area to test fallback UI.</div>
+</ErrorBoundary>
 
 <style>
 	._c1 {

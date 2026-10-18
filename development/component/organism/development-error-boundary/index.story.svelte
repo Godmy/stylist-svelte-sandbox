@@ -1,20 +1,9 @@
 <script lang="ts">
-	import Story from '$stylist/theme/component/molecule/story/index.svelte';
-	import type { SlotStory } from '$stylist/theme/interface/slot/story';
+	import DevelopmentErrorBoundary from './index.svelte';
+	import type { RecipeDevelopmentErrorBoundary } from '$stylist/development/interface/recipe/development-error-boundary';
 
-	import RecipeDevelopmentErrorBoundary from './index.svelte';
-
-	let {
-		id = '',
-		title = '',
-		description = '',
-		controls = [{ name: 'showDetails', type: 'boolean', defaultValue: true }]
-	} = $props<{
-		id?: string;
-		title?: string;
-		description?: string;
-		controls?: SlotStory[];
-	}>();
+	// Render of index.story.ts: the boundary needs children content and a local crash toggle.
+	let args: RecipeDevelopmentErrorBoundary = $props();
 
 	let shouldThrow = $state(false);
 
@@ -22,57 +11,42 @@
 		shouldThrow = true;
 	}
 
-	function resetCrash() {
-		shouldThrow = false;
-	}
-
 	function throwStoryError() {
 		throw new Error('Simulated component failure');
 	}
 </script>
 
-<Story
-	{id}
-	{title}
-	{description}
-	component={RecipeDevelopmentErrorBoundary}
-	category="Organisms"
-	{controls}
->
-	{#snippet children(values: any)}
-		<section class="sb-organisms-development-error-boundary _c1">
-			<div class="_c2">
-				<p class="_c3">Primary Error Boundary Example</p>
-				<p class="_c4">Interactive error boundary with customizable options.</p>
+<section class="sb-organisms-development-error-boundary _c1">
+	<div class="_c2">
+		<p class="_c3">Primary Error Boundary Example</p>
+		<p class="_c4">Interactive error boundary with customizable options.</p>
 
-				<div class="_c5">
-					{#if shouldThrow}
-						{@const _ = throwStoryError()}
-					{/if}
-					<RecipeDevelopmentErrorBoundary showDetails={values.showDetails}>
+		<div class="_c5">
+			{#if shouldThrow}
+				{@const _ = throwStoryError()}
+			{/if}
+			<DevelopmentErrorBoundary {...args}>
+				<button class="_c6 _c1" onclick={triggerCrash}> Trigger Error </button>
+			</DevelopmentErrorBoundary>
+		</div>
+	</div>
+
+	<div class="_c7">
+		<h3 class="_c8">Error Boundary Variations</h3>
+		<p class="_c9">Different error boundary configurations with various options.</p>
+
+		<div class="_c10">
+			<article class="_c11">
+				<p class="_c12">Without Details</p>
+				<div>
+					<DevelopmentErrorBoundary showDetails={false}>
 						<button class="_c6 _c1" onclick={triggerCrash}> Trigger Error </button>
-					</RecipeDevelopmentErrorBoundary>
+					</DevelopmentErrorBoundary>
 				</div>
-			</div>
-
-			<div class="_c7">
-				<h3 class="_c8">Error Boundary Variations</h3>
-				<p class="_c9">Different error boundary configurations with various options.</p>
-
-				<div class="_c10">
-					<article class="_c11">
-						<p class="_c12">Without Details</p>
-						<div>
-							<RecipeDevelopmentErrorBoundary showDetails={false}>
-								<button class="_c6 _c1" onclick={triggerCrash}> Trigger Error </button>
-							</RecipeDevelopmentErrorBoundary>
-						</div>
-					</article>
-				</div>
-			</div>
-		</section>
-	{/snippet}
-</Story>
+			</article>
+		</div>
+	</div>
+</section>
 
 <style>
 	._c1 {
@@ -87,9 +61,6 @@
 	}
 	._c10 {
 		margin-top: 1.25rem;
-	}
-	._c10 > * + * {
-		margin-top: 1rem;
 	}
 	._c11 {
 		border-radius: 1rem;
