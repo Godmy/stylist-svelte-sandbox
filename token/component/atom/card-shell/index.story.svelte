@@ -1,34 +1,25 @@
 <script lang="ts">
-	import Story from '$stylist/theme/component/molecule/story/index.svelte';
-	import type { SlotStory } from '$stylist/theme/interface/slot/story';
+	import type { RecipeCardShell } from '$stylist/token/interface/recipe/card-shell';
 	import CardShell from './index.svelte';
 	import CardClose from '../card-close/index.svelte';
 
-	const controls: SlotStory[] = [
-		{ name: 'expanded', type: 'boolean', defaultValue: true },
-		{ name: 'title', type: 'text', defaultValue: 'Graph Node Controls' }
-	];
+	// Render of index.story.ts: the shell needs chip children and a close snippet whose CardClose follows `expanded`.
+	let args: RecipeCardShell = $props();
 </script>
 
-<Story {controls} title="CardShell" description="Expandable shell used by the orbit tooling panel.">
-	{#snippet children(values: any)}
-		<div class="token-story-stage">
-			<div class="token-story-card-position">
-				<CardShell expanded={Boolean(values.expanded)} title={values.title as string}>
-					{#snippet children()}
-						<button type="button" class="token-story-chip">Layout</button>
-						<button type="button" class="token-story-chip">Variants</button>
-						<button type="button" class="token-story-chip">States</button>
-					{/snippet}
+<div class="token-story-stage">
+	<div class="token-story-card-position">
+		<CardShell {...args}>
+			<button type="button" class="token-story-chip">Layout</button>
+			<button type="button" class="token-story-chip">Variants</button>
+			<button type="button" class="token-story-chip">States</button>
 
-					{#snippet close()}
-						<CardClose expanded={Boolean(values.expanded)} />
-					{/snippet}
-				</CardShell>
-			</div>
-		</div>
-	{/snippet}
-</Story>
+			{#snippet close()}
+				<CardClose expanded={args.expanded} />
+			{/snippet}
+		</CardShell>
+	</div>
+</div>
 
 <style>
 	.token-story-stage {

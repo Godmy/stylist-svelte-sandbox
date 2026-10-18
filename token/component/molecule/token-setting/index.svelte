@@ -2,17 +2,7 @@
 	import { untrack } from 'svelte';
 	import type { TokenControlDefinition } from '$stylist/token/type/object/token-control-definition';
 	import type { TokenTokenValue as TokenValue } from '$stylist/design-token/type/alias/token-value';
-
-	type Props = {
-		definition: TokenControlDefinition;
-		value?: TokenValue;
-		showTokenDetails: boolean;
-		showDependencies: boolean;
-		showTooltip: boolean;
-		defaultTokenView: 'radio' | 'select';
-		dependencyCount?: number;
-		onChange?: (value: TokenValue) => void;
-	};
+	import type { RecipeTokenSetting } from '$stylist/token/interface/recipe/token-setting';
 
 	let {
 		definition,
@@ -23,7 +13,7 @@
 		defaultTokenView,
 		dependencyCount = 0,
 		onChange
-	}: Props = $props();
+	}: RecipeTokenSetting = $props();
 
 	const architectureSvgs = (import.meta as any).glob('/src/lib/architecture/data/svg/*.svg', {
 		eager: true,

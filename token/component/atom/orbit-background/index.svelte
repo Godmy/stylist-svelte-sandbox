@@ -1,7 +1,7 @@
 <script lang="ts">
-	import type { Snippet } from 'svelte';
+	import type { RecipeOrbitBackground } from '$stylist/token/interface/recipe/orbit-background';
 
-	let { opened = false, children }: { opened?: boolean; children?: Snippet } = $props();
+	let { opened = false, children }: RecipeOrbitBackground = $props();
 </script>
 
 <div class="orbit-bg" class:opened>

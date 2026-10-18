@@ -5,6 +5,9 @@
 	import OrbitBackground from '$stylist/token/component/atom/orbit-background/index.svelte';
 	import Orbit from '$stylist/token/component/molecule/orbit/index.svelte';
 	import { L6_TOKEN_DEFINITIONS } from '$stylist/token/const/object/orbit-control-definition';
+	import type { RecipePrismaticOrbitL6 } from '$stylist/token/interface/recipe/prismatic-orbit-l6';
+
+	let _props: RecipePrismaticOrbitL6 = $props();
 
 	let expanded = $state(false);
 	let orbitOpen = $state(false);

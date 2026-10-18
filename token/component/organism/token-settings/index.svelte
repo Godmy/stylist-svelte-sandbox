@@ -1,6 +1,7 @@
 <script lang="ts">
 	import TokenControlComposer from '$stylist/token/component/molecule/token/index.svelte';
 	import { TOKEN_SETTING } from '$stylist/token/const/object/token-setting';
+	import type { RecipeTokenSettings } from '$stylist/token/interface/recipe/token-settings';
 	import { createTokenSettingsState } from './state.svelte';
 
 	let {
@@ -8,12 +9,7 @@
 		title = 'Token Settings',
 		columns = 3,
 		showColumnControl = false
-	}: {
-		settings?: typeof TOKEN_SETTING;
-		title?: string;
-		columns?: number;
-		showColumnControl?: boolean;
-	} = $props();
+	}: RecipeTokenSettings = $props();
 
 	const settingsState = createTokenSettingsState(() => ({ settings }));
 	let gridColumns = $derived(columns);

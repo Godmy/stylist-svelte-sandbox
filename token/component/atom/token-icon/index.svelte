@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Icon from '$stylist/svg/component/atom/icon/index.svelte';
-	import type { TokenIconProps } from '$stylist/token/type/object/token-icon-props';
+	import type { RecipeTokenIcon } from '$stylist/token/interface/recipe/token-icon';
 
 	let {
 		title = 'Icon',
@@ -8,7 +8,7 @@
 		value = icons[0] ?? '',
 		class: className = '',
 		onSelect
-	}: TokenIconProps = $props();
+	}: RecipeTokenIcon = $props();
 </script>
 
 <div class={`token-icon ${className}`.trim()}>

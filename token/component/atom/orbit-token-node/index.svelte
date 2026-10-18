@@ -2,24 +2,10 @@
 	import { untrack } from 'svelte';
 	import Icon from '$stylist/svg/component/atom/icon/index.svelte';
 	import TokenControlComposer from '$stylist/token/component/molecule/token/index.svelte';
-	import type { TokenControlDefinition } from '$stylist/token/type/object/token-control-definition';
+	import type { RecipeOrbitTokenNode } from '$stylist/token/interface/recipe/orbit-token-node';
 	import type { TokenTokenValue as TokenValue } from '$stylist/design-token/type/alias/token-value';
 
-	let {
-		id,
-		icon,
-		label,
-		opened = false,
-		style = '',
-		definition
-	}: {
-		id: string;
-		icon: string;
-		label: string;
-		opened?: boolean;
-		style?: string;
-		definition: TokenControlDefinition;
-	} = $props();
+	let { id, icon, label, opened = false, style = '', definition }: RecipeOrbitTokenNode = $props();
 
 	let active = $state(false);
 	let value = $state<TokenValue>(untrack(() => definition.defaultValue ?? ''));
