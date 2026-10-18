@@ -1,17 +1,15 @@
 import type { TreeNode } from '$stylist/tree/type/object/tree-node';
 import { expandComponentTree } from '$stylist/domain/function/transform/expand-component-tree';
-import type { TypeDomainTreeInput } from '$stylist/domain/type/alias/domain-tree-input';
+import type { RecipeDomainExplorer } from '$stylist/domain/interface/recipe/domain-explorer';
 
 type PreviewMode = 'file' | 'markdown' | 'story' | 'json-tree' | 'di';
 type StoryModule = { default: unknown };
 
-interface DomainPageInput {
-	tree: TypeDomainTreeInput;
+interface DomainPageInput extends Pick<
+	RecipeDomainExplorer,
+	'tree' | 'initialDomain' | 'initialCluster' | 'initialJoint' | 'initialPreviewMode'
+> {
 	storyModules: Record<string, () => Promise<StoryModule>>;
-	initialDomain?: string;
-	initialCluster?: string;
-	initialJoint?: string;
-	initialPreviewMode?: PreviewMode;
 }
 
 interface SearchDomainEntry {

@@ -1,14 +1,12 @@
 <script lang="ts">
-	import Story from '$stylist/theme/component/molecule/story/index.svelte';
 	import DomainSidebar from './index.svelte';
+	import type { RecipeDomainSidebar } from '$stylist/domain/interface/recipe/domain-sidebar';
+	import type { SlotDomainEntity } from '$stylist/domain/interface/slot/domain-entity';
 
-	type StoryEntity = {
-		name: string;
-		path: string;
-		files: { path: string }[];
-	};
+	// Render of index.story.ts: the active domain, cluster, joint and entity are local state driven by the sidebar callbacks.
+	let args: RecipeDomainSidebar = $props();
 
-	const entitiesByDomain: Record<'layout' | 'theme' | 'button', StoryEntity[]> = {
+	const entitiesByDomain: Record<'layout' | 'theme' | 'button', SlotDomainEntity[]> = {
 		button: [
 			{
 				name: 'button',
@@ -46,43 +44,31 @@
 	let activeCluster = $state('component');
 	let activeJoint = $state('atom');
 	let activeEntityPath = $state<string>(entitiesByDomain.layout[0].path);
-
-	const availableJoints = ['atom', 'molecule', 'organism'] as const;
-	const availableDomains = ['layout', 'theme', 'button'] as const;
 </script>
 
-<Story
-	component={DomainSidebar}
-	title="DomainSidebar"
-	description="Module-aware taxonomy rail: design-system and interaction filter the domain column, followed by clusters, joints and entities."
->
-	{#snippet children()}
-		<div class="_c1">
-			<DomainSidebar
-				{activeDomain}
-				{activeCluster}
-				{activeJoint}
-				{availableDomains}
-				{availableJoints}
-				entities={entitiesByDomain[activeDomain]}
-				{activeEntityPath}
-				onDomainSelect={(name) => {
-					activeDomain = name === 'button' ? 'button' : name === 'theme' ? 'theme' : 'layout';
-					activeEntityPath = entitiesByDomain[activeDomain][0].path;
-				}}
-				onClusterSelect={(name) => {
-					activeCluster = name;
-				}}
-				onJointSelect={(name) => {
-					activeJoint = name;
-				}}
-				onEntitySelect={(path) => {
-					activeEntityPath = path;
-				}}
-			/>
-		</div>
-	{/snippet}
-</Story>
+<div class="_c1">
+	<DomainSidebar
+		{...args}
+		{activeDomain}
+		{activeCluster}
+		{activeJoint}
+		entities={entitiesByDomain[activeDomain]}
+		{activeEntityPath}
+		onDomainSelect={(name) => {
+			activeDomain = name === 'button' ? 'button' : name === 'theme' ? 'theme' : 'layout';
+			activeEntityPath = entitiesByDomain[activeDomain][0].path;
+		}}
+		onClusterSelect={(name) => {
+			activeCluster = name;
+		}}
+		onJointSelect={(name) => {
+			activeJoint = name;
+		}}
+		onEntitySelect={(path) => {
+			activeEntityPath = path;
+		}}
+	/>
+</div>
 
 <style>
 	._c1 {

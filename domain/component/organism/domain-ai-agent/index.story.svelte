@@ -1,24 +1,19 @@
 <script lang="ts">
-	import Story from '$stylist/theme/component/molecule/story/index.svelte';
 	import DomainAiAgent from './index.svelte';
+	import type { RecipeDomainAiAgent } from '$stylist/domain/interface/recipe/domain-ai-agent';
 
-	let open = $state(true);
+	// Render of index.story.ts: the close button needs local state to hide and reopen the panel.
+	let args: RecipeDomainAiAgent = $props();
+	let dismissed = $state(false);
+	const open = $derived(Boolean(args.open) && !dismissed);
 </script>
 
-<Story
-	component={DomainAiAgent}
-	title="DomainAiAgent"
-	description="Floating panel for the AI agent workspace, opened from the AI button in DomainMenu."
->
-	{#snippet children()}
-		<div class="_c1">
-			<DomainAiAgent {open} onClose={() => (open = false)} />
-			{#if !open}
-				<button type="button" class="_c2" onclick={() => (open = true)}>Reopen panel</button>
-			{/if}
-		</div>
-	{/snippet}
-</Story>
+<div class="_c1">
+	<DomainAiAgent {...args} {open} onClose={() => (dismissed = true)} />
+	{#if dismissed}
+		<button type="button" class="_c2" onclick={() => (dismissed = false)}>Reopen panel</button>
+	{/if}
+</div>
 
 <style>
 	._c1 {
