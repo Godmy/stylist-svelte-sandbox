@@ -38,6 +38,13 @@ describe('story contracts of the public modules', () => {
 		expect(legacy).toEqual([]);
 	});
 
+	it('gives every component family an index.story.ts contract', () => {
+		const missing = Object.keys(components)
+			.filter((path) => !(path.replace(/\.svelte$/, '.story.ts') in contracts))
+			.map((path) => family(path.replace(/\/index\.svelte$/, '/index.story.ts')));
+		expect(missing).toEqual([]);
+	});
+
 	describe.each(Object.keys(contracts).map((path) => [family(path), path] as const))(
 		'%s',
 		(_, path) => {
