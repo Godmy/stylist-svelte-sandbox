@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { untrack } from 'svelte';
+	import { onMount, untrack } from 'svelte';
 	import { DOMAIN_SCREEN } from '$stylist/domain/const/object/domain-screen';
 	import DomainMenu from '$stylist/domain/component/molecule/domain-menu/index.svelte';
 	import DeviceViewport from '$stylist/domain/component/molecule/device-viewport/index.svelte';
@@ -8,6 +8,7 @@
 	import DomainLanding from '$stylist/domain/component/page/domain-landing/index.svelte';
 	import type { DeviceFrameViewport } from '$stylist/domain/type/alias/device-frame-viewport';
 	import type { RecipeDomainPlayground } from '$stylist/domain/interface/recipe/domain-playground';
+	import type { RecipeDomainSettings } from '$stylist/domain/interface/recipe/domain-settings';
 	import { countDomainStories } from '$stylist/domain/function/count/stories';
 
 	let {
@@ -21,6 +22,36 @@
 	}: RecipeDomainPlayground = $props();
 
 	const screenState = createDomainPlaygroundState(untrack(() => initialScreen));
+	let iconSizes = $state<NonNullable<RecipeDomainSettings['iconSizes']>>({
+		module: 16,
+		domain: 16,
+		cluster: 16,
+		joint: 16
+	});
+	let iconSizesLoaded = $state(false);
+	onMount(() => {
+		try {
+			const saved = JSON.parse(localStorage.getItem('stylist-domain-icon-sizes') ?? 'null');
+			for (const key of ['module', 'domain', 'cluster', 'joint'] as const) {
+				const size = saved?.[key];
+				if (typeof size === 'number' && Number.isInteger(size) && size >= 12 && size <= 32) {
+					iconSizes[key] = size;
+				}
+			}
+		} catch {
+			// Storage can be unavailable or contain an outdated value.
+		}
+		iconSizesLoaded = true;
+	});
+	$effect(() => {
+		if (!iconSizesLoaded) return;
+		const saved = JSON.stringify(iconSizes);
+		try {
+			localStorage.setItem('stylist-domain-icon-sizes', saved);
+		} catch {
+			// Resizing still works when browser storage is unavailable.
+		}
+	});
 	let storyDevice = $state<DeviceFrameViewport>('desktop');
 	let storyWidths = $state<Record<DeviceFrameViewport, number | null>>({
 		mobile: 375,
@@ -52,6 +83,10 @@
 	class="c-domain-playground {className}"
 	class:c-domain-playground--domain={screenState.currentScreen === DOMAIN_SCREEN.DOMAIN}
 	class:fullscreen={fullscreen && screenState.currentScreen === DOMAIN_SCREEN.DOMAIN}
+	style:--domain-module-icon-size="{iconSizes.module}px"
+	style:--domain-domain-icon-size="{iconSizes.domain}px"
+	style:--domain-cluster-icon-size="{iconSizes.cluster}px"
+	style:--domain-joint-icon-size="{iconSizes.joint}px"
 >
 	{#if screenState.currentScreen === DOMAIN_SCREEN.DOMAIN}
 		{#await loadDomainExplorer() then module}
@@ -126,7 +161,11 @@
 {#if screenState.isSettingsOpen}
 	{#await loadDomainSettings() then module}
 		{@const DomainSettings = module.default}
-		<DomainSettings open={screenState.isSettingsOpen} onClose={screenState.closeSettings} />
+		<DomainSettings
+			open={screenState.isSettingsOpen}
+			bind:iconSizes
+			onClose={screenState.closeSettings}
+		/>
 	{/await}
 {/if}
 

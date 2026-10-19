@@ -64,7 +64,16 @@
 	onMount(() => {
 		let mounted = true;
 		const converted = new Map<HTMLElement, string>();
+		const iconTitles = new Map<SVGTitleElement, Node>();
 		const convert = () => {
+			// SVG title elements trigger native tooltips independently of HTML title attributes.
+			// Controls already get their accessible name and styled hint from the button/link.
+			for (const title of document.querySelectorAll<SVGTitleElement>(
+				`${root} button svg title, ${root} a svg title, ${root} svg[aria-hidden="true"] title`
+			)) {
+				if (title.parentNode) iconTitles.set(title, title.parentNode);
+				title.remove();
+			}
 			for (const element of document.querySelectorAll<HTMLElement>(`${root} [title]`)) {
 				const title = element.getAttribute('title');
 				if (!title) continue;
@@ -123,6 +132,7 @@
 				element.setAttribute('title', title);
 				delete element.dataset.hint;
 			}
+			for (const [title, parent] of iconTitles) parent.appendChild(title);
 		};
 	});
 </script>

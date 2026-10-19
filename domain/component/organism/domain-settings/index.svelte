@@ -4,7 +4,14 @@
 	import { ManagerThemeContext } from '$stylist/theme/class/manager/theme-context';
 	import type { RecipeDomainSettings } from '$stylist/domain/interface/recipe/domain-settings';
 
-	let { open = false, onClose, class: className = '' }: RecipeDomainSettings = $props();
+	let {
+		open = false,
+		iconSizes = $bindable({ module: 16, domain: 16, cluster: 16, joint: 16 }),
+		onClose,
+		class: className = ''
+	}: RecipeDomainSettings = $props();
+	const id = $props.id();
+	const panels = ['module', 'domain', 'cluster', 'joint'] as const;
 
 	const themeContext = ManagerThemeContext.getOptional();
 	const settingsRecipe = $derived(
@@ -43,6 +50,36 @@
 		</header>
 
 		<div class="panel-body">
+			<section class="icon-settings" aria-labelledby="{id}-icons">
+				<h3 id="{id}-icons">Panel icon sizes</h3>
+				<p>Adjust each navigation panel independently.</p>
+				{#each panels as panel (panel)}
+					<label class="icon-size-control" for="{id}-{panel}">
+						<span>{panel}</span>
+						<output for="{id}-{panel}">{iconSizes[panel]} px</output>
+						<input
+							id="{id}-{panel}"
+							type="range"
+							min="12"
+							max="32"
+							step="1"
+							value={iconSizes[panel]}
+							aria-label={`${panel} icon size`}
+							aria-valuetext={`${iconSizes[panel]} pixels`}
+							oninput={(event) => {
+								iconSizes = { ...iconSizes, [panel]: event.currentTarget.valueAsNumber };
+							}}
+						/>
+					</label>
+				{/each}
+				<button
+					type="button"
+					class="reset-icons"
+					onclick={() => (iconSizes = { module: 16, domain: 16, cluster: 16, joint: 16 })}
+				>
+					Reset icon sizes
+				</button>
+			</section>
 			<div class="settings-offset">
 				<ThemeSettings
 					{...settingsRecipe}
@@ -55,6 +92,65 @@
 {/if}
 
 <style>
+	.icon-settings {
+		display: grid;
+		gap: 0.8rem;
+		margin-bottom: 1.25rem;
+		padding: 1rem;
+		border: 1px solid var(--color-border-primary);
+		border-radius: 18px;
+		background: var(--color-background-primary);
+		color: var(--color-text-primary);
+	}
+
+	.icon-settings h3,
+	.icon-settings p {
+		margin: 0;
+	}
+
+	.icon-settings h3 {
+		font-size: 0.95rem;
+	}
+
+	.icon-settings p,
+	.icon-size-control {
+		font-size: 0.82rem;
+	}
+
+	.icon-settings p,
+	.icon-size-control output {
+		color: var(--color-text-secondary);
+	}
+
+	.icon-size-control {
+		display: grid;
+		grid-template-columns: 1fr auto;
+		gap: 0.4rem;
+	}
+
+	.icon-size-control span {
+		text-transform: capitalize;
+	}
+
+	.icon-size-control input {
+		grid-column: 1 / -1;
+		width: 100%;
+		margin: 0;
+		accent-color: var(--color-primary-500);
+	}
+
+	.reset-icons {
+		justify-self: start;
+		padding: 0.45rem 0.7rem;
+		border: 1px solid var(--color-border-primary);
+		border-radius: 8px;
+		background: var(--color-background-secondary);
+		color: var(--color-text-primary);
+		font: inherit;
+		font-size: 0.8rem;
+		cursor: pointer;
+	}
+
 	.c-domain-settings {
 		position: fixed;
 		top: 5.25rem;

@@ -99,29 +99,34 @@
 
 	.sidebar-grid {
 		display: grid;
-		grid-template-columns: 32px 32px minmax(0, 1fr);
+		grid-template-columns:
+			calc(var(--domain-module-icon-size, 16px) + 16px)
+			calc(var(--domain-domain-icon-size, 16px) + 16px) minmax(216px, max-content);
 		grid-template-rows: auto auto minmax(0, 1fr);
 		min-height: 0;
 		align-content: start;
 	}
 
 	.sidebar-grid :global(.c-domain-toolbar) {
+		--taxonomy-icon-size: var(--domain-domain-icon-size, 16px);
 		grid-column: 2;
 		grid-row: 1 / span 3;
 		box-sizing: border-box;
-		width: 32px;
+		width: calc(var(--taxonomy-icon-size) + 16px);
 		height: auto;
 		align-self: stretch;
 		border-right: 1px solid var(--color-border-primary);
 	}
 
 	.sidebar-grid :global(.c-cluster-toolbar) {
+		--taxonomy-icon-size: var(--domain-cluster-icon-size, 16px);
 		grid-column: 3;
 		grid-row: 1;
 		min-width: 0;
 	}
 
 	.sidebar-grid :global(.c-joint-toolbar) {
+		--taxonomy-icon-size: var(--domain-joint-icon-size, 16px);
 		grid-column: 3;
 		grid-row: 2;
 		min-width: 0;
@@ -131,6 +136,18 @@
 		grid-column: 3;
 		grid-row: 3;
 		min-height: 0;
+		min-width: 0;
+		contain: inline-size;
+	}
+	.sidebar-grid :global(.c-icon-toolbar .toolbar-btn) {
+		width: calc(var(--taxonomy-icon-size, 16px) + 12px);
+		height: calc(var(--taxonomy-icon-size, 16px) + 12px);
+		flex-shrink: 0;
+	}
+	.sidebar-grid :global(.c-icon-toolbar .icon),
+	.sidebar-grid :global(.c-icon-toolbar .icon svg) {
+		width: var(--taxonomy-icon-size, 16px);
+		height: var(--taxonomy-icon-size, 16px);
 	}
 	.module-toolbar {
 		grid-column: 1;
@@ -140,13 +157,17 @@
 		align-items: center;
 		gap: 1px;
 		padding: 2px;
+		min-height: 0;
+		overflow-y: auto;
+		overflow-x: hidden;
 		border-right: 1px solid var(--color-border-primary);
 	}
 	.module-toolbar button {
 		display: grid;
 		place-items: center;
-		width: 28px;
-		height: 28px;
+		width: calc(var(--domain-module-icon-size, 16px) + 12px);
+		height: calc(var(--domain-module-icon-size, 16px) + 12px);
+		flex-shrink: 0;
 		padding: 0;
 		border: 0;
 		border-radius: 4px;
@@ -168,7 +189,20 @@
 		outline-offset: -2px;
 	}
 	.module-toolbar :global(svg) {
-		width: 16px;
-		height: 16px;
+		width: var(--domain-module-icon-size, 16px);
+		height: var(--domain-module-icon-size, 16px);
+	}
+
+	@media (max-width: 840px) {
+		.sidebar-grid {
+			grid-template-columns:
+				calc(var(--domain-module-icon-size, 16px) + 16px)
+				calc(var(--domain-domain-icon-size, 16px) + 16px) minmax(0, 1fr);
+		}
+
+		.sidebar-grid :global(.c-cluster-toolbar),
+		.sidebar-grid :global(.c-joint-toolbar) {
+			flex-wrap: wrap;
+		}
 	}
 </style>

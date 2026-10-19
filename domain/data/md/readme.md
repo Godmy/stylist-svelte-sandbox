@@ -16,6 +16,10 @@ New standalone module roots are discovered with `/modules/*/component/**/index.s
 
 `molecule/workspace-hints` supplies immediate hover and keyboard-focus hints throughout the workspace. It converts native `title` attributes into styled hints and also consumes `data-hint` and button `aria-label` text. Hints stay within the viewport, render above menu layers, and close on click, Escape, scrolling or blur. File tabs provide descriptive hints and source paths. The domain rail has a full-height divider matching the module rail.
 
+SVG `title` elements inside controls and decorative icons are suppressed, including icons loaded asynchronously, so they cannot add a second native tooltip over the styled hint. Standalone accessible illustrations retain their titles. The `design-token` domain uses its own geometric token icon from the SVG registry.
+
+Settings includes independent module, domain, cluster and joint icon sizes (12–32px, default 16px), applied immediately to the taxonomy sidebar. Rail widths and button sizes grow with their icons. On desktop, the sidebar's right boundary follows the combined rail widths and the wider cluster/joint row, without horizontal scrolling inside those rows. Entity names do not affect the sidebar width. On narrow screens, cluster and joint buttons wrap within the available width. Values persist in browser storage; Reset icon sizes restores all four defaults.
+
 ```text
 component/page/domain-playground          - root shell and screen switcher
 ├─ component/page/domain-landing          - landing page for the domain workspace

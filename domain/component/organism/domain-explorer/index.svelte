@@ -155,7 +155,7 @@
 <style>
 	.c-domain-explorer {
 		display: grid;
-		grid-template-columns: 281px minmax(0, 1fr);
+		grid-template-columns: minmax(281px, max-content) minmax(0, 1fr);
 		transition: grid-template-columns 180ms ease;
 		height: 100%;
 		min-height: 0;
@@ -173,7 +173,7 @@
 		transition: transform 180ms ease;
 	}
 	.explorer-rail :global(.c-domain-sidebar) {
-		width: 281px;
+		width: 100%;
 		box-sizing: border-box;
 		height: 100%;
 		min-height: 0;
