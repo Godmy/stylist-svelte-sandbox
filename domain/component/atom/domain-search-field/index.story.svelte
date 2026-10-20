@@ -1,36 +1,26 @@
 <script lang="ts">
-	import Story from '$stylist/theme/component/molecule/story/index.svelte';
+	// Render of index.story.ts: the value is bound to local state that onEscape clears.
 	import DomainSearchField from './index.svelte';
+	import type { RecipeDomainSearchField } from '$stylist/domain/interface/recipe/domain-search-field';
 
-	let value = $state('');
+	let args: RecipeDomainSearchField = $props();
+	// Follows the args and is overwritten by typing and Escape.
+	let value = $derived(args.value ?? '');
 </script>
 
-<Story
-	component={DomainSearchField}
-	title="DomainSearchField"
-	description="Search input used inside the domain quick-search overlay."
->
-	{#snippet children()}
-		<div class="_c1">
-			<DomainSearchField bind:value onEscape={() => (value = '')} />
-			<p class="_c2">Value: {value || 'empty'}</p>
-		</div>
-	{/snippet}
-</Story>
+<div class="_c1">
+	<DomainSearchField {...args} bind:value onEscape={() => (value = '')} />
+	<p class="_c2">Value: {value || 'empty'}</p>
+</div>
 
 <style>
 	._c1 {
 		display: grid;
 		gap: 0.5rem;
-		border-radius: 1rem;
-		border-width: 1px;
-		border-style: solid;
-		border-color: #e2e8f0;
-		background-color: #f8fafc;
-		padding: 1rem;
 	}
 	._c2 {
+		margin: 0;
 		font-size: 0.875rem;
-		color: #64748b;
+		color: var(--color-text-secondary);
 	}
 </style>

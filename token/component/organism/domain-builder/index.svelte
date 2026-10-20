@@ -2,33 +2,11 @@
 	import { onMount, untrack } from 'svelte';
 	import DomainDescriptorPanel from '$stylist/token/component/molecule/domain-descriptor-panel/index.svelte';
 	import DomainSidebar from '$stylist/domain/component/organism/domain-sidebar/index.svelte';
-	import type { TypeDomainComponentDescriptor } from '$stylist/domain/type/object/domain-component-descriptor';
+	import type { RecipeDomainBuilder } from '$stylist/token/interface/recipe/domain-builder';
 
-	type BuilderFile = {
-		name: string;
-		path: string;
-	};
-
-	type BuilderEntity = {
-		name: string;
-		path: string;
-		files: BuilderFile[];
-	};
-
-	type BuilderJoint = {
-		name: string;
-		entities: BuilderEntity[];
-	};
-
-	type BuilderCluster = {
-		name: string;
-		joints: BuilderJoint[];
-	};
-
-	type BuilderDomain = {
-		name: string;
-		clusters: BuilderCluster[];
-	};
+	type BuilderDomain = NonNullable<RecipeDomainBuilder['tree']>[number];
+	type BuilderCluster = BuilderDomain['clusters'][number];
+	type BuilderEntity = BuilderCluster['joints'][number]['entities'][number];
 
 	type BuilderColumnCount = 1 | 2 | 3;
 
@@ -107,15 +85,7 @@
 
 	const availableComponentJoints = ['atom', 'molecule', 'organism'] as const;
 
-	let {
-		tree = [],
-		descriptors = [],
-		class: className = ''
-	}: {
-		tree?: BuilderDomain[];
-		descriptors?: TypeDomainComponentDescriptor[];
-		class?: string;
-	} = $props();
+	let { tree = [], descriptors = [], class: className = '' }: RecipeDomainBuilder = $props();
 
 	const componentDomains = $derived(
 		tree.filter((domain: BuilderDomain) =>

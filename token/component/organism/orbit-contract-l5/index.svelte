@@ -1,15 +1,12 @@
 <script lang="ts">
 	import Icon from '$stylist/svg/component/atom/icon/index.svelte';
+	import type { RecipeOrbitContractL5 } from '$stylist/token/interface/recipe/orbit-contract-l5';
 
 	let {
 		opened: openedExternal = null,
 		showCore = true,
 		showCaption = true
-	}: {
-		opened?: boolean | null;
-		showCore?: boolean;
-		showCaption?: boolean;
-	} = $props();
+	}: RecipeOrbitContractL5 = $props();
 
 	type OrbitGroup = 'architecture' | 'information' | 'interaction';
 

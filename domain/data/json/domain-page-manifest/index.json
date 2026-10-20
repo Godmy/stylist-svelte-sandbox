@@ -10,37 +10,37 @@
       },
       "component": {
         "atom": {
-          "animated-background": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "animated-digit": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "arc-letter": "INDEXED_STORY_COMPONENT",
-          "beach-water": "INDEXED_STORY_COMPONENT",
-          "css-3d-cube": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "floating-icon": "INDEXED_STORY_COMPONENT",
-          "layout-transformation": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "letter-arc-path": "INDEXED_STORY_COMPONENT",
-          "marquee-ticker": "INDEXED_STORY_COMPONENT",
-          "palm-sway": "INDEXED_STORY_COMPONENT",
-          "progress-bar": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "scroll-phase-debug": "INDEXED_STORY_COMPONENT",
-          "skeleton": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "spinner": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "tooltip": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "transformable": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "turtle-crawl": "INDEXED_STORY_COMPONENT",
-          "turtle-logo-mark": "INDEXED_STORY_COMPONENT",
-          "vector-scene": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "wave-surf": "INDEXED_STORY_COMPONENT",
-          "whale-spout": "INDEXED_STORY_COMPONENT"
+          "animated-background": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "animated-digit": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "arc-letter": "DEFINED_STORY_COMPONENT",
+          "beach-water": "DEFINED_STORY_COMPONENT",
+          "css-3d-cube": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "floating-icon": "DEFINED_STORY_COMPONENT",
+          "layout-transformation": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "letter-arc-path": "DEFINED_STORY_COMPONENT",
+          "marquee-ticker": "DEFINED_RENDERED_STORY_COMPONENT",
+          "palm-sway": "DEFINED_STORY_COMPONENT",
+          "progress-bar": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "scroll-phase-debug": "DEFINED_STORY_COMPONENT",
+          "skeleton": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "spinner": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "tooltip": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "transformable": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "turtle-crawl": "DEFINED_STORY_COMPONENT",
+          "turtle-logo-mark": "DEFINED_STORY_COMPONENT",
+          "vector-scene": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "wave-surf": "DEFINED_STORY_COMPONENT",
+          "whale-spout": "DEFINED_STORY_COMPONENT"
         },
         "molecule": {
-          "atomic-tier-card": "INDEXED_STORY_COMPONENT",
-          "loading": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "phrase-arc-flight": "INDEXED_STORY_COMPONENT"
+          "atomic-tier-card": "DEFINED_STORY_COMPONENT",
+          "loading": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "phrase-arc-flight": "DEFINED_STORY_COMPONENT"
         },
         "organism": {
-          "atomic-principles-showcase": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "component-library-stats": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "media-slider": "DOCUMENTED_INDEXED_REACTIVE_STORY_COMPONENT"
+          "atomic-principles-showcase": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "component-library-stats": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "media-slider": "DOCUMENTED_DEFINED_RENDERED_REACTIVE_STORY_COMPONENT"
         }
       },
       "const": {
@@ -134,13 +134,13 @@
       },
       "component": {
         "atom": {
-          "audio-record-button": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "audio-slider": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "audio-visualizer": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "audio-record-button": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "audio-slider": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "audio-visualizer": "DEFINED_REACTIVE_STORY_COMPONENT"
         },
         "organism": {
-          "audio-player": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "transcriber": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "audio-player": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "transcriber": "DEFINED_REACTIVE_STORY_COMPONENT"
         }
       },
       "const": {
@@ -178,22 +178,22 @@
     "button": {
       "component": {
         "atom": {
-          "animated-button": "DOCUMENTED_INDEXED_STORY_COMPONENT",
-          "arrow-button": "INDEXED_STORY_COMPONENT",
-          "button": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "button-composed": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "close-button": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "copy-button": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "fill-button": "INDEXED_STORY_COMPONENT",
-          "follow-button": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "glow-button": "INDEXED_STORY_COMPONENT",
-          "icon-button": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "morph-button": "INDEXED_STORY_COMPONENT",
-          "selection-button": "INDEXED_STORY_COMPONENT",
-          "shine-button": "INDEXED_STORY_COMPONENT",
-          "split-button": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "tool-button": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "whatsapp-button": "INDEXED_STORY_COMPONENT"
+          "animated-button": "DOCUMENTED_DEFINED_STORY_COMPONENT",
+          "arrow-button": "DEFINED_STORY_COMPONENT",
+          "button": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "button-composed": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "close-button": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "copy-button": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "fill-button": "DEFINED_STORY_COMPONENT",
+          "follow-button": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "glow-button": "DEFINED_STORY_COMPONENT",
+          "icon-button": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "morph-button": "DEFINED_STORY_COMPONENT",
+          "selection-button": "DEFINED_STORY_COMPONENT",
+          "shine-button": "DEFINED_STORY_COMPONENT",
+          "split-button": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "tool-button": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "whatsapp-button": "DEFINED_STORY_COMPONENT"
         }
       },
       "const": {
@@ -247,27 +247,27 @@
     "calendar": {
       "component": {
         "atom": {
-          "calendar-day": "INDEXED_STORY_COMPONENT",
-          "time-slot": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "calendar-day": "DEFINED_RENDERED_STORY_COMPONENT",
+          "time-slot": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT"
         },
         "molecule": {
-          "calendar-grid": "INDEXED_STORY_COMPONENT",
-          "date-picker": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "date-time-picker": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "form-date-picker": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "time-picker": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "timeline": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "calendar-grid": "DEFINED_RENDERED_STORY_COMPONENT",
+          "date-picker": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "date-time-picker": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "form-date-picker": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "time-picker": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "timeline": "DEFINED_REACTIVE_STORY_COMPONENT"
         },
         "organism": {
-          "calendar": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "calendar-range": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "calendar-view": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "date-pair-picker": "INDEXED_COMPONENT",
-          "date-range-picker": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "date-time-range-picker": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "event-calendar": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "mini-calendar": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "time-grid": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "calendar": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "calendar-range": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "calendar-view": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "date-pair-picker": "DEFINED_RENDERED_STORY_COMPONENT",
+          "date-range-picker": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "date-time-range-picker": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "event-calendar": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "mini-calendar": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "time-grid": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT"
         }
       },
       "const": {
@@ -332,15 +332,15 @@
       },
       "component": {
         "molecule": {
-          "canvas-toolbar": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "color-palette": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "drawing-overlay": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "drawing-surface": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "screenshot-selector": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "canvas-toolbar": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "color-palette": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "drawing-overlay": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "drawing-surface": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "screenshot-selector": "DEFINED_REACTIVE_STORY_COMPONENT"
         },
         "organism": {
-          "collaborative-editor": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "shared-canvas": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "collaborative-editor": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "shared-canvas": "DEFINED_REACTIVE_STORY_COMPONENT"
         }
       },
       "const": {
@@ -431,41 +431,41 @@
       },
       "component": {
         "atom": {
-          "chart-axis-x": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "chart-axis-y": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "chart-axis-z": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "chart-background": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "chart-name": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "chart-polyline": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "metric-bar": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "chart-axis-x": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "chart-axis-y": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "chart-axis-z": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "chart-background": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "chart-name": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "chart-polyline": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "metric-bar": "DEFINED_REACTIVE_STORY_COMPONENT"
         },
         "molecule": {
-          "bar-chart": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "chart-canvas": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "chart-legend": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "chart-legend-band": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "chart-legend-bar": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "metric-bars-card": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "pie-chart": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "range-bars-chart": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "vertical-bars-chart": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "bar-chart": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "chart-canvas": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "chart-legend": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "chart-legend-band": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "chart-legend-bar": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "metric-bars-card": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "pie-chart": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "range-bars-chart": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "vertical-bars-chart": "DEFINED_REACTIVE_STORY_COMPONENT"
         },
         "organism": {
-          "analytics-chart": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "canvas-chart": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "chart": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "critical-path-timeline": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "exchange-oracle-forecast": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "expert-agreement-radar": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "expert-spread-matrix": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "heatmap": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "legend-band-diagram": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "legend-bar-diagram": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "line-chart": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "outlier-constellation": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "risk-impact-map": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "scatter-plot": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "wideband-delphi-diagram": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "analytics-chart": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "canvas-chart": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "chart": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "critical-path-timeline": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "exchange-oracle-forecast": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "expert-agreement-radar": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "expert-spread-matrix": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "heatmap": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "legend-band-diagram": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "legend-bar-diagram": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "line-chart": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "outlier-constellation": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "risk-impact-map": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "scatter-plot": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "wideband-delphi-diagram": "DEFINED_REACTIVE_STORY_COMPONENT"
         }
       },
       "const": {
@@ -565,31 +565,31 @@
       },
       "component": {
         "atom": {
-          "action-segmented-control": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "autocomplete-dropdown": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "checkbox": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "chip": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "radio": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "stepper": "INDEXED_STORY_COMPONENT",
-          "switch": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "tag": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "tick": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "toggle-group-item": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "toggle-group-root": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "zoom-controls": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "action-segmented-control": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "autocomplete-dropdown": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "checkbox": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "chip": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "radio": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "stepper": "DEFINED_STORY_COMPONENT",
+          "switch": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "tag": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "tick": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "toggle-group-item": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "toggle-group-root": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "zoom-controls": "DEFINED_REACTIVE_STORY_COMPONENT"
         },
         "molecule": {
-          "combobox": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "icon-toolbar": "INDEXED_STORY_COMPONENT",
-          "range-input": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "range-slider": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "selector": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "slider-with-input": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "combobox": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "icon-toolbar": "DEFINED_RENDERED_STORY_COMPONENT",
+          "range-input": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "range-slider": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "selector": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "slider-with-input": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT"
         },
         "organism": {
-          "accessibility-toolbar": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "multi-select": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "shortcuts-panel": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "accessibility-toolbar": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "multi-select": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "shortcuts-panel": "DEFINED_REACTIVE_STORY_COMPONENT"
         }
       },
       "const": {
@@ -776,29 +776,29 @@
       },
       "component": {
         "atom": {
-          "cube-control": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "npm-badge": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "syntax-highlighted-code": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "cube-control": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "npm-badge": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "syntax-highlighted-code": "DEFINED_REACTIVE_STORY_COMPONENT"
         },
         "molecule": {
-          "code-block": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "code-diff": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "code-editor": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "component-preview": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "documentation-block": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "privacy-settings": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "code-block": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "code-diff": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "code-editor": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "component-preview": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "documentation-block": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "privacy-settings": "DEFINED_REACTIVE_STORY_COMPONENT"
         },
         "organism": {
-          "code-viewer": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "content-editor": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "debug-console": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "development-error-boundary": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "enhanced-export-panel": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "error-boundary": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "generic-code-viewer": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "live-code-section": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "mock-data-selector": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "page-builder": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "code-viewer": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "content-editor": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "debug-console": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "development-error-boundary": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "enhanced-export-panel": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "error-boundary": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "generic-code-viewer": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "live-code-section": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "mock-data-selector": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "page-builder": "DEFINED_REACTIVE_STORY_COMPONENT"
         }
       },
       "const": {
@@ -898,33 +898,33 @@
       },
       "component": {
         "atom": {
-          "accordion-layout": "INDEXED_STORY_COMPONENT",
-          "breadcrumb-dropdown": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "breadcrumb-link": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "breadcrumb-separator": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "breadcrumbs": "INDEXED_STORY_COMPONENT",
-          "tab": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "tab-list": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "tab-panel": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "tab-panels": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "accordion-layout": "DEFINED_RENDERED_STORY_COMPONENT",
+          "breadcrumb-dropdown": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "breadcrumb-link": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "breadcrumb-separator": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "breadcrumbs": "DEFINED_RENDERED_STORY_COMPONENT",
+          "tab": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "tab-list": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "tab-panel": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "tab-panels": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT"
         },
         "molecule": {
-          "accordion": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "accordion-group": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "breadcrumbs": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "confirmation-dialog": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "dialog-confirm": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "general-toolbar": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "stepper": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "stylist-tab": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "tabs": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "accordion": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "accordion-group": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "breadcrumbs": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "confirmation-dialog": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "dialog-confirm": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "general-toolbar": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "stepper": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "stylist-tab": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "tabs": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT"
         },
         "organism": {
-          "component-info-card": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "dialog": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "modal": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "simple-modal": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "text-input-dialog": "INDEXED_STORY_COMPONENT"
+          "component-info-card": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "dialog": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "modal": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "simple-modal": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "text-input-dialog": "DEFINED_RENDERED_STORY_COMPONENT"
         }
       },
       "const": {
@@ -978,68 +978,68 @@
     "domain": {
       "component": {
         "atom": {
-          "domain-entity": "INDEXED_STORY_COMPONENT",
-          "domain-list-header": "INDEXED_STORY_COMPONENT",
-          "domain-search-field": "INDEXED_STORY_COMPONENT",
-          "domain-search-toggle": "INDEXED_STORY_COMPONENT",
-          "story-control": "INDEXED_COMPONENT"
+          "domain-entity": "DEFINED_STORY_COMPONENT",
+          "domain-list-header": "DEFINED_STORY_COMPONENT",
+          "domain-search-field": "DEFINED_RENDERED_STORY_COMPONENT",
+          "domain-search-toggle": "DEFINED_RENDERED_STORY_COMPONENT",
+          "story-control": "DEFINED_STORY_COMPONENT"
         },
         "molecule": {
-          "cluster-toolbar": "INDEXED_STORY_COMPONENT",
-          "cta-buttons": "INDEXED_COMPONENT",
-          "device-viewport": "INDEXED_STORY_COMPONENT",
-          "domain-list": "INDEXED_STORY_COMPONENT",
-          "domain-menu": "INDEXED_STORY_COMPONENT",
-          "domain-search": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "domain-toolbar": "INDEXED_STORY_COMPONENT",
-          "feature-grid": "INDEXED_COMPONENT",
-          "joint-tab-buttons": "INDEXED_STORY_COMPONENT",
-          "joint-toolbar": "INDEXED_STORY_COMPONENT",
-          "json-tree-viewer": "INDEXED_STORY_COMPONENT",
-          "preview-settings": "INDEXED_COMPONENT",
-          "samo-adoption-roadmap": "INDEXED_STORY_COMPONENT",
-          "samo-architecture-compare": "INDEXED_STORY_COMPONENT",
-          "samo-assembly-pipeline": "INDEXED_STORY_COMPONENT",
-          "samo-change-flow": "INDEXED_STORY_COMPONENT",
-          "samo-extension-walkthrough": "INDEXED_STORY_COMPONENT",
-          "samo-guide-hero": "INDEXED_STORY_COMPONENT",
-          "samo-local-dev": "INDEXED_STORY_COMPONENT",
-          "samo-morphology-box": "INDEXED_STORY_COMPONENT",
-          "samo-nested-methods": "INDEXED_STORY_COMPONENT",
-          "samo-overview": "INDEXED_STORY_COMPONENT",
-          "samo-platform-stack": "INDEXED_STORY_COMPONENT",
-          "samo-practice": "INDEXED_STORY_COMPONENT",
-          "samo-risk-board": "INDEXED_STORY_COMPONENT",
-          "samo-solid-grid": "INDEXED_STORY_COMPONENT",
-          "samo-umbrella-map": "INDEXED_STORY_COMPONENT",
-          "story-canvas": "INDEXED_COMPONENT",
-          "story-controls": "INDEXED_REACTIVE_COMPONENT",
-          "stylist-hero-intro": "INDEXED_COMPONENT",
-          "stylist-mission": "INDEXED_COMPONENT",
-          "taxonomy-breadcrumbs": "INDEXED_STORY_COMPONENT",
-          "workspace-hints": "INDEXED_COMPONENT"
+          "cluster-toolbar": "DEFINED_RENDERED_STORY_COMPONENT",
+          "cta-buttons": "DEFINED_STORY_COMPONENT",
+          "device-viewport": "DEFINED_RENDERED_STORY_COMPONENT",
+          "domain-list": "DEFINED_RENDERED_STORY_COMPONENT",
+          "domain-menu": "DEFINED_RENDERED_STORY_COMPONENT",
+          "domain-search": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "domain-toolbar": "DEFINED_RENDERED_STORY_COMPONENT",
+          "feature-grid": "DEFINED_STORY_COMPONENT",
+          "joint-tab-buttons": "DEFINED_RENDERED_STORY_COMPONENT",
+          "joint-toolbar": "DEFINED_RENDERED_STORY_COMPONENT",
+          "json-tree-viewer": "DEFINED_STORY_COMPONENT",
+          "preview-settings": "DEFINED_RENDERED_STORY_COMPONENT",
+          "samo-adoption-roadmap": "DEFINED_STORY_COMPONENT",
+          "samo-architecture-compare": "DEFINED_STORY_COMPONENT",
+          "samo-assembly-pipeline": "DEFINED_STORY_COMPONENT",
+          "samo-change-flow": "DEFINED_STORY_COMPONENT",
+          "samo-extension-walkthrough": "DEFINED_STORY_COMPONENT",
+          "samo-guide-hero": "DEFINED_STORY_COMPONENT",
+          "samo-local-dev": "DEFINED_STORY_COMPONENT",
+          "samo-morphology-box": "DEFINED_STORY_COMPONENT",
+          "samo-nested-methods": "DEFINED_STORY_COMPONENT",
+          "samo-overview": "DEFINED_STORY_COMPONENT",
+          "samo-platform-stack": "DEFINED_STORY_COMPONENT",
+          "samo-practice": "DEFINED_STORY_COMPONENT",
+          "samo-risk-board": "DEFINED_STORY_COMPONENT",
+          "samo-solid-grid": "DEFINED_STORY_COMPONENT",
+          "samo-umbrella-map": "DEFINED_STORY_COMPONENT",
+          "story-canvas": "DEFINED_RENDERED_STORY_COMPONENT",
+          "story-controls": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "stylist-hero-intro": "DEFINED_STORY_COMPONENT",
+          "stylist-mission": "DEFINED_STORY_COMPONENT",
+          "taxonomy-breadcrumbs": "DEFINED_STORY_COMPONENT",
+          "workspace-hints": "DEFINED_RENDERED_STORY_COMPONENT"
         },
         "organism": {
-          "device-frame": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "domain-ai-agent": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "domain-cluster-balance": "INDEXED_STORY_COMPONENT",
-          "domain-component-import-diagnostics": "INDEXED_STORY_COMPONENT",
-          "domain-diagnostics": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "domain-explorer": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "domain-file-diagnostics": "INDEXED_STORY_COMPONENT",
-          "domain-file-domain-grid": "INDEXED_STORY_COMPONENT",
-          "domain-file-overview": "INDEXED_STORY_COMPONENT",
-          "domain-file-preview": "INDEXED_STORY_COMPONENT",
-          "domain-settings": "INDEXED_STORY_COMPONENT",
-          "domain-sidebar": "INDEXED_STORY_COMPONENT",
-          "markdown-renderer": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "samo-methodology": "INDEXED_STORY_COMPONENT",
-          "stylist-hero": "INDEXED_STORY_COMPONENT"
+          "device-frame": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "domain-ai-agent": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "domain-cluster-balance": "DEFINED_STORY_COMPONENT",
+          "domain-component-import-diagnostics": "DEFINED_STORY_COMPONENT",
+          "domain-diagnostics": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "domain-explorer": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "domain-file-diagnostics": "DEFINED_STORY_COMPONENT",
+          "domain-file-domain-grid": "DEFINED_STORY_COMPONENT",
+          "domain-file-overview": "DEFINED_STORY_COMPONENT",
+          "domain-file-preview": "DEFINED_RENDERED_STORY_COMPONENT",
+          "domain-settings": "DEFINED_RENDERED_STORY_COMPONENT",
+          "domain-sidebar": "DEFINED_RENDERED_STORY_COMPONENT",
+          "markdown-renderer": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "samo-methodology": "DEFINED_STORY_COMPONENT",
+          "stylist-hero": "DEFINED_STORY_COMPONENT"
         },
         "page": {
-          "domain-how-it-works": "INDEXED_STORY_COMPONENT",
-          "domain-landing": "INDEXED_STORY_COMPONENT",
-          "domain-playground": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "domain-how-it-works": "DEFINED_STORY_COMPONENT",
+          "domain-landing": "DEFINED_STORY_COMPONENT",
+          "domain-playground": "DEFINED_REACTIVE_STORY_COMPONENT"
         }
       },
       "const": {
@@ -1228,19 +1228,19 @@
     "erd": {
       "component": {
         "atom": {
-          "schema-dependency": "INDEXED_STORY_COMPONENT",
-          "schema-table-field": "INDEXED_STORY_COMPONENT",
-          "schema-table-header": "INDEXED_STORY_COMPONENT"
+          "schema-dependency": "DEFINED_RENDERED_STORY_COMPONENT",
+          "schema-table-field": "DEFINED_STORY_COMPONENT",
+          "schema-table-header": "DEFINED_STORY_COMPONENT"
         },
         "molecule": {
-          "schema-table": "INDEXED_STORY_COMPONENT"
+          "schema-table": "DEFINED_STORY_COMPONENT"
         },
         "organism": {
-          "schema": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "schema-header": "INDEXED_COMPONENT",
-          "schema-text": "INDEXED_STORY_COMPONENT",
-          "schema-tool": "INDEXED_STORY_COMPONENT",
-          "schema-view": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "schema": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "schema-header": "DEFINED_STORY_COMPONENT",
+          "schema-text": "DEFINED_STORY_COMPONENT",
+          "schema-tool": "DEFINED_STORY_COMPONENT",
+          "schema-view": "DEFINED_REACTIVE_STORY_COMPONENT"
         }
       },
       "const": {
@@ -1317,26 +1317,26 @@
       },
       "component": {
         "atom": {
-          "file-input": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "file-input": "DEFINED_REACTIVE_STORY_COMPONENT"
         },
         "molecule": {
-          "attachment-preview": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "data-exporter": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "download-card": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "file-upload": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "quantity-selector": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "attachment-preview": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "data-exporter": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "download-card": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "file-upload": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "quantity-selector": "DEFINED_REACTIVE_STORY_COMPONENT"
         },
         "organism": {
-          "document-preview": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "drag-drop-file-upload": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "drop-zone": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "export-panel": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "file-browser": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "file-explorer": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "file-list-item": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "media-library": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "upload-progress": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "zip-viewer": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "document-preview": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "drag-drop-file-upload": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "drop-zone": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "export-panel": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "file-browser": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "file-explorer": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "file-list-item": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "media-library": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "upload-progress": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "zip-viewer": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT"
         }
       },
       "const": {
@@ -1414,22 +1414,22 @@
       },
       "component": {
         "atom": {
-          "form-footer": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "form-header": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "form-footer": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "form-header": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT"
         },
         "molecule": {
-          "checkbox-group": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "form-selection": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "toggle-button-group": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "validation": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "checkbox-group": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "form-selection": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "toggle-button-group": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "validation": "DEFINED_REACTIVE_STORY_COMPONENT"
         },
         "organism": {
-          "address-form": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "form-with-validation": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "login-form": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "schema-form-dialog": "INDEXED_STORY_COMPONENT",
-          "screen-reader": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "search-form": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "address-form": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "form-with-validation": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "login-form": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "schema-form-dialog": "DEFINED_RENDERED_STORY_COMPONENT",
+          "screen-reader": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "search-form": "DEFINED_REACTIVE_STORY_COMPONENT"
         }
       },
       "const": {
@@ -1471,24 +1471,24 @@
       },
       "component": {
         "atom": {
-          "graph-dot": "INDEXED_COMPONENT",
-          "graph-edge": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "graph-node": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "graph-tooltip": "INDEXED_COMPONENT",
-          "node-icon": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "graph-dot": "DEFINED_STORY_COMPONENT",
+          "graph-edge": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "graph-node": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "graph-tooltip": "DEFINED_STORY_COMPONENT",
+          "node-icon": "DEFINED_REACTIVE_STORY_COMPONENT"
         },
         "molecule": {
-          "field-highlighter": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "graph-cluster-filter": "INDEXED_COMPONENT",
-          "graph-legend": "INDEXED_COMPONENT",
-          "graphviz-directed-edge": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "ontology-edge-component": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "ontology-node-component": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "scene-camera-control": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "field-highlighter": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "graph-cluster-filter": "DEFINED_RENDERED_STORY_COMPONENT",
+          "graph-legend": "DEFINED_RENDERED_STORY_COMPONENT",
+          "graphviz-directed-edge": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "ontology-edge-component": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "ontology-node-component": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "scene-camera-control": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT"
         },
         "organism": {
-          "scene": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "zwicky-scene": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "scene": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "zwicky-scene": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT"
         }
       },
       "const": {
@@ -1975,17 +1975,17 @@
     "idef-zero": {
       "component": {
         "atom": {
-          "idef0-connector": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "idef0-function-box": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "idef0-port-label": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "idef0-connector": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "idef0-function-box": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "idef0-port-label": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT"
         },
         "molecule": {
-          "idef0-black-box": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "idef0-inputs": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "idef0-outputs": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "idef0-black-box": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "idef0-inputs": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "idef0-outputs": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT"
         },
         "organism": {
-          "idef0-diagram": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "idef0-diagram": "DEFINED_REACTIVE_STORY_COMPONENT"
         }
       },
       "interface": {
@@ -2005,17 +2005,17 @@
     "image": {
       "component": {
         "atom": {
-          "image": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "image-caption": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "image": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "image-caption": "DEFINED_REACTIVE_STORY_COMPONENT"
         },
         "molecule": {
-          "card": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "divider-heading-image-text": "INDEXED_STORY_COMPONENT",
-          "media-thumbnail": "INDEXED_STORY_COMPONENT"
+          "card": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "divider-heading-image-text": "DEFINED_STORY_COMPONENT",
+          "media-thumbnail": "DEFINED_RENDERED_STORY_COMPONENT"
         },
         "organism": {
-          "canvas-image-editor": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "image-gallery": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "canvas-image-editor": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "image-gallery": "DEFINED_REACTIVE_STORY_COMPONENT"
         }
       },
       "interface": {
@@ -2036,33 +2036,33 @@
     "input": {
       "component": {
         "atom": {
-          "characters-count": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "input-addon": "INDEXED_STORY_COMPONENT",
-          "input-error": "INDEXED_STORY_COMPONENT",
-          "input-helper": "INDEXED_STORY_COMPONENT",
-          "input-label": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "input-pin-digit": "INDEXED_STORY_COMPONENT",
-          "input-stepper": "INDEXED_STORY_COMPONENT"
+          "characters-count": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "input-addon": "DEFINED_RENDERED_STORY_COMPONENT",
+          "input-error": "DEFINED_STORY_COMPONENT",
+          "input-helper": "DEFINED_STORY_COMPONENT",
+          "input-label": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "input-pin-digit": "DEFINED_RENDERED_STORY_COMPONENT",
+          "input-stepper": "DEFINED_STORY_COMPONENT"
         },
         "molecule": {
-          "checkbox-group": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "input-double": "INDEXED_STORY_COMPONENT",
-          "input-email": "INDEXED_STORY_COMPONENT",
-          "input-field": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "input-group": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "input-name": "INDEXED_STORY_COMPONENT",
-          "input-password": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "input-text": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "number-input": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "phone-number-input": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "radio-button-group": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "radio-group": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "rich-text-format-toolbar": "INDEXED_STORY_COMPONENT",
-          "text-area": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "checkbox-group": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "input-double": "DEFINED_STORY_COMPONENT",
+          "input-email": "DEFINED_STORY_COMPONENT",
+          "input-field": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "input-group": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "input-name": "DEFINED_STORY_COMPONENT",
+          "input-password": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "input-text": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "number-input": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "phone-number-input": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "radio-button-group": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "radio-group": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "rich-text-format-toolbar": "DEFINED_STORY_COMPONENT",
+          "text-area": "DEFINED_REACTIVE_STORY_COMPONENT"
         },
         "organism": {
-          "rich-text-editor": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "tag-input": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "rich-text-editor": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "tag-input": "DEFINED_REACTIVE_STORY_COMPONENT"
         }
       },
       "const": {
@@ -2135,40 +2135,40 @@
       },
       "component": {
         "atom": {
-          "aspect-ratio": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "background": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "border": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "clickable": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "container": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "divider": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "drag-and-drop": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "draggable": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "focusable": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "grid": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "grid-layout": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "horizontal-layout": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "hoverable": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "node-dot": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "numbered-step": "INDEXED_STORY_COMPONENT",
-          "separator": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "spacer": "INDEXED_STORY_COMPONENT"
+          "aspect-ratio": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "background": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "border": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "clickable": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "container": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "divider": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "drag-and-drop": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "draggable": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "focusable": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "grid": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "grid-layout": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "horizontal-layout": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "hoverable": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "node-dot": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "numbered-step": "DEFINED_STORY_COMPONENT",
+          "separator": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "spacer": "DEFINED_RENDERED_STORY_COMPONENT"
         },
         "molecule": {
-          "animated-expandable-table-row": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "centered-layout": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "container-query": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "gradient-background": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "grid": "INDEXED_STORY_COMPONENT",
-          "numbered-step-grid": "INDEXED_STORY_COMPONENT",
-          "overlay-layout": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "popover": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "split-layout": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "sticky-layout": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "vertical-layout": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "widget-container": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "animated-expandable-table-row": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "centered-layout": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "container-query": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "gradient-background": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "grid": "DEFINED_STORY_COMPONENT",
+          "numbered-step-grid": "DEFINED_STORY_COMPONENT",
+          "overlay-layout": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "popover": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "split-layout": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "sticky-layout": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "vertical-layout": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "widget-container": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT"
         },
         "organism": {
-          "sortable-grid": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "sortable-grid": "DEFINED_REACTIVE_STORY_COMPONENT"
         }
       },
       "const": {
@@ -2311,14 +2311,14 @@
     "list": {
       "component": {
         "atom": {
-          "list-item-marker": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "list-item-marker": "DEFINED_REACTIVE_STORY_COMPONENT"
         },
         "molecule": {
-          "base-card": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "drag-and-drop-list": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "base-card": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "drag-and-drop-list": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT"
         },
         "organism": {
-          "sortable-list": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "sortable-list": "DEFINED_REACTIVE_STORY_COMPONENT"
         }
       },
       "const": {
@@ -2348,12 +2348,12 @@
     "localization": {
       "component": {
         "atom": {
-          "country-flag": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "country-flag": "DEFINED_REACTIVE_STORY_COMPONENT"
         },
         "organism": {
-          "language-selector": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "locale-switcher": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "translation-editor": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "language-selector": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "locale-switcher": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "translation-editor": "DEFINED_REACTIVE_STORY_COMPONENT"
         }
       },
       "const": {
@@ -2396,21 +2396,21 @@
       },
       "component": {
         "atom": {
-          "burger-menu": "INDEXED_STORY_COMPONENT",
-          "mega-menu-link": "INDEXED_STORY_COMPONENT",
-          "mega-menu-trigger": "INDEXED_STORY_COMPONENT",
-          "menu-item": "INDEXED_STORY_COMPONENT"
+          "burger-menu": "DEFINED_RENDERED_STORY_COMPONENT",
+          "mega-menu-link": "DEFINED_STORY_COMPONENT",
+          "mega-menu-trigger": "DEFINED_RENDERED_STORY_COMPONENT",
+          "menu-item": "DEFINED_STORY_COMPONENT"
         },
         "molecule": {
-          "dropdown-menu": "INDEXED_STORY_COMPONENT",
-          "mega-menu-column": "INDEXED_STORY_COMPONENT",
-          "mega-menu-feature": "INDEXED_STORY_COMPONENT",
-          "mega-menu-panel": "INDEXED_STORY_COMPONENT"
+          "dropdown-menu": "DEFINED_RENDERED_STORY_COMPONENT",
+          "mega-menu-column": "DEFINED_STORY_COMPONENT",
+          "mega-menu-feature": "DEFINED_STORY_COMPONENT",
+          "mega-menu-panel": "DEFINED_STORY_COMPONENT"
         },
         "organism": {
-          "app-header": "INDEXED_STORY_COMPONENT",
-          "drawer": "INDEXED_STORY_COMPONENT",
-          "mega-menu": "INDEXED_STORY_COMPONENT"
+          "app-header": "DEFINED_RENDERED_STORY_COMPONENT",
+          "drawer": "DEFINED_RENDERED_STORY_COMPONENT",
+          "mega-menu": "DEFINED_RENDERED_STORY_COMPONENT"
         }
       },
       "const": {
@@ -2453,13 +2453,13 @@
     "navigation": {
       "component": {
         "atom": {
-          "page-button": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "page-ellipsis": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "page-button": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "page-ellipsis": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT"
         },
         "organism": {
-          "bottom-sheet": "INDEXED_STORY_COMPONENT",
-          "pagination": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "sidebar": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "bottom-sheet": "DEFINED_RENDERED_STORY_COMPONENT",
+          "pagination": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "sidebar": "DEFINED_REACTIVE_STORY_COMPONENT"
         }
       },
       "const": {
@@ -2482,21 +2482,21 @@
     "notification": {
       "component": {
         "atom": {
-          "alert": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "count-badge": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "counter": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "error-message": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "message-timestamp": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "notification-badge": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "alert": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "count-badge": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "counter": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "error-message": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "message-timestamp": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "notification-badge": "DEFINED_REACTIVE_STORY_COMPONENT"
         },
         "molecule": {
-          "notification-settings": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "toast-stack": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "notification-settings": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "toast-stack": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT"
         },
         "organism": {
-          "notification-center": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "notification-list": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "scheduled-notification": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "notification-center": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "notification-list": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "scheduled-notification": "DEFINED_REACTIVE_STORY_COMPONENT"
         }
       },
       "const": {
@@ -2547,16 +2547,16 @@
       },
       "component": {
         "atom": {
-          "auto-search": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "search-suggestion": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "auto-search": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "search-suggestion": "DEFINED_REACTIVE_STORY_COMPONENT"
         },
         "molecule": {
-          "search-bar": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "search-bar": "DEFINED_REACTIVE_STORY_COMPONENT"
         },
         "organism": {
-          "auto-complete": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "search-form": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "search-results": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "auto-complete": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "search-form": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "search-results": "DEFINED_REACTIVE_STORY_COMPONENT"
         }
       },
       "const": {
@@ -2633,17 +2633,17 @@
     "svg": {
       "component": {
         "atom": {
-          "flag": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "icon": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "svg": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "svg-circle": "INDEXED_STORY_COMPONENT",
-          "svg-group": "INDEXED_STORY_COMPONENT",
-          "svg-line": "INDEXED_STORY_COMPONENT",
-          "svg-path": "INDEXED_STORY_COMPONENT",
-          "svg-polygon": "INDEXED_STORY_COMPONENT",
-          "svg-polyline": "INDEXED_STORY_COMPONENT",
-          "svg-rect": "INDEXED_STORY_COMPONENT",
-          "svg-text": "INDEXED_STORY_COMPONENT"
+          "flag": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "icon": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "svg": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "svg-circle": "DEFINED_STORY_COMPONENT",
+          "svg-group": "DEFINED_RENDERED_STORY_COMPONENT",
+          "svg-line": "DEFINED_STORY_COMPONENT",
+          "svg-path": "DEFINED_STORY_COMPONENT",
+          "svg-polygon": "DEFINED_STORY_COMPONENT",
+          "svg-polyline": "DEFINED_STORY_COMPONENT",
+          "svg-rect": "DEFINED_STORY_COMPONENT",
+          "svg-text": "DEFINED_STORY_COMPONENT"
         }
       },
       "const": {
@@ -3383,28 +3383,28 @@
       },
       "component": {
         "atom": {
-          "cell": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "cell-header": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "cell-icon": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "cell-pill": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "cell-text": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "row": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "table": "INDEXED_STORY_COMPONENT"
+          "cell": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "cell-header": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "cell-icon": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "cell-pill": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "cell-text": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "row": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "table": "DEFINED_STORY_COMPONENT"
         },
         "molecule": {
-          "column": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "column-manager": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "comparison-table": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "filter-bar": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "filter-pills": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "filter-text": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "row-expandable": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "column": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "column-manager": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "comparison-table": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "filter-bar": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "filter-pills": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "filter-text": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "row-expandable": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT"
         },
         "organism": {
-          "component": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "data-table": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "data-table-shell": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "table-list-panel": "INDEXED_COMPONENT"
+          "component": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "data-table": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "data-table-shell": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "table-list-panel": "DEFINED_RENDERED_STORY_COMPONENT"
         }
       },
       "const": {
@@ -3494,21 +3494,21 @@
       },
       "component": {
         "atom": {
-          "color-swatch": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "theme-consumer": "TESTED_INDEXED_STORY_COMPONENT",
-          "theme-mode-toggle": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "theme-provider": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "color-swatch": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "theme-consumer": "TESTED_DEFINED_RENDERED_STORY_COMPONENT",
+          "theme-mode-toggle": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "theme-provider": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT"
         },
         "molecule": {
-          "color-picker": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "story": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "theme-context": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "theme-surface": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "theme-switcher": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "color-picker": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "story": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "theme-context": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "theme-surface": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "theme-switcher": "DEFINED_REACTIVE_STORY_COMPONENT"
         },
         "organism": {
-          "theme-palette": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "theme-settings": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "theme-palette": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "theme-settings": "DEFINED_REACTIVE_STORY_COMPONENT"
         }
       },
       "const": {
@@ -3616,31 +3616,31 @@
     "token": {
       "component": {
         "atom": {
-          "card-close": "INDEXED_STORY_COMPONENT",
-          "card-open": "INDEXED_STORY_COMPONENT",
-          "card-shell": "INDEXED_STORY_COMPONENT",
-          "orbit-background": "INDEXED_STORY_COMPONENT",
-          "orbit-token-node": "INDEXED_STORY_COMPONENT",
-          "token-chip-set": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "token-control-base": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "token-icon": "INDEXED_STORY_COMPONENT",
-          "token-radio": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "token-range": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "token-select": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "token-text": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "card-close": "DEFINED_STORY_COMPONENT",
+          "card-open": "DEFINED_STORY_COMPONENT",
+          "card-shell": "DEFINED_RENDERED_STORY_COMPONENT",
+          "orbit-background": "DEFINED_STORY_COMPONENT",
+          "orbit-token-node": "DEFINED_STORY_COMPONENT",
+          "token-chip-set": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "token-control-base": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "token-icon": "DEFINED_STORY_COMPONENT",
+          "token-radio": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "token-range": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "token-select": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "token-text": "DEFINED_REACTIVE_STORY_COMPONENT"
         },
         "molecule": {
-          "domain-descriptor-panel": "INDEXED_STORY_COMPONENT",
-          "orbit": "INDEXED_STORY_COMPONENT",
-          "ribbon-menu": "INDEXED_STORY_COMPONENT",
-          "token": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "token-setting": "INDEXED_STORY_COMPONENT"
+          "domain-descriptor-panel": "DEFINED_STORY_COMPONENT",
+          "orbit": "DEFINED_STORY_COMPONENT",
+          "ribbon-menu": "DEFINED_STORY_COMPONENT",
+          "token": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "token-setting": "DEFINED_STORY_COMPONENT"
         },
         "organism": {
-          "domain-builder": "INDEXED_STORY_COMPONENT",
-          "orbit-contract-l5": "INDEXED_STORY_COMPONENT",
-          "prismatic-orbit-l6": "INDEXED_STORY_COMPONENT",
-          "token-settings": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "domain-builder": "DEFINED_STORY_COMPONENT",
+          "orbit-contract-l5": "DEFINED_STORY_COMPONENT",
+          "prismatic-orbit-l6": "DEFINED_STORY_COMPONENT",
+          "token-settings": "DEFINED_REACTIVE_STORY_COMPONENT"
         }
       },
       "const": {
@@ -3718,9 +3718,9 @@
     "tree": {
       "component": {
         "molecule": {
-          "flat-tree": "INDEXED_STORY_COMPONENT",
-          "tree-node-item": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "tree-viewer": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "flat-tree": "DEFINED_STORY_COMPONENT",
+          "tree-node-item": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "tree-viewer": "DEFINED_REACTIVE_STORY_COMPONENT"
         }
       },
       "function": {
@@ -3748,19 +3748,19 @@
     "typography": {
       "component": {
         "atom": {
-          "abbr": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "badge": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "blockquote": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "heading": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "inline-code": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "kbd": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "link": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "text": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "abbr": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "badge": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "blockquote": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "heading": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "inline-code": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "kbd": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "link": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "text": "DEFINED_REACTIVE_STORY_COMPONENT"
         },
         "molecule": {
-          "badge-group": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "paragraph": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "rich-text": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "badge-group": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "paragraph": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "rich-text": "DEFINED_REACTIVE_STORY_COMPONENT"
         }
       },
       "const": {
@@ -3800,8 +3800,8 @@
     "video": {
       "component": {
         "molecule": {
-          "video-player": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "video-scene": "INDEXED_STORY_COMPONENT"
+          "video-player": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "video-scene": "DEFINED_STORY_COMPONENT"
         }
       },
       "function": {
@@ -3818,15 +3818,15 @@
     "webgl": {
       "component": {
         "atom": {
-          "gl-canvas": "INDEXED_STORY_COMPONENT"
+          "gl-canvas": "DEFINED_RENDERED_STORY_COMPONENT"
         },
         "molecule": {
-          "concentric-circles-scene": "INDEXED_STORY_COMPONENT",
-          "hyperspace-scene": "INDEXED_STORY_COMPONENT",
-          "turtle-dissolve-scene": "INDEXED_STORY_COMPONENT"
+          "concentric-circles-scene": "DEFINED_RENDERED_STORY_COMPONENT",
+          "hyperspace-scene": "DEFINED_RENDERED_STORY_COMPONENT",
+          "turtle-dissolve-scene": "DEFINED_RENDERED_STORY_COMPONENT"
         },
         "organism": {
-          "scene-launcher": "INDEXED_STORY_COMPONENT"
+          "scene-launcher": "DEFINED_STORY_COMPONENT"
         }
       },
       "const": {
@@ -3858,26 +3858,26 @@
       },
       "component": {
         "atom": {
-          "node-connection": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "node-header": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "node-port": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "node-property": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "stage": "INDEXED_REACTIVE_COMPONENT",
-          "viewport": "INDEXED_REACTIVE_COMPONENT",
-          "workspace-canvas": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "node-connection": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "node-header": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "node-port": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "node-property": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "stage": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "viewport": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "workspace-canvas": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT"
         },
         "molecule": {
-          "graph-node-card": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "node-port-group": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "node-properties": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "workspace-toolbar": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "graph-node-card": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "node-port-group": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "node-properties": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "workspace-toolbar": "DEFINED_REACTIVE_STORY_COMPONENT"
         },
         "organism": {
-          "minimap": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "stylist-graph-workspace": "INDEXED_STORY_COMPONENT",
-          "workspace": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "workspace-node": "INDEXED_REACTIVE_STORY_COMPONENT",
-          "workspace-palette": "INDEXED_REACTIVE_STORY_COMPONENT"
+          "minimap": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "stylist-graph-workspace": "DEFINED_STORY_COMPONENT",
+          "workspace": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "workspace-node": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "workspace-palette": "DEFINED_REACTIVE_STORY_COMPONENT"
         }
       },
       "const": {

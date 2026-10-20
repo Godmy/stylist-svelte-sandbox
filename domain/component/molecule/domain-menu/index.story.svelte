@@ -1,49 +1,57 @@
 <script lang="ts">
-	import Story from '$stylist/theme/component/molecule/story/index.svelte';
+	// Render of index.story.ts: the toggles only report clicks, so the story owns the screen and panel state.
 	import DomainMenu from './index.svelte';
+	import type { RecipeDomainMenu } from '$stylist/domain/interface/recipe/domain-menu';
 
-	type Screen = 'landing' | 'domain' | 'diagnostics';
+	let args: RecipeDomainMenu = $props();
+	// These follow the args and are overwritten by the menu toggles.
+	let landingVisible = $derived(args.landingVisible ?? false);
+	let domainVisible = $derived(args.domainVisible ?? false);
+	let diagnosticsOpen = $derived(args.diagnosticsOpen ?? false);
+	let howItWorksOpen = $derived(args.howItWorksOpen ?? false);
+	let settingsOpen = $derived(args.settingsOpen ?? false);
 
-	let screen = $state<Screen>('domain');
-	let settingsOpen = $state(false);
+	function show(screen: 'landing' | 'domain' | 'diagnostics') {
+		landingVisible = screen === 'landing';
+		domainVisible = screen === 'domain';
+		diagnosticsOpen = screen === 'diagnostics';
+	}
 </script>
 
-<Story
-	component={DomainMenu}
-	title="DomainMenu"
-	description="Floating navigation pill that switches between app screens and opens settings."
->
-	{#snippet children()}
-		<div class="_c1">
-			<DomainMenu
-				landingVisible={screen === 'landing'}
-				domainVisible={screen === 'domain'}
-				diagnosticsOpen={screen === 'diagnostics'}
-				{settingsOpen}
-				onLandingToggle={() => (screen = 'landing')}
-				onDomainToggle={() => (screen = 'domain')}
-				onDiagnosticsToggle={() => (screen = 'diagnostics')}
-				onSettingsToggle={() => (settingsOpen = !settingsOpen)}
-			/>
-			<p class="_c2">Screen: {screen} · Settings: {settingsOpen ? 'open' : 'closed'}</p>
-		</div>
-	{/snippet}
-</Story>
+<div class="_c1">
+	<DomainMenu
+		{...args}
+		{landingVisible}
+		{domainVisible}
+		{diagnosticsOpen}
+		{howItWorksOpen}
+		{settingsOpen}
+		onLandingToggle={() => show('landing')}
+		onDomainToggle={() => show('domain')}
+		onDiagnosticsToggle={() => show('diagnostics')}
+		onHowItWorksToggle={() => (howItWorksOpen = !howItWorksOpen)}
+		onSettingsToggle={() => (settingsOpen = !settingsOpen)}
+	/>
+	<p class="_c2">
+		Screen: {landingVisible
+			? 'landing'
+			: diagnosticsOpen
+				? 'diagnostics'
+				: domainVisible
+					? 'domain'
+					: 'none'} · Settings: {settingsOpen ? 'open' : 'closed'}
+	</p>
+</div>
 
 <style>
 	._c1 {
 		display: grid;
 		gap: 0.75rem;
 		justify-items: start;
-		border-radius: 1.5rem;
-		border-width: 1px;
-		border-style: solid;
-		border-color: #e2e8f0;
-		background-color: #f8fafc;
-		padding: 1.5rem;
 	}
 	._c2 {
+		margin: 0;
 		font-size: 0.875rem;
-		color: #64748b;
+		color: var(--color-text-secondary);
 	}
 </style>

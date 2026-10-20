@@ -1,18 +1,10 @@
 <script lang="ts">
-	import Story from '$stylist/theme/component/molecule/story/index.svelte';
-	import type { SlotStory } from '$stylist/theme/interface/slot/story';
 	import DomainFilePreview from './index.svelte';
+	import type { RecipeDomainFilePreview } from '$stylist/domain/interface/recipe/domain-file-preview';
 	import ClickableStory from '$stylist/layout/component/atom/clickable/index.story.svelte';
 
-	const controls: SlotStory[] = [
-		{
-			name: 'previewMode',
-			type: 'select',
-			defaultValue: 'file',
-			options: ['file', 'markdown', 'story', 'json-tree', 'di']
-		},
-		{ name: 'previewKind', type: 'select', defaultValue: 'text', options: ['text', 'json', 'svg'] }
-	];
+	// Render of index.story.ts: the file content follows the preview mode/kind and the story tab embeds a story component.
+	let args: RecipeDomainFilePreview = $props();
 
 	const textContent =
 		'<script lang="ts">\n\timport { Clickable } from \'$stylist/layout/component\';\n<$stylist/script>';
@@ -24,67 +16,22 @@
 	);
 	const svgContent =
 		'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none"><rect x="18" y="18" width="84" height="84" rx="20" fill="#e0f2fe"/><path d="M36 60h48" stroke="#0284c7" stroke-width="8" stroke-linecap="round"/><circle cx="84" cy="60" r="12" fill="#0f172a"/></svg>';
-	const dependencyItems = [
-		{ key: 'domain\\function\\state\\domain-page', depth: 1 },
-		{ key: 'svg\\component\\atom\\icon', depth: 1 },
-		{ key: 'svg\\const\\record\\icon-registry', depth: 2 }
-	];
-	const dependencyTreeNodes = [
-		{
-			id: 'domain\\function\\state\\domain-page',
-			label: 'domain\\function\\state\\domain-page',
-			expanded: true
-		},
-		{
-			id: 'svg\\component\\atom\\icon',
-			label: 'svg\\component\\atom\\icon',
-			expanded: true,
-			children: [
-				{
-					id: 'svg\\const\\record\\icon-registry',
-					label: 'svg\\const\\record\\icon-registry'
-				}
-			]
-		}
-	];
-	const selectedDependencyFiles = [
-		{
-			name: 'index.ts',
-			content:
-				"import type { TypeDomainFile } from '$stylist/domain/type/object/domain-file';\n\nexport type TypeDomainEntity = {\n\tname: string;\n\tpath: string;\n\tfiles: TypeDomainFile[];\n};\n"
-		}
-	];
+
+	const previewKind = $derived(args.previewMode === 'markdown' ? 'text' : args.previewKind);
+	const fileContent = $derived(
+		args.previewMode === 'markdown'
+			? markdownContent
+			: previewKind === 'json'
+				? jsonContent
+				: previewKind === 'svg'
+					? svgContent
+					: textContent
+	);
 </script>
 
-<Story
-	{controls}
-	component={DomainFilePreview}
-	title="DomainFilePreview"
-	description="File preview panel for raw text, markdown, story, JSON tree, and SVG content."
->
-	{#snippet children(values: any)}
-		{@const previewMode = values.previewMode as 'file' | 'markdown' | 'story' | 'json-tree' | 'di'}
-		{@const previewKind = values.previewKind as 'text' | 'json' | 'svg'}
-		<div class="_c1">
-			<DomainFilePreview
-				{previewMode}
-				previewKind={previewMode === 'markdown' ? 'text' : previewKind}
-				fileContent={previewMode === 'markdown'
-					? markdownContent
-					: previewKind === 'json'
-						? jsonContent
-						: previewKind === 'svg'
-							? svgContent
-							: textContent}
-				storyPreviewComponent={ClickableStory}
-				{dependencyItems}
-				{dependencyTreeNodes}
-				selectedDependencyKey={dependencyItems[0].key}
-				{selectedDependencyFiles}
-			/>
-		</div>
-	{/snippet}
-</Story>
+<div class="_c1">
+	<DomainFilePreview {...args} {previewKind} {fileContent} storyPreviewComponent={ClickableStory} />
+</div>
 
 <style>
 	._c1 {

@@ -1,54 +1,20 @@
 <script lang="ts">
-	import Story from '$stylist/theme/component/molecule/story/index.svelte';
+	// Render of index.story.ts: the active path is controlled through onSelect and the list needs a bounded height.
 	import DomainList from './index.svelte';
+	import type { RecipeDomainList } from '$stylist/domain/interface/recipe/domain-list';
 
-	const entities = [
-		{
-			name: 'clickable',
-			path: '/src/lib/layout/component/atom/clickable',
-			files: [{ path: 'index.svelte' }, { path: 'index.story.svelte' }, { path: 'index.ts' }]
-		},
-		{
-			name: 'hoverable',
-			path: '/src/lib/layout/component/atom/hoverable',
-			files: [{ path: 'index.svelte' }, { path: 'index.ts' }]
-		},
-		{
-			name: 'focusable',
-			path: '/src/lib/layout/component/atom/focusable',
-			files: [{ path: 'index.svelte' }, { path: 'index.story.svelte' }, { path: 'index.ts' }]
-		}
-	];
-
-	let activePath = $state(entities[0].path);
+	let args: RecipeDomainList = $props();
+	// Follows the args and is overwritten by the list selection.
+	let activePath = $derived(args.activePath);
 </script>
 
-<Story
-	component={DomainList}
-	title="DomainList"
-	description="Scrollable entity list with active item highlighting and file counts."
->
-	{#snippet children()}
-		<div class="_c1">
-			<DomainList
-				{entities}
-				{activePath}
-				onSelect={(path) => {
-					activePath = path;
-				}}
-			/>
-		</div>
-	{/snippet}
-</Story>
+<div class="_c1">
+	<DomainList {...args} {activePath} onSelect={(path) => (activePath = path)} />
+</div>
 
 <style>
 	._c1 {
 		height: 20rem;
 		overflow: hidden;
-		border-radius: 1rem;
-		border-width: 1px;
-		border-style: solid;
-		border-color: #e2e8f0;
-		background-color: #ffffff;
 	}
 </style>

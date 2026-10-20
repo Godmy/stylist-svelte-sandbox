@@ -1,34 +1,12 @@
 <script lang="ts">
-	import Story from '$stylist/theme/component/molecule/story/index.svelte';
-	import type { SlotStory } from '$stylist/theme/interface/slot/story';
+	import DebugConsole from './index.svelte';
+	import type { RecipeDebugConsole } from '$stylist/development/interface/recipe/debug-console';
+	import type { DebugConsoleLogEntry } from '$stylist/development/interface/slot/debug-console-log-entry';
 
-	import RecipeDebugConsole from './index.svelte';
+	// Render of index.story.ts: three consoles share one log state (Date timestamps, clear/log callbacks).
+	let args: RecipeDebugConsole = $props();
 
-	let {
-		id = '',
-		title = '',
-		description = '',
-		controls = [
-			{ name: 'showTimestamps', type: 'boolean', defaultValue: true },
-			{ name: 'showLogLevel', type: 'boolean', defaultValue: true },
-			{ name: 'allowFilter', type: 'boolean', defaultValue: true },
-			{ name: 'allowClear', type: 'boolean', defaultValue: true }
-		]
-	} = $props<{
-		id?: string;
-		title?: string;
-		description?: string;
-		controls?: SlotStory[];
-	}>();
-
-	type LogEntry = {
-		id: string;
-		timestamp: Date;
-		level: 'log' | 'info' | 'warn' | 'error' | 'debug';
-		message: string;
-	};
-
-	const initialLogs: LogEntry[] = [
+	const initialLogs: DebugConsoleLogEntry[] = [
 		{ id: '1', timestamp: new Date(), level: 'info', message: 'Server ping responded in 142ms' },
 		{ id: '2', timestamp: new Date(), level: 'warn', message: 'API quota at 83%' },
 		{ id: '3', timestamp: new Date(), level: 'error', message: 'Billing webhook returned 502' },
@@ -41,72 +19,60 @@
 		{ id: '5', timestamp: new Date(), level: 'log', message: 'User session upgraded to premium' }
 	];
 
-	let consoleLogs = $state<LogEntry[]>([...initialLogs]);
+	let consoleLogs = $state<DebugConsoleLogEntry[]>([...initialLogs]);
 
 	function handleClear() {
 		consoleLogs = [];
 	}
 
-	function handleLog(entry: LogEntry) {
+	function handleLog(entry: DebugConsoleLogEntry) {
 		consoleLogs = [...consoleLogs, entry];
 	}
 </script>
 
-<Story {id} {title} {description} component={RecipeDebugConsole} category="Organisms" {controls}>
-	{#snippet children(values: any)}
-		<section class="sb-organisms-debug-console _c1">
-			<div class="_c2">
-				<p class="_c3">Primary Debug Console Example</p>
-				<p class="_c4">Interactive debug console with customizable options.</p>
+<section class="sb-organisms-debug-console _c1">
+	<div class="_c2">
+		<p class="_c3">Primary Debug Console Example</p>
+		<p class="_c4">Interactive debug console with customizable options.</p>
 
-				<div class="_c5">
-					<RecipeDebugConsole
-						logs={consoleLogs}
-						showTimestamps={values.showTimestamps}
-						showLogLevel={values.showLogLevel}
-						allowFilter={values.allowFilter}
-						allowClear={values.allowClear}
+		<div class="_c5">
+			<DebugConsole {...args} logs={consoleLogs} onClear={handleClear} onLog={handleLog} />
+		</div>
+	</div>
+
+	<div class="_c6">
+		<h3 class="_c7">Debug Console Variations</h3>
+		<p class="_c8">Different debug console configurations with various options.</p>
+
+		<div class="_c9">
+			<article class="_c10">
+				<p class="_c11">Minimal</p>
+				<div>
+					<DebugConsole
+						logs={consoleLogs.slice(0, 2)}
+						showTimestamps={false}
+						allowFilter={false}
 						onClear={handleClear}
 						onLog={handleLog}
 					/>
 				</div>
-			</div>
+			</article>
 
-			<div class="_c6">
-				<h3 class="_c7">Debug Console Variations</h3>
-				<p class="_c8">Different debug console configurations with various options.</p>
-
-				<div class="_c9">
-					<article class="_c10">
-						<p class="_c11">Minimal</p>
-						<div>
-							<RecipeDebugConsole
-								logs={consoleLogs.slice(0, 2)}
-								showTimestamps={false}
-								allowFilter={false}
-								onClear={handleClear}
-								onLog={handleLog}
-							/>
-						</div>
-					</article>
-
-					<article class="_c10">
-						<p class="_c11">Errors Only</p>
-						<div>
-							<RecipeDebugConsole
-								logs={consoleLogs.filter((log) => log.level === 'error')}
-								showLogLevel={true}
-								allowClear={true}
-								onClear={handleClear}
-								onLog={handleLog}
-							/>
-						</div>
-					</article>
+			<article class="_c10">
+				<p class="_c11">Errors Only</p>
+				<div>
+					<DebugConsole
+						logs={consoleLogs.filter((log) => log.level === 'error')}
+						showLogLevel={true}
+						allowClear={true}
+						onClear={handleClear}
+						onLog={handleLog}
+					/>
 				</div>
-			</div>
-		</section>
-	{/snippet}
-</Story>
+			</article>
+		</div>
+	</div>
+</section>
 
 <style>
 	._c1 {

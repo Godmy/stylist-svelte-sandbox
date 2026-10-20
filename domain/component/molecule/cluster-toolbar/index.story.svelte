@@ -1,50 +1,11 @@
 <script lang="ts">
-	import Story from '$stylist/theme/component/molecule/story/index.svelte';
-	import { TOKEN_ORIENTATION } from '$stylist/layout/const/array/orientation';
-	import type { SlotStory } from '$stylist/theme/interface/slot/story';
-	import type { TokenOrientation } from '$stylist/layout/type/alias/orientation';
+	// Render of index.story.ts: the active cluster is controlled through onSelect and local state.
 	import ClusterToolbar from './index.svelte';
+	import type { RecipeClusterToolbar } from '$stylist/domain/interface/recipe/cluster-toolbar';
 
-	const controls: SlotStory[] = [
-		{
-			name: 'orientation',
-			type: 'select',
-			defaultValue: TOKEN_ORIENTATION[0],
-			options: TOKEN_ORIENTATION
-		},
-		{ name: 'showLabel', type: 'boolean', defaultValue: true }
-	];
-
-	let active = $state('component');
+	let args: RecipeClusterToolbar = $props();
+	// Follows the args and is overwritten by the toolbar selection.
+	let active = $derived(args.active);
 </script>
 
-<Story
-	{controls}
-	component={ClusterToolbar}
-	title="ClusterToolbar"
-	description="Cluster switcher backed by the shared icon toolbar."
->
-	{#snippet children(values: any)}
-		<div class="_c1">
-			<ClusterToolbar
-				{active}
-				orientation={values.orientation as TokenOrientation}
-				showLabel={Boolean(values.showLabel)}
-				onSelect={(name) => {
-					active = name;
-				}}
-			/>
-		</div>
-	{/snippet}
-</Story>
-
-<style>
-	._c1 {
-		border-radius: 1rem;
-		border-width: 1px;
-		border-style: solid;
-		border-color: #e2e8f0;
-		background-color: #ffffff;
-		padding: 1rem;
-	}
-</style>
+<ClusterToolbar {...args} {active} onSelect={(name) => (active = name)} />

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Icon from '$stylist/svg/component/atom/icon/index.svelte';
+	import type { RecipeCardOpen } from '$stylist/token/interface/recipe/card-open';
 
 	let {
 		orbitOpen = false,
@@ -7,13 +8,7 @@
 		style = '',
 		onPointerDown,
 		onClick
-	}: {
-		orbitOpen?: boolean;
-		dragging?: boolean;
-		style?: string;
-		onPointerDown?: (event: PointerEvent) => void;
-		onClick?: () => void;
-	} = $props();
+	}: RecipeCardOpen = $props();
 </script>
 
 <button
