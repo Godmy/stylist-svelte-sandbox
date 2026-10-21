@@ -1,17 +1,12 @@
 <script lang="ts">
-	import type { Snippet } from 'svelte';
+	import type { RecipeCardShell } from '$stylist/token/interface/recipe/card-shell';
 
 	let {
 		expanded = false,
 		title = 'Graph Node Controls',
 		children,
 		close
-	}: {
-		expanded?: boolean;
-		title?: string;
-		children?: Snippet;
-		close?: Snippet;
-	} = $props();
+	}: RecipeCardShell = $props();
 </script>
 
 <section class="menu-card" class:expanded aria-hidden={!expanded}>

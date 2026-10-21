@@ -4,9 +4,10 @@
 	import type { RecipeDomainDiagnostics } from '$stylist/domain/interface/recipe/domain-diagnostics';
 	import createDomainDiagnosticsState, { formatDuration, getTimingTone } from './state.svelte';
 
-	let { compact = false, class: className = '' }: RecipeDomainDiagnostics = $props();
+	let props: RecipeDomainDiagnostics = $props();
+	const className = $derived(props.class ?? '');
 
-	const state = createDomainDiagnosticsState();
+	const state = createDomainDiagnosticsState(() => props);
 
 	function toWords(value: string): string {
 		return value
@@ -17,13 +18,15 @@
 	}
 </script>
 
-<div class="c-domain-diagnostics {compact ? 'c-domain-diagnostics--compact' : ''} {className}">
+<div
+	class="c-domain-diagnostics {state.compact ? 'c-domain-diagnostics--compact' : ''} {className}"
+>
 	<DomainFileDiagnostics class="file-diagnostics" />
 
 	<header class="hero">
 		<div class="hero-copy">
 			<p class="eyebrow">Diagnostics</p>
-			<h2>{compact ? 'Story Runner' : 'Library Story Runner'}</h2>
+			<h2>{state.compact ? 'Story Runner' : 'Library Story Runner'}</h2>
 			<p class="lede">
 				Run import and runtime diagnostics for every `*.story.svelte` component in the library.
 				Results are rendered on the page and mirrored to the browser console.

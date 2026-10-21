@@ -1,7 +1,7 @@
 import type { RecipeDomainAiAgent } from '$stylist/domain/interface/recipe/domain-ai-agent';
 import type { SlotTranscriptionResult } from '$stylist/audio/interface/slot/transcription-result';
 
-const OWN_FILE_NAMES = ['index.svelte', 'index.story.svelte', 'index.ts'];
+const OWN_FILE_NAMES = ['index.svelte', 'index.story.ts', 'index.story.svelte', 'index.ts'];
 const DEPENDENCY_ATTACH_LIMIT = 20;
 
 export function createDomainAiAgentState(getProps: () => RecipeDomainAiAgent) {

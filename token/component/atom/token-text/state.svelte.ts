@@ -1,6 +1,6 @@
-import type { TokenTextStateProps } from '$stylist/token/type/alias/token-text-state-props';
+import type { RecipeTokenText } from '$stylist/token/interface/recipe/token-text';
 
-export function createTokenTextState(getProps: () => TokenTextStateProps) {
+export function createTokenTextState(getProps: () => RecipeTokenText) {
 	const props = $derived(getProps());
 	const definition = $derived(props.definition);
 	const placeholder = $derived(props.placeholder ?? definition.placeholder ?? 'Enter value');

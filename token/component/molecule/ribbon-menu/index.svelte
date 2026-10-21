@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Icon from '$stylist/svg/component/atom/icon/index.svelte';
+	import type { RecipeRibbonMenu } from '$stylist/token/interface/recipe/ribbon-menu';
 
 	type RibbonItem = {
 		id: string;
@@ -18,6 +19,7 @@
 		{ id: 'icons', label: 'Icons', icon: 'favicon' }
 	];
 
+	let _props: RecipeRibbonMenu = $props();
 	let opened = $state(false);
 </script>
 

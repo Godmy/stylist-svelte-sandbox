@@ -1,11 +1,11 @@
 import { untrack } from 'svelte';
 import { ClassNamesManager } from '$stylist/layout/class/manager/class-names';
+import type { RecipeContentEditorStateProps } from '$stylist/development/interface/recipe/content-editor-state-props';
+import type { ContentType } from '$stylist/development/type/alias/content-editor-content-type';
 
-type ContentType = string;
-type ContentElement = { [key: string]: any; id: string; type: ContentType; content: string };
-type ContentEditorStateProps = { [key: string]: any };
+type ContentElement = NonNullable<RecipeContentEditorStateProps['initialContent']>[number];
 
-export const createContentEditorState = (getProps: () => ContentEditorStateProps) => {
+export const createContentEditorState = (getProps: () => RecipeContentEditorStateProps) => {
 	const props = $derived(getProps());
 	// SlotState
 	let contentElements = $state<ContentElement[]>(

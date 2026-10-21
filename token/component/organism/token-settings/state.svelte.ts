@@ -1,6 +1,8 @@
-import type { Token } from '$stylist/token/type/object/token';
+import type { RecipeTokenSettings } from '$stylist/token/interface/recipe/token-settings';
 
-export function createTokenSettingsState(getProps: () => { settings: readonly Token[] }) {
+export function createTokenSettingsState(
+	getProps: () => Required<Pick<RecipeTokenSettings, 'settings'>>
+) {
 	const props = $derived(getProps());
 	let search = $state('');
 	let domain = $state('all');

@@ -1,95 +1,39 @@
 <script lang="ts">
-	import Story from '$stylist/theme/component/molecule/story/index.svelte';
-	import type { SlotStory } from '$stylist/theme/interface/slot/story';
+	// Render of index.story.ts: the tabs only report clicks, so the story owns the active file and preview mode.
 	import JointTabButtons from './index.svelte';
+	import type { RecipeJointTabButtons } from '$stylist/domain/interface/recipe/joint-tab-buttons';
 
-	const controls: SlotStory[] = [
-		{
-			name: 'previewMode',
-			type: 'select',
-			defaultValue: 'file',
-			options: ['file', 'markdown', 'story', 'json-tree', 'di']
-		},
-		{ name: 'previewKind', type: 'select', defaultValue: 'text', options: ['text', 'json', 'svg'] },
-		{
-			name: 'activeJoint',
-			type: 'select',
-			defaultValue: 'template',
-			options: ['atom', 'molecule', 'organism', 'template']
-		}
-	];
-
-	const files = [
-		{ name: 'index.svelte', path: '/src/lib/dialog/component/organism/dialog/index.svelte' },
-		{ name: 'index.ts', path: '/src/lib/dialog/component/organism/dialog/index.ts' }
-	];
-	const markdownFile = {
-		name: 'README.md',
-		path: '/src/lib/dialog/component/organism/dialog/README.md'
-	};
-	const storyFile = {
-		name: 'index.story.svelte',
-		path: '/src/lib/dialog/component/organism/dialog/index.story.svelte'
-	};
-
-	let activeFilePath = $state(files[0].path);
-	let actionLabel = $state('ready');
+	let args: RecipeJointTabButtons = $props();
+	// These follow the args and are overwritten by the tab callbacks.
+	let activeFilePath = $derived(args.activeFilePath);
+	let previewMode = $derived(args.previewMode);
 </script>
 
-<Story
-	{controls}
-	component={JointTabButtons}
-	title="JointTabButtons"
-	description="File tab strip with preview mode actions for the domain workspace."
->
-	{#snippet children(values: any)}
-		<div class="_c1">
-			<JointTabButtons
-				{files}
-				{markdownFile}
-				{storyFile}
-				selectedEntityName="invite-page"
-				{activeFilePath}
-				previewMode={values.previewMode as any}
-				previewKind={values.previewKind as any}
-				activeJoint={values.activeJoint as string}
-				hasDependencyPreview={true}
-				onFileSelect={(path) => {
-					activeFilePath = path;
-					actionLabel = `file: ${path.split('/').pop()}`;
-				}}
-				onMarkdownSelect={() => {
-					actionLabel = 'markdown';
-				}}
-				onStorySelect={() => {
-					actionLabel = 'story';
-				}}
-				onJsonTreeSelect={() => {
-					actionLabel = 'json-tree';
-				}}
-				onDependencySelect={() => {
-					actionLabel = 'di';
-				}}
-			/>
-			<p class="_c2">Last action: {actionLabel}</p>
-		</div>
-	{/snippet}
-</Story>
+<div class="_c1">
+	<JointTabButtons
+		{...args}
+		{activeFilePath}
+		{previewMode}
+		onFileSelect={(path) => {
+			activeFilePath = path;
+			previewMode = 'file';
+		}}
+		onMarkdownSelect={() => (previewMode = 'markdown')}
+		onStorySelect={() => (previewMode = 'story')}
+		onJsonTreeSelect={() => (previewMode = 'json-tree')}
+		onDependencySelect={() => (previewMode = 'di')}
+	/>
+	<p class="_c2">Preview: {previewMode} · File: {activeFilePath?.split('/').pop() ?? 'none'}</p>
+</div>
 
 <style>
 	._c1 {
 		display: grid;
 		gap: 1rem;
-		border-radius: 1rem;
-		border-width: 1px;
-		border-style: solid;
-		border-color: #e2e8f0;
-		background-color: #ffffff;
-		padding: 1rem;
 	}
 	._c2 {
+		margin: 0;
 		font-size: 0.875rem;
-		line-height: 1.25rem;
-		color: #64748b;
+		color: var(--color-text-secondary);
 	}
 </style>

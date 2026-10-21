@@ -1,21 +1,8 @@
 <script lang="ts">
 	import OrbitTokenNode from '$stylist/token/component/atom/orbit-token-node/index.svelte';
-	import type { TokenControlDefinition } from '$stylist/token/type/object/token-control-definition';
+	import type { RecipeOrbit } from '$stylist/token/interface/recipe/orbit';
 
-	let {
-		opened = false,
-		radius = 112,
-		nodes
-	}: {
-		opened?: boolean;
-		radius?: number;
-		nodes: readonly {
-			id: string;
-			icon: string;
-			label: string;
-			definition: TokenControlDefinition;
-		}[];
-	} = $props();
+	let { opened = false, radius = 112, nodes }: RecipeOrbit = $props();
 
 	const toTransform = (index: number, count: number) =>
 		`transform: rotate(${(360 / count) * index}deg) translate(${radius}px) rotate(${-(360 / count) * index}deg);`;

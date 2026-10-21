@@ -1,13 +1,8 @@
 <script lang="ts">
 	import Icon from '$stylist/svg/component/atom/icon/index.svelte';
+	import type { RecipeCardClose } from '$stylist/token/interface/recipe/card-close';
 
-	let {
-		expanded = false,
-		onClick
-	}: {
-		expanded?: boolean;
-		onClick?: () => void;
-	} = $props();
+	let { expanded = false, onClick }: RecipeCardClose = $props();
 </script>
 
 <button

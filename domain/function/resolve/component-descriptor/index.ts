@@ -37,7 +37,9 @@ export function resolveComponentDescriptor(
 		componentStatePath ??
 		existing(`${domain.name}/function/state/${family}/index.svelte.ts`) ??
 		existing(`${domain.name}/function/state/${family}/index.ts`);
-	const storyModulePath = existing(`${entity.path}/index.story.svelte`);
+	// `index.story.ts` is the story; a sibling `index.story.svelte` is then only its render.
+	const storyModulePath =
+		existing(`${entity.path}/index.story.ts`) ?? existing(`${entity.path}/index.story.svelte`);
 	const contractPath = existing(`${domain.name}/interface/contract/${family}/index.ts`);
 	const jsonPaths = domain.clusters
 		.filter((cluster) => cluster.name === 'data')

@@ -1,8 +1,9 @@
 import { DOMAIN_SCREEN } from '$stylist/domain/const/object/domain-screen';
 import type { TypeDomainScreen } from '$stylist/domain/type/alias/domain-screen';
+import type { RecipeDomainPlayground } from '$stylist/domain/interface/recipe/domain-playground';
 
 export function createDomainPlaygroundState(
-	initialScreen: TypeDomainScreen = DOMAIN_SCREEN.LANDING
+	initialScreen: RecipeDomainPlayground['initialScreen'] = DOMAIN_SCREEN.LANDING
 ) {
 	let currentScreen = $state<TypeDomainScreen>(initialScreen);
 	let isSettingsOpen = $state(false);

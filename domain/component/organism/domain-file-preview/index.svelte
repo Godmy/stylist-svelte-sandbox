@@ -12,6 +12,9 @@
 	import PreviewSettings from '$stylist/domain/component/molecule/preview-settings/index.svelte';
 	import { resolvePreviewSkin } from '$stylist/domain/function/resolve/preview-skin';
 	import type { ContractPreviewEnvironment } from '$stylist/domain/interface/contract/preview-environment';
+	import { captureElementImage } from '$stylist/domain/function/capture/element-image';
+	import { resolveContentArea } from '$stylist/domain/function/resolve/content-area';
+	import { serializeUnknownError } from '$stylist/domain/function/serialize/unknown-error';
 
 	let {
 		previewMode = 'file',
@@ -78,10 +81,56 @@
 		storyArgs = undefined;
 		storyContent = undefined;
 	});
+	const family = $derived(storyPath.split('/').at(-2) ?? '');
+	const storyTitle = $derived(
+		story?.title ??
+			family
+				.split('-')
+				.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+				.join(' ')
+	);
+	// `/src/lib/html/component/atom/a/index.story.ts` -> `html / atom / a`
+	const storyLocation = $derived(
+		storyPath
+			.replace(/^\/?src\/lib\//, '')
+			.split('/')
+			.slice(0, -1)
+			.filter((part) => part !== 'component')
+			.join(' / ')
+	);
+	// Fullscreen hides the panel behind a bookmark tab on the right edge; it opens as a drawer.
+	const panelId = $props.id();
+	let panelOpen = $state(false);
+	$effect(() => {
+		if (!fullscreen) panelOpen = false;
+	});
+	let capturing = $state(false);
+	let captureError = $state('');
+	/** One click: the painted component (not the whole frame) is saved as `<family>.png`. */
+	async function takeScreenshot() {
+		// Contract canvas first, then the legacy `Story` surface (its own controls stay out).
+		const canvas = ['.c-story-canvas', '.component-preview__surface', '.preview-story > *']
+			.map((selector) => frame?.contentDocument?.querySelector(selector))
+			.find(Boolean);
+		if (!canvas || capturing) return;
+		capturing = true;
+		captureError = '';
+		try {
+			const blob = await captureElementImage(canvas, resolveContentArea(canvas));
+			const link = document.createElement('a');
+			link.href = URL.createObjectURL(blob);
+			link.download = `${family || 'story'}.png`;
+			link.click();
+			setTimeout(() => URL.revokeObjectURL(link.href));
+		} catch (error) {
+			captureError = `Screenshot failed: ${serializeUnknownError(error).message}`;
+		} finally {
+			capturing = false;
+		}
+	}
 	// html stories are elements: the HTML tab shows the story tree (context included) as markup.
 	const storyMarkup = $derived.by(() => {
 		if (!story || !storyPath.includes('/html/component/')) return undefined;
-		const family = storyPath.split('/').at(-2) ?? '';
 		// Foreign content is supplied by custom render components, not HtmlNode.
 		if (family === 'svg' || family === 'math') return undefined;
 		const current = story;
@@ -182,6 +231,34 @@
 		</div>
 	{:else if previewMode === 'story' && storyPreviewComponent}
 		{@const StoryPreviewComponent = storyPreviewComponent}
+		{#snippet screenshotButton(floating: boolean)}
+			<button
+				type="button"
+				class="story-screenshot"
+				class:story-screenshot--floating={floating}
+				aria-label="Save component screenshot"
+				title="Save component screenshot (PNG)"
+				disabled={!frameReady || capturing}
+				onclick={takeScreenshot}
+			>
+				<svg
+					width="18"
+					height="18"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					aria-hidden="true"
+				>
+					<path
+						d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3z"
+					/>
+					<circle cx="12" cy="13" r="3" />
+				</svg>
+			</button>
+		{/snippet}
 		<div class="story-preview-shell" class:story-preview-shell--controls={story && !fullscreen}>
 			{#if storyPath}
 				<div class="story-frame-scroll" bind:this={frameHost}>
@@ -199,16 +276,69 @@
 						style:transform={`translateX(-50%) scale(${frameScale})`}
 					></iframe>
 				</div>
-				{#if story && !fullscreen}
-					<div class="story-controls">
-						{#if visualHtml}<PreviewSettings
-								value={environment}
-								onChange={(next) => (environment = next)}
-							/>{/if}
-						{#key storyPath}
-							<StoryControls {story} onChange={sendArgs} markup={storyMarkup} />
-						{/key}
-					</div>
+				{#if story && fullscreen}
+					<button
+						type="button"
+						class="story-panel-tab"
+						class:story-panel-tab--open={panelOpen}
+						aria-controls={panelId}
+						aria-expanded={panelOpen}
+						aria-label={panelOpen ? 'Hide story controls' : 'Show story controls'}
+						title={panelOpen ? 'Hide story controls' : 'Show story controls'}
+						onclick={() => (panelOpen = !panelOpen)}
+					>
+						<svg
+							width="16"
+							height="16"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							aria-hidden="true"
+						>
+							<path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0" />
+							<circle cx="16" cy="6" r="2" />
+							<circle cx="10" cy="12" r="2" />
+							<circle cx="18" cy="18" r="2" />
+						</svg>
+					</button>
+				{/if}
+				{#if story}
+					<!-- Kept mounted in fullscreen (only hidden): control values survive the drawer. -->
+					<aside
+						id={panelId}
+						class="story-panel"
+						class:story-panel--drawer={fullscreen}
+						hidden={fullscreen && !panelOpen}
+						aria-label="Story controls"
+					>
+						<header class="story-panel__header">
+							<div class="story-panel__heading">
+								<h2 class="story-panel__title">{storyTitle}</h2>
+								{#if storyLocation}<p class="story-panel__location">{storyLocation}</p>{/if}
+								{#if story.description}<p class="story-panel__description">
+										{story.description}
+									</p>{/if}
+							</div>
+							{@render screenshotButton(false)}
+						</header>
+						{#if captureError}<p class="story-panel__error" role="alert">{captureError}</p>{/if}
+						<div class="story-controls">
+							{#if visualHtml}<PreviewSettings
+									value={environment}
+									onChange={(next) => (environment = next)}
+								/>{/if}
+							{#key storyPath}
+								<StoryControls {story} onChange={sendArgs} markup={storyMarkup} />
+							{/key}
+						</div>
+					</aside>
+				{:else}
+					{@render screenshotButton(true)}
+					{#if captureError}<p class="story-panel__error story-panel__error--floating" role="alert">
+							{captureError}
+						</p>{/if}
 				{/if}
 			{:else if typeof StoryPreviewComponent === 'function'}
 				<StoryPreviewComponent />
@@ -336,15 +466,163 @@
 		height: 100%;
 		background: var(--color-background-primary);
 	}
+	/* Preview on the left, the story panel (title, screenshot, controls) on the right. */
 	.story-preview-shell--controls {
 		display: grid;
-		grid-template-rows: minmax(0, 1fr) auto;
+		grid-template-columns: minmax(0, 1fr) minmax(18rem, 24rem);
+		gap: 1rem;
 	}
 
-	.story-preview-shell--controls :global(.story-controls) {
-		max-height: 40vh;
+	.story-panel {
+		display: flex;
+		flex-direction: column;
+		min-width: 0;
+		min-height: 0;
+		margin: -1rem -1rem -1rem 0;
+		border-left: 1px solid var(--color-border-primary);
+		background: var(--color-background-primary);
 		overflow: auto;
-		margin: 1rem -1rem -1rem;
+	}
+
+	.story-panel[hidden] {
+		display: none;
+	}
+
+	/* Fullscreen: the panel is a drawer over the preview, opened from the bookmark tab. */
+	/* Starts below the fixed viewport toolbar so the title and screenshot stay reachable. */
+	.story-panel--drawer {
+		position: absolute;
+		top: 5.5rem;
+		right: 0;
+		bottom: 1rem;
+		z-index: 2;
+		width: min(24rem, calc(100% - 3rem));
+		margin: 0;
+		border: 1px solid var(--color-border-primary);
+		border-right: 0;
+		border-radius: 14px 0 0 14px;
+		box-shadow: -16px 0 38px rgba(15, 23, 42, 0.16);
+	}
+
+	.story-panel__header {
+		position: sticky;
+		top: 0;
+		z-index: 1;
+		display: flex;
+		align-items: flex-start;
+		gap: 0.75rem;
+		padding: 0.85rem 1rem;
+		border-bottom: 1px solid var(--color-border-primary);
+		background: var(--color-background-primary);
+	}
+
+	.story-panel__heading {
+		flex: 1;
+		min-width: 0;
+	}
+
+	.story-panel__title {
+		margin: 0;
+		font-size: 1rem;
+		font-weight: 650;
+		line-height: 1.3;
+		overflow-wrap: anywhere;
+	}
+
+	.story-panel__location,
+	.story-panel__description {
+		margin: 0.2rem 0 0;
+		color: var(--color-text-secondary);
+		font-size: 12px;
+		line-height: 1.4;
+	}
+
+	.story-panel__location {
+		font-family: var(--font-mono, monospace);
+	}
+
+	.story-panel__error {
+		margin: 0;
+		padding: 0.5rem 1rem;
+		color: var(--color-danger-600, #b42318);
+		font-size: 12px;
+	}
+
+	.story-panel__error--floating {
+		position: absolute;
+		right: 1rem;
+		bottom: 4rem;
+		z-index: 2;
+		max-width: 24rem;
+		border-radius: 10px;
+		background: var(--color-background-primary);
+	}
+
+	.story-screenshot,
+	.story-panel-tab {
+		display: inline-grid;
+		place-items: center;
+		border: 1px solid var(--color-border-primary);
+		background: var(--color-background-primary);
+		color: var(--color-text-primary);
+		cursor: pointer;
+	}
+
+	.story-screenshot {
+		flex-shrink: 0;
+		width: 2.3rem;
+		height: 2.3rem;
+		border-radius: 10px;
+	}
+
+	.story-screenshot:hover:not(:disabled),
+	.story-panel-tab:hover {
+		background: var(--color-background-secondary);
+	}
+
+	.story-screenshot:disabled {
+		cursor: progress;
+		opacity: 0.55;
+	}
+
+	.story-screenshot--floating {
+		position: absolute;
+		right: 1rem;
+		bottom: 1rem;
+		z-index: 2;
+		box-shadow: 0 8px 22px rgba(15, 23, 42, 0.14);
+	}
+
+	/* The bookmark: a small tab glued to the right edge of the fullscreen preview. */
+	.story-panel-tab {
+		position: absolute;
+		top: 50%;
+		right: 0;
+		z-index: 3;
+		width: 1.75rem;
+		height: 3.5rem;
+		border-right: 0;
+		border-radius: 10px 0 0 10px;
+		box-shadow: -6px 0 18px rgba(15, 23, 42, 0.12);
+		transform: translateY(-50%);
+	}
+
+	.story-panel-tab--open {
+		right: min(24rem, calc(100% - 3rem));
+	}
+
+	@media (max-width: 760px) {
+		.story-preview-shell--controls {
+			grid-template-columns: 1fr;
+			grid-template-rows: minmax(0, 1fr) auto;
+		}
+
+		.story-preview-shell--controls .story-panel {
+			max-height: 45vh;
+			margin: 0 -1rem -1rem;
+			border-top: 1px solid var(--color-border-primary);
+			border-left: 0;
+		}
 	}
 
 	.story-frame-scroll iframe {

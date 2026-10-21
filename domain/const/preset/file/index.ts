@@ -39,6 +39,37 @@ export const PRESET_FILE = {
 		type: 'component',
 		files: ['index.story.svelte', 'index.story.ts', 'index.svelte', 'index.ts']
 	},
+	DEFINED_REACTIVE_STORY_COMPONENT: {
+		type: 'component',
+		files: ['index.story.ts', 'index.svelte', 'index.ts', 'state.svelte.ts']
+	},
+	DEFINED_RENDERED_REACTIVE_STORY_COMPONENT: {
+		type: 'component',
+		files: ['index.story.svelte', 'index.story.ts', 'index.svelte', 'index.ts', 'state.svelte.ts']
+	},
+	DOCUMENTED_DEFINED_STORY_COMPONENT: {
+		type: 'component',
+		files: ['index.story.ts', 'index.svelte', 'index.ts', 'readme.md']
+	},
+	DOCUMENTED_DEFINED_REACTIVE_STORY_COMPONENT: {
+		type: 'component',
+		files: ['index.story.ts', 'index.svelte', 'index.ts', 'readme.md', 'state.svelte.ts']
+	},
+	DOCUMENTED_DEFINED_RENDERED_STORY_COMPONENT: {
+		type: 'component',
+		files: ['index.story.svelte', 'index.story.ts', 'index.svelte', 'index.ts', 'readme.md']
+	},
+	DOCUMENTED_DEFINED_RENDERED_REACTIVE_STORY_COMPONENT: {
+		type: 'component',
+		files: [
+			'index.story.svelte',
+			'index.story.ts',
+			'index.svelte',
+			'index.ts',
+			'readme.md',
+			'state.svelte.ts'
+		]
+	},
 	INDEX_CODE: { type: 'code', files: ['index.ts'] },
 	INDEX_BARREL: { type: 'barrel', files: ['index.ts'] },
 	INDEXED_CLASS: { type: 'class', files: ['index.ts'] },
@@ -52,6 +83,10 @@ export const PRESET_FILE = {
 	TESTED_INDEXED_STORY_COMPONENT: {
 		type: 'component',
 		files: ['index.story.svelte', 'index.svelte', 'index.test.ts', 'index.ts']
+	},
+	TESTED_DEFINED_RENDERED_STORY_COMPONENT: {
+		type: 'component',
+		files: ['index.story.svelte', 'index.story.ts', 'index.svelte', 'index.test.ts', 'index.ts']
 	},
 	SCHEMA_MARKDOWN: { type: 'markdown', files: ['schema.md'] },
 	DATA_MARKDOWN: { type: 'data', files: ['index.md'] },

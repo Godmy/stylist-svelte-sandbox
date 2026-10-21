@@ -1,5 +1,6 @@
 import { tick, type Component } from 'svelte';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
+import type { RecipeDomainDiagnostics } from '$stylist/domain/interface/recipe/domain-diagnostics';
 
 type StoryModule = {
 	default: unknown;
@@ -59,7 +60,8 @@ export function getTimingTone(totalMs: number): 'fast' | 'medium' | 'slow' {
 	return 'fast';
 }
 
-export function createDomainDiagnosticsState() {
+export function createDomainDiagnosticsState(getProps: () => RecipeDomainDiagnostics) {
+	const compact = $derived(getProps().compact ?? false);
 	const storyModules = import.meta.glob([
 		'/src/lib/**/component/**/*.story.{svelte,ts}',
 		'/modules/*/*/component/**/*.story.{svelte,ts}',
@@ -265,6 +267,9 @@ export function createDomainDiagnosticsState() {
 	});
 
 	return {
+		get compact() {
+			return compact;
+		},
 		get allStories() {
 			return allStories;
 		},
