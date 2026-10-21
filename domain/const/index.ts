@@ -10,6 +10,7 @@ export {
 	PREVIEW_CONTROLS
 } from './object';
 export { PRESET_FILE } from './preset';
+export { FAMILY_ICON } from './record';
 export {
 	DOMAIN_REGIME,
 	JOINT_TOOLBAR_ITEMS,

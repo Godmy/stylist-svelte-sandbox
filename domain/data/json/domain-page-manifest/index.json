@@ -1071,6 +1071,9 @@
         "preset": {
           "file": "INDEXED_CONST"
         },
+        "record": {
+          "family-icon": "INDEXED_CONST"
+        },
         "value": {
           "domain-regime": "INDEXED_CONST",
           "joint-toolbar-items": "INDEXED_CONST",
@@ -1095,6 +1098,7 @@
         "resolve": {
           "component-descriptor": "INDEXED_FUNCTION",
           "content-area": "INDEXED_FUNCTION",
+          "family-icon": "INDEXED_FUNCTION",
           "file-preset": "INDEXED_FUNCTION",
           "module-group": "INDEXED_FUNCTION",
           "preview-skin": "INDEXED_FUNCTION",
@@ -1179,6 +1183,7 @@
       "test": {
         "render": {
           "domain-file-preview": "FUNCTION_TEST",
+          "joint-tab-buttons": "FUNCTION_TEST",
           "preview-environment": "FUNCTION_TEST",
           "private-story-contract": "FUNCTION_TEST",
           "story-canvas": "FUNCTION_TEST",
@@ -1190,6 +1195,7 @@
           "component-descriptor": "FUNCTION_TEST",
           "content-area": "FUNCTION_TEST",
           "element-image": "FUNCTION_TEST",
+          "family-icon": "FUNCTION_TEST",
           "module-group": "FUNCTION_TEST",
           "styled-element": "FUNCTION_TEST"
         }
@@ -2712,6 +2718,7 @@
           "active": "INDEX_SVG",
           "activity": "INDEX_SVG",
           "add": "INDEX_SVG",
+          "admin": "INDEX_SVG",
           "advanced-password-input": "INDEX_SVG",
           "agile": "INDEX_SVG",
           "ai": "INDEX_SVG",
@@ -3212,6 +3219,7 @@
           "scene": "INDEX_SVG",
           "schedule-calendar": "INDEX_SVG",
           "science": "INDEX_SVG",
+          "scratch": "INDEX_SVG",
           "script": "INDEX_SVG",
           "search": "INDEX_SVG",
           "search-bar": "INDEX_SVG",
@@ -3335,6 +3343,7 @@
           "transitions": "INDEX_SVG",
           "trash": "INDEX_SVG",
           "trash-2": "INDEX_SVG",
+          "travel": "INDEX_SVG",
           "travel-commerce": "INDEX_SVG",
           "tree": "INDEX_SVG",
           "trending-down": "INDEX_SVG",

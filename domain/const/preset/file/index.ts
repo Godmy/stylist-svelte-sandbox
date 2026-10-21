@@ -111,6 +111,7 @@ export const PRESET_FILE = {
 	MODULE_ICONS: {
 		type: 'image',
 		files: [
+			'admin.svg',
 			'architecture.svg',
 			'business.svg',
 			'customer.svg',

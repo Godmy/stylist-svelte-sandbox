@@ -11,6 +11,7 @@ export const ARRAY_FILE = [
 	'4-section-history.png',
 	'LICENSE',
 	'README.md',
+	'admin.svg',
 	'app.css',
 	'app.html',
 	'app.svelte',

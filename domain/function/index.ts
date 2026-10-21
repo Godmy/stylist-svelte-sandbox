@@ -5,6 +5,7 @@ export { countDomainStories } from './count';
 export {
 	resolveComponentDescriptor,
 	resolveContentArea,
+	resolveFamilyIcon,
 	resolveFilePreset,
 	resolveModuleGroup,
 	resolvePreviewSkin,

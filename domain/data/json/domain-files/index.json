@@ -1017,7 +1017,7 @@
     },
     {
       "name": "domain",
-      "fileCount": 382,
+      "fileCount": 388,
       "components": {
         "atoms": 5,
         "molecules": 33,
@@ -1054,7 +1054,7 @@
         },
         {
           "name": "const",
-          "fileCount": 17,
+          "fileCount": 19,
           "joints": [
             {
               "name": "array",
@@ -1077,6 +1077,11 @@
               "fileCount": 2
             },
             {
+              "name": "record",
+              "entityCount": 1,
+              "fileCount": 2
+            },
+            {
               "name": "value",
               "entityCount": 3,
               "fileCount": 4
@@ -1085,12 +1090,12 @@
         },
         {
           "name": "data",
-          "fileCount": 17,
+          "fileCount": 18,
           "joints": [
             {
               "name": "icon",
               "entityCount": 1,
-              "fileCount": 16
+              "fileCount": 17
             },
             {
               "name": "md",
@@ -1101,7 +1106,7 @@
         },
         {
           "name": "function",
-          "fileCount": 21,
+          "fileCount": 22,
           "joints": [
             {
               "name": "capture",
@@ -1120,8 +1125,8 @@
             },
             {
               "name": "resolve",
-              "entityCount": 7,
-              "fileCount": 8
+              "entityCount": 8,
+              "fileCount": 9
             },
             {
               "name": "serialize",
@@ -1158,17 +1163,17 @@
         },
         {
           "name": "test",
-          "fileCount": 12,
+          "fileCount": 14,
           "joints": [
             {
               "name": "render",
-              "entityCount": 7,
-              "fileCount": 7
+              "entityCount": 8,
+              "fileCount": 8
             },
             {
               "name": "unit",
-              "entityCount": 5,
-              "fileCount": 5
+              "entityCount": 6,
+              "fileCount": 6
             }
           ]
         },
@@ -2548,7 +2553,7 @@
     },
     {
       "name": "svg",
-      "fileCount": 758,
+      "fileCount": 761,
       "components": {
         "atoms": 11,
         "molecules": 0,
@@ -2581,7 +2586,7 @@
         },
         {
           "name": "data",
-          "fileCount": 686,
+          "fileCount": 689,
           "joints": [
             {
               "name": "flag",
@@ -2590,8 +2595,8 @@
             },
             {
               "name": "icon",
-              "entityCount": 676,
-              "fileCount": 676
+              "entityCount": 679,
+              "fileCount": 679
             }
           ]
         },
@@ -3336,7 +3341,7 @@
   ],
   "totals": {
     "domains": 36,
-    "files": 5199,
+    "files": 5208,
     "atoms": 276,
     "molecules": 189,
     "organisms": 146,
