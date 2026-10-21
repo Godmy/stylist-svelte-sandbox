@@ -55,6 +55,7 @@ export type {
 	RecipeStylistHero,
 	RecipeStylistHeroIntro,
 	RecipeStylistMission,
-	RecipeTaxonomyBreadcrumbs
+	RecipeTaxonomyBreadcrumbs,
+	RecipeWorkspaceHints
 } from './recipe';
 export type { SlotDomainEntity } from './slot';

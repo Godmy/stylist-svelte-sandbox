@@ -54,3 +54,4 @@ export type { RecipeStylistHero } from './stylist-hero';
 export type { RecipeStylistHeroIntro } from './stylist-hero-intro';
 export type { RecipeStylistMission } from './stylist-mission';
 export type { RecipeTaxonomyBreadcrumbs } from './taxonomy-breadcrumbs';
+export type { RecipeWorkspaceHints } from './workspace-hints';

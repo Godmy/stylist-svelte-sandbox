@@ -70,11 +70,14 @@ export {
 	TOKEN_CONTROLLER_TYPE
 } from './const';
 export {
+	captureElementImage,
+	cloneStyledElement,
 	countDomainStories,
 	createClusterToolbarItems,
 	expandComponentTree,
 	normalizeDomainTree,
 	resolveComponentDescriptor,
+	resolveContentArea,
 	resolveFilePreset,
 	resolveModuleGroup,
 	resolvePreviewSkin,
@@ -192,5 +195,6 @@ export type {
 	RecipeStylistHeroIntro,
 	RecipeStylistMission,
 	RecipeTaxonomyBreadcrumbs,
+	RecipeWorkspaceHints,
 	SlotDomainEntity
 } from './interface';

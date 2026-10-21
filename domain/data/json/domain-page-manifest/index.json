@@ -97,6 +97,7 @@
           "palm-sway": "INDEXED_INTERFACE",
           "phrase-arc-flight": "INDEXED_INTERFACE",
           "progress-bar": "INDEXED_INTERFACE",
+          "scroll-phase-debug": "INDEXED_INTERFACE",
           "skeleton": "INDEXED_INTERFACE",
           "spinner": "INDEXED_INTERFACE",
           "tooltip": "INDEXED_INTERFACE",
@@ -220,14 +221,21 @@
       },
       "interface": {
         "recipe": {
+          "animated-button": "INDEXED_INTERFACE",
+          "arrow-button": "INDEXED_INTERFACE",
           "button": "INDEXED_INTERFACE",
           "button-composed": "INDEXED_INTERFACE",
           "button-element": "INDEXED_INTERFACE",
           "button-factory-input": "INDEXED_INTERFACE",
           "close-button": "INDEXED_INTERFACE",
           "copy-button": "INDEXED_INTERFACE",
+          "fill-button": "INDEXED_INTERFACE",
           "follow-button": "INDEXED_INTERFACE",
+          "glow-button": "INDEXED_INTERFACE",
           "icon-button": "INDEXED_INTERFACE",
+          "morph-button": "INDEXED_INTERFACE",
+          "selection-button": "INDEXED_INTERFACE",
+          "shine-button": "INDEXED_INTERFACE",
           "split-button": "INDEXED_INTERFACE",
           "tool-button": "INDEXED_INTERFACE",
           "whatsapp-button": "INDEXED_INTERFACE"
@@ -293,6 +301,7 @@
           "calendar-grid": "INDEXED_INTERFACE",
           "calendar-range": "INDEXED_INTERFACE",
           "calendar-view": "INDEXED_INTERFACE",
+          "date-pair-picker": "INDEXED_INTERFACE",
           "date-picker": "INDEXED_INTERFACE",
           "date-range-picker": "INDEXED_INTERFACE",
           "date-time-picker": "INDEXED_INTERFACE",
@@ -633,6 +642,7 @@
           "shortcuts-panel": "INDEXED_INTERFACE",
           "slider": "INDEXED_INTERFACE",
           "slider-with-input": "INDEXED_INTERFACE",
+          "stepper": "INDEXED_INTERFACE",
           "switch": "INDEXED_INTERFACE",
           "tag": "INDEXED_INTERFACE",
           "tick": "INDEXED_INTERFACE",
@@ -944,6 +954,7 @@
           "breadcrumb-link": "INDEXED_INTERFACE",
           "breadcrumb-separator": "INDEXED_INTERFACE",
           "breadcrumbs": "INDEXED_INTERFACE",
+          "breadcrumbs-container": "INDEXED_INTERFACE",
           "component-info-card": "INDEXED_INTERFACE",
           "confirmation-dialog": "INDEXED_INTERFACE",
           "dialog": "INDEXED_INTERFACE",
@@ -957,7 +968,8 @@
           "tab-list": "INDEXED_INTERFACE",
           "tab-panel": "INDEXED_INTERFACE",
           "tab-panels": "INDEXED_INTERFACE",
-          "tabs": "INDEXED_INTERFACE"
+          "tabs": "INDEXED_INTERFACE",
+          "text-input-dialog": "INDEXED_INTERFACE"
         },
         "slot": {
           "accordion": "INDEXED_INTERFACE",
@@ -1071,11 +1083,18 @@
         }
       },
       "function": {
+        "capture": {
+          "element-image": "INDEXED_FUNCTION"
+        },
+        "clone": {
+          "styled-element": "INDEXED_FUNCTION"
+        },
         "count": {
           "stories": "INDEXED_FUNCTION"
         },
         "resolve": {
           "component-descriptor": "INDEXED_FUNCTION",
+          "content-area": "INDEXED_FUNCTION",
           "file-preset": "INDEXED_FUNCTION",
           "module-group": "INDEXED_FUNCTION",
           "preview-skin": "INDEXED_FUNCTION",
@@ -1150,7 +1169,8 @@
           "stylist-hero": "INDEXED_INTERFACE",
           "stylist-hero-intro": "INDEXED_INTERFACE",
           "stylist-mission": "INDEXED_INTERFACE",
-          "taxonomy-breadcrumbs": "INDEXED_INTERFACE"
+          "taxonomy-breadcrumbs": "INDEXED_INTERFACE",
+          "workspace-hints": "INDEXED_INTERFACE"
         },
         "slot": {
           "domain-entity": "INDEXED_INTERFACE"
@@ -1160,11 +1180,18 @@
         "render": {
           "domain-file-preview": "FUNCTION_TEST",
           "preview-environment": "FUNCTION_TEST",
+          "private-story-contract": "FUNCTION_TEST",
           "story-canvas": "FUNCTION_TEST",
-          "story-controls": "FUNCTION_TEST"
+          "story-contract": "FUNCTION_TEST",
+          "story-controls": "FUNCTION_TEST",
+          "workspace-hints": "FUNCTION_TEST"
         },
         "unit": {
-          "module-group": "FUNCTION_TEST"
+          "component-descriptor": "FUNCTION_TEST",
+          "content-area": "FUNCTION_TEST",
+          "element-image": "FUNCTION_TEST",
+          "module-group": "FUNCTION_TEST",
+          "styled-element": "FUNCTION_TEST"
         }
       },
       "type": {
@@ -1440,13 +1467,19 @@
       "interface": {
         "recipe": {
           "account-forms": "INDEXED_INTERFACE",
+          "address-form": "INDEXED_INTERFACE",
           "checkbox-group": "INDEXED_INTERFACE",
           "form-footer": "INDEXED_INTERFACE",
           "form-header": "INDEXED_INTERFACE",
           "form-selection": "INDEXED_INTERFACE",
+          "form-with-validation": "INDEXED_INTERFACE",
           "interaction-forms": "INDEXED_INTERFACE",
+          "login-form": "INDEXED_INTERFACE",
           "schema-form-dialog": "INDEXED_INTERFACE",
-          "toggle-button-group": "INDEXED_INTERFACE"
+          "screen-reader": "INDEXED_INTERFACE",
+          "search-form": "INDEXED_INTERFACE",
+          "toggle-button-group": "INDEXED_INTERFACE",
+          "validation": "INDEXED_INTERFACE"
         },
         "slot": {
           "address-data": "INDEXED_INTERFACE",
@@ -1519,8 +1552,12 @@
         "recipe": {
           "field-highlighter": "INDEXED_INTERFACE",
           "graph": "INDEXED_INTERFACE",
+          "graph-cluster-filter": "INDEXED_INTERFACE",
+          "graph-dot": "INDEXED_INTERFACE",
           "graph-edge": "INDEXED_INTERFACE",
+          "graph-legend": "INDEXED_INTERFACE",
           "graph-node": "INDEXED_INTERFACE",
+          "graph-tooltip": "INDEXED_INTERFACE",
           "graphviz-directed-edge": "INDEXED_INTERFACE",
           "node-icon": "INDEXED_INTERFACE",
           "ontology-edge-component": "INDEXED_INTERFACE",
@@ -1680,7 +1717,7 @@
           "picture": "DEFINED_STORY_COMPONENT",
           "ruby": "DEFINED_STORY_COMPONENT",
           "select": "DEFINED_STORY_COMPONENT",
-          "table": "DEFINED_STORY_COMPONENT",
+          "table": "DOCUMENTED_DEFINED_STORY_COMPONENT",
           "tbody": "DEFINED_STORY_COMPONENT",
           "tfoot": "DEFINED_STORY_COMPONENT",
           "thead": "DEFINED_STORY_COMPONENT",
@@ -2469,6 +2506,7 @@
       },
       "interface": {
         "recipe": {
+          "bottom-sheet": "INDEXED_INTERFACE",
           "page-button": "INDEXED_INTERFACE",
           "page-ellipsis": "INDEXED_INTERFACE",
           "pagination": "INDEXED_INTERFACE",
@@ -2866,6 +2904,7 @@
           "debug-console": "INDEX_SVG",
           "delete": "INDEX_SVG",
           "densities": "INDEX_SVG",
+          "design-token": "INDEX_SVG",
           "design-tokens": "INDEX_SVG",
           "design-tokens-organism": "INDEX_SVG",
           "development": "INDEX_SVG",
@@ -3166,6 +3205,7 @@
           "rich-text": "INDEX_SVG",
           "rich-text-editor": "INDEX_SVG",
           "route-planner": "INDEX_SVG",
+          "sakartvelo": "INDEX_SVG",
           "save": "INDEX_SVG",
           "scale": "INDEX_SVG",
           "scatter-plot": "INDEX_SVG",
@@ -3295,6 +3335,7 @@
           "transitions": "INDEX_SVG",
           "trash": "INDEX_SVG",
           "trash-2": "INDEX_SVG",
+          "travel-commerce": "INDEX_SVG",
           "tree": "INDEX_SVG",
           "trending-down": "INDEX_SVG",
           "trending-up": "INDEX_SVG",
@@ -3402,7 +3443,7 @@
         },
         "organism": {
           "component": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
-          "data-table": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "data-table": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
           "data-table-shell": "DEFINED_REACTIVE_STORY_COMPONENT",
           "table-list-panel": "DEFINED_RENDERED_STORY_COMPONENT"
         }
@@ -3688,12 +3729,26 @@
       },
       "interface": {
         "recipe": {
+          "card-close": "INDEXED_INTERFACE",
+          "card-open": "INDEXED_INTERFACE",
+          "card-shell": "INDEXED_INTERFACE",
+          "domain-builder": "INDEXED_INTERFACE",
+          "domain-descriptor-panel": "INDEXED_INTERFACE",
+          "orbit": "INDEXED_INTERFACE",
+          "orbit-background": "INDEXED_INTERFACE",
+          "orbit-contract-l5": "INDEXED_INTERFACE",
+          "orbit-token-node": "INDEXED_INTERFACE",
+          "prismatic-orbit-l6": "INDEXED_INTERFACE",
+          "ribbon-menu": "INDEXED_INTERFACE",
           "token": "INDEXED_INTERFACE",
           "token-chip-set": "INDEXED_INTERFACE",
           "token-control-base": "INDEXED_INTERFACE",
+          "token-icon": "INDEXED_INTERFACE",
           "token-radio": "INDEXED_INTERFACE",
           "token-range": "INDEXED_INTERFACE",
           "token-select": "INDEXED_INTERFACE",
+          "token-setting": "INDEXED_INTERFACE",
+          "token-settings": "INDEXED_INTERFACE",
           "token-text": "INDEXED_INTERFACE"
         }
       },
@@ -3751,7 +3806,7 @@
           "abbr": "DEFINED_REACTIVE_STORY_COMPONENT",
           "badge": "DEFINED_REACTIVE_STORY_COMPONENT",
           "blockquote": "DEFINED_REACTIVE_STORY_COMPONENT",
-          "heading": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "heading": "DOCUMENTED_DEFINED_REACTIVE_STORY_COMPONENT",
           "inline-code": "DEFINED_REACTIVE_STORY_COMPONENT",
           "kbd": "DEFINED_REACTIVE_STORY_COMPONENT",
           "link": "DEFINED_REACTIVE_STORY_COMPONENT",
@@ -3795,6 +3850,11 @@
           "text": "INDEXED_INTERFACE",
           "typography": "INDEXED_INTERFACE"
         }
+      },
+      "test": {
+        "render": {
+          "heading-story": "FUNCTION_TEST"
+        }
       }
     },
     "video": {
@@ -3811,7 +3871,8 @@
       },
       "interface": {
         "recipe": {
-          "video-player": "INDEXED_INTERFACE"
+          "video-player": "INDEXED_INTERFACE",
+          "video-scene": "INDEXED_INTERFACE"
         }
       }
     },
@@ -3845,6 +3906,15 @@
         "script": {
           "compile-shader": "INDEXED_FUNCTION",
           "create-program": "INDEXED_FUNCTION"
+        }
+      },
+      "interface": {
+        "recipe": {
+          "concentric-circles-scene": "INDEXED_INTERFACE",
+          "gl-canvas": "INDEXED_INTERFACE",
+          "hyperspace-scene": "INDEXED_INTERFACE",
+          "scene-launcher": "INDEXED_INTERFACE",
+          "turtle-dissolve-scene": "INDEXED_INTERFACE"
         }
       }
     },

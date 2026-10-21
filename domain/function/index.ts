@@ -1,7 +1,10 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
+export { captureElementImage } from './capture';
+export { cloneStyledElement } from './clone';
 export { countDomainStories } from './count';
 export {
 	resolveComponentDescriptor,
+	resolveContentArea,
 	resolveFilePreset,
 	resolveModuleGroup,
 	resolvePreviewSkin,
