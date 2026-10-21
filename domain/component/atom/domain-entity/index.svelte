@@ -49,7 +49,7 @@
 	.c-domain-entity:hover,
 	.c-domain-entity.is-active {
 		border-color: var(--color-border-primary);
-		background: var(--color-background-primary);
+		background: var(--color-background-secondary);
 	}
 
 	.entity-name {

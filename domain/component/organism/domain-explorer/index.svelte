@@ -6,7 +6,12 @@
 	import JointTabButtons from '$stylist/domain/component/molecule/joint-tab-buttons/index.svelte';
 	import TaxonomyBreadcrumbs from '$stylist/domain/component/molecule/taxonomy-breadcrumbs/index.svelte';
 	import createDomainPageState from './state.svelte';
+	import { resolveModuleGroup } from '$stylist/domain/function/resolve/module-group';
 	import type { RecipeDomainExplorer } from '$stylist/domain/interface/recipe/domain-explorer';
+	const registries = import.meta.glob('/modules.json', {
+		eager: true,
+		import: 'default'
+	}) as Record<string, Record<string, { path?: string; domains: string[] }>>;
 
 	type StoryModule = { default: unknown };
 
@@ -50,6 +55,12 @@
 		})
 	);
 
+	// Same grouping as the sidebar's module rail, so the breadcrumb names the selected module.
+	const activeModule = $derived(
+		resolveModuleGroup(registries['/modules.json'] ?? {}, s.availableDomainNames).find((entry) =>
+			entry.domains.includes(s.activeDomain)
+		)?.name
+	);
 	$effect(() => {
 		onSelectionChange?.({
 			domain: s.activeDomain,
@@ -62,7 +73,8 @@
 	});
 
 	$effect(() => {
-		deviceViewportVisible = s.previewMode === 'story' && !!s.storyPreviewComponent;
+		// Stays visible while the next story loads, so the toolbar does not blink between stories.
+		deviceViewportVisible = s.previewMode === 'story' && !s.storyPreviewError;
 	});
 </script>
 
@@ -87,6 +99,7 @@
 			<div class="viewer-chrome" inert={fullscreen}>
 				<div class="taxonomy-row">
 					<TaxonomyBreadcrumbs
+						module={activeModule}
 						domain={s.activeDomain}
 						cluster={s.activeCluster}
 						joint={s.activeJoint}
@@ -217,25 +230,36 @@
 		overflow: hidden;
 	}
 
+	/* Same height and divider as the cluster toolbar next to it (icon + 12px button, 2px padding, 1px border). */
 	.taxonomy-row {
-		display: inline-grid;
+		display: grid;
 		grid-template-columns: minmax(0, 500px) auto;
+		justify-content: start;
 		align-items: center;
 		gap: 15px;
+		box-sizing: border-box;
+		height: calc(
+			max(var(--domain-cluster-icon-size, 16px), var(--domain-search-icon-size, 16px)) + 17px
+		);
 		min-width: 0;
-		justify-self: start;
-		max-width: 100%;
+		padding: 2px 4px 2px 0;
+		border-bottom: 1px solid var(--color-border-primary);
 	}
 
-	.taxonomy-row :global(.c-taxonomy-breadcrumbs) {
+	/* Direct child only: breadcrumbs inside search results keep their own spacing. */
+	.taxonomy-row > :global(.c-taxonomy-breadcrumbs) {
 		width: 500px;
 		max-width: 100%;
 		min-width: 0;
+		padding-block: 0;
+		padding-left: calc(0.35rem + 2px);
+		border-bottom: 0;
 	}
 
 	.taxonomy-row :global(.c-domain-search) {
 		flex-shrink: 0;
-		--domain-search-overlay-width: 510px;
+		/* Covers the breadcrumbs column and gap, leaving the field-to-toggle gap (0.35rem) on the left too. */
+		--domain-search-overlay-width: calc(500px + 15px - 0.7rem);
 	}
 
 	@media (max-width: 840px) {

@@ -131,7 +131,7 @@ describe('story panel', () => {
 		Object.defineProperty(frame, 'contentWindow', { value: frameWindow });
 		window.dispatchEvent(
 			new MessageEvent('message', {
-				data: { type: 'stylist:story-ready' },
+				data: { type: 'stylist:story-ready', story: storyPath.replace('/src/lib/', '') },
 				origin: window.location.origin,
 				source: frameWindow
 			})
@@ -143,5 +143,44 @@ describe('story panel', () => {
 		const link = click.mock.contexts[0] as HTMLAnchorElement;
 		expect(link.download).toBe('button.png');
 		expect(link.href).toBe('blob:story');
+	});
+
+	it('keeps a remounted frame hidden after returning from another tab', async () => {
+		const props = { previewMode: 'story' as const, storyPreviewComponent: ButtonStory, storyPath };
+		const view = render(DomainFilePreview, props);
+		const frame = view.container.querySelector('iframe')!;
+		const frameWindow = { postMessage: vi.fn() } as unknown as Window;
+		Object.defineProperty(frame, 'contentWindow', { value: frameWindow });
+		window.dispatchEvent(
+			new MessageEvent('message', {
+				data: { type: 'stylist:story-ready', story: storyPath.replace('/src/lib/', '') },
+				origin: window.location.origin,
+				source: frameWindow
+			})
+		);
+		await vi.waitFor(() => expect(frame.classList.contains('story-frame--pending')).toBe(false));
+		await view.rerender({ ...props, previewMode: 'di' });
+		await view.rerender(props);
+		const remounted = view.container.querySelector('iframe')!;
+		expect(remounted).not.toBe(frame);
+		expect(remounted.classList.contains('story-frame--pending')).toBe(true);
+	});
+
+	it('ignores a late ready message from the previous story', async () => {
+		const props = { previewMode: 'story' as const, storyPreviewComponent: ButtonStory, storyPath };
+		const view = render(DomainFilePreview, props);
+		const frame = view.container.querySelector('iframe')!;
+		const frameWindow = { postMessage: vi.fn() } as unknown as Window;
+		Object.defineProperty(frame, 'contentWindow', { value: frameWindow });
+		await view.rerender({ ...props, storyPath: '/src/lib/html/component/atom/a/index.story.ts' });
+		window.dispatchEvent(
+			new MessageEvent('message', {
+				data: { type: 'stylist:story-ready', story: storyPath.replace('/src/lib/', '') },
+				origin: window.location.origin,
+				source: frameWindow
+			})
+		);
+		await Promise.resolve();
+		expect(frame.classList.contains('story-frame--pending')).toBe(true);
 	});
 });

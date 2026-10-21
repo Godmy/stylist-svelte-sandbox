@@ -6,12 +6,12 @@
 
 	let {
 		open = false,
-		iconSizes = $bindable({ module: 16, domain: 16, cluster: 16, joint: 16 }),
+		iconSizes = $bindable({ module: 16, domain: 16, cluster: 16, joint: 16, search: 16 }),
 		onClose,
 		class: className = ''
 	}: RecipeDomainSettings = $props();
 	const id = $props.id();
-	const panels = ['module', 'domain', 'cluster', 'joint'] as const;
+	const panels = ['module', 'domain', 'cluster', 'joint', 'search'] as const;
 
 	const themeContext = ManagerThemeContext.getOptional();
 	const settingsRecipe = $derived(
@@ -75,7 +75,8 @@
 				<button
 					type="button"
 					class="reset-icons"
-					onclick={() => (iconSizes = { module: 16, domain: 16, cluster: 16, joint: 16 })}
+					onclick={() =>
+						(iconSizes = { module: 16, domain: 16, cluster: 16, joint: 16, search: 16 })}
 				>
 					Reset icon sizes
 				</button>

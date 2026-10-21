@@ -1,6 +1,9 @@
 <script lang="ts">
 	import Icon from '$stylist/svg/component/atom/icon/index.svelte';
+	import Flag from '$stylist/svg/component/atom/flag/index.svelte';
 	import { TOKEN_ICON_REGISTRY } from '$stylist/svg/const/record/icon-registry';
+	import { TOKEN_FLAG_REGISTRY } from '$stylist/svg/const/record/flag-registry';
+	import { resolveFamilyIcon } from '$stylist/domain/function/resolve/family-icon';
 	import type { RecipeJointTabButtons } from '$stylist/domain/interface/recipe/joint-tab-buttons';
 
 	let {
@@ -21,68 +24,27 @@
 		class: className = ''
 	}: RecipeJointTabButtons = $props();
 
-	const NOT_FOUND_ICON_NAME = 'alert-circle';
-
-	function normalizeEntityName(value: string): string {
-		return value
-			.trim()
-			.replace(/[_\s]+/g, '-')
-			.replace(/([a-z0-9])([A-Z])/g, '$1-$2')
-			.toLowerCase();
-	}
-
-	function hasRegisteredIcon(value: string): boolean {
-		return value in TOKEN_ICON_REGISTRY;
-	}
-
-	function buildIconCandidates(name: string): string[] {
-		const normalized = normalizeEntityName(name);
-		if (!normalized) {
-			return [];
-		}
-
-		const parts = normalized.split('-').filter(Boolean);
-		if (parts.length <= 1) {
-			return [normalized];
-		}
-
-		if (parts.length === 2) {
-			return [normalized, parts[0], parts[1]];
-		}
-
-		return [normalized, parts.slice(0, -1).join('-'), parts[0]];
-	}
-
-	const resolvedIconName = $derived.by(() => {
-		for (const candidate of buildIconCandidates(selectedEntityName)) {
-			if (hasRegisteredIcon(candidate)) {
-				return candidate;
-			}
-		}
-
-		if (activeJoint && hasRegisteredIcon(activeJoint)) {
-			return activeJoint;
-		}
-
-		return NOT_FOUND_ICON_NAME;
-	});
-
-	const hasResolvedIcon = $derived(resolvedIconName !== NOT_FOUND_ICON_NAME);
+	// Flags of `data/flag` show themselves; everything else takes a fitting icon or stays empty.
+	const flagCode = $derived(
+		activeJoint === 'flag' && selectedEntityName in TOKEN_FLAG_REGISTRY ? selectedEntityName : null
+	);
+	const iconName = $derived(
+		flagCode ? null : resolveFamilyIcon(selectedEntityName, (name) => name in TOKEN_ICON_REGISTRY)
+	);
 </script>
 
 <div class="c-joint-tab-buttons {className}" aria-label="Files">
 	<div class="action-group">
 		<div
 			class="entity-icon-shell"
-			class:entity-icon-shell--missing={!hasResolvedIcon}
-			title={hasResolvedIcon
-				? `Icon: ${resolvedIconName}`
-				: `Icon not found for ${selectedEntityName || 'entity'}`}
-			aria-label={hasResolvedIcon
-				? `Resolved icon ${resolvedIconName}`
-				: `Icon not found for ${selectedEntityName || 'entity'}`}
+			class:entity-icon-shell--empty={!iconName && !flagCode}
+			title={flagCode ? `Flag: ${flagCode}` : iconName ? `Icon: ${iconName}` : undefined}
 		>
-			<Icon name={resolvedIconName} size="sm" />
+			{#if flagCode}
+				<Flag code={flagCode} size={16} />
+			{:else if iconName}
+				<Icon name={iconName} size="sm" />
+			{/if}
 		</div>
 	</div>
 
@@ -150,22 +112,28 @@
 </div>
 
 <style>
+	/* Same height and divider as the joint toolbar next to it (icon + 12px button, 2px padding, 1px border). */
 	.c-joint-tab-buttons {
+		--joint-tab-height: calc(var(--domain-joint-icon-size, 16px) + 12px);
 		display: flex;
 		align-items: center;
 		gap: 0.35rem;
-		padding: 0.55rem 0.75rem 0.55rem 0.5rem;
+		box-sizing: border-box;
+		height: calc(var(--joint-tab-height) + 5px);
+		padding: 2px 0.75rem 2px 0.5rem;
 		border-bottom: 1px solid var(--color-border-primary);
-		background: var(--color-background-secondary);
+		background: var(--color-background-primary);
 	}
 
+	/* One row keeps the fixed height: extra tabs scroll horizontally instead of wrapping. */
 	.tabs-scroll {
 		display: flex;
-		flex-wrap: wrap;
 		align-items: center;
 		gap: 0.35rem;
 		flex: 1;
 		min-width: 0;
+		overflow-x: auto;
+		scrollbar-width: none;
 	}
 
 	.action-group {
@@ -179,47 +147,68 @@
 	.entity-icon-shell {
 		display: inline-grid;
 		place-items: center;
-		width: 34px;
-		height: 34px;
-		border: 1px solid color-mix(in srgb, var(--color-primary-500) 35%, var(--color-border-primary));
-		border-radius: 8px;
-		background: color-mix(in srgb, var(--color-primary-500) 8%, var(--color-background-primary));
+		box-sizing: border-box;
+		width: var(--joint-tab-height);
+		height: var(--joint-tab-height);
 		color: var(--color-text-primary);
 		flex-shrink: 0;
 	}
 
-	.entity-icon-shell--missing {
-		border-color: color-mix(in srgb, var(--color-danger-500) 32%, var(--color-border-primary));
-		background: color-mix(in srgb, var(--color-danger-500) 8%, var(--color-background-primary));
-		color: var(--color-text-secondary);
+	/* Registry SVGs carry only a viewBox: without an explicit size they collapse to zero width. */
+	.entity-icon-shell :global(svg) {
+		width: var(--domain-joint-icon-size, 16px);
+		height: var(--domain-joint-icon-size, 16px);
 	}
 
+	/* Borderless like the toolbar buttons; the selected tab gets the same bottom bar as the cluster row. */
 	.tab {
+		position: relative;
 		flex: 0 0 auto;
-		border: 1px solid var(--color-border-primary);
-		border-radius: 8px;
-		background: var(--color-background-primary);
+		border: 0;
+		border-radius: 4px;
+		background: transparent;
 		color: var(--color-text-secondary);
-		padding: 0.35rem 0.55rem;
+		box-sizing: border-box;
+		height: var(--joint-tab-height);
+		padding: 0 0.55rem;
 		font-family: var(--font-mono, monospace);
 		font-size: 12px;
 		cursor: pointer;
+		transition:
+			background-color 100ms,
+			color 100ms;
+	}
+
+	.tab:hover {
+		background: var(--color-background-secondary);
+		color: var(--color-text-primary);
 	}
 
 	.tab.active {
-		color: var(--color-text-primary);
-		border-color: var(--color-primary-500);
+		background: color-mix(in srgb, var(--color-primary-500) 15%, transparent);
+		color: var(--color-primary-600);
 	}
 
-	.tab--mode {
-		background: color-mix(in srgb, var(--color-primary-500) 10%, var(--color-background-primary));
+	.tab.active::after {
+		content: '';
+		position: absolute;
+		left: 5px;
+		right: 5px;
+		bottom: 0;
+		height: 3px;
+		border-radius: 3px 3px 0 0;
+		background: var(--color-primary-500);
+	}
+
+	.tab:focus-visible {
+		outline: 1px solid var(--color-primary-500);
+		outline-offset: -1px;
 	}
 
 	.tab--icon {
 		display: inline-grid;
 		place-items: center;
 		width: 36px;
-		padding-inline: 0;
-		padding-block: 0.42rem;
+		padding: 0;
 	}
 </style>

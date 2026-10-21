@@ -53,6 +53,8 @@ export function createDomainPageState(input: DomainPageInput) {
 	let storyPreviewComponent = $state<unknown>(null);
 	let storyPreviewLoading = $state(false);
 	let storyPreviewError = $state('');
+	// Plain cache, not reactive state: the story effect reads it without subscribing.
+	const loadedStories: Record<string, unknown> = {};
 	let dependencyLoading = $state(false);
 	let dependencyError = $state('');
 	let dependencyItems = $state<DomainDependency[]>([]);
@@ -238,16 +240,25 @@ export function createDomainPageState(input: DomainPageInput) {
 		if (previewMode !== 'story') return;
 		const modulePath = storyModulePath;
 		const loadStory = modulePath ? storyModules[modulePath] : null;
-		storyPreviewComponent = null;
 		storyPreviewError = '';
-		if (!loadStory) {
+		if (!modulePath || !loadStory) {
+			storyPreviewComponent = null;
 			storyPreviewLoading = false;
 			storyPreviewError = 'Story playground is not available for this entity.';
 			return;
 		}
+		// A story loaded before is shown at once: no loading frame when switching back to it.
+		const loaded = loadedStories[modulePath];
+		if (loaded) {
+			storyPreviewComponent = loaded;
+			storyPreviewLoading = false;
+			return;
+		}
+		storyPreviewComponent = null;
 		storyPreviewLoading = true;
 		loadStory()
 			.then((m) => {
+				if (m.default) loadedStories[modulePath] = m.default;
 				if (storyModulePath !== modulePath || previewMode !== 'story') return;
 				storyPreviewComponent = m.default ?? null;
 				if (!storyPreviewComponent)

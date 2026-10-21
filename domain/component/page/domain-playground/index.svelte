@@ -26,13 +26,14 @@
 		module: 16,
 		domain: 16,
 		cluster: 16,
-		joint: 16
+		joint: 16,
+		search: 16
 	});
 	let iconSizesLoaded = $state(false);
 	onMount(() => {
 		try {
 			const saved = JSON.parse(localStorage.getItem('stylist-domain-icon-sizes') ?? 'null');
-			for (const key of ['module', 'domain', 'cluster', 'joint'] as const) {
+			for (const key of ['module', 'domain', 'cluster', 'joint', 'search'] as const) {
 				const size = saved?.[key];
 				if (typeof size === 'number' && Number.isInteger(size) && size >= 12 && size <= 32) {
 					iconSizes[key] = size;
@@ -87,6 +88,7 @@
 	style:--domain-domain-icon-size="{iconSizes.domain}px"
 	style:--domain-cluster-icon-size="{iconSizes.cluster}px"
 	style:--domain-joint-icon-size="{iconSizes.joint}px"
+	style:--domain-search-icon-size="{iconSizes.search}px"
 >
 	{#if screenState.currentScreen === DOMAIN_SCREEN.DOMAIN}
 		{#await loadDomainExplorer() then module}

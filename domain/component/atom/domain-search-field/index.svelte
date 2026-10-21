@@ -31,7 +31,7 @@
 <style>
 	.c-domain-search-field {
 		width: 510px;
-		height: 2rem;
+		height: calc(var(--domain-search-icon-size, 16px) + 12px);
 		padding: 0 0.7rem;
 		border: 1px solid var(--color-border-primary);
 		border-radius: 8px;

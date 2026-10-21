@@ -63,9 +63,8 @@
 		observer.observe(frameHost);
 		return () => observer.disconnect();
 	});
-	const frameUrl = $derived(
-		`/preview?story=${encodeURIComponent(storyPath.replace(/^\/?src\/lib\//, '').replace(/^\//, ''))}`
-	);
+	const frameStory = $derived(storyPath.replace(/^\/?src\/lib\//, '').replace(/^\//, ''));
+	const frameUrl = $derived(`/preview?story=${encodeURIComponent(frameStory)}`);
 	// `index.story.ts`: controls live here, the iframe only renders the component with args.
 	const story = $derived(
 		storyPath.endsWith('.story.ts') ? (storyPreviewComponent as ContractStory) : null
@@ -144,8 +143,16 @@
 		};
 	});
 	// The frame stays transparent until it has the theme and the story painted: no white flash.
+	// Readiness belongs to one iframe element: returning from another tab mounts a new frame.
 	let readyUrl = $state('');
-	const frameReady = $derived(readyUrl === frameUrl);
+	let readyFrame = $state<HTMLIFrameElement>();
+	const frameReady = $derived(readyUrl === frameUrl && !!frame && readyFrame === frame);
+	$effect(() => {
+		// Every navigation of the frame starts unready, also when it returns to an earlier story.
+		// eslint-disable-next-line @typescript-eslint/no-unused-expressions
+		frameUrl;
+		readyUrl = '';
+	});
 	function sendArgs(args: Record<string, unknown>, content?: readonly HtmlNode[]) {
 		storyArgs = args;
 		storyContent = content;
@@ -171,7 +178,11 @@
 	function receiveFrame(event: MessageEvent) {
 		if (event.origin !== window.location.origin || event.source !== frame?.contentWindow) return;
 		if (event.data?.type === 'stylist:preview-ready') syncFrame();
-		if (event.data?.type === 'stylist:story-ready') readyUrl = frameUrl;
+		// A late message from the previous document must not mark the next story as ready.
+		if (event.data?.type === 'stylist:story-ready' && event.data.story === frameStory) {
+			readyUrl = frameUrl;
+			readyFrame = frame;
+		}
 		if (event.data?.type === 'stylist:exit-fullscreen')
 			window.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
 	}
@@ -216,12 +227,17 @@
 >
 	<!-- One loader for both stages (story module, then frame): same shell, place and text. -->
 	{#snippet storyLoading()}
-		<p class="empty-state story-frame-loading" role="status">Loading story…</p>
+		<div class="story-frame-shine" role="status">
+			<span class="story-frame-shine__label">Loading story…</span>
+		</div>
 	{/snippet}
 
 	{#if previewMode === 'story' && storyPreviewLoading}
-		<div class="story-preview-shell">
+		<!-- The panel column is reserved while the story module loads: the layout does not jump. -->
+		{@const reservePanel = !!storyPath?.endsWith('.story.ts') && !fullscreen}
+		<div class="story-preview-shell" class:story-preview-shell--controls={reservePanel}>
 			<div class="story-frame-scroll">{@render storyLoading()}</div>
+			{#if reservePanel}<div class="story-panel" aria-hidden="true"></div>{/if}
 		</div>
 	{:else if previewMode === 'story' && storyPreviewError}
 		<div class="story-preview-shell">
@@ -435,6 +451,11 @@
 		color: var(--color-text-primary);
 	}
 
+	/* The canvas shares the product and story background: a pending frame shows no other color. */
+	.story-preview-shell {
+		background: var(--color-background-primary);
+	}
+
 	.story-preview-shell {
 		box-sizing: border-box;
 		height: 100%;
@@ -629,8 +650,65 @@
 		transition: opacity 120ms ease;
 	}
 
+	/* Hidden at once, faded in only: a fade-out would show the next, still unthemed (white) document. */
 	.story-frame-scroll iframe.story-frame--pending {
 		opacity: 0;
+		transition: none;
+	}
+
+	/* A shine sweeps the whole canvas while the story loads; it fades in, so instant switches stay calm. */
+	.story-frame-shine {
+		position: absolute;
+		inset: 0;
+		overflow: hidden;
+		opacity: 0;
+		animation: story-shine-reveal 200ms ease 120ms forwards;
+	}
+
+	.story-frame-shine::before {
+		content: '';
+		position: absolute;
+		inset: 0 auto 0 0;
+		width: 60%;
+		background: linear-gradient(
+			100deg,
+			transparent,
+			color-mix(in srgb, var(--color-text-primary) 12%, transparent),
+			transparent
+		);
+		transform: translateX(-100%);
+		animation: story-shine-sweep 0.93s ease-in-out infinite;
+	}
+
+	/* The label is for assistive technology only; the shine is the visible state. */
+	.story-frame-shine__label {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		overflow: hidden;
+		clip-path: inset(50%);
+		white-space: nowrap;
+	}
+
+	@keyframes story-shine-reveal {
+		to {
+			opacity: 1;
+		}
+	}
+
+	@keyframes story-shine-sweep {
+		to {
+			transform: translateX(270%);
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.story-frame-shine::before {
+			animation: none;
+			transform: none;
+			width: 100%;
+			background: color-mix(in srgb, var(--color-text-primary) 6%, transparent);
+		}
 	}
 
 	.story-frame-loading {

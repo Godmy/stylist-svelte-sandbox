@@ -20,8 +20,8 @@
 	.c-domain-search-toggle {
 		display: inline-grid;
 		place-items: center;
-		width: 2rem;
-		height: 2rem;
+		width: calc(var(--domain-search-icon-size, 16px) + 12px);
+		height: calc(var(--domain-search-icon-size, 16px) + 12px);
 		padding: 0;
 		border: 1px solid var(--color-border-primary);
 		border-radius: 8px;
@@ -35,5 +35,9 @@
 		color: var(--color-text-primary);
 		border-color: var(--color-primary-500);
 		background: color-mix(in srgb, var(--color-primary-500) 10%, var(--color-background-primary));
+	}
+	.c-domain-search-toggle :global(svg) {
+		width: var(--domain-search-icon-size, 16px);
+		height: var(--domain-search-icon-size, 16px);
 	}
 </style>

@@ -108,6 +108,11 @@
 		gap: 0.35rem;
 		width: var(--domain-search-overlay-width, 500px);
 	}
+	/* Extra class for specificity over the field's own fixed 510px width. */
+	.c-domain-search .search-shell :global(.c-domain-search-field) {
+		box-sizing: border-box;
+		width: 100%;
+	}
 
 	.search-results {
 		position: absolute;
@@ -155,8 +160,8 @@
 	.copy-path-button {
 		display: inline-grid;
 		place-items: center;
-		width: 2rem;
-		height: 2rem;
+		width: calc(var(--domain-search-icon-size, 16px) + 12px);
+		height: calc(var(--domain-search-icon-size, 16px) + 12px);
 		padding: 0;
 		border: 1px solid var(--color-border-primary);
 		border-radius: 8px;
@@ -179,5 +184,9 @@
 	.copy-path-button.is-copied {
 		color: var(--color-success-500, var(--color-text-primary));
 		border-color: var(--color-success-500, var(--color-border-primary));
+	}
+	.copy-path-button :global(svg) {
+		width: var(--domain-search-icon-size, 16px);
+		height: var(--domain-search-icon-size, 16px);
 	}
 </style>

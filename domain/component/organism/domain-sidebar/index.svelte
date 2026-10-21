@@ -182,7 +182,42 @@
 	.module-toolbar button.active {
 		background: color-mix(in srgb, var(--color-primary-500) 15%, transparent);
 		color: var(--color-primary-600);
-		box-shadow: inset 2px 0 var(--color-primary-500);
+	}
+	/* Selection bars mirror each other across the module/domain divider:
+	   the module bar sits on its right edge, the domain bar on its left edge. */
+	.module-toolbar button {
+		position: relative;
+	}
+	.module-toolbar button.active::after,
+	.sidebar-grid :global(.c-domain-toolbar.vertical .active-indicator) {
+		position: absolute;
+		top: 5px;
+		bottom: 5px;
+		width: 3px;
+		height: auto;
+		background: var(--color-primary-500);
+	}
+	.module-toolbar button.active::after {
+		content: '';
+		right: 0;
+		border-radius: 3px 0 0 3px;
+	}
+	.sidebar-grid :global(.c-domain-toolbar.vertical .active-indicator) {
+		left: 0;
+		right: auto;
+		border-radius: 0 3px 3px 0;
+	}
+	/* Horizontal rows (cluster, joint) carry the same bar at the bottom of the selected button. */
+	.sidebar-grid :global(.c-cluster-toolbar .active-indicator),
+	.sidebar-grid :global(.c-joint-toolbar .active-indicator) {
+		top: auto;
+		bottom: 0;
+		left: 5px;
+		right: 5px;
+		width: auto;
+		height: 3px;
+		border-radius: 3px 3px 0 0;
+		background: var(--color-primary-500);
 	}
 	.module-toolbar button:focus-visible {
 		outline: 2px solid var(--color-primary-500);

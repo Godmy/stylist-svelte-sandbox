@@ -2,6 +2,7 @@
 	import type { RecipeTaxonomyBreadcrumbs } from '$stylist/domain/interface/recipe/taxonomy-breadcrumbs';
 
 	let {
+		module,
 		domain,
 		cluster,
 		joint,
@@ -16,6 +17,10 @@
 </script>
 
 <nav class="c-taxonomy-breadcrumbs {className}" aria-label="Taxonomy path">
+	{#if module}
+		<span class="crumb" title="module">{module}</span>
+		<span class="sep" aria-hidden="true">/</span>
+	{/if}
 	<span class="crumb" title="domain">{domain || '-'}</span>
 	<span class="sep" aria-hidden="true">/</span>
 	<span class="crumb" title="cluster">{cluster || '-'}</span>

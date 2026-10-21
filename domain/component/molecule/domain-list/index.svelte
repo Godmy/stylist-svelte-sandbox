@@ -41,8 +41,8 @@
 		display: grid;
 		grid-template-rows: auto 1fr;
 		min-height: 0;
-		border-top: 1px solid var(--color-border-primary);
-		background: var(--color-background-secondary);
+		/* No top border: the joint toolbar above already draws the 1px divider. */
+		background: var(--color-background-primary);
 	}
 
 	.list-body {
