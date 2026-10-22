@@ -6,12 +6,10 @@
 	let {
 		landingVisible = false,
 		domainVisible = true,
-		diagnosticsOpen = false,
 		howItWorksOpen = false,
 		settingsOpen = false,
 		onLandingToggle,
 		onDomainToggle,
-		onDiagnosticsToggle,
 		onHowItWorksToggle,
 		onSettingsToggle,
 		onManifestReload,
@@ -42,18 +40,6 @@
 		title="Show components"
 	>
 		<Icon name="domain" size={18} />
-	</button>
-
-	<button
-		type="button"
-		class:active={diagnosticsOpen}
-		class="menu-button menu-button--icon"
-		onclick={onDiagnosticsToggle}
-		aria-pressed={diagnosticsOpen}
-		aria-label="Diagnostics"
-		title="Diagnostics"
-	>
-		<Icon name="diagnostics" size={18} />
 	</button>
 
 	<button

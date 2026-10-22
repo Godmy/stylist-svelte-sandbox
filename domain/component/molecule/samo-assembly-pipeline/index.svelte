@@ -22,7 +22,7 @@
 				rule: 'Only `export const`. Values that never change at runtime.',
 				joints: ['value', 'map', 'record', 'preset', 'array', 'object'],
 				example:
-					"export const DOMAIN_SCREEN = {\n\tLANDING: 'landing',\n\tDOMAIN: 'domain',\n\tDIAGNOSTICS: 'diagnostics'\n} as const;"
+					"export const DOMAIN_SCREEN = {\n\tLANDING: 'landing',\n\tDOMAIN: 'domain',\n\tHOW_IT_WORKS: 'how-it-works'\n} as const;"
 			},
 			{
 				name: 'type',

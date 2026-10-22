@@ -7,14 +7,12 @@
 	// These follow the args and are overwritten by the menu toggles.
 	let landingVisible = $derived(args.landingVisible ?? false);
 	let domainVisible = $derived(args.domainVisible ?? false);
-	let diagnosticsOpen = $derived(args.diagnosticsOpen ?? false);
 	let howItWorksOpen = $derived(args.howItWorksOpen ?? false);
 	let settingsOpen = $derived(args.settingsOpen ?? false);
 
-	function show(screen: 'landing' | 'domain' | 'diagnostics') {
+	function show(screen: 'landing' | 'domain') {
 		landingVisible = screen === 'landing';
 		domainVisible = screen === 'domain';
-		diagnosticsOpen = screen === 'diagnostics';
 	}
 </script>
 
@@ -23,23 +21,17 @@
 		{...args}
 		{landingVisible}
 		{domainVisible}
-		{diagnosticsOpen}
 		{howItWorksOpen}
 		{settingsOpen}
 		onLandingToggle={() => show('landing')}
 		onDomainToggle={() => show('domain')}
-		onDiagnosticsToggle={() => show('diagnostics')}
 		onHowItWorksToggle={() => (howItWorksOpen = !howItWorksOpen)}
 		onSettingsToggle={() => (settingsOpen = !settingsOpen)}
 	/>
 	<p class="_c2">
-		Screen: {landingVisible
-			? 'landing'
-			: diagnosticsOpen
-				? 'diagnostics'
-				: domainVisible
-					? 'domain'
-					: 'none'} · Settings: {settingsOpen ? 'open' : 'closed'}
+		Screen: {landingVisible ? 'landing' : domainVisible ? 'domain' : 'none'} · Settings: {settingsOpen
+			? 'open'
+			: 'closed'}
 	</p>
 </div>
 

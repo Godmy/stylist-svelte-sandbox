@@ -1,6 +1,6 @@
 import { tick, type Component } from 'svelte';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
-import type { RecipeDomainDiagnostics } from '$stylist/domain/interface/recipe/domain-diagnostics';
+import type { RecipeStoryRunner } from '$stylist/domain/interface/recipe/story-runner';
 
 type StoryModule = {
 	default: unknown;
@@ -60,12 +60,14 @@ export function getTimingTone(totalMs: number): 'fast' | 'medium' | 'slow' {
 	return 'fast';
 }
 
-export function createDomainDiagnosticsState(getProps: () => RecipeDomainDiagnostics) {
+export function createStoryRunnerState(getProps: () => RecipeStoryRunner) {
 	const compact = $derived(getProps().compact ?? false);
 	const storyModules = import.meta.glob([
 		'/src/lib/**/component/**/*.story.{svelte,ts}',
 		'/modules/*/*/component/**/*.story.{svelte,ts}',
-		'/modules/*/component/**/*.story.{svelte,ts}'
+		'/modules/*/component/**/*.story.{svelte,ts}',
+		// The runner's own story would mount the runner inside itself.
+		'!/modules/sandbox/domain/component/page/story-runner/**'
 	]) as Record<string, () => Promise<StoryModule>>;
 
 	const allStories: StoryEntry[] = Object.entries(storyModules)
@@ -226,7 +228,7 @@ export function createDomainDiagnosticsState(getProps: () => RecipeDomainDiagnos
 			};
 
 			diagnosticsResults = [...diagnosticsResults, result];
-			console[result.status === 'failed' ? 'error' : 'log']('[library diagnostics]', result);
+			console[result.status === 'failed' ? 'error' : 'log']('[story runner]', result);
 
 			diagnosticsComponent = null;
 			diagnosticsStory = null;
@@ -326,4 +328,4 @@ export function createDomainDiagnosticsState(getProps: () => RecipeDomainDiagnos
 	};
 }
 
-export default createDomainDiagnosticsState;
+export default createStoryRunnerState;

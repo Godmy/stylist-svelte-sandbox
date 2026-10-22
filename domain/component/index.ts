@@ -46,11 +46,8 @@ export {
 	DomainAiAgent,
 	DomainClusterBalance,
 	DomainComponentImportDiagnostics,
-	DomainDiagnostics,
 	DomainExplorer,
-	DomainFileDiagnostics,
 	DomainFileDomainGrid,
-	DomainFileOverview,
 	DomainFilePreview,
 	DomainSettings,
 	DomainSidebar,
@@ -61,5 +58,6 @@ export {
 export {
 	DomainHowItWorks,
 	DomainLanding,
-	DomainPlayground
+	DomainPlayground,
+	StoryRunner
 } from './page';

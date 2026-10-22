@@ -1,13 +1,15 @@
 <script lang="ts">
-	import DomainFileDiagnostics from '$stylist/domain/component/organism/domain-file-diagnostics/index.svelte';
 	import StoryCanvas from '$stylist/domain/component/molecule/story-canvas/index.svelte';
-	import type { RecipeDomainDiagnostics } from '$stylist/domain/interface/recipe/domain-diagnostics';
-	import createDomainDiagnosticsState, { formatDuration, getTimingTone } from '$stylist/domain/component/organism/domain-diagnostics/state.svelte';
+	import type { RecipeStoryRunner } from '$stylist/domain/interface/recipe/story-runner';
+	import createStoryRunnerState, {
+		formatDuration,
+		getTimingTone
+	} from '$stylist/domain/component/page/story-runner/state.svelte';
 
-	let props: RecipeDomainDiagnostics = $props();
+	let props: RecipeStoryRunner = $props();
 	const className = $derived(props.class ?? '');
 
-	const state = createDomainDiagnosticsState(() => props);
+	const state = createStoryRunnerState(() => props);
 
 	function toWords(value: string): string {
 		return value
@@ -18,11 +20,7 @@
 	}
 </script>
 
-<div
-	class="c-domain-diagnostics {state.compact ? 'c-domain-diagnostics--compact' : ''} {className}"
->
-	<DomainFileDiagnostics class="file-diagnostics" />
-
+<div class="c-story-runner {state.compact ? 'c-story-runner--compact' : ''} {className}">
 	<header class="hero">
 		<div class="hero-copy">
 			<p class="eyebrow">Diagnostics</p>
@@ -166,7 +164,7 @@
 </div>
 
 <style>
-	.c-domain-diagnostics {
+	.c-story-runner {
 		display: grid;
 		gap: 1.25rem;
 		padding: 1rem;
@@ -180,7 +178,7 @@
 			);
 	}
 
-	.c-domain-diagnostics--compact {
+	.c-story-runner--compact {
 		gap: 0.9rem;
 		padding: 0.9rem;
 		min-width: min(38rem, calc(100vw - 5rem));
@@ -203,7 +201,7 @@
 		box-shadow: 0 24px 60px rgba(15, 23, 42, 0.08);
 	}
 
-	.c-domain-diagnostics--compact .hero {
+	.c-story-runner--compact .hero {
 		grid-template-columns: 1fr;
 		border-radius: 18px;
 		padding: 1rem;
@@ -261,10 +259,10 @@
 		background: color-mix(in srgb, var(--color-background-primary, #ffffff) 94%, transparent);
 	}
 
-	.c-domain-diagnostics--compact .stat-card,
-	.c-domain-diagnostics--compact .controls,
-	.c-domain-diagnostics--compact .status-panel,
-	.c-domain-diagnostics--compact .results-table-shell {
+	.c-story-runner--compact .stat-card,
+	.c-story-runner--compact .controls,
+	.c-story-runner--compact .status-panel,
+	.c-story-runner--compact .results-table-shell {
 		border-radius: 16px;
 		padding: 0.85rem;
 	}
@@ -286,7 +284,7 @@
 		align-items: end;
 	}
 
-	.c-domain-diagnostics--compact .controls {
+	.c-story-runner--compact .controls {
 		grid-template-columns: 1fr;
 		align-items: stretch;
 	}
@@ -446,7 +444,7 @@
 			grid-template-columns: 1fr;
 		}
 
-		.c-domain-diagnostics--compact {
+		.c-story-runner--compact {
 			min-width: 0;
 		}
 	}

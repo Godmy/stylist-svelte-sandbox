@@ -1036,11 +1036,8 @@
           "domain-ai-agent": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
           "domain-cluster-balance": "DEFINED_STORY_COMPONENT",
           "domain-component-import-diagnostics": "DEFINED_STORY_COMPONENT",
-          "domain-diagnostics": "DEFINED_REACTIVE_STORY_COMPONENT",
           "domain-explorer": "DEFINED_REACTIVE_STORY_COMPONENT",
-          "domain-file-diagnostics": "DEFINED_STORY_COMPONENT",
           "domain-file-domain-grid": "DEFINED_STORY_COMPONENT",
-          "domain-file-overview": "DEFINED_STORY_COMPONENT",
           "domain-file-preview": "DEFINED_RENDERED_STORY_COMPONENT",
           "domain-settings": "DEFINED_RENDERED_STORY_COMPONENT",
           "domain-sidebar": "DEFINED_RENDERED_STORY_COMPONENT",
@@ -1051,7 +1048,8 @@
         "page": {
           "domain-how-it-works": "DEFINED_STORY_COMPONENT",
           "domain-landing": "DEFINED_STORY_COMPONENT",
-          "domain-playground": "DEFINED_REACTIVE_STORY_COMPONENT"
+          "domain-playground": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "story-runner": "DEFINED_REACTIVE_STORY_COMPONENT"
         }
       },
       "const": {
@@ -1126,12 +1124,9 @@
           "domain-ai-agent": "INDEXED_INTERFACE",
           "domain-cluster-balance": "INDEXED_INTERFACE",
           "domain-component-import-diagnostics": "INDEXED_INTERFACE",
-          "domain-diagnostics": "INDEXED_INTERFACE",
           "domain-entity": "INDEXED_INTERFACE",
           "domain-explorer": "INDEXED_INTERFACE",
-          "domain-file-diagnostics": "INDEXED_INTERFACE",
           "domain-file-domain-grid": "INDEXED_INTERFACE",
-          "domain-file-overview": "INDEXED_INTERFACE",
           "domain-file-preview": "INDEXED_INTERFACE",
           "domain-how-it-works": "INDEXED_INTERFACE",
           "domain-landing": "INDEXED_INTERFACE",
@@ -1170,6 +1165,7 @@
           "story-canvas": "INDEXED_INTERFACE",
           "story-control": "INDEXED_INTERFACE",
           "story-controls": "INDEXED_INTERFACE",
+          "story-runner": "INDEXED_INTERFACE",
           "stylist-hero": "INDEXED_INTERFACE",
           "stylist-hero-intro": "INDEXED_INTERFACE",
           "stylist-mission": "INDEXED_INTERFACE",
@@ -1214,9 +1210,6 @@
           "component-import-row": "INDEXED_TYPE",
           "component-import-summary": "INDEXED_TYPE",
           "domain-component-descriptor": "INDEXED_TYPE",
-          "domain-component-interval-metric": "INDEXED_TYPE",
-          "domain-component-intervals-manifest": "INDEXED_TYPE",
-          "domain-component-intervals-totals": "INDEXED_TYPE",
           "domain-component-projection": "INDEXED_TYPE",
           "domain-dependency": "INDEXED_TYPE",
           "domain-dependency-file": "INDEXED_TYPE",
@@ -2091,7 +2084,6 @@
           "checkbox-group": "DEFINED_REACTIVE_STORY_COMPONENT",
           "input-double": "DEFINED_STORY_COMPONENT",
           "input-email": "DEFINED_STORY_COMPONENT",
-          "input-field": "DEFINED_REACTIVE_STORY_COMPONENT",
           "input-group": "DEFINED_REACTIVE_STORY_COMPONENT",
           "input-name": "DEFINED_STORY_COMPONENT",
           "input-password": "DEFINED_REACTIVE_STORY_COMPONENT",
@@ -2114,6 +2106,9 @@
         }
       },
       "function": {
+        "resolve": {
+          "input-attributes": "INDEXED_FUNCTION"
+        },
         "script": {
           "create-field-class-state": "INDEXED_FUNCTION",
           "create-field-preset-state": "INDEXED_FUNCTION",
@@ -2123,6 +2118,7 @@
         "state": {
           "character-count": "REACTIVE_BARREL",
           "format-phone-number": "REACTIVE_BARREL",
+          "input-form-reset": "REACTIVE_BARREL",
           "normalize-phone-input-value": "REACTIVE_BARREL"
         }
       },
@@ -2134,7 +2130,6 @@
           "input-double": "INDEXED_INTERFACE",
           "input-email": "INDEXED_INTERFACE",
           "input-error": "INDEXED_INTERFACE",
-          "input-field": "INDEXED_INTERFACE",
           "input-group": "INDEXED_INTERFACE",
           "input-helper": "INDEXED_INTERFACE",
           "input-label": "INDEXED_INTERFACE",
@@ -2163,6 +2158,15 @@
           "number-input": "INDEXED_INTERFACE",
           "phone-number-input": "INDEXED_INTERFACE",
           "tag-input": "INDEXED_INTERFACE"
+        }
+      },
+      "test": {
+        "render": {
+          "html-contract": "FUNCTION_TEST",
+          "stories": "FUNCTION_TEST"
+        },
+        "unit": {
+          "phone-format": "FUNCTION_TEST"
         }
       }
     },
@@ -2494,32 +2498,75 @@
       }
     },
     "navigation": {
+      "class": {
+        "composite": {
+          "navigation": "INDEXED_CLASS"
+        }
+      },
       "component": {
         "atom": {
-          "page-button": "DEFINED_REACTIVE_STORY_COMPONENT",
-          "page-ellipsis": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT"
+          "floating-action-button": "DEFINED_STORY_COMPONENT"
+        },
+        "molecule": {
+          "navigation-item": "DEFINED_STORY_COMPONENT"
         },
         "organism": {
           "bottom-sheet": "DEFINED_RENDERED_STORY_COMPONENT",
-          "pagination": "DEFINED_REACTIVE_STORY_COMPONENT",
-          "sidebar": "DEFINED_REACTIVE_STORY_COMPONENT"
+          "navigation-drawer": "DEFINED_STORY_COMPONENT",
+          "sidebar": "DEFINED_STORY_COMPONENT",
+          "top-app-bar": "DEFINED_STORY_COMPONENT"
+        },
+        "page": {
+          "activity": "DEFINED_RENDERED_STORY_COMPONENT",
+          "navigation-graph": "DEFINED_STORY_COMPONENT"
+        },
+        "template": {
+          "fragment": "DEFINED_STORY_COMPONENT"
         }
       },
-      "const": {
-        "preset": {
-          "page-button": "INDEXED_CONST"
+      "data": {
+        "json": {
+          "navigation-graph-demo": "INDEX_JSON"
+        }
+      },
+      "function": {
+        "resolve": {
+          "navigation-graph-layout": "INDEXED_FUNCTION"
+        },
+        "state": {
+          "activity": "REACTIVE_BARREL",
+          "navigation": "REACTIVE_BARREL",
+          "sidebar": "REACTIVE_BARREL"
         }
       },
       "interface": {
+        "contract": {
+          "navigation-action": "INDEXED_INTERFACE",
+          "navigation-destination": "INDEXED_INTERFACE",
+          "navigation-drawer-section": "INDEXED_INTERFACE",
+          "navigation-entry": "INDEXED_INTERFACE",
+          "navigation-graph": "INDEXED_INTERFACE",
+          "navigation-graph-layout": "INDEXED_INTERFACE",
+          "navigator": "INDEXED_INTERFACE"
+        },
         "recipe": {
+          "activity": "INDEXED_INTERFACE",
           "bottom-sheet": "INDEXED_INTERFACE",
-          "page-button": "INDEXED_INTERFACE",
-          "page-ellipsis": "INDEXED_INTERFACE",
-          "pagination": "INDEXED_INTERFACE",
-          "sidebar": "INDEXED_INTERFACE"
+          "floating-action-button": "INDEXED_INTERFACE",
+          "fragment": "INDEXED_INTERFACE",
+          "navigation-drawer": "INDEXED_INTERFACE",
+          "navigation-graph": "INDEXED_INTERFACE",
+          "navigation-item": "INDEXED_INTERFACE",
+          "sidebar": "INDEXED_INTERFACE",
+          "top-app-bar": "INDEXED_INTERFACE"
         },
         "slot": {
           "nav-item": "INDEXED_INTERFACE"
+        }
+      },
+      "test": {
+        "unit": {
+          "navigation-composite": "FUNCTION_TEST"
         }
       }
     },
@@ -2580,6 +2627,36 @@
           "notification-item": "INDEXED_TYPE",
           "notification-settings-preference": "INDEXED_TYPE",
           "scheduled-notification-item": "INDEXED_TYPE"
+        }
+      }
+    },
+    "pager": {
+      "component": {
+        "atom": {
+          "page-button": "DEFINED_STORY_COMPONENT",
+          "page-ellipsis": "DEFINED_RENDERED_STORY_COMPONENT"
+        },
+        "organism": {
+          "pagination": "DEFINED_STORY_COMPONENT"
+        }
+      },
+      "const": {
+        "preset": {
+          "page-button": "INDEXED_CONST"
+        }
+      },
+      "function": {
+        "state": {
+          "page-button": "REACTIVE_BARREL",
+          "page-ellipsis": "REACTIVE_BARREL",
+          "pagination": "REACTIVE_BARREL"
+        }
+      },
+      "interface": {
+        "recipe": {
+          "page-button": "INDEXED_INTERFACE",
+          "page-ellipsis": "INDEXED_INTERFACE",
+          "pagination": "INDEXED_INTERFACE"
         }
       }
     },
@@ -2768,6 +2845,7 @@
           "avatar": "INDEX_SVG",
           "avatar-group": "INDEX_SVG",
           "award": "INDEX_SVG",
+          "back": "INDEX_SVG",
           "background": "INDEX_SVG",
           "backlog": "INDEX_SVG",
           "backlog-status-done": "INDEX_SVG",
@@ -3136,6 +3214,7 @@
           "page": "INDEX_SVG",
           "page-builder": "INDEX_SVG",
           "page-header": "INDEX_SVG",
+          "pager": "INDEX_SVG",
           "pagination": "INDEX_SVG",
           "panels": "INDEX_SVG",
           "paperclip": "INDEX_SVG",
@@ -3812,12 +3891,9 @@
     "typography": {
       "component": {
         "atom": {
-          "abbr": "DEFINED_REACTIVE_STORY_COMPONENT",
           "badge": "DEFINED_REACTIVE_STORY_COMPONENT",
           "blockquote": "DEFINED_REACTIVE_STORY_COMPONENT",
           "heading": "DOCUMENTED_DEFINED_REACTIVE_STORY_COMPONENT",
-          "inline-code": "DEFINED_REACTIVE_STORY_COMPONENT",
-          "kbd": "DEFINED_REACTIVE_STORY_COMPONENT",
           "link": "DEFINED_REACTIVE_STORY_COMPONENT",
           "text": "DEFINED_REACTIVE_STORY_COMPONENT"
         },
@@ -3842,13 +3918,10 @@
       },
       "interface": {
         "recipe": {
-          "abbr": "INDEXED_INTERFACE",
           "badge": "INDEXED_INTERFACE",
           "badge-group": "INDEXED_INTERFACE",
           "blockquote": "INDEXED_INTERFACE",
           "heading": "INDEXED_INTERFACE",
-          "inline-code": "INDEXED_INTERFACE",
-          "kbd": "INDEXED_INTERFACE",
           "link": "INDEXED_INTERFACE",
           "rich-text": "INDEXED_INTERFACE",
           "text": "INDEXED_INTERFACE"
@@ -3862,7 +3935,9 @@
       },
       "test": {
         "render": {
-          "heading-story": "FUNCTION_TEST"
+          "heading-story": "FUNCTION_TEST",
+          "typography-contract": "FUNCTION_TEST",
+          "typography-stories": "FUNCTION_TEST"
         }
       }
     },

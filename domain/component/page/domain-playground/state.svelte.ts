@@ -16,10 +16,6 @@ export function createDomainPlaygroundState(
 		currentScreen = DOMAIN_SCREEN.LANDING;
 	}
 
-	function handleDiagnosticsToggle() {
-		currentScreen = DOMAIN_SCREEN.DIAGNOSTICS;
-	}
-
 	function handleHowItWorksToggle() {
 		currentScreen = DOMAIN_SCREEN.HOW_IT_WORKS;
 		// The guide is a long read: always open it from the top, wherever the landing was scrolled.
@@ -51,7 +47,6 @@ export function createDomainPlaygroundState(
 		},
 		handleDomainToggle,
 		handleLandingToggle,
-		handleDiagnosticsToggle,
 		handleHowItWorksToggle,
 		handleSettingsToggle,
 		closeSettings,

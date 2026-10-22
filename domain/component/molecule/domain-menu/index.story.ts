@@ -10,14 +10,12 @@ export default {
 	args: {
 		landingVisible: false,
 		domainVisible: true,
-		diagnosticsOpen: false,
 		howItWorksOpen: false,
 		settingsOpen: false
 	},
 	controls: {
 		landingVisible: { type: 'boolean' },
 		domainVisible: { type: 'boolean' },
-		diagnosticsOpen: { type: 'boolean' },
 		howItWorksOpen: { type: 'boolean' },
 		settingsOpen: { type: 'boolean' }
 	},

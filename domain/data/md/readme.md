@@ -6,18 +6,17 @@ The domain workspace makes the component library readable before it becomes giga
 
 ## Screens
 
-`DOMAIN_SCREEN` (`const/object/domain-screen`) defines four screens; `domain-playground/state.svelte.ts` switches between them. Everything except the landing is loaded lazily.
+`DOMAIN_SCREEN` (`const/object/domain-screen`) defines three screens; `domain-playground/state.svelte.ts` switches between them. Everything except the landing is loaded lazily.
 
 - **landing** — `page/domain-landing`, the front door to the system's structure. It is not a marketing wrapper around demos.
 - **domain** — `organism/domain-explorer`, the interactive component browser.
-- **diagnostics** — `organism/domain-diagnostics`, the story runner and manifest dashboard.
 - **how-it-works** — `page/domain-how-it-works`, a long-form guide to the methodology. It always opens scrolled to the top.
 
 The settings panel (`organism/domain-settings`) is an overlay, not a screen. In dev, the menu also shows **Reload manifest**, which reloads the page after manifests have been regenerated.
 
 ```text
 component/page/domain-playground          - root shell and screen switcher
-├─ molecule/domain-menu                   - landing, components, diagnostics, how it works, reload manifest, settings, theme mode
+├─ molecule/domain-menu                   - landing, components, how it works, reload manifest, settings, theme mode
 ├─ molecule/device-viewport               - device/width/fullscreen control, shown on the domain screen
 ├─ molecule/workspace-hints               - immediate hover/focus hints for workspace controls
 ├─ component/page/domain-landing          - landing screen
@@ -52,16 +51,10 @@ component/page/domain-playground          - root shell and screen switcher
 │     ├─ molecule/json-tree-viewer
 │     ├─ molecule/story-controls          - controls, presets and the HTML markup tab
 │     └─ molecule/preview-settings        - shared preview appearance for HTML stories
-├─ organism/domain-diagnostics            - story runner + manifest-driven file diagnostics
-│  └─ organism/domain-file-diagnostics    - manifest dashboard, always rendered above the story runner
-│     ├─ organism/domain-file-overview                - file/component totals
-│     ├─ organism/domain-cluster-balance              - per-domain cluster balance
-│     ├─ organism/domain-component-import-diagnostics - import-health rows and summary
-│     └─ organism/domain-file-domain-grid             - per-domain file grid
 └─ organism/domain-settings               - theme settings and panel icon sizes
 ```
 
-Other families of this domain are not wired into the shell: `molecule/story-canvas` is the story surface of the `/preview` route, `organism/device-frame` is a standalone device mock-up, and `organism/domain-ai-agent` is a standalone component with its own story.
+Other families of this domain are not wired into the shell: `molecule/story-canvas` is the story surface of the `/preview` route, `organism/device-frame` is a standalone device mock-up, and `organism/domain-ai-agent` is a standalone component with its own story. Diagnostics are stories too (see [Diagnostics and manifests](#diagnostics-and-manifests)).
 
 ## Navigation
 
@@ -69,19 +62,19 @@ The taxonomy starts with **module → domain → cluster → joint → family**.
 
 Selecting a domain, cluster, joint or family opens the component browser. Family selection from the sidebar and from search uses the same policy: keep Markdown when it is already selected and the destination has documentation; otherwise prefer a story, then documentation, then source. Documentation prefers `readme.md`, with `index.md` as a legacy fallback. Source preserves the previous filename when available, otherwise prefers `index.svelte`, then `index.ts`. Late content responses cannot overwrite another selection.
 
-The domain screen stays within the browser window; the explorer and preview scroll inside their own panels. Landing, guide and diagnostics keep normal page scrolling.
+The domain screen stays within the browser window; the explorer and preview scroll inside their own panels. Landing and guide keep normal page scrolling.
 
 ## Stories and preview
 
 A story is described by `index.story.ts` (a `ContractStory` from `$stylist/html/interface/contract/story`): its controls, presets and description live in the workspace panel, and the iframe only renders the component with the current args. A sibling `index.story.svelte` next to `index.story.ts` is that story's custom render, not a separate story. A standalone `index.story.svelte` remains a legacy story that renders its own surface.
 
-Stories are discovered with three globs, shared by the explorer, diagnostics and the preview route:
+Stories are discovered with three globs, shared by the explorer, the story runner and the preview route:
 
 - `/src/lib/**/component/**/index.story.{svelte,ts}`
 - `/modules/*/*/component/**/index.story.{svelte,ts}` — grouped domain roots
 - `/modules/*/component/**/index.story.{svelte,ts}` — standalone module roots
 
-Physical paths map to logical `/src/lib/<domain>/…` paths in the explorer, preview and diagnostics.
+Physical paths map to logical `/src/lib/<domain>/…` paths in the explorer, preview and story runner.
 
 The umbrella app provides `/preview?story=<logical story path>` for isolated previews; that route must ship together with the sandbox and theme implementations. `domain-file-preview` talks to the iframe through same-origin messages: `stylist:story-args`, `stylist:viewport` and `stylist:preview-environment` go to the frame; `stylist:preview-ready`, `stylist:story-ready` and `stylist:exit-fullscreen` come back. The frame is shown only after the theme is mirrored and the story has settled, so the unthemed first paint never flashes. Updates never remount the story, so control values survive width and fullscreen changes.
 
@@ -107,11 +100,11 @@ Settings includes independent module, domain, cluster, joint and search icon siz
 
 ## Diagnostics and manifests
 
-`domain-diagnostics` combines two independent checks: the story runner (imports and mounts every `*.story.{svelte,ts}` to catch runtime errors) and `domain-file-diagnostics`, a static dashboard fed by generated manifests rather than by running code:
+There is no diagnostics screen; each check is a story opened in the explorer.
 
-- `data/json/domain-files/index.json` — file/component counts and cluster balance per domain
-- `data/json/domain-component-intervals/index.json` — component size/interval stats, consumed by `domain-file-overview`
-- `data/json/domain-component-import-diagnostics/index.json` — import-health rows and summary, consumed by `domain-component-import-diagnostics`
+- `page/story-runner` — imports and mounts every `*.story.{svelte,ts}` except its own to catch runtime errors, with import/mount timings.
+- `data/json/domain-files/index.json` — file/component counts and cluster balance per domain, consumed by the stories of `organism/domain-cluster-balance`, `organism/domain-file-domain-grid` and of the `chart` organisms `legend-bar-diagram` (files per domain) and `legend-band-diagram` (component composition per domain).
+- `data/json/domain-component-import-diagnostics/index.json` — components whose `index.svelte` does not import their `Recipe<Name>`, consumed by the story of `organism/domain-component-import-diagnostics`.
 
 `data/json/domain-page-manifest/index.json` is the page manifest consumed by the app route. Each manifest also has an `index.full.json` variant. These manifests are generated data; global regeneration is human-only (`yarn stylist:manifest` from the site root).
 
