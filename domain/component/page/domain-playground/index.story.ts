@@ -1,4 +1,4 @@
-import DomainPlayground from './index.svelte';
+import DomainPlayground from '$stylist/domain/component/page/domain-playground/index.svelte';
 import type { RecipeDomainPlayground } from '$stylist/domain/interface/recipe/domain-playground';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import { DOMAIN_SCREEN } from '$stylist/domain/const/object/domain-screen';

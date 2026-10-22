@@ -1,4 +1,4 @@
-import OrbitBackground from './index.svelte';
+import OrbitBackground from '$stylist/token/component/atom/orbit-background/index.svelte';
 import type { RecipeOrbitBackground } from '$stylist/token/interface/recipe/orbit-background';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

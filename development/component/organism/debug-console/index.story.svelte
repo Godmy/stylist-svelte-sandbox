@@ -1,5 +1,5 @@
 <script lang="ts">
-	import DebugConsole from './index.svelte';
+	import DebugConsole from '$stylist/development/component/organism/debug-console/index.svelte';
 	import type { RecipeDebugConsole } from '$stylist/development/interface/recipe/debug-console';
 	import type { DebugConsoleLogEntry } from '$stylist/development/interface/slot/debug-console-log-entry';
 

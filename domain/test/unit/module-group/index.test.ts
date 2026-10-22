@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { resolveModuleGroup } from '../../../function/resolve/module-group';
+import { resolveModuleGroup } from '$stylist/domain/function/resolve/module-group';
 
 describe('resolveModuleGroup', () => {
 	/** Vitest runs from the package root. */

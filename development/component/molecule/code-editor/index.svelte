@@ -3,7 +3,7 @@
 	import { PresetCodeEditor } from '$stylist/development/const/preset/code-editor';
 	import Icon from '$stylist/svg/component/atom/icon/index.svelte';
 	import type { RecipeCodeEditor } from '$stylist/development/interface/recipe/code-editor';
-	import { createCodeEditorState } from './state.svelte';
+	import { createCodeEditorState } from '$stylist/development/component/molecule/code-editor/state.svelte';
 
 	let {
 		code = '',

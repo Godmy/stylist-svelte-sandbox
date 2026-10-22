@@ -1,7 +1,7 @@
 <script lang="ts">
 	import BaseIcon from '$stylist/svg/component/atom/icon/index.svelte';
 	import type { RecipeCubeControl } from '$stylist/development/interface/recipe/cube-control';
-	import createCubeControlState from './state.svelte';
+	import createCubeControlState from '$stylist/development/component/atom/cube-control/state.svelte';
 
 	const Atom = 'atom';
 	const Biohazard = 'biohazard';

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import StoryControl from '$stylist/domain/component/atom/story-control/index.svelte';
 	import type { RecipeStoryControls } from '$stylist/domain/interface/recipe/story-controls';
-	import createStoryControlsState from './state.svelte';
+	import createStoryControlsState from '$stylist/domain/component/molecule/story-controls/state.svelte';
 
 	let props: RecipeStoryControls = $props();
 	const controlsState = createStoryControlsState(() => props);

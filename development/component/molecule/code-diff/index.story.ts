@@ -1,4 +1,4 @@
-import CodeDiff from './index.svelte';
+import CodeDiff from '$stylist/development/component/molecule/code-diff/index.svelte';
 import type { RecipeCodeDiff } from '$stylist/development/interface/recipe/code-diff';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import { TOKEN_CODE_LANGUAGE } from '$stylist/development/const/array/code-language';

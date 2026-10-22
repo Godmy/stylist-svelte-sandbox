@@ -1,4 +1,4 @@
-import TokenSetting from './index.svelte';
+import TokenSetting from '$stylist/token/component/molecule/token-setting/index.svelte';
 import type { RecipeTokenSetting } from '$stylist/token/interface/recipe/token-setting';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import { L6_TOKEN_DEFINITIONS } from '$stylist/token/const/object/orbit-control-definition';

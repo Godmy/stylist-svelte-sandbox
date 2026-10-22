@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { captureElementImage } from '../../../function/capture/element-image';
+import { captureElementImage } from '$stylist/domain/function/capture/element-image';
 
 describe('captureElementImage', () => {
 	// jsdom has no image decoding: a stub to spy on.

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import DomainFilePreview from './index.svelte';
+	import DomainFilePreview from '$stylist/domain/component/organism/domain-file-preview/index.svelte';
 	import type { RecipeDomainFilePreview } from '$stylist/domain/interface/recipe/domain-file-preview';
 	import ClickableStory from '$stylist/layout/component/atom/clickable/index.story.svelte';
 

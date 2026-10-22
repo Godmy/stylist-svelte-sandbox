@@ -1,4 +1,4 @@
-import TokenSelect from './index.svelte';
+import TokenSelect from '$stylist/token/component/atom/token-select/index.svelte';
 import type { RecipeTokenSelect } from '$stylist/token/interface/recipe/token-select';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import type { TokenSelectControlDefinition } from '$stylist/token/type/object/select-control-definition';

@@ -1,4 +1,4 @@
-import ComponentPreview from './index.svelte';
+import ComponentPreview from '$stylist/development/component/molecule/component-preview/index.svelte';
 import type { RecipeComponentPreview } from '$stylist/development/interface/recipe/component-preview';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import { TOKEN_CODE_LANGUAGE } from '$stylist/development/const/array/code-language';

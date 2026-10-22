@@ -1,4 +1,4 @@
-import DomainExplorer from './index.svelte';
+import DomainExplorer from '$stylist/domain/component/organism/domain-explorer/index.svelte';
 import type { RecipeDomainExplorer } from '$stylist/domain/interface/recipe/domain-explorer';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import { DEVICE_FRAME_VIEWPORT } from '$stylist/domain/const/array/device-frame-viewport';

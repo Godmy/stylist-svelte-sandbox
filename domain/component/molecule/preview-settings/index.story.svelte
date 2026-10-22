@@ -1,6 +1,6 @@
 <script lang="ts">
 	// Render of index.story.ts: onChange is required and not serializable, so the story owns the environment.
-	import PreviewSettings from './index.svelte';
+	import PreviewSettings from '$stylist/domain/component/molecule/preview-settings/index.svelte';
 	import type { RecipePreviewSettings } from '$stylist/domain/interface/recipe/preview-settings';
 	import type { ContractPreviewEnvironment } from '$stylist/domain/interface/contract/preview-environment';
 

@@ -1,4 +1,4 @@
-import StylistHero from './index.svelte';
+import StylistHero from '$stylist/domain/component/organism/stylist-hero/index.svelte';
 import type { RecipeStylistHero } from '$stylist/domain/interface/recipe/stylist-hero';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

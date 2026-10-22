@@ -1,4 +1,4 @@
-import TokenChipSet from './index.svelte';
+import TokenChipSet from '$stylist/token/component/atom/token-chip-set/index.svelte';
 import type { RecipeTokenChipSet } from '$stylist/token/interface/recipe/token-chip-set';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

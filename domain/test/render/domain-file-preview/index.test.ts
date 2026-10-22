@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/svelte';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import DomainFilePreview from '../../../component/organism/domain-file-preview/index.svelte';
+import DomainFilePreview from '$stylist/domain/component/organism/domain-file-preview/index.svelte';
 import ButtonStory from '$stylist/html/component/atom/button/index.story';
 import { captureElementImage } from '$stylist/domain/function/capture/element-image';
 

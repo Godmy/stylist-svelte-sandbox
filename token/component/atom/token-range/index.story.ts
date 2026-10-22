@@ -1,4 +1,4 @@
-import TokenRange from './index.svelte';
+import TokenRange from '$stylist/token/component/atom/token-range/index.svelte';
 import type { RecipeTokenRange } from '$stylist/token/interface/recipe/token-range';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import type { TokenRangeControlDefinition } from '$stylist/token/type/object/range-control-definition';

@@ -1,4 +1,4 @@
-import SamoMethodology from './index.svelte';
+import SamoMethodology from '$stylist/domain/component/organism/samo-methodology/index.svelte';
 import type { RecipeSamoMethodology } from '$stylist/domain/interface/recipe/samo-methodology';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

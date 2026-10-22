@@ -1,4 +1,4 @@
-import MarkdownRenderer from './index.svelte';
+import MarkdownRenderer from '$stylist/domain/component/organism/markdown-renderer/index.svelte';
 import type { RecipeMarkdownRenderer } from '$stylist/domain/interface/recipe/markdown-renderer';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

@@ -1,4 +1,4 @@
-import PageBuilder from './index.svelte';
+import PageBuilder from '$stylist/development/component/organism/page-builder/index.svelte';
 import type { RecipePageBuilder } from '$stylist/development/interface/recipe/page-builder';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

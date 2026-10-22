@@ -1,4 +1,4 @@
-import DomainFilePreview from './index.svelte';
+import DomainFilePreview from '$stylist/domain/component/organism/domain-file-preview/index.svelte';
 import type { RecipeDomainFilePreview } from '$stylist/domain/interface/recipe/domain-file-preview';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

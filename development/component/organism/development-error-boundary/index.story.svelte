@@ -1,5 +1,5 @@
 <script lang="ts">
-	import DevelopmentErrorBoundary from './index.svelte';
+	import DevelopmentErrorBoundary from '$stylist/development/component/organism/development-error-boundary/index.svelte';
 	import type { RecipeDevelopmentErrorBoundary } from '$stylist/development/interface/recipe/development-error-boundary';
 
 	// Render of index.story.ts: the boundary needs children content and a local crash toggle.

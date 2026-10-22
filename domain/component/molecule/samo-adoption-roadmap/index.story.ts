@@ -1,4 +1,4 @@
-import SamoAdoptionRoadmap from './index.svelte';
+import SamoAdoptionRoadmap from '$stylist/domain/component/molecule/samo-adoption-roadmap/index.svelte';
 import type { RecipeSamoAdoptionRoadmap } from '$stylist/domain/interface/recipe/samo-adoption-roadmap';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

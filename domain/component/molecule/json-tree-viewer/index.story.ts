@@ -1,4 +1,4 @@
-import JsonTreeViewer from './index.svelte';
+import JsonTreeViewer from '$stylist/domain/component/molecule/json-tree-viewer/index.svelte';
 import type { RecipeJsonTreeViewer } from '$stylist/domain/interface/recipe/json-tree-viewer';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

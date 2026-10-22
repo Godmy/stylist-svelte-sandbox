@@ -7,7 +7,7 @@
 	import { PAGE_BUILDER_TOOLBAR_ITEMS } from '$stylist/development/const/record/page-builder-toolbar-items';
 	import { PAGE_BUILDER_ICON } from '$stylist/development/const/map/page-builder-icons';
 	import { PageBuilderManager } from '$stylist/development/class/manager/page-builder';
-	import createPageBuilderState from './state.svelte';
+	import createPageBuilderState from '$stylist/development/component/organism/page-builder/state.svelte';
 	import type { RecipePageBuilder } from '$stylist/development/interface/recipe/page-builder';
 
 	let props: RecipePageBuilder = $props();

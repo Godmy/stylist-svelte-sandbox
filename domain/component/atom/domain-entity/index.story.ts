@@ -1,4 +1,4 @@
-import DomainEntity from './index.svelte';
+import DomainEntity from '$stylist/domain/component/atom/domain-entity/index.svelte';
 import type { RecipeDomainEntity } from '$stylist/domain/interface/recipe/domain-entity';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

@@ -1,4 +1,4 @@
-import SamoOverview from './index.svelte';
+import SamoOverview from '$stylist/domain/component/molecule/samo-overview/index.svelte';
 import type { RecipeSamoOverview } from '$stylist/domain/interface/recipe/samo-overview';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

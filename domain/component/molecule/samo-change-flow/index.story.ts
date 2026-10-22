@@ -1,4 +1,4 @@
-import SamoChangeFlow from './index.svelte';
+import SamoChangeFlow from '$stylist/domain/component/molecule/samo-change-flow/index.svelte';
 import type { RecipeSamoChangeFlow } from '$stylist/domain/interface/recipe/samo-change-flow';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

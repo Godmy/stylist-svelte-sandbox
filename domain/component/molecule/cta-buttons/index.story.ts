@@ -1,4 +1,4 @@
-import CtaButtons from './index.svelte';
+import CtaButtons from '$stylist/domain/component/molecule/cta-buttons/index.svelte';
 import type { RecipeCtaButtons } from '$stylist/domain/interface/recipe/cta-buttons';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

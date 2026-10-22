@@ -1,4 +1,4 @@
-import StylistMission from './index.svelte';
+import StylistMission from '$stylist/domain/component/molecule/stylist-mission/index.svelte';
 import type { RecipeStylistMission } from '$stylist/domain/interface/recipe/stylist-mission';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

@@ -1,4 +1,4 @@
-import SamoPlatformStack from './index.svelte';
+import SamoPlatformStack from '$stylist/domain/component/molecule/samo-platform-stack/index.svelte';
 import type { RecipeSamoPlatformStack } from '$stylist/domain/interface/recipe/samo-platform-stack';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

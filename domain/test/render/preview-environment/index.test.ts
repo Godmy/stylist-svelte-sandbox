@@ -1,11 +1,11 @@
 import { render } from '@testing-library/svelte';
 import { describe, expect, it } from 'vitest';
-import StoryCanvas from '../../../component/molecule/story-canvas/index.svelte';
+import StoryCanvas from '$stylist/domain/component/molecule/story-canvas/index.svelte';
 import ButtonStory from '$stylist/html/component/atom/button/index.story';
 import CaptionStory from '$stylist/html/component/organism/caption/index.story';
 import { TOKEN_FONT_FAMILY } from '$stylist/design-token/const/object/font-family';
-import { resolvePreviewVariables } from '../../../function/resolve/preview-variables';
-import { resolvePreviewSkin } from '../../../function/resolve/preview-skin';
+import { resolvePreviewVariables } from '$stylist/domain/function/resolve/preview-variables';
+import { resolvePreviewSkin } from '$stylist/domain/function/resolve/preview-skin';
 
 describe('preview environment', () => {
 	it('keeps settings on the preview scope and removes every override on reset', async () => {

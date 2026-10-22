@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it } from 'vitest';
-import { cloneStyledElement } from '../../../function/clone/styled-element';
+import { cloneStyledElement } from '$stylist/domain/function/clone/styled-element';
 
 describe('cloneStyledElement', () => {
 	afterEach(() => document.body.replaceChildren());

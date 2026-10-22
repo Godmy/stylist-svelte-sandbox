@@ -1,6 +1,6 @@
 <script lang="ts">
 	// Render of index.story.ts: the tabs only report clicks, so the story owns the active file and preview mode.
-	import JointTabButtons from './index.svelte';
+	import JointTabButtons from '$stylist/domain/component/molecule/joint-tab-buttons/index.svelte';
 	import type { RecipeJointTabButtons } from '$stylist/domain/interface/recipe/joint-tab-buttons';
 
 	let args: RecipeJointTabButtons = $props();

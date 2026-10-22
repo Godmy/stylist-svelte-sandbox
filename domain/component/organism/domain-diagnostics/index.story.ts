@@ -1,4 +1,4 @@
-import DomainDiagnostics from './index.svelte';
+import DomainDiagnostics from '$stylist/domain/component/organism/domain-diagnostics/index.svelte';
 import type { RecipeDomainDiagnostics } from '$stylist/domain/interface/recipe/domain-diagnostics';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

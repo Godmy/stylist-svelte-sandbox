@@ -1,4 +1,4 @@
-import SamoUmbrellaMap from './index.svelte';
+import SamoUmbrellaMap from '$stylist/domain/component/molecule/samo-umbrella-map/index.svelte';
 import type { RecipeSamoUmbrellaMap } from '$stylist/domain/interface/recipe/samo-umbrella-map';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

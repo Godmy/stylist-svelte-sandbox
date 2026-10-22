@@ -5,7 +5,7 @@ import { DESIGN_TOKEN_DENSITY } from '$stylist/design-token/const/preset/density
 import { ManagerThemeCSS } from '$stylist/theme/class/manager/theme-css';
 import { THEME_MODE_LIGHT } from '$stylist/theme/const/record/theme-mode-light';
 import { THEME_MODE_DARK } from '$stylist/theme/const/record/theme-mode-dark';
-import type { ContractPreviewEnvironment } from '../../../interface/contract/preview-environment';
+import type { ContractPreviewEnvironment } from '$stylist/domain/interface/contract/preview-environment';
 
 /** Explicit preview mode overrides inherited theme variables; individual overrides win last. */
 export function resolvePreviewVariables(

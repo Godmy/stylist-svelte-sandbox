@@ -1,4 +1,4 @@
-import DomainSearch from './index.svelte';
+import DomainSearch from '$stylist/domain/component/molecule/domain-search/index.svelte';
 import type { RecipeDomainSearch } from '$stylist/domain/interface/recipe/domain-search';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

@@ -1,4 +1,4 @@
-import SyntaxHighlightedCode from './index.svelte';
+import SyntaxHighlightedCode from '$stylist/development/component/atom/syntax-highlighted-code/index.svelte';
 import type { RecipeSyntaxHighlightedCode } from '$stylist/development/interface/recipe/syntax-highlighted-code';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import { TOKEN_SIZE } from '$stylist/design-token/const/array/size';

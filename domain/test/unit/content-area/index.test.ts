@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { resolveContentArea } from '../../../function/resolve/content-area';
+import { resolveContentArea } from '$stylist/domain/function/resolve/content-area';
 
 function place(element: Element, left: number, top: number, width: number, height: number) {
 	element.getBoundingClientRect = () =>

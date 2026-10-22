@@ -1,4 +1,4 @@
-import TaxonomyBreadcrumbs from './index.svelte';
+import TaxonomyBreadcrumbs from '$stylist/domain/component/molecule/taxonomy-breadcrumbs/index.svelte';
 import type { RecipeTaxonomyBreadcrumbs } from '$stylist/domain/interface/recipe/taxonomy-breadcrumbs';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

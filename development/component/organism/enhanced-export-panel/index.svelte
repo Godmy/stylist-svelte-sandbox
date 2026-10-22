@@ -2,7 +2,7 @@
 	import type { HTMLAttributes } from 'svelte/elements';
 	import type { RecipeEnhancedExportPanel } from '$stylist/development/interface/recipe/enhanced-export-panel';
 	import BaseIcon from '$stylist/svg/component/atom/icon/index.svelte';
-	import { createEnhancedExportPanelState } from './state.svelte';
+	import { createEnhancedExportPanelState } from '$stylist/development/component/organism/enhanced-export-panel/state.svelte';
 	const FileCode = 'file-code';
 	const Download = 'download';
 	const Copy = 'copy';

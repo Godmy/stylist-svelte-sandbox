@@ -1,4 +1,4 @@
-import TokenRadio from './index.svelte';
+import TokenRadio from '$stylist/token/component/atom/token-radio/index.svelte';
 import type { RecipeTokenRadio } from '$stylist/token/interface/recipe/token-radio';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import type { TokenRadioControlDefinition } from '$stylist/token/type/object/radio-control-definition';

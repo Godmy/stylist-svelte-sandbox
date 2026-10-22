@@ -1,4 +1,4 @@
-import DebugConsole from './index.svelte';
+import DebugConsole from '$stylist/development/component/organism/debug-console/index.svelte';
 import type { RecipeDebugConsole } from '$stylist/development/interface/recipe/debug-console';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

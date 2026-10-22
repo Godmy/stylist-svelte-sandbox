@@ -2,7 +2,7 @@
 	import TokenControlComposer from '$stylist/token/component/molecule/token/index.svelte';
 	import { TOKEN_SETTING } from '$stylist/token/const/object/token-setting';
 	import type { RecipeTokenSettings } from '$stylist/token/interface/recipe/token-settings';
-	import { createTokenSettingsState } from './state.svelte';
+	import { createTokenSettingsState } from '$stylist/token/component/organism/token-settings/state.svelte';
 
 	let {
 		settings = TOKEN_SETTING,

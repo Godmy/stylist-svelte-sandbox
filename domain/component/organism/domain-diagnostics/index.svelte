@@ -2,7 +2,7 @@
 	import DomainFileDiagnostics from '$stylist/domain/component/organism/domain-file-diagnostics/index.svelte';
 	import StoryCanvas from '$stylist/domain/component/molecule/story-canvas/index.svelte';
 	import type { RecipeDomainDiagnostics } from '$stylist/domain/interface/recipe/domain-diagnostics';
-	import createDomainDiagnosticsState, { formatDuration, getTimingTone } from './state.svelte';
+	import createDomainDiagnosticsState, { formatDuration, getTimingTone } from '$stylist/domain/component/organism/domain-diagnostics/state.svelte';
 
 	let props: RecipeDomainDiagnostics = $props();
 	const className = $derived(props.class ?? '');

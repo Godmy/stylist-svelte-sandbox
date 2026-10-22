@@ -1,6 +1,6 @@
 <script lang="ts">
 	// Render of index.story.ts: the active path is controlled through onSelect and the list needs a bounded height.
-	import DomainList from './index.svelte';
+	import DomainList from '$stylist/domain/component/molecule/domain-list/index.svelte';
 	import type { RecipeDomainList } from '$stylist/domain/interface/recipe/domain-list';
 
 	let args: RecipeDomainList = $props();

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { resolveFamilyIcon } from '../../../function/resolve/family-icon';
+import { resolveFamilyIcon } from '$stylist/domain/function/resolve/family-icon';
 
 describe('resolveFamilyIcon', () => {
 	const icons = new Set(['button', 'input', 'file-item', 'card', 'idef-zero', 'html', 'type']);

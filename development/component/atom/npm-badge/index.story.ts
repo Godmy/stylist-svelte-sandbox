@@ -1,4 +1,4 @@
-import NpmBadge from './index.svelte';
+import NpmBadge from '$stylist/development/component/atom/npm-badge/index.svelte';
 import type { RecipeNpmBadge } from '$stylist/development/interface/recipe/npm-badge';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import { TOKEN_SOFTWARE_BADGE } from '$stylist/development/const/array/software-badge';

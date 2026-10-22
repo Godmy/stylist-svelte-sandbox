@@ -1,4 +1,4 @@
-import TokenIcon from './index.svelte';
+import TokenIcon from '$stylist/token/component/atom/token-icon/index.svelte';
 import type { RecipeTokenIcon } from '$stylist/token/interface/recipe/token-icon';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

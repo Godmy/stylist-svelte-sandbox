@@ -1,5 +1,5 @@
 <script lang="ts">
-	import DomainSettings from './index.svelte';
+	import DomainSettings from '$stylist/domain/component/organism/domain-settings/index.svelte';
 	import type { RecipeDomainSettings } from '$stylist/domain/interface/recipe/domain-settings';
 
 	// Render of index.story.ts: the close button needs local state to hide and reopen the panel.

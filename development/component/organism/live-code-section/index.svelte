@@ -2,7 +2,7 @@
 	import type { HTMLAttributes } from 'svelte/elements';
 	import type { RecipeLiveCodeSection } from '$stylist/development/interface/recipe/live-code-section';
 	import BaseIcon from '$stylist/svg/component/atom/icon/index.svelte';
-	import { createLiveCodeSectionState } from './state.svelte';
+	import { createLiveCodeSectionState } from '$stylist/development/component/organism/live-code-section/state.svelte';
 	const Play = 'play';
 	const ArrowRight = 'arrow-right';
 

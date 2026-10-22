@@ -1,4 +1,4 @@
-import CodeEditor from './index.svelte';
+import CodeEditor from '$stylist/development/component/molecule/code-editor/index.svelte';
 import type { RecipeCodeEditor } from '$stylist/development/interface/recipe/code-editor';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import { TOKEN_CODE_LANGUAGE } from '$stylist/development/const/array/code-language';

@@ -1,4 +1,4 @@
-import OrbitTokenNode from './index.svelte';
+import OrbitTokenNode from '$stylist/token/component/atom/orbit-token-node/index.svelte';
 import type { RecipeOrbitTokenNode } from '$stylist/token/interface/recipe/orbit-token-node';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import { L6_TOKEN_DEFINITIONS } from '$stylist/token/const/object/orbit-control-definition';

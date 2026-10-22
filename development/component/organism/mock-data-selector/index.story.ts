@@ -1,4 +1,4 @@
-import MockDataSelector from './index.svelte';
+import MockDataSelector from '$stylist/development/component/organism/mock-data-selector/index.svelte';
 import type { RecipeMockDataSelector } from '$stylist/development/interface/recipe/mock-data-selector';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

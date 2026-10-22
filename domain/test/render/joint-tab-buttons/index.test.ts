@@ -1,6 +1,6 @@
 import { render, waitFor } from '@testing-library/svelte';
 import { describe, expect, it } from 'vitest';
-import JointTabButtons from '../../../component/molecule/joint-tab-buttons/index.svelte';
+import JointTabButtons from '$stylist/domain/component/molecule/joint-tab-buttons/index.svelte';
 
 describe('family icon', () => {
 	it('shows the fitting registry icon for the selected family', async () => {

@@ -1,4 +1,4 @@
-import DomainList from './index.svelte';
+import DomainList from '$stylist/domain/component/molecule/domain-list/index.svelte';
 import type { RecipeDomainList } from '$stylist/domain/interface/recipe/domain-list';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

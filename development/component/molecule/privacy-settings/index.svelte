@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { RecipePrivacySettings } from '$stylist/development/interface/recipe/privacy-settings';
-	import { createPrivacySettingsState } from './state.svelte';
+	import { createPrivacySettingsState } from '$stylist/development/component/molecule/privacy-settings/state.svelte';
 
 	let {
 		settings = [],

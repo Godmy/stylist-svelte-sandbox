@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { RecipeDocumentationBlock } from '$stylist/development/interface/recipe/documentation-block';
-	import { createDocumentationBlockState } from './state.svelte';
+	import { createDocumentationBlockState } from '$stylist/development/component/molecule/documentation-block/state.svelte';
 	import Code from '$stylist/development/component/molecule/code-block/index.svelte';
 	import Badge from '$stylist/typography/component/atom/badge/index.svelte';
 	import Divider from '$stylist/layout/component/atom/divider/index.svelte';

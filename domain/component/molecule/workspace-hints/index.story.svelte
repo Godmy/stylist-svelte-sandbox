@@ -1,6 +1,6 @@
 <script lang="ts">
 	// Render of index.story.ts: the hint layer only decorates existing controls, so the story renders some inside its root.
-	import WorkspaceHints from './index.svelte';
+	import WorkspaceHints from '$stylist/domain/component/molecule/workspace-hints/index.svelte';
 	import type { RecipeWorkspaceHints } from '$stylist/domain/interface/recipe/workspace-hints';
 
 	let args: RecipeWorkspaceHints = $props();

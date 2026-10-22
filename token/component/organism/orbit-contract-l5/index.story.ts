@@ -1,4 +1,4 @@
-import OrbitContractL5 from './index.svelte';
+import OrbitContractL5 from '$stylist/token/component/organism/orbit-contract-l5/index.svelte';
 import type { RecipeOrbitContractL5 } from '$stylist/token/interface/recipe/orbit-contract-l5';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

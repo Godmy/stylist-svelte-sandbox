@@ -1,4 +1,4 @@
-import SamoExtensionWalkthrough from './index.svelte';
+import SamoExtensionWalkthrough from '$stylist/domain/component/molecule/samo-extension-walkthrough/index.svelte';
 import type { RecipeSamoExtensionWalkthrough } from '$stylist/domain/interface/recipe/samo-extension-walkthrough';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

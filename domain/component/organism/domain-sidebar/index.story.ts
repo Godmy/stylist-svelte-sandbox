@@ -1,4 +1,4 @@
-import DomainSidebar from './index.svelte';
+import DomainSidebar from '$stylist/domain/component/organism/domain-sidebar/index.svelte';
 import type { RecipeDomainSidebar } from '$stylist/domain/interface/recipe/domain-sidebar';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

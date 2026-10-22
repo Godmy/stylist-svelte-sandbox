@@ -1,6 +1,6 @@
 <script lang="ts">
 	// Render of index.story.ts: the category, the remembered widths and fullscreen are kept in local state.
-	import DeviceViewport from './index.svelte';
+	import DeviceViewport from '$stylist/domain/component/molecule/device-viewport/index.svelte';
 	import type { RecipeDeviceViewport } from '$stylist/domain/interface/recipe/device-viewport';
 	import type { DeviceFrameViewport } from '$stylist/domain/type/alias/device-frame-viewport';
 

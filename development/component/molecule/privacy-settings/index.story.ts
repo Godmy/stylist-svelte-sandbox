@@ -1,4 +1,4 @@
-import PrivacySettings from './index.svelte';
+import PrivacySettings from '$stylist/development/component/molecule/privacy-settings/index.svelte';
 import type { RecipePrivacySettings } from '$stylist/development/interface/recipe/privacy-settings';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

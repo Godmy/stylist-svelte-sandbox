@@ -1,4 +1,4 @@
-import TokenControlComposer from './index.svelte';
+import TokenControlComposer from '$stylist/token/component/molecule/token/index.svelte';
 import type { RecipeToken } from '$stylist/token/interface/recipe/token';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import type { TokenRadioControlDefinition } from '$stylist/token/type/object/radio-control-definition';

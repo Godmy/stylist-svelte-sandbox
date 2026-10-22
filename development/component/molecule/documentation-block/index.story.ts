@@ -1,4 +1,4 @@
-import DocumentationBlock from './index.svelte';
+import DocumentationBlock from '$stylist/development/component/molecule/documentation-block/index.svelte';
 import type { RecipeDocumentationBlock } from '$stylist/development/interface/recipe/documentation-block';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import { TOKEN_COLOR_TONE } from '$stylist/design-token/const/array/color-tone';

@@ -1,4 +1,4 @@
-import DomainDescriptorPanel from './index.svelte';
+import DomainDescriptorPanel from '$stylist/token/component/molecule/domain-descriptor-panel/index.svelte';
 import type { RecipeDomainDescriptorPanel } from '$stylist/token/interface/recipe/domain-descriptor-panel';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

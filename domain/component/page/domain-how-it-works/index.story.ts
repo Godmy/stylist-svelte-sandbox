@@ -1,4 +1,4 @@
-import DomainHowItWorks from './index.svelte';
+import DomainHowItWorks from '$stylist/domain/component/page/domain-how-it-works/index.svelte';
 import type { RecipeDomainHowItWorks } from '$stylist/domain/interface/recipe/domain-how-it-works';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

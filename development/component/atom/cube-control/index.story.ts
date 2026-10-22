@@ -1,4 +1,4 @@
-import CubeControl from './index.svelte';
+import CubeControl from '$stylist/development/component/atom/cube-control/index.svelte';
 import type { RecipeCubeControl } from '$stylist/development/interface/recipe/cube-control';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

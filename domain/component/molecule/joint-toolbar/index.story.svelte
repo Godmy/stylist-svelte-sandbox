@@ -1,6 +1,6 @@
 <script lang="ts">
 	// Render of index.story.ts: the active joint is controlled through onSelect and local state.
-	import JointToolbar from './index.svelte';
+	import JointToolbar from '$stylist/domain/component/molecule/joint-toolbar/index.svelte';
 	import type { RecipeJointToolbar } from '$stylist/domain/interface/recipe/joint-toolbar';
 
 	let args: RecipeJointToolbar = $props();

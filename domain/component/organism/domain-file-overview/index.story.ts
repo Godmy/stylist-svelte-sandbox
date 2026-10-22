@@ -1,4 +1,4 @@
-import DomainFileOverview from './index.svelte';
+import DomainFileOverview from '$stylist/domain/component/organism/domain-file-overview/index.svelte';
 import type { RecipeDomainFileOverview } from '$stylist/domain/interface/recipe/domain-file-overview';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import domainComponentIntervalsManifest from '$stylist/domain/data/json/domain-component-intervals/index.json';

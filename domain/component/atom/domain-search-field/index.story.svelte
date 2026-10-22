@@ -1,6 +1,6 @@
 <script lang="ts">
 	// Render of index.story.ts: the value is bound to local state that onEscape clears.
-	import DomainSearchField from './index.svelte';
+	import DomainSearchField from '$stylist/domain/component/atom/domain-search-field/index.svelte';
 	import type { RecipeDomainSearchField } from '$stylist/domain/interface/recipe/domain-search-field';
 
 	let args: RecipeDomainSearchField = $props();

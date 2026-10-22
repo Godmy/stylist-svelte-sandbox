@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { highlightCode } from '../../transform/code-highlight';
+import { highlightCode } from '$stylist/development/function/transform/code-highlight';
 
 describe('highlightCode', () => {
 	const sourceText = (html: string) =>

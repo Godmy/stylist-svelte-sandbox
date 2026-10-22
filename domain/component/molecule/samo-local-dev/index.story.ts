@@ -1,4 +1,4 @@
-import SamoLocalDev from './index.svelte';
+import SamoLocalDev from '$stylist/domain/component/molecule/samo-local-dev/index.svelte';
 import type { RecipeSamoLocalDev } from '$stylist/domain/interface/recipe/samo-local-dev';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

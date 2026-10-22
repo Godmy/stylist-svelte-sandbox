@@ -1,4 +1,4 @@
-import DomainMenu from './index.svelte';
+import DomainMenu from '$stylist/domain/component/molecule/domain-menu/index.svelte';
 import type { RecipeDomainMenu } from '$stylist/domain/interface/recipe/domain-menu';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

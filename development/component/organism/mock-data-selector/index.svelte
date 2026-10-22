@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { RecipeMockDataSelector } from '$stylist/development/interface/recipe/mock-data-selector';
-	import { createMockDataSelectorState } from './state.svelte';
+	import { createMockDataSelectorState } from '$stylist/development/component/organism/mock-data-selector/state.svelte';
 	import BaseIcon from '$stylist/svg/component/atom/icon/index.svelte';
 
 	let { ...props }: RecipeMockDataSelector = $props();

@@ -1,4 +1,4 @@
-import TokenControlBase from './index.svelte';
+import TokenControlBase from '$stylist/token/component/atom/token-control-base/index.svelte';
 import type { RecipeTokenControlBase } from '$stylist/token/interface/recipe/token-control-base';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import type { HtmlNode } from '$stylist/html/type/alias/html-node';

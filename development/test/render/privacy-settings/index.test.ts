@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/svelte';
 import { describe, expect, it } from 'vitest';
-import PrivacySettings from '../../../component/molecule/privacy-settings/index.svelte';
+import PrivacySettings from '$stylist/development/component/molecule/privacy-settings/index.svelte';
 
 describe('privacy settings reactivity', () => {
 	it('updates the switch after local edits without mutating props, and follows later settings', async () => {

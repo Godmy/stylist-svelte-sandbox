@@ -1,4 +1,4 @@
-import FeatureGrid from './index.svelte';
+import FeatureGrid from '$stylist/domain/component/molecule/feature-grid/index.svelte';
 import type { RecipeFeatureGrid } from '$stylist/domain/interface/recipe/feature-grid';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

@@ -4,7 +4,7 @@
 	import TokenSelectControl from '$stylist/token/component/atom/token-select/index.svelte';
 	import TokenTextControl from '$stylist/token/component/atom/token-text/index.svelte';
 	import type { RecipeToken } from '$stylist/token/interface/recipe/token';
-	import createTokenControlComposerState from './state.svelte';
+	import createTokenControlComposerState from '$stylist/token/component/molecule/token/state.svelte';
 
 	let props: RecipeToken = $props();
 	const state = createTokenControlComposerState(() => props);

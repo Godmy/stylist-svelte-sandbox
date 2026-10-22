@@ -1,4 +1,4 @@
-import JointToolbar from './index.svelte';
+import JointToolbar from '$stylist/domain/component/molecule/joint-toolbar/index.svelte';
 import type { RecipeJointToolbar } from '$stylist/domain/interface/recipe/joint-toolbar';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import { TOKEN_ORIENTATION } from '$stylist/layout/const/array/orientation';

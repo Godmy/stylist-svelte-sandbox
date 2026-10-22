@@ -1,7 +1,7 @@
 import type { Component } from 'svelte';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import type { HtmlNode } from '$stylist/html/type/alias/html-node';
-import type { ContractPreviewEnvironment } from '../../contract/preview-environment';
+import type { ContractPreviewEnvironment } from '$stylist/domain/interface/contract/preview-environment';
 export interface RecipeStoryCanvas {
 	story: ContractStory;
 	/** Current args; `story.args` when the host has not sent any yet. */

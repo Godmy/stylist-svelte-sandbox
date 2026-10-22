@@ -1,4 +1,4 @@
-import ContentEditor from './index.svelte';
+import ContentEditor from '$stylist/development/component/organism/content-editor/index.svelte';
 import type { RecipeContentEditorStateProps } from '$stylist/development/interface/recipe/content-editor-state-props';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

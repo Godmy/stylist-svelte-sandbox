@@ -1,4 +1,4 @@
-import StoryCanvas from './index.svelte';
+import StoryCanvas from '$stylist/domain/component/molecule/story-canvas/index.svelte';
 import type { RecipeStoryCanvas } from '$stylist/domain/interface/recipe/story-canvas';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

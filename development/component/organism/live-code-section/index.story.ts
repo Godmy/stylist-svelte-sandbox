@@ -1,4 +1,4 @@
-import LiveCodeSection from './index.svelte';
+import LiveCodeSection from '$stylist/development/component/organism/live-code-section/index.svelte';
 import type { RecipeLiveCodeSection } from '$stylist/development/interface/recipe/live-code-section';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

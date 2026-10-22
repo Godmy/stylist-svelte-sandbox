@@ -1,5 +1,5 @@
 <script lang="ts">
-	import DomainSidebar from './index.svelte';
+	import DomainSidebar from '$stylist/domain/component/organism/domain-sidebar/index.svelte';
 	import type { RecipeDomainSidebar } from '$stylist/domain/interface/recipe/domain-sidebar';
 	import type { SlotDomainEntity } from '$stylist/domain/interface/slot/domain-entity';
 

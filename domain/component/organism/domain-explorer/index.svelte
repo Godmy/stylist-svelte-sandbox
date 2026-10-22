@@ -5,7 +5,7 @@
 	import DomainSidebar from '$stylist/domain/component/organism/domain-sidebar/index.svelte';
 	import JointTabButtons from '$stylist/domain/component/molecule/joint-tab-buttons/index.svelte';
 	import TaxonomyBreadcrumbs from '$stylist/domain/component/molecule/taxonomy-breadcrumbs/index.svelte';
-	import createDomainPageState from './state.svelte';
+	import createDomainPageState from '$stylist/domain/component/organism/domain-explorer/state.svelte';
 	import { resolveModuleGroup } from '$stylist/domain/function/resolve/module-group';
 	import type { RecipeDomainExplorer } from '$stylist/domain/interface/recipe/domain-explorer';
 	const registries = import.meta.glob('/modules.json', {

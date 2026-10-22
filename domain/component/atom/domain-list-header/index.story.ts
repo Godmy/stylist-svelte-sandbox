@@ -1,4 +1,4 @@
-import DomainListHeader from './index.svelte';
+import DomainListHeader from '$stylist/domain/component/atom/domain-list-header/index.svelte';
 import type { RecipeDomainListHeader } from '$stylist/domain/interface/recipe/domain-list-header';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

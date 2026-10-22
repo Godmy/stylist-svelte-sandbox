@@ -1,4 +1,4 @@
-import SamoGuideHero from './index.svelte';
+import SamoGuideHero from '$stylist/domain/component/molecule/samo-guide-hero/index.svelte';
 import type { RecipeSamoGuideHero } from '$stylist/domain/interface/recipe/samo-guide-hero';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

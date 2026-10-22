@@ -1,4 +1,4 @@
-import SamoRiskBoard from './index.svelte';
+import SamoRiskBoard from '$stylist/domain/component/molecule/samo-risk-board/index.svelte';
 import type { RecipeSamoRiskBoard } from '$stylist/domain/interface/recipe/samo-risk-board';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

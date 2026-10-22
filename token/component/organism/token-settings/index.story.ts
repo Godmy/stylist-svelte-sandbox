@@ -1,4 +1,4 @@
-import TokenSettings from './index.svelte';
+import TokenSettings from '$stylist/token/component/organism/token-settings/index.svelte';
 import type { RecipeTokenSettings } from '$stylist/token/interface/recipe/token-settings';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

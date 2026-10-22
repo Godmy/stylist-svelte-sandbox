@@ -1,4 +1,4 @@
-import DomainAiAgent from './index.svelte';
+import DomainAiAgent from '$stylist/domain/component/organism/domain-ai-agent/index.svelte';
 import type { RecipeDomainAiAgent } from '$stylist/domain/interface/recipe/domain-ai-agent';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

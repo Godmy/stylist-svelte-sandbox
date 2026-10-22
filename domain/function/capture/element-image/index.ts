@@ -1,4 +1,4 @@
-import { cloneStyledElement } from '../../clone/styled-element';
+import { cloneStyledElement } from '$stylist/domain/function/clone/styled-element';
 
 /** Longest canvas side every browser still encodes. */
 const MAX_SIDE = 8192;

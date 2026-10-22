@@ -1,4 +1,4 @@
-import StoryControls from './index.svelte';
+import StoryControls from '$stylist/domain/component/molecule/story-controls/index.svelte';
 import type { RecipeStoryControls } from '$stylist/domain/interface/recipe/story-controls';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

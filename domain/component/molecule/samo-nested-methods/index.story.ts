@@ -1,4 +1,4 @@
-import SamoNestedMethods from './index.svelte';
+import SamoNestedMethods from '$stylist/domain/component/molecule/samo-nested-methods/index.svelte';
 import type { RecipeSamoNestedMethods } from '$stylist/domain/interface/recipe/samo-nested-methods';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

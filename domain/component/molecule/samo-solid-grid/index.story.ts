@@ -1,4 +1,4 @@
-import SamoSolidGrid from './index.svelte';
+import SamoSolidGrid from '$stylist/domain/component/molecule/samo-solid-grid/index.svelte';
 import type { RecipeSamoSolidGrid } from '$stylist/domain/interface/recipe/samo-solid-grid';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

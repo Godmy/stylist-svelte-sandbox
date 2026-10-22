@@ -1,4 +1,4 @@
-import DomainToolbar from './index.svelte';
+import DomainToolbar from '$stylist/domain/component/molecule/domain-toolbar/index.svelte';
 import type { RecipeDomainToolbar } from '$stylist/domain/interface/recipe/domain-toolbar';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import { TOKEN_ORIENTATION } from '$stylist/layout/const/array/orientation';

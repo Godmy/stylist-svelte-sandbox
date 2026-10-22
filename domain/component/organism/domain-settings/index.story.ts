@@ -1,4 +1,4 @@
-import DomainSettings from './index.svelte';
+import DomainSettings from '$stylist/domain/component/organism/domain-settings/index.svelte';
 import type { RecipeDomainSettings } from '$stylist/domain/interface/recipe/domain-settings';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

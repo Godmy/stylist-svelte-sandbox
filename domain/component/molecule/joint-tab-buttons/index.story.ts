@@ -1,4 +1,4 @@
-import JointTabButtons from './index.svelte';
+import JointTabButtons from '$stylist/domain/component/molecule/joint-tab-buttons/index.svelte';
 import type { RecipeJointTabButtons } from '$stylist/domain/interface/recipe/joint-tab-buttons';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import { JOINT_TOOLBAR_ITEMS } from '$stylist/domain/const/value/joint-toolbar-items';

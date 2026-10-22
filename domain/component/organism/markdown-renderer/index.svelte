@@ -2,7 +2,7 @@
 	import type { HTMLAttributes } from 'svelte/elements';
 	import type { RecipeMarkdownRenderer } from '$stylist/domain/interface/recipe/markdown-renderer';
 	import { marked } from 'marked';
-	import { createMarkdownRendererState } from './state.svelte';
+	import { createMarkdownRendererState } from '$stylist/domain/component/organism/markdown-renderer/state.svelte';
 	let props: RecipeMarkdownRenderer & HTMLAttributes<HTMLDivElement> = $props();
 	const state = createMarkdownRendererState(() => props);
 

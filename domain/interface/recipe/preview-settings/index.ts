@@ -1,4 +1,4 @@
-import type { ContractPreviewEnvironment } from '../../contract/preview-environment';
+import type { ContractPreviewEnvironment } from '$stylist/domain/interface/contract/preview-environment';
 
 export interface RecipePreviewSettings {
 	value: ContractPreviewEnvironment;

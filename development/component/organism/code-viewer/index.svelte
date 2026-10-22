@@ -2,7 +2,7 @@
 	import type { HTMLAttributes } from 'svelte/elements';
 	import type { RecipeCodeViewer } from '$stylist/development/interface/recipe/code-viewer';
 	import { onMount } from 'svelte';
-	import { createCodeViewerState } from './state.svelte';
+	import { createCodeViewerState } from '$stylist/development/component/organism/code-viewer/state.svelte';
 	let props: RecipeCodeViewer & HTMLAttributes<HTMLDivElement> = $props();
 	const state = createCodeViewerState(() => props);
 

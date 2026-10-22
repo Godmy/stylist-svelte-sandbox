@@ -1,5 +1,5 @@
 <script lang="ts">
-	import DomainAiAgent from './index.svelte';
+	import DomainAiAgent from '$stylist/domain/component/organism/domain-ai-agent/index.svelte';
 	import type { RecipeDomainAiAgent } from '$stylist/domain/interface/recipe/domain-ai-agent';
 
 	// Render of index.story.ts: the close button needs local state to hide and reopen the panel.

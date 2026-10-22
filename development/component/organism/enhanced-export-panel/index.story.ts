@@ -1,4 +1,4 @@
-import EnhancedExportPanel from './index.svelte';
+import EnhancedExportPanel from '$stylist/development/component/organism/enhanced-export-panel/index.svelte';
 import type { RecipeEnhancedExportPanel } from '$stylist/development/interface/recipe/enhanced-export-panel';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

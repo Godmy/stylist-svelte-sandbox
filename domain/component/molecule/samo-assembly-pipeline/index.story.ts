@@ -1,4 +1,4 @@
-import SamoAssemblyPipeline from './index.svelte';
+import SamoAssemblyPipeline from '$stylist/domain/component/molecule/samo-assembly-pipeline/index.svelte';
 import type { RecipeSamoAssemblyPipeline } from '$stylist/domain/interface/recipe/samo-assembly-pipeline';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

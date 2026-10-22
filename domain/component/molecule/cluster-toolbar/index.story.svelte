@@ -1,6 +1,6 @@
 <script lang="ts">
 	// Render of index.story.ts: the active cluster is controlled through onSelect and local state.
-	import ClusterToolbar from './index.svelte';
+	import ClusterToolbar from '$stylist/domain/component/molecule/cluster-toolbar/index.svelte';
 	import type { RecipeClusterToolbar } from '$stylist/domain/interface/recipe/cluster-toolbar';
 
 	let args: RecipeClusterToolbar = $props();

@@ -1,4 +1,4 @@
-import RibbonMenu from './index.svelte';
+import RibbonMenu from '$stylist/token/component/molecule/ribbon-menu/index.svelte';
 import type { RecipeRibbonMenu } from '$stylist/token/interface/recipe/ribbon-menu';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

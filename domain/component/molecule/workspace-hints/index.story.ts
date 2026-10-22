@@ -1,4 +1,4 @@
-import WorkspaceHints from './index.svelte';
+import WorkspaceHints from '$stylist/domain/component/molecule/workspace-hints/index.svelte';
 import type { RecipeWorkspaceHints } from '$stylist/domain/interface/recipe/workspace-hints';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

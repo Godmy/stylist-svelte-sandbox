@@ -1,4 +1,4 @@
-import SamoPractice from './index.svelte';
+import SamoPractice from '$stylist/domain/component/molecule/samo-practice/index.svelte';
 import type { RecipeSamoPractice } from '$stylist/domain/interface/recipe/samo-practice';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

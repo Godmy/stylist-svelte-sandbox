@@ -1,6 +1,6 @@
 <script lang="ts">
 	// Render of index.story.ts: the toggles only report clicks, so the story owns the screen and panel state.
-	import DomainMenu from './index.svelte';
+	import DomainMenu from '$stylist/domain/component/molecule/domain-menu/index.svelte';
 	import type { RecipeDomainMenu } from '$stylist/domain/interface/recipe/domain-menu';
 
 	let args: RecipeDomainMenu = $props();

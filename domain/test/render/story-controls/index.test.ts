@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/svelte';
 import { describe, expect, it, vi } from 'vitest';
-import StoryControls from '../../../component/molecule/story-controls/index.svelte';
+import StoryControls from '$stylist/domain/component/molecule/story-controls/index.svelte';
 import ButtonStory from '$stylist/html/component/atom/button/index.story';
 import { createHtmlStoryNode } from '$stylist/html/function/create/html-story-node';
 import { serializeHtmlMarkup } from '$stylist/html/function/serialize/html-markup';

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { PresetCodeBlock } from '$stylist/development/const/preset/code-block';
 	import type { RecipeCodeBlock } from '$stylist/development/interface/recipe/code-block';
-	import { createCodeBlockState } from './state.svelte';
+	import { createCodeBlockState } from '$stylist/development/component/molecule/code-block/state.svelte';
 	import BaseIcon from '$stylist/svg/component/atom/icon/index.svelte';
 	import Button from '$stylist/button/component/atom/button/index.svelte';
 	import Badge from '$stylist/typography/component/atom/badge/index.svelte';

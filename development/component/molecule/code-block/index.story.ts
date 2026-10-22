@@ -1,4 +1,4 @@
-import CodeBlock from './index.svelte';
+import CodeBlock from '$stylist/development/component/molecule/code-block/index.svelte';
 import type { RecipeCodeBlock } from '$stylist/development/interface/recipe/code-block';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import { TOKEN_CODE_LANGUAGE } from '$stylist/development/const/array/code-language';

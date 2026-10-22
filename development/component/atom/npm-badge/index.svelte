@@ -1,5 +1,5 @@
 <script lang="ts">
-	import createNpmBadgeState from './state.svelte';
+	import createNpmBadgeState from '$stylist/development/component/atom/npm-badge/state.svelte';
 	import type { HTMLAttributes } from 'svelte/elements';
 	import type { SlotThemeBorder } from '$stylist/theme/interface/slot/theme-border';
 	import type { SlotTypography } from '$stylist/typography/interface/slot/typography';

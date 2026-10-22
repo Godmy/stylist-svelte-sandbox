@@ -1,6 +1,6 @@
 <script lang="ts">
 	// Render of index.story.ts: the toggle only reports clicks, so the story owns the open state.
-	import DomainSearchToggle from './index.svelte';
+	import DomainSearchToggle from '$stylist/domain/component/atom/domain-search-toggle/index.svelte';
 	import type { RecipeDomainSearchToggle } from '$stylist/domain/interface/recipe/domain-search-toggle';
 
 	let args: RecipeDomainSearchToggle = $props();

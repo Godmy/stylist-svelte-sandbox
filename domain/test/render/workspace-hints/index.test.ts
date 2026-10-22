@@ -1,6 +1,6 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/svelte';
 import { afterEach, describe, expect, it } from 'vitest';
-import WorkspaceHints from '../../../component/molecule/workspace-hints/index.svelte';
+import WorkspaceHints from '$stylist/domain/component/molecule/workspace-hints/index.svelte';
 
 afterEach(() => {
 	document.querySelector('.hint-test-root')?.remove();

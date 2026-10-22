@@ -1,4 +1,4 @@
-import SamoMorphologyBox from './index.svelte';
+import SamoMorphologyBox from '$stylist/domain/component/molecule/samo-morphology-box/index.svelte';
 import type { RecipeSamoMorphologyBox } from '$stylist/domain/interface/recipe/samo-morphology-box';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import ErrorBoundary from './index.svelte';
+	import ErrorBoundary from '$stylist/development/component/organism/error-boundary/index.svelte';
 	import type { RecipeErrorBoundary } from '$stylist/development/interface/recipe/error-boundary';
 
 	// Render of index.story.ts: without a component the boundary only shows its children snippet.

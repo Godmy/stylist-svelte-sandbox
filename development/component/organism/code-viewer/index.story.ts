@@ -1,4 +1,4 @@
-import CodeViewer from './index.svelte';
+import CodeViewer from '$stylist/development/component/organism/code-viewer/index.svelte';
 import type { RecipeCodeViewer } from '$stylist/development/interface/recipe/code-viewer';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import { TOKEN_CODE_LANGUAGE } from '$stylist/development/const/array/code-language';

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { RecipeComponentPreview } from '$stylist/development/interface/recipe/component-preview';
-	import { createComponentPreviewState } from './state.svelte';
+	import { createComponentPreviewState } from '$stylist/development/component/molecule/component-preview/state.svelte';
 	import CodeBlock from '$stylist/development/component/molecule/code-block/index.svelte';
 
 	let {

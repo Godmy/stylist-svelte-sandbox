@@ -1,6 +1,6 @@
 import type { HTMLAttributes } from 'svelte/elements';
 import type { RecipeCodeViewer } from '$stylist/development/interface/recipe/code-viewer';
-import { highlightCode } from '../../../function/transform/code-highlight';
+import { highlightCode } from '$stylist/development/function/transform/code-highlight';
 export function createCodeViewerState(
 	getProps: () => RecipeCodeViewer & HTMLAttributes<HTMLDivElement>
 ) {

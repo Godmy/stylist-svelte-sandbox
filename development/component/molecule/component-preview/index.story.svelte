@@ -1,5 +1,5 @@
 <script lang="ts">
-	import ComponentPreview from './index.svelte';
+	import ComponentPreview from '$stylist/development/component/molecule/component-preview/index.svelte';
 	import type { RecipeComponentPreview } from '$stylist/development/interface/recipe/component-preview';
 
 	// Render of index.story.ts: the required componentDemo snippet cannot be passed as an arg.

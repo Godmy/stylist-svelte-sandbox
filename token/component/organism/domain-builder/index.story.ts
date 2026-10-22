@@ -1,4 +1,4 @@
-import DomainBuilder from './index.svelte';
+import DomainBuilder from '$stylist/token/component/organism/domain-builder/index.svelte';
 import type { RecipeDomainBuilder } from '$stylist/token/interface/recipe/domain-builder';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

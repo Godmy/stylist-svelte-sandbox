@@ -1,4 +1,4 @@
-import TokenText from './index.svelte';
+import TokenText from '$stylist/token/component/atom/token-text/index.svelte';
 import type { RecipeTokenText } from '$stylist/token/interface/recipe/token-text';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import type { TokenTextControlDefinition } from '$stylist/token/type/object/text-control-definition';

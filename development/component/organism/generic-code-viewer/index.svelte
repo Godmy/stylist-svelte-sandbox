@@ -2,7 +2,7 @@
 	import type { HTMLAttributes } from 'svelte/elements';
 	import type { RecipeGenericCodeViewer } from '$stylist/development/interface/recipe/generic-code-viewer';
 	import { onDestroy } from 'svelte';
-	import { createGenericCodeViewerState } from './state.svelte';
+	import { createGenericCodeViewerState } from '$stylist/development/component/organism/generic-code-viewer/state.svelte';
 	let props: RecipeGenericCodeViewer & HTMLAttributes<HTMLDivElement> = $props();
 	const state = createGenericCodeViewerState(() => props);
 

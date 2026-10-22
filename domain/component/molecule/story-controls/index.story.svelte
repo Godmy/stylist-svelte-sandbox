@@ -1,6 +1,6 @@
 <script lang="ts">
 	// Render of index.story.ts: the edited story and the markup function are not serializable, so they are passed here.
-	import StoryControls from './index.svelte';
+	import StoryControls from '$stylist/domain/component/molecule/story-controls/index.svelte';
 	import ButtonStory from '$stylist/html/component/atom/button/index.story';
 	import { createHtmlStoryNode } from '$stylist/html/function/create/html-story-node';
 	import { serializeHtmlMarkup } from '$stylist/html/function/serialize/html-markup';

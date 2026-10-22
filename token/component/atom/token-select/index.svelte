@@ -1,7 +1,7 @@
 <script lang="ts">
 	import TokenControlBase from '$stylist/token/component/atom/token-control-base/index.svelte';
 	import type { RecipeTokenSelect } from '$stylist/token/interface/recipe/token-select';
-	import createTokenSelectState from './state.svelte';
+	import createTokenSelectState from '$stylist/token/component/atom/token-select/state.svelte';
 
 	let props: RecipeTokenSelect = $props();
 	const state = createTokenSelectState(() => props);

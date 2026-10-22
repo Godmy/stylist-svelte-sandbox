@@ -1,4 +1,4 @@
-import DeviceViewport from './index.svelte';
+import DeviceViewport from '$stylist/domain/component/molecule/device-viewport/index.svelte';
 import type { RecipeDeviceViewport } from '$stylist/domain/interface/recipe/device-viewport';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import { DEVICE_FRAME_VIEWPORT } from '$stylist/domain/const/array/device-frame-viewport';

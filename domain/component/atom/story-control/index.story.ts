@@ -1,4 +1,4 @@
-import StoryControl from './index.svelte';
+import StoryControl from '$stylist/domain/component/atom/story-control/index.svelte';
 import type { RecipeStoryControl } from '$stylist/domain/interface/recipe/story-control';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import { TOKEN_SIZE } from '$stylist/design-token/const/array/size';

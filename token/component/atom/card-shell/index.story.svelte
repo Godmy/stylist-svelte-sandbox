@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { RecipeCardShell } from '$stylist/token/interface/recipe/card-shell';
-	import CardShell from './index.svelte';
-	import CardClose from '../card-close/index.svelte';
+	import CardShell from '$stylist/token/component/atom/card-shell/index.svelte';
+	import CardClose from '$stylist/token/component/atom/card-close/index.svelte';
 
 	// Render of index.story.ts: the shell needs chip children and a close snippet whose CardClose follows `expanded`.
 	let args: RecipeCardShell = $props();

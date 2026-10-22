@@ -1,4 +1,4 @@
-import DomainLanding from './index.svelte';
+import DomainLanding from '$stylist/domain/component/page/domain-landing/index.svelte';
 import type { RecipeDomainLanding } from '$stylist/domain/interface/recipe/domain-landing';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

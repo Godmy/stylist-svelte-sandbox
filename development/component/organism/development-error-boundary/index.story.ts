@@ -1,4 +1,4 @@
-import DevelopmentErrorBoundary from './index.svelte';
+import DevelopmentErrorBoundary from '$stylist/development/component/organism/development-error-boundary/index.svelte';
 import type { RecipeDevelopmentErrorBoundary } from '$stylist/development/interface/recipe/development-error-boundary';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

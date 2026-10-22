@@ -3,7 +3,7 @@
 	import DomainSearchToggle from '$stylist/domain/component/atom/domain-search-toggle/index.svelte';
 	import TaxonomyBreadcrumbs from '$stylist/domain/component/molecule/taxonomy-breadcrumbs/index.svelte';
 	import type { RecipeDomainSearch } from '$stylist/domain/interface/recipe/domain-search';
-	import createDomainSearchState from './state.svelte';
+	import createDomainSearchState from '$stylist/domain/component/molecule/domain-search/state.svelte';
 
 	let props: RecipeDomainSearch = $props();
 	const state = createDomainSearchState(() => props);

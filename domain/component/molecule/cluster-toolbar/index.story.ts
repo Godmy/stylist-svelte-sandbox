@@ -1,4 +1,4 @@
-import ClusterToolbar from './index.svelte';
+import ClusterToolbar from '$stylist/domain/component/molecule/cluster-toolbar/index.svelte';
 import type { RecipeClusterToolbar } from '$stylist/domain/interface/recipe/cluster-toolbar';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import { DOMAIN_CLUSTER } from '$stylist/domain/const/array/domain-cluster';

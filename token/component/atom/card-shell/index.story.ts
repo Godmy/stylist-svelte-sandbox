@@ -1,4 +1,4 @@
-import CardShell from './index.svelte';
+import CardShell from '$stylist/token/component/atom/card-shell/index.svelte';
 import type { RecipeCardShell } from '$stylist/token/interface/recipe/card-shell';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

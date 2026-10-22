@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { RecipeDevelopmentErrorBoundary } from '$stylist/development/interface/recipe/development-error-boundary';
-	import { createDevelopmentErrorBoundaryState } from './state.svelte';
+	import { createDevelopmentErrorBoundaryState } from '$stylist/development/component/organism/development-error-boundary/state.svelte';
 	import BaseIcon from '$stylist/svg/component/atom/icon/index.svelte';
 
 	let { ...props }: RecipeDevelopmentErrorBoundary = $props();

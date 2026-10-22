@@ -1,4 +1,4 @@
-import SamoArchitectureCompare from './index.svelte';
+import SamoArchitectureCompare from '$stylist/domain/component/molecule/samo-architecture-compare/index.svelte';
 import type { RecipeSamoArchitectureCompare } from '$stylist/domain/interface/recipe/samo-architecture-compare';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

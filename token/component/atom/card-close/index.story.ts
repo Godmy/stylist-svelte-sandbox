@@ -1,4 +1,4 @@
-import CardClose from './index.svelte';
+import CardClose from '$stylist/token/component/atom/card-close/index.svelte';
 import type { RecipeCardClose } from '$stylist/token/interface/recipe/card-close';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

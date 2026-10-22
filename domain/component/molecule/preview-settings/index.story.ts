@@ -1,4 +1,4 @@
-import PreviewSettings from './index.svelte';
+import PreviewSettings from '$stylist/domain/component/molecule/preview-settings/index.svelte';
 import type { RecipePreviewSettings } from '$stylist/domain/interface/recipe/preview-settings';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

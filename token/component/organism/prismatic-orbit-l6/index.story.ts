@@ -1,4 +1,4 @@
-import PrismaticOrbitL6 from './index.svelte';
+import PrismaticOrbitL6 from '$stylist/token/component/organism/prismatic-orbit-l6/index.svelte';
 import type { RecipePrismaticOrbitL6 } from '$stylist/token/interface/recipe/prismatic-orbit-l6';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 
