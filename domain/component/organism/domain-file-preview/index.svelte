@@ -153,6 +153,21 @@
 		frameUrl;
 		readyUrl = '';
 	});
+	// Loading has two stages (story module, then frame) with a shine each; the second picks up
+	// the first one's phase, so a slow load shows one continuous sweep instead of a restart.
+	let shineStart = 0;
+	let shineEnd = -Infinity;
+	let shinesShown = 0;
+	const continueShine = (node: HTMLElement) => {
+		const now = performance.now();
+		if (shinesShown === 0 && now - shineEnd > 100) shineStart = now;
+		shinesShown++;
+		node.style.setProperty('--shine-elapsed', `${now - shineStart}ms`);
+		return () => {
+			shinesShown--;
+			shineEnd = performance.now();
+		};
+	};
 	function sendArgs(args: Record<string, unknown>, content?: readonly HtmlNode[]) {
 		storyArgs = args;
 		storyContent = content;
@@ -227,7 +242,7 @@
 >
 	<!-- One loader for both stages (story module, then frame): same shell, place and text. -->
 	{#snippet storyLoading()}
-		<div class="story-frame-shine" role="status">
+		<div class="story-frame-shine" role="status" {@attach continueShine}>
 			<span class="story-frame-shine__label">Loading story…</span>
 		</div>
 	{/snippet}
@@ -662,7 +677,8 @@
 		inset: 0;
 		overflow: hidden;
 		opacity: 0;
-		animation: story-shine-reveal 200ms ease 120ms forwards;
+		animation: story-shine-reveal 200ms ease forwards;
+		animation-delay: calc(120ms - var(--shine-elapsed, 0ms));
 	}
 
 	.story-frame-shine::before {
@@ -678,6 +694,7 @@
 		);
 		transform: translateX(-100%);
 		animation: story-shine-sweep 0.93s ease-in-out infinite;
+		animation-delay: calc(-1 * var(--shine-elapsed, 0ms));
 	}
 
 	/* The label is for assistive technology only; the shine is the visible state. */
