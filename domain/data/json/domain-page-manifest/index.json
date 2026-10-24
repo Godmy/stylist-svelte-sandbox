@@ -34,13 +34,18 @@
         },
         "molecule": {
           "atomic-tier-card": "DEFINED_STORY_COMPONENT",
+          "carousel-zoom": "DEFINED_RENDERED_STORY_COMPONENT",
           "loading": "DEFINED_REACTIVE_STORY_COMPONENT",
-          "phrase-arc-flight": "DEFINED_STORY_COMPONENT"
+          "phrase-arc-flight": "DEFINED_STORY_COMPONENT",
+          "tilt-card": "DEFINED_RENDERED_STORY_COMPONENT"
         },
         "organism": {
           "atomic-principles-showcase": "DEFINED_REACTIVE_STORY_COMPONENT",
           "component-library-stats": "DEFINED_REACTIVE_STORY_COMPONENT",
           "media-slider": "DOCUMENTED_DEFINED_RENDERED_REACTIVE_STORY_COMPONENT"
+        },
+        "page": {
+          "tilt-showcase": "DEFINED_STORY_COMPONENT"
         }
       },
       "const": {
@@ -58,7 +63,15 @@
           "base-easing": "INDEXED_CONST"
         }
       },
+      "data": {
+        "md": {
+          "legacy-notices": "ANIMATION_LEGACY_NOTICES"
+        }
+      },
       "function": {
+        "resolve": {
+          "carousel-index": "INDEXED_FUNCTION"
+        },
         "script": {
           "animate-value": "INDEXED_FUNCTION",
           "get-easing-function": "INDEXED_FUNCTION",
@@ -68,13 +81,21 @@
           "motion-preference": "REACTIVE_BARREL",
           "scroll-progress": "REACTIVE_BARREL",
           "sticky-scroll-progress": "REACTIVE_BARREL"
+        },
+        "transform": {
+          "pointer-position": "INDEXED_FUNCTION",
+          "tilt-rotation": "INDEXED_FUNCTION",
+          "tilt-sample": "INDEXED_FUNCTION"
         }
       },
       "interface": {
         "behavior": {
           "animate": "INDEXED_INTERFACE",
+          "carousel": "INDEXED_INTERFACE",
+          "image-zoom": "INDEXED_INTERFACE",
           "motion": "INDEXED_INTERFACE",
           "motion-preset": "INDEXED_INTERFACE",
+          "tilt": "INDEXED_INTERFACE",
           "transform": "INDEXED_INTERFACE",
           "transformable": "INDEXED_INTERFACE",
           "vector-scene": "INDEXED_INTERFACE"
@@ -86,6 +107,7 @@
           "atomic-principles-showcase": "INDEXED_INTERFACE",
           "atomic-tier-card": "INDEXED_INTERFACE",
           "beach-water": "INDEXED_INTERFACE",
+          "carousel-zoom": "INDEXED_INTERFACE",
           "component-library-stats": "INDEXED_INTERFACE",
           "css-3d-cube": "INDEXED_INTERFACE",
           "floating-icon": "INDEXED_INTERFACE",
@@ -100,6 +122,8 @@
           "scroll-phase-debug": "INDEXED_INTERFACE",
           "skeleton": "INDEXED_INTERFACE",
           "spinner": "INDEXED_INTERFACE",
+          "tilt-card": "INDEXED_INTERFACE",
+          "tilt-showcase": "INDEXED_INTERFACE",
           "tooltip": "INDEXED_INTERFACE",
           "transformable": "INDEXED_INTERFACE",
           "turtle-crawl": "INDEXED_INTERFACE",
@@ -109,7 +133,17 @@
           "whale-spout": "INDEXED_INTERFACE"
         },
         "slot": {
-          "component-library-stats": "INDEXED_INTERFACE"
+          "carousel-images": "INDEXED_INTERFACE",
+          "component-library-stats": "INDEXED_INTERFACE",
+          "tilt-card": "INDEXED_INTERFACE",
+          "tilt-showcase": "INDEXED_INTERFACE"
+        }
+      },
+      "test": {
+        "unit": {
+          "carousel-index": "FUNCTION_TEST",
+          "pointer-position": "FUNCTION_TEST",
+          "tilt-sample": "FUNCTION_TEST"
         }
       },
       "type": {
@@ -124,6 +158,10 @@
         },
         "object": {
           "media-slider": "INDEXED_TYPE"
+        },
+        "struct": {
+          "carousel-image": "INDEXED_TYPE",
+          "tilt-sample": "INDEXED_TYPE"
         }
       }
     },
@@ -263,6 +301,7 @@
           "date-picker": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
           "date-time-picker": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
           "form-date-picker": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "month-range-picker": "DEFINED_STORY_COMPONENT",
           "time-picker": "DEFINED_REACTIVE_STORY_COMPONENT",
           "timeline": "DEFINED_REACTIVE_STORY_COMPONENT"
         },
@@ -275,7 +314,8 @@
           "date-time-range-picker": "DEFINED_REACTIVE_STORY_COMPONENT",
           "event-calendar": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
           "mini-calendar": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
-          "time-grid": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT"
+          "time-grid": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "timetable": "DEFINED_STORY_COMPONENT"
         }
       },
       "const": {
@@ -288,6 +328,9 @@
         }
       },
       "function": {
+        "resolve": {
+          "timetable-cell": "INDEXED_FUNCTION"
+        },
         "script": {
           "calendar-utils": "INDEXED_FUNCTION",
           "date-format": "INDEXED_FUNCTION",
@@ -295,6 +338,9 @@
         }
       },
       "interface": {
+        "behavior": {
+          "timetable": "INDEXED_INTERFACE"
+        },
         "recipe": {
           "calendar": "INDEXED_INTERFACE",
           "calendar-day": "INDEXED_INTERFACE",
@@ -309,15 +355,26 @@
           "event-calendar": "INDEXED_INTERFACE",
           "form-date-picker": "INDEXED_INTERFACE",
           "mini-calendar": "INDEXED_INTERFACE",
+          "month-range-picker": "INDEXED_INTERFACE",
           "time-grid": "INDEXED_INTERFACE",
           "time-picker": "INDEXED_INTERFACE",
           "time-slot": "INDEXED_INTERFACE",
-          "timeline": "INDEXED_INTERFACE"
+          "timeline": "INDEXED_INTERFACE",
+          "timetable": "INDEXED_INTERFACE"
         },
         "slot": {
           "calendar-day": "INDEXED_INTERFACE",
           "calendar-event": "INDEXED_INTERFACE",
-          "date-picker": "INDEXED_INTERFACE"
+          "date-picker": "INDEXED_INTERFACE",
+          "timetable": "INDEXED_INTERFACE"
+        }
+      },
+      "test": {
+        "render": {
+          "month-range-picker": "FUNCTION_TEST"
+        },
+        "unit": {
+          "timetable-cell": "FUNCTION_TEST"
         }
       },
       "type": {
@@ -326,6 +383,13 @@
           "time-format": "INDEXED_TYPE",
           "time-measure": "INDEXED_TYPE",
           "token-time-range": "INDEXED_TYPE"
+        },
+        "struct": {
+          "timetable-cell": "INDEXED_TYPE",
+          "timetable-class": "INDEXED_TYPE",
+          "timetable-day": "INDEXED_TYPE",
+          "timetable-lesson": "INDEXED_TYPE",
+          "timetable-period": "INDEXED_TYPE"
         }
       }
     },
@@ -1360,9 +1424,13 @@
           "file-browser": "DEFINED_REACTIVE_STORY_COMPONENT",
           "file-explorer": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
           "file-list-item": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "file-manager": "DEFINED_STORY_COMPONENT",
           "media-library": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
           "upload-progress": "DEFINED_REACTIVE_STORY_COMPONENT",
           "zip-viewer": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT"
+        },
+        "page": {
+          "file-storage": "DEFINED_STORY_COMPONENT"
         }
       },
       "const": {
@@ -1372,15 +1440,34 @@
           "export-format": "INDEXED_CONST",
           "file-explorer-view-mode": "INDEXED_CONST",
           "file-item-type": "INDEXED_CONST",
+          "file-manager-sample": "INDEXED_CONST",
           "media-library-media-type": "INDEXED_CONST",
           "upload-progress-variant": "INDEXED_CONST",
           "upload-status": "INDEXED_CONST"
         },
         "preset": {
+          "file-manager-labels": "INDEXED_CONST",
+          "file-manager-labels-ru": "INDEXED_CONST",
           "quantity-selector": "INDEXED_CONST"
         }
       },
+      "data": {
+        "md": {
+          "legacy-notices": "PROTOTYPE_FILE_LEGACY_NOTICES"
+        }
+      },
+      "function": {
+        "resolve": {
+          "file-kind": "INDEXED_FUNCTION"
+        },
+        "transform": {
+          "file-manager-filter": "INDEXED_FUNCTION"
+        }
+      },
       "interface": {
+        "behavior": {
+          "file-manager": "INDEXED_INTERFACE"
+        },
         "recipe": {
           "attachment-preview": "INDEXED_INTERFACE",
           "data-exporter": "INDEXED_INTERFACE",
@@ -1393,6 +1480,8 @@
           "file-explorer": "INDEXED_INTERFACE",
           "file-input": "INDEXED_INTERFACE",
           "file-list-item": "INDEXED_INTERFACE",
+          "file-manager": "INDEXED_INTERFACE",
+          "file-storage": "INDEXED_INTERFACE",
           "file-upload": "INDEXED_INTERFACE",
           "media-library": "INDEXED_INTERFACE",
           "quantity-selector": "INDEXED_INTERFACE",
@@ -1409,6 +1498,8 @@
           "drop-zone-style-classes": "INDEXED_INTERFACE",
           "export-panel-style-classes": "INDEXED_INTERFACE",
           "file-item": "INDEXED_INTERFACE",
+          "file-manager": "INDEXED_INTERFACE",
+          "file-storage": "INDEXED_INTERFACE",
           "file-system-item": "INDEXED_INTERFACE",
           "folder-item": "INDEXED_INTERFACE",
           "media-item": "INDEXED_INTERFACE",
@@ -1416,6 +1507,12 @@
           "upload-progress": "INDEXED_INTERFACE",
           "zip-entry": "INDEXED_INTERFACE",
           "zip-viewer-style-classes": "INDEXED_INTERFACE"
+        }
+      },
+      "test": {
+        "unit": {
+          "file-kind": "FUNCTION_TEST",
+          "file-manager-filter": "FUNCTION_TEST"
         }
       },
       "type": {
@@ -1429,6 +1526,9 @@
           "media-library-media-type": "INDEXED_TYPE",
           "upload-progress-variant": "INDEXED_TYPE",
           "upload-status": "INDEXED_TYPE"
+        },
+        "struct": {
+          "file-manager-entry": "INDEXED_TYPE"
         }
       }
     },
@@ -1453,41 +1553,68 @@
           "address-form": "DEFINED_REACTIVE_STORY_COMPONENT",
           "form-with-validation": "DEFINED_REACTIVE_STORY_COMPONENT",
           "login-form": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "rating-feedback": "DEFINED_STORY_COMPONENT",
           "schema-form-dialog": "DEFINED_RENDERED_STORY_COMPONENT",
           "screen-reader": "DEFINED_REACTIVE_STORY_COMPONENT",
           "search-form": "DEFINED_REACTIVE_STORY_COMPONENT"
+        },
+        "page": {
+          "feedback-scenario": "DEFINED_STORY_COMPONENT",
+          "support-counter": "DEFINED_STORY_COMPONENT"
         }
       },
       "const": {
+        "preset": {
+          "rating-feedback-labels": "INDEXED_CONST"
+        },
         "value": {
           "search-icon-name": "INDEXED_CONST"
         }
       },
+      "function": {
+        "resolve": {
+          "cooldown-counter": "INDEXED_FUNCTION"
+        }
+      },
       "interface": {
+        "behavior": {
+          "rating-feedback": "INDEXED_INTERFACE"
+        },
         "recipe": {
           "account-forms": "INDEXED_INTERFACE",
           "address-form": "INDEXED_INTERFACE",
           "checkbox-group": "INDEXED_INTERFACE",
+          "feedback-scenario": "INDEXED_INTERFACE",
           "form-footer": "INDEXED_INTERFACE",
           "form-header": "INDEXED_INTERFACE",
           "form-selection": "INDEXED_INTERFACE",
           "form-with-validation": "INDEXED_INTERFACE",
           "interaction-forms": "INDEXED_INTERFACE",
           "login-form": "INDEXED_INTERFACE",
+          "rating-feedback": "INDEXED_INTERFACE",
           "schema-form-dialog": "INDEXED_INTERFACE",
           "screen-reader": "INDEXED_INTERFACE",
           "search-form": "INDEXED_INTERFACE",
+          "support-counter": "INDEXED_INTERFACE",
           "toggle-button-group": "INDEXED_INTERFACE",
           "validation": "INDEXED_INTERFACE"
         },
         "slot": {
           "address-data": "INDEXED_INTERFACE",
+          "feedback-scenario": "INDEXED_INTERFACE",
           "form-data": "INDEXED_INTERFACE",
           "form-footer": "INDEXED_INTERFACE",
           "form-header": "INDEXED_INTERFACE",
           "form-selection-state": "INDEXED_INTERFACE",
           "login-credentials": "INDEXED_INTERFACE",
+          "rating-feedback": "INDEXED_INTERFACE",
+          "support-counter": "INDEXED_INTERFACE",
           "validation-errors": "INDEXED_INTERFACE"
+        }
+      },
+      "test": {
+        "unit": {
+          "cooldown-counter": "FUNCTION_TEST"
         }
       }
     },
@@ -1588,14 +1715,19 @@
           "scene-graph": "INDEXED_INTERFACE",
           "scene-material": "INDEXED_INTERFACE",
           "scene-molecule": "INDEXED_INTERFACE",
+          "scene-text": "INDEXED_INTERFACE",
           "zwicky-filter-state": "INDEXED_INTERFACE",
-          "zwicky-node": "INDEXED_INTERFACE"
+          "zwicky-group": "INDEXED_INTERFACE",
+          "zwicky-node": "INDEXED_INTERFACE",
+          "zwicky-scheme": "INDEXED_INTERFACE",
+          "zwicky-text": "INDEXED_INTERFACE"
         }
       },
       "type": {
         "alias": {
           "graph-grid-mode": "INDEXED_TYPE",
           "graph-node-category": "INDEXED_TYPE",
+          "graph-theme": "INDEXED_TYPE",
           "graph-tool-mode": "INDEXED_TYPE",
           "scene-atom-kind": "INDEXED_TYPE",
           "scene-camera-preset": "INDEXED_TYPE",
@@ -2021,6 +2153,7 @@
           "idef0-outputs": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT"
         },
         "organism": {
+          "idef0-decomposition": "DEFINED_REACTIVE_STORY_COMPONENT",
           "idef0-diagram": "DEFINED_REACTIVE_STORY_COMPONENT"
         }
       },
@@ -2028,6 +2161,7 @@
         "recipe": {
           "idef0-black-box": "INDEXED_INTERFACE",
           "idef0-connector": "INDEXED_INTERFACE",
+          "idef0-decomposition": "INDEXED_INTERFACE",
           "idef0-diagram": "INDEXED_INTERFACE",
           "idef0-function-box": "INDEXED_INTERFACE",
           "idef0-io": "INDEXED_INTERFACE",
@@ -2051,6 +2185,7 @@
         },
         "organism": {
           "canvas-image-editor": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "image-caption-editor-card": "DEFINED_STORY_COMPONENT",
           "image-gallery": "DEFINED_REACTIVE_STORY_COMPONENT"
         }
       },
@@ -2061,11 +2196,17 @@
           "divider-heading-image-text": "INDEXED_INTERFACE",
           "image": "INDEXED_INTERFACE",
           "image-caption": "INDEXED_INTERFACE",
+          "image-caption-editor-card": "INDEXED_INTERFACE",
           "image-gallery": "INDEXED_INTERFACE",
           "media-thumbnail": "INDEXED_INTERFACE"
         },
         "slot": {
           "image": "INDEXED_INTERFACE"
+        }
+      },
+      "test": {
+        "render": {
+          "image-caption-editor-card": "FUNCTION_TEST"
         }
       }
     },
@@ -2409,6 +2550,14 @@
           "translation-editor-icon": "INDEXED_CONST"
         }
       },
+      "function": {
+        "transform": {
+          "format-day": "INDEXED_FUNCTION",
+          "format-moment": "INDEXED_FUNCTION",
+          "format-money": "INDEXED_FUNCTION",
+          "format-usd": "INDEXED_FUNCTION"
+        }
+      },
       "interface": {
         "recipe": {
           "country-flag": "INDEXED_INTERFACE",
@@ -2422,6 +2571,14 @@
           "locale-switcher": "INDEXED_INTERFACE",
           "locale-switcher-locale": "INDEXED_INTERFACE",
           "number-format-options": "INDEXED_INTERFACE"
+        }
+      },
+      "test": {
+        "unit": {
+          "format-day": "FUNCTION_TEST",
+          "format-moment": "FUNCTION_TEST",
+          "format-money": "FUNCTION_TEST",
+          "format-usd": "FUNCTION_TEST"
         }
       },
       "type": {
@@ -2457,13 +2614,22 @@
         "organism": {
           "app-header": "DEFINED_RENDERED_STORY_COMPONENT",
           "drawer": "DEFINED_RENDERED_STORY_COMPONENT",
-          "mega-menu": "DEFINED_RENDERED_STORY_COMPONENT"
+          "mega-menu": "DEFINED_RENDERED_STORY_COMPONENT",
+          "site-menu": "DEFINED_STORY_COMPONENT"
         }
       },
       "const": {
+        "array": {
+          "site-menu-sample": "INDEXED_CONST"
+        },
         "preset": {
           "dropdown-menu": "INDEXED_CONST",
           "mega-menu": "INDEXED_CONST"
+        }
+      },
+      "data": {
+        "md": {
+          "legacy-notices": "PROTOTYPE_MENU_LEGACY_NOTICES"
         }
       },
       "function": {
@@ -2473,9 +2639,16 @@
           "dropdown-menu": "REACTIVE_BARREL",
           "mega-menu": "REACTIVE_BARREL",
           "menu-item": "REACTIVE_BARREL"
+        },
+        "transform": {
+          "site-menu-group": "INDEXED_FUNCTION",
+          "site-menu-search": "INDEXED_FUNCTION"
         }
       },
       "interface": {
+        "behavior": {
+          "site-menu": "INDEXED_INTERFACE"
+        },
         "recipe": {
           "app-header": "INDEXED_INTERFACE",
           "burger-menu": "INDEXED_INTERFACE",
@@ -2487,13 +2660,27 @@
           "mega-menu-link": "INDEXED_INTERFACE",
           "mega-menu-panel": "INDEXED_INTERFACE",
           "mega-menu-trigger": "INDEXED_INTERFACE",
-          "menu-item": "INDEXED_INTERFACE"
+          "menu-item": "INDEXED_INTERFACE",
+          "site-menu": "INDEXED_INTERFACE"
         },
         "slot": {
           "mega-menu-column": "INDEXED_INTERFACE",
           "mega-menu-feature": "INDEXED_INTERFACE",
           "mega-menu-link": "INDEXED_INTERFACE",
-          "mega-menu-section": "INDEXED_INTERFACE"
+          "mega-menu-section": "INDEXED_INTERFACE",
+          "site-menu": "INDEXED_INTERFACE"
+        }
+      },
+      "test": {
+        "unit": {
+          "site-menu-group": "FUNCTION_TEST",
+          "site-menu-search": "FUNCTION_TEST"
+        }
+      },
+      "type": {
+        "struct": {
+          "site-menu-group": "INDEXED_TYPE",
+          "site-menu-item": "INDEXED_TYPE"
         }
       }
     },
@@ -2508,17 +2695,20 @@
           "floating-action-button": "DEFINED_STORY_COMPONENT"
         },
         "molecule": {
-          "navigation-item": "DEFINED_STORY_COMPONENT"
+          "navigation-item": "DEFINED_STORY_COMPONENT",
+          "section-bar": "DEFINED_STORY_COMPONENT"
         },
         "organism": {
           "bottom-sheet": "DEFINED_RENDERED_STORY_COMPONENT",
           "navigation-drawer": "DEFINED_STORY_COMPONENT",
           "sidebar": "DEFINED_STORY_COMPONENT",
-          "top-app-bar": "DEFINED_STORY_COMPONENT"
+          "top-app-bar": "DEFINED_STORY_COMPONENT",
+          "workspace-menu": "DEFINED_STORY_COMPONENT"
         },
         "page": {
           "activity": "DEFINED_RENDERED_STORY_COMPONENT",
-          "navigation-graph": "DEFINED_STORY_COMPONENT"
+          "navigation-graph": "DEFINED_STORY_COMPONENT",
+          "navigation-patterns": "DEFINED_STORY_COMPONENT"
         },
         "template": {
           "fragment": "DEFINED_STORY_COMPONENT"
@@ -2531,7 +2721,9 @@
       },
       "function": {
         "resolve": {
-          "navigation-graph-layout": "INDEXED_FUNCTION"
+          "navigation-destination": "INDEXED_FUNCTION",
+          "navigation-graph-layout": "INDEXED_FUNCTION",
+          "navigation-href": "INDEXED_FUNCTION"
         },
         "state": {
           "activity": "REACTIVE_BARREL",
@@ -2540,6 +2732,9 @@
         }
       },
       "interface": {
+        "behavior": {
+          "section-select": "INDEXED_INTERFACE"
+        },
         "contract": {
           "navigation-action": "INDEXED_INTERFACE",
           "navigation-destination": "INDEXED_INTERFACE",
@@ -2557,16 +2752,23 @@
           "navigation-drawer": "INDEXED_INTERFACE",
           "navigation-graph": "INDEXED_INTERFACE",
           "navigation-item": "INDEXED_INTERFACE",
+          "navigation-patterns": "INDEXED_INTERFACE",
+          "section-bar": "INDEXED_INTERFACE",
           "sidebar": "INDEXED_INTERFACE",
-          "top-app-bar": "INDEXED_INTERFACE"
+          "top-app-bar": "INDEXED_INTERFACE",
+          "workspace-menu": "INDEXED_INTERFACE"
         },
         "slot": {
-          "nav-item": "INDEXED_INTERFACE"
+          "nav-item": "INDEXED_INTERFACE",
+          "navigation-patterns": "INDEXED_INTERFACE",
+          "section-bar": "INDEXED_INTERFACE",
+          "workspace-menu": "INDEXED_INTERFACE"
         }
       },
       "test": {
         "unit": {
-          "navigation-composite": "FUNCTION_TEST"
+          "navigation-composite": "FUNCTION_TEST",
+          "navigation-href": "FUNCTION_TEST"
         }
       }
     },
@@ -2878,6 +3080,50 @@
           "bulk-order-form": "INDEX_SVG",
           "button": "INDEX_SVG",
           "buttons": "INDEX_SVG",
+          "cabinet-account": "INDEX_SVG",
+          "cabinet-administration": "INDEX_SVG",
+          "cabinet-audit": "INDEX_SVG",
+          "cabinet-auth-check": "INDEX_SVG",
+          "cabinet-blog": "INDEX_SVG",
+          "cabinet-captions": "INDEX_SVG",
+          "cabinet-catalog": "INDEX_SVG",
+          "cabinet-class-rights": "INDEX_SVG",
+          "cabinet-constructor": "INDEX_SVG",
+          "cabinet-content-hub": "INDEX_SVG",
+          "cabinet-coordinator": "INDEX_SVG",
+          "cabinet-customers": "INDEX_SVG",
+          "cabinet-database": "INDEX_SVG",
+          "cabinet-dictionaries": "INDEX_SVG",
+          "cabinet-dollar-rate": "INDEX_SVG",
+          "cabinet-er-diagram": "INDEX_SVG",
+          "cabinet-feedback": "INDEX_SVG",
+          "cabinet-idef0": "INDEX_SVG",
+          "cabinet-incoming": "INDEX_SVG",
+          "cabinet-logout": "INDEX_SVG",
+          "cabinet-management": "INDEX_SVG",
+          "cabinet-order": "INDEX_SVG",
+          "cabinet-orders": "INDEX_SVG",
+          "cabinet-outgoing": "INDEX_SVG",
+          "cabinet-overview": "INDEX_SVG",
+          "cabinet-panel-map": "INDEX_SVG",
+          "cabinet-payment-gateway": "INDEX_SVG",
+          "cabinet-promotion": "INDEX_SVG",
+          "cabinet-reports": "INDEX_SVG",
+          "cabinet-requests": "INDEX_SVG",
+          "cabinet-reviews": "INDEX_SVG",
+          "cabinet-service": "INDEX_SVG",
+          "cabinet-settings": "INDEX_SVG",
+          "cabinet-site": "INDEX_SVG",
+          "cabinet-sitemap": "INDEX_SVG",
+          "cabinet-telegram": "INDEX_SVG",
+          "cabinet-today": "INDEX_SVG",
+          "cabinet-transactions": "INDEX_SVG",
+          "cabinet-transitions": "INDEX_SVG",
+          "cabinet-user": "INDEX_SVG",
+          "cabinet-user-roles": "INDEX_SVG",
+          "cabinet-users": "INDEX_SVG",
+          "cabinet-visitor-paths": "INDEX_SVG",
+          "cabinet-visits": "INDEX_SVG",
           "calendar": "INDEX_SVG",
           "calendar-molecule": "INDEX_SVG",
           "calendar-view": "INDEX_SVG",
@@ -2988,6 +3234,7 @@
           "debug": "INDEX_SVG",
           "debug-console": "INDEX_SVG",
           "delete": "INDEX_SVG",
+          "demo": "INDEX_SVG",
           "densities": "INDEX_SVG",
           "design-token": "INDEX_SVG",
           "design-tokens": "INDEX_SVG",
@@ -3086,6 +3333,7 @@
           "heatmap": "INDEX_SVG",
           "height": "INDEX_SVG",
           "hero": "INDEX_SVG",
+          "home": "INDEX_SVG",
           "hook": "INDEX_SVG",
           "horizontal-layout": "INDEX_SVG",
           "html": "INDEX_SVG",
@@ -3290,6 +3538,14 @@
           "rfqform": "INDEX_SVG",
           "rich-text": "INDEX_SVG",
           "rich-text-editor": "INDEX_SVG",
+          "role-administrator": "INDEX_SVG",
+          "role-architect": "INDEX_SVG",
+          "role-constructor": "INDEX_SVG",
+          "role-customer": "INDEX_SVG",
+          "role-marketer": "INDEX_SVG",
+          "role-messages": "INDEX_SVG",
+          "role-supervisor": "INDEX_SVG",
+          "role-tourism-manager": "INDEX_SVG",
           "route-planner": "INDEX_SVG",
           "sakartvelo": "INDEX_SVG",
           "save": "INDEX_SVG",
@@ -3462,6 +3718,7 @@
           "x": "INDEX_SVG",
           "x-circle": "INDEX_SVG",
           "yaml": "INDEX_SVG",
+          "yoga": "INDEX_SVG",
           "z-index": "INDEX_SVG",
           "zoom": "INDEX_SVG",
           "zoom-controls": "INDEX_SVG",
@@ -3553,6 +3810,9 @@
         "create": {
           "column": "INDEX_BARREL",
           "table": "INDEX_BARREL"
+        },
+        "state": {
+          "column-visibility": "REACTIVE_BARREL"
         }
       },
       "interface": {
@@ -3584,6 +3844,11 @@
           "filter-bar": "INDEXED_INTERFACE",
           "filter-pills": "INDEXED_INTERFACE",
           "filter-text": "INDEXED_INTERFACE"
+        }
+      },
+      "test": {
+        "unit": {
+          "column-visibility": "FUNCTION_TEST"
         }
       },
       "type": {
@@ -3968,10 +4233,14 @@
         "molecule": {
           "concentric-circles-scene": "DEFINED_RENDERED_STORY_COMPONENT",
           "hyperspace-scene": "DEFINED_RENDERED_STORY_COMPONENT",
+          "interference-field-scene": "DEFINED_RENDERED_STORY_COMPONENT",
           "turtle-dissolve-scene": "DEFINED_RENDERED_STORY_COMPONENT"
         },
         "organism": {
           "scene-launcher": "DEFINED_STORY_COMPONENT"
+        },
+        "page": {
+          "shader-field": "DEFINED_STORY_COMPONENT"
         }
       },
       "const": {
@@ -3987,6 +4256,9 @@
         }
       },
       "function": {
+        "resolve": {
+          "shader-tint": "INDEXED_FUNCTION"
+        },
         "script": {
           "compile-shader": "INDEXED_FUNCTION",
           "create-program": "INDEXED_FUNCTION"
@@ -3997,8 +4269,18 @@
           "concentric-circles-scene": "INDEXED_INTERFACE",
           "gl-canvas": "INDEXED_INTERFACE",
           "hyperspace-scene": "INDEXED_INTERFACE",
+          "interference-field-scene": "INDEXED_INTERFACE",
           "scene-launcher": "INDEXED_INTERFACE",
+          "shader-field": "INDEXED_INTERFACE",
           "turtle-dissolve-scene": "INDEXED_INTERFACE"
+        },
+        "slot": {
+          "shader-field": "INDEXED_INTERFACE"
+        }
+      },
+      "test": {
+        "unit": {
+          "shader-tint": "FUNCTION_TEST"
         }
       }
     },
