@@ -1453,7 +1453,7 @@
       },
       "data": {
         "md": {
-          "legacy-notices": "PROTOTYPE_FILE_LEGACY_NOTICES"
+          "legacy-notices": "FILE_LEGACY_NOTICES"
         }
       },
       "function": {
@@ -2629,7 +2629,7 @@
       },
       "data": {
         "md": {
-          "legacy-notices": "PROTOTYPE_MENU_LEGACY_NOTICES"
+          "legacy-notices": "MENU_LEGACY_NOTICES"
         }
       },
       "function": {
@@ -3681,6 +3681,7 @@
           "travel": "INDEX_SVG",
           "travel-commerce": "INDEX_SVG",
           "tree": "INDEX_SVG",
+          "treejs": "INDEX_SVG",
           "trending-down": "INDEX_SVG",
           "trending-up": "INDEX_SVG",
           "twitter": "INDEX_SVG",

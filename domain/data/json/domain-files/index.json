@@ -2937,7 +2937,7 @@
     },
     {
       "name": "svg",
-      "fileCount": 818,
+      "fileCount": 819,
       "components": {
         "atoms": 11,
         "molecules": 0,
@@ -2970,7 +2970,7 @@
         },
         {
           "name": "data",
-          "fileCount": 746,
+          "fileCount": 747,
           "joints": [
             {
               "name": "flag",
@@ -2979,8 +2979,8 @@
             },
             {
               "name": "icon",
-              "entityCount": 736,
-              "fileCount": 736
+              "entityCount": 737,
+              "fileCount": 737
             }
           ]
         },
@@ -3767,7 +3767,7 @@
   ],
   "totals": {
     "domains": 37,
-    "files": 5499,
+    "files": 5500,
     "atoms": 274,
     "molecules": 194,
     "organisms": 152,
