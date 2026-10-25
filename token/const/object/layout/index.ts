@@ -7,8 +7,6 @@ import { CENTERED_LAYOUT_AXIS } from '$stylist/layout/const/array/centered-layou
 import { TOKEN_COLUMN } from '$stylist/layout/const/array/column';
 import { CONTAINER_QUERY_TYPE } from '$stylist/layout/const/array/container-query-type';
 import { TOKEN_DENSITY } from '$stylist/layout/const/array/density';
-import { GRADIENT_DIRECTION } from '$stylist/layout/const/array/gradient-direction';
-import { TOKEN_GRADIENT } from '$stylist/layout/const/array/gradient-mode';
 import { GRID_MOLECULE_JUSTIFY } from '$stylist/layout/const/array/grid-molecule-justify';
 import { TOKEN_IMAGE_FILTER } from '$stylist/layout/const/array/image-filter';
 import { ITEM_LAYOUT_GRAVITY } from '$stylist/layout/const/array/item-layout-gravity';
@@ -73,20 +71,6 @@ export const TOKEN_LAYOUT_SETTING = [
 		domain: 'layout',
 		controlKind: 'radio',
 		values: TOKEN_DENSITY
-	},
-	{
-		key: 'gradient-direction',
-		label: 'Gradient Direction',
-		domain: 'layout',
-		controlKind: 'radio',
-		values: GRADIENT_DIRECTION
-	},
-	{
-		key: 'gradient-mode',
-		label: 'Gradient Mode',
-		domain: 'layout',
-		controlKind: 'radio',
-		values: TOKEN_GRADIENT
 	},
 	{
 		key: 'grid-molecule-justify',

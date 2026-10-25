@@ -46,9 +46,9 @@
 		border-radius: 0.75rem;
 		background: var(--token-control-bg);
 		color: var(--token-control-text);
-		padding: var(--spacing-3, 1rem);
+		padding: var(--space-4, 1rem);
 		display: grid;
-		gap: var(--spacing-2, 0.75rem);
+		gap: var(--space-3, 0.75rem);
 		justify-self: stretch;
 		min-width: 0;
 		width: 100%;
@@ -58,14 +58,14 @@
 
 	.token-control-base__header {
 		display: grid;
-		gap: var(--spacing-1, 0.35rem);
+		gap: var(--space-1-5, 0.375rem);
 		min-width: 0;
 	}
 
 	.token-control-base__name-row {
 		display: inline-flex;
 		align-items: center;
-		gap: var(--spacing-1, 0.45rem);
+		gap: var(--space-2, 0.5rem);
 		min-width: 0;
 	}
 
@@ -80,7 +80,7 @@
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
-		font-size: var(--font-size-3, 0.875rem);
+		font-size: var(--font-size-3-5, 0.875rem);
 		font-weight: var(--font-weight-bold, 700);
 		color: var(--token-control-text);
 	}
@@ -103,20 +103,20 @@
 
 	.token-control-base__description {
 		margin: 0;
-		font-size: var(--font-size-3, 0.875rem);
+		font-size: var(--font-size-3-5, 0.875rem);
 		color: var(--token-control-muted);
 	}
 
 	.token-control-base__body {
 		display: grid;
-		gap: var(--spacing-2, 0.75rem);
+		gap: var(--space-3, 0.75rem);
 		min-width: 0;
 	}
 
 	.token-control-base--inline {
 		grid-template-columns: minmax(0, 14rem) minmax(0, 1fr);
 		align-items: center;
-		gap: var(--spacing-3, 1rem);
+		gap: var(--space-4, 1rem);
 	}
 
 	.token-control-base--inline .token-control-base__header {

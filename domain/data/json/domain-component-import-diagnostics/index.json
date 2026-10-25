@@ -2118,21 +2118,6 @@
       ]
     },
     {
-      "path": "layout/component/atom/grid/index.svelte",
-      "domain": "layout",
-      "joint": "atom",
-      "family": "grid",
-      "status": "missing-recipe",
-      "expectedRecipe": "RecipeGrid",
-      "importCount": 2,
-      "recipeImports": [
-        "$stylist/layout/interface/recipe/grid-svg"
-      ],
-      "otherImports": [
-        "$stylist/layout/component/atom/grid/state.svelte"
-      ]
-    },
-    {
       "path": "tree/component/molecule/flat-tree/index.svelte",
       "domain": "tree",
       "joint": "molecule",
@@ -2165,10 +2150,10 @@
     }
   ],
   "summary": {
-    "total": 152,
+    "total": 151,
     "none": 0,
-    "missingRecipe": 152,
-    "valid": 485,
-    "scanned": 637
+    "missingRecipe": 151,
+    "valid": 516,
+    "scanned": 667
   }
 }

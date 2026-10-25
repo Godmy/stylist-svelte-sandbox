@@ -169,7 +169,7 @@
 
 	.c-code-block__copy--on-hover {
 		opacity: 0;
-		transition: opacity var(--motion-duration-150, 150ms) var(--motion-easing-ease, ease);
+		transition: opacity var(--duration-150, 150ms) var(--easing-ease, ease);
 	}
 
 	.c-code-block:hover .c-code-block__copy--on-hover,

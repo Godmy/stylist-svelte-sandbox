@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Icon from '$stylist/svg/component/atom/icon/index.svelte';
 	import type { RecipeTokenIcon } from '$stylist/token/interface/recipe/token-icon';
+	import { isIconName } from '$stylist/svg/function/check/icon-name';
 
 	let {
 		title = 'Icon',
@@ -24,7 +25,7 @@
 				aria-selected={value === icon}
 				onclick={() => onSelect?.(icon)}
 			>
-				<Icon name={icon} size={18} container="none" />
+				<Icon name={isIconName(icon) ? icon : 'box'} size={18} container="none" />
 			</button>
 		{/each}
 	</div>

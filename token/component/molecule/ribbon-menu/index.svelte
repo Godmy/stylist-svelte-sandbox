@@ -1,11 +1,12 @@
 <script lang="ts">
 	import Icon from '$stylist/svg/component/atom/icon/index.svelte';
 	import type { RecipeRibbonMenu } from '$stylist/token/interface/recipe/ribbon-menu';
+	import type { TokenIconName } from '$stylist/svg/type/alias/icon-name';
 
 	type RibbonItem = {
 		id: string;
 		label: string;
-		icon: string;
+		icon: TokenIconName;
 	};
 
 	const items: RibbonItem[] = [

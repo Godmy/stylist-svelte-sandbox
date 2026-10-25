@@ -7,7 +7,7 @@
 	const Download = 'download';
 	const Copy = 'copy';
 	const CheckCircle = 'check-circle';
-	const Code2 = 'code-2';
+	const Code2 = 'code';
 	const ExternalLink = 'external-link';
 	const Package = 'package';
 	const Terminal = 'terminal';

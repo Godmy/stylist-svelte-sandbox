@@ -36,7 +36,7 @@ export class PageBuilderManager {
 				return {
 					backgroundColor: 'var(--color-primary-500)',
 					color: 'var(--color-text-inverse)',
-					padding: 'var(--spacing-2) var(--spacing-4)'
+					padding: 'var(--space-2) var(--space-4)'
 				} as SlotPageBuilderButtonAttributes;
 			case 'image':
 				return {
@@ -50,9 +50,9 @@ export class PageBuilderManager {
 			case 'container':
 				return {
 					backgroundColor: 'var(--color-background-primary)',
-					padding: 'var(--spacing-4)',
-					margin: 'var(--spacing-2)',
-					BORDER_RADIUS: 'var(--border-radius-base)'
+					padding: 'var(--space-4)',
+					margin: 'var(--space-2)',
+					BORDER_RADIUS: 'var(--radius-1-5)'
 				} as SlotPageBuilderElement['attributes'];
 			default:
 				return {};
@@ -72,10 +72,10 @@ export class PageBuilderManager {
 			}
 			case 'button': {
 				const attrs = element.attributes as SlotPageBuilderButtonAttributes | undefined;
-				return `<button style="background-color:${attrs?.backgroundColor ?? 'var(--color-primary-500)'};color:${attrs?.color ?? 'var(--color-text-inverse)'};padding:${attrs?.padding ?? 'var(--spacing-2) var(--spacing-4)'};border:none;border-radius: var(--border-radius-base);cursor:pointer;">${element.content ?? ''}</button>`;
+				return `<button style="background-color:${attrs?.backgroundColor ?? 'var(--color-primary-500)'};color:${attrs?.color ?? 'var(--color-text-inverse)'};padding:${attrs?.padding ?? 'var(--space-2) var(--space-4)'};border:none;border-radius: var(--radius-1-5);cursor:pointer;">${element.content ?? ''}</button>`;
 			}
 			case 'divider':
-				return '<hr style="border:0;border-top:1px solid var(--color-border-primary);margin: var(--spacing-4) 0;" />';
+				return '<hr style="border:0;border-top:1px solid var(--color-border-primary);margin: var(--space-4) 0;" />';
 			case 'image': {
 				const attrs = element.attributes as SlotPageBuilderImageAttributes | undefined;
 				return `<img src="${attrs?.src ?? ''}" alt="${attrs?.alt ?? 'Image'}" style="width:${attrs?.width == null ? '100%' : `${attrs.width}px`};height:${attrs?.height == null ? 'auto' : `${attrs.height}px`};" />`;

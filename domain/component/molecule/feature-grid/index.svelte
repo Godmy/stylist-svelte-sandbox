@@ -1,6 +1,7 @@
 <script lang="ts">
 	import BaseIcon from '$stylist/svg/component/atom/icon/index.svelte';
 	import type { RecipeFeatureGrid } from '$stylist/domain/interface/recipe/feature-grid';
+	import { isIconName } from '$stylist/svg/function/check/icon-name';
 
 	let {
 		title = 'Why Stylist?',
@@ -53,7 +54,11 @@
 		{#each features as feature}
 			<div class={`fg-card ${feature.palette}`}>
 				<div class={`fg-icon-box ${feature.iconBg}`}>
-					<BaseIcon name={feature.icon} size={28} style="color: #fff" />
+					<BaseIcon
+						name={isIconName(feature.icon) ? feature.icon : 'box'}
+						size={28}
+						style="color: #fff"
+					/>
 				</div>
 				<h3 class="fg-card-title">{feature.title}</h3>
 				<p class="fg-card-desc">{feature.description}</p>

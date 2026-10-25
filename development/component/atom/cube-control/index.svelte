@@ -4,11 +4,11 @@
 	import createCubeControlState from '$stylist/development/component/atom/cube-control/state.svelte';
 
 	const Atom = 'atom';
-	const Biohazard = 'biohazard';
+	const Biohazard = 'warning';
 	const Hand = 'hand';
-	const House = 'house';
+	const House = 'home';
 	const Info = 'info';
-	const Radiation = 'radiation';
+	const Radiation = 'warning';
 
 	let props: RecipeCubeControl = $props();
 	const state = createCubeControlState(() => props);
@@ -251,7 +251,7 @@
 	.c-cube-control {
 		display: inline-flex;
 		flex-direction: column;
-		gap: var(--spacing-3);
+		gap: var(--space-3);
 		user-select: none;
 		touch-action: none;
 	}
@@ -262,7 +262,7 @@
 		width: calc(var(--cube-size) + 140px);
 		height: calc(var(--cube-size) + 140px);
 		perspective: var(--perspective);
-		border-radius: var(--border-radius-xxl);
+		border-radius: var(--radius-4);
 		background: var(--gradient-custom132);
 		border: 1px solid color-mix(in srgb, var(--color-border-primary) 45%, transparent);
 		cursor: grab;
@@ -294,7 +294,7 @@
 		box-shadow: var(--shadow-custom46);
 		backface-visibility: hidden;
 		overflow: hidden;
-		padding: var(--spacing-2);
+		padding: var(--space-2);
 		pointer-events: auto;
 	}
 
@@ -321,7 +321,7 @@
 		display: flex;
 		flex-direction: column;
 		height: 100%;
-		gap: var(--spacing-2);
+		gap: var(--space-2);
 	}
 
 	.face-title {
@@ -330,8 +330,8 @@
 		font-size: var(--font-size-4);
 		cursor: pointer;
 		background: color-mix(in srgb, var(--face-accent) 15%, transparent);
-		border-radius: var(--border-radius-lg);
-		padding: var(--spacing-1) var(--spacing-2);
+		border-radius: var(--radius-2);
+		padding: var(--space-1) var(--space-2);
 		transition: all var(--duration-200);
 	}
 
@@ -349,7 +349,7 @@
 		display: grid;
 		grid-template-columns: repeat(4, 1fr);
 		grid-template-rows: repeat(4, 1fr);
-		gap: var(--spacing-1);
+		gap: var(--space-1);
 		flex: 1;
 	}
 
@@ -357,7 +357,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		border-radius: var(--border-radius-md);
+		border-radius: var(--radius-1-5);
 		cursor: pointer;
 		transition: all var(--duration-150);
 		background: var(--face-tint);
@@ -374,7 +374,7 @@
 		font-family: var(--font-mono);
 		font-size: var(--font-size-2);
 		background: var(--face-tint);
-		border-radius: var(--border-radius-sm);
+		border-radius: var(--radius-1);
 		cursor: pointer;
 		transition: all var(--duration-200);
 		animation: cell-glow 3s ease-in-out infinite;
@@ -402,16 +402,16 @@
 
 	.cube-actions {
 		display: flex;
-		gap: var(--spacing-2);
+		gap: var(--space-2);
 		justify-content: center;
 		flex-wrap: wrap;
 	}
 
 	.cube-button {
-		padding: var(--spacing-2) var(--spacing-4);
+		padding: var(--space-2) var(--space-4);
 		border: 1px solid var(--color-border-primary);
 		background: var(--color-background-primary);
-		border-radius: var(--border-radius-md);
+		border-radius: var(--radius-1-5);
 		cursor: pointer;
 		transition: all var(--duration-200);
 	}

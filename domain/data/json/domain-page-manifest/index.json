@@ -251,7 +251,9 @@
           "create-button-preset": "INDEXED_FUNCTION"
         },
         "state": {
-          "button": "REACTIVE_BARREL"
+          "button": "REACTIVE_BARREL",
+          "clickable": "REACTIVE_BARREL",
+          "focusable": "REACTIVE_BARREL"
         },
         "transform": {
           "button-factory-input": "INDEXED_FUNCTION"
@@ -265,9 +267,11 @@
           "button-composed": "INDEXED_INTERFACE",
           "button-element": "INDEXED_INTERFACE",
           "button-factory-input": "INDEXED_INTERFACE",
+          "clickable": "INDEXED_INTERFACE",
           "close-button": "INDEXED_INTERFACE",
           "copy-button": "INDEXED_INTERFACE",
           "fill-button": "INDEXED_INTERFACE",
+          "focusable": "INDEXED_INTERFACE",
           "follow-button": "INDEXED_INTERFACE",
           "glow-button": "INDEXED_INTERFACE",
           "icon-button": "INDEXED_INTERFACE",
@@ -773,6 +777,8 @@
           "letter-spacing": "INDEXED_CONST",
           "line-height": "INDEXED_CONST",
           "opacity": "INDEXED_CONST",
+          "radius": "INDEXED_CONST",
+          "space": "INDEXED_CONST",
           "z-index": "INDEXED_CONST"
         },
         "preset": {
@@ -786,6 +792,7 @@
           "elevation": "INDEXED_CONST",
           "html-requirement": "INDEXED_CONST",
           "spacing": "INDEXED_CONST",
+          "token-alias": "INDEXED_CONST",
           "transition": "INDEXED_CONST"
         }
       },
@@ -812,7 +819,8 @@
       },
       "test": {
         "unit": {
-          "html-coverage": "FUNCTION_TEST"
+          "html-coverage": "FUNCTION_TEST",
+          "token-scale": "FUNCTION_TEST"
         }
       },
       "type": {
@@ -989,6 +997,7 @@
           "confirmation-dialog": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
           "dialog-confirm": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
           "general-toolbar": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "popover": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
           "stepper": "DEFINED_REACTIVE_STORY_COMPONENT",
           "stylist-tab": "DEFINED_REACTIVE_STORY_COMPONENT",
           "tabs": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT"
@@ -1025,6 +1034,7 @@
           "dialog-confirm": "INDEXED_INTERFACE",
           "general-toolbar": "INDEXED_INTERFACE",
           "modal": "INDEXED_INTERFACE",
+          "popover": "INDEXED_INTERFACE",
           "simple-modal": "INDEXED_INTERFACE",
           "stepper": "INDEXED_INTERFACE",
           "stylist-tab": "INDEXED_INTERFACE",
@@ -2317,7 +2327,6 @@
           "background": "INDEXED_CLASS",
           "class-names": "INDEXED_CLASS",
           "gesture": "INDEXED_CLASS",
-          "gradient-background": "INDEXED_CLASS",
           "grid": "INDEXED_CLASS"
         }
       },
@@ -2326,37 +2335,36 @@
           "aspect-ratio": "DEFINED_REACTIVE_STORY_COMPONENT",
           "background": "DEFINED_REACTIVE_STORY_COMPONENT",
           "border": "DEFINED_REACTIVE_STORY_COMPONENT",
-          "clickable": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
           "container": "DEFINED_REACTIVE_STORY_COMPONENT",
           "divider": "DEFINED_REACTIVE_STORY_COMPONENT",
-          "drag-and-drop": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
-          "draggable": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
-          "focusable": "DEFINED_REACTIVE_STORY_COMPONENT",
-          "grid": "DEFINED_REACTIVE_STORY_COMPONENT",
-          "grid-layout": "DEFINED_REACTIVE_STORY_COMPONENT",
-          "horizontal-layout": "DEFINED_REACTIVE_STORY_COMPONENT",
-          "hoverable": "DEFINED_REACTIVE_STORY_COMPONENT",
-          "node-dot": "DEFINED_REACTIVE_STORY_COMPONENT",
-          "numbered-step": "DEFINED_STORY_COMPONENT",
-          "separator": "DEFINED_REACTIVE_STORY_COMPONENT",
-          "spacer": "DEFINED_RENDERED_STORY_COMPONENT"
+          "stack": "DEFINED_REACTIVE_STORY_COMPONENT"
         },
         "molecule": {
-          "animated-expandable-table-row": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
           "centered-layout": "DEFINED_REACTIVE_STORY_COMPONENT",
           "container-query": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
-          "gradient-background": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "feature-items": "DEFINED_STORY_COMPONENT",
           "grid": "DEFINED_STORY_COMPONENT",
-          "numbered-step-grid": "DEFINED_STORY_COMPONENT",
+          "nav-bar": "DEFINED_STORY_COMPONENT",
           "overlay-layout": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
-          "popover": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "section-heading": "DEFINED_STORY_COMPONENT",
           "split-layout": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
-          "sticky-layout": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
-          "vertical-layout": "DEFINED_REACTIVE_STORY_COMPONENT",
-          "widget-container": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT"
+          "step-list": "DEFINED_STORY_COMPONENT"
         },
         "organism": {
-          "sortable-grid": "DEFINED_REACTIVE_STORY_COMPONENT"
+          "cards-section": "DEFINED_STORY_COMPONENT",
+          "comparison-section": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "definition-section": "DEFINED_STORY_COMPONENT",
+          "hero-section": "DEFINED_STORY_COMPONENT",
+          "result-section": "DEFINED_STORY_COMPONENT",
+          "site-navigation-drawer": "DEFINED_STORY_COMPONENT",
+          "steps-section": "DEFINED_STORY_COMPONENT"
+        },
+        "page": {
+          "landing": "DEFINED_STORY_COMPONENT"
+        },
+        "template": {
+          "landing-template": "DEFINED_STORY_COMPONENT",
+          "page-shell": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT"
         }
       },
       "const": {
@@ -2369,8 +2377,6 @@
           "column": "INDEXED_CONST",
           "container-query-type": "INDEXED_CONST",
           "density": "INDEXED_CONST",
-          "gradient-direction": "INDEXED_CONST",
-          "gradient-mode": "INDEXED_CONST",
           "grid-molecule-justify": "INDEXED_CONST",
           "image-filter": "INDEXED_CONST",
           "item-layout-gravity": "INDEXED_CONST",
@@ -2408,49 +2414,39 @@
           "spaced": "INDEXED_INTERFACE"
         },
         "recipe": {
-          "animated-expandable-table-row": "INDEXED_INTERFACE",
           "aspect-ratio": "INDEXED_INTERFACE",
           "background": "INDEXED_INTERFACE",
           "border": "INDEXED_INTERFACE",
+          "cards-section": "INDEXED_INTERFACE",
           "centered-layout": "INDEXED_INTERFACE",
-          "clickable": "INDEXED_INTERFACE",
+          "comparison-section": "INDEXED_INTERFACE",
           "container": "INDEXED_INTERFACE",
           "container-query": "INDEXED_INTERFACE",
+          "definition-section": "INDEXED_INTERFACE",
           "divider": "INDEXED_INTERFACE",
-          "drag-and-drop": "INDEXED_INTERFACE",
-          "draggable": "INDEXED_INTERFACE",
-          "focusable": "INDEXED_INTERFACE",
-          "gradient-background": "INDEXED_INTERFACE",
+          "feature-items": "INDEXED_INTERFACE",
           "grid": "INDEXED_INTERFACE",
-          "grid-item": "INDEXED_INTERFACE",
-          "grid-layout": "INDEXED_INTERFACE",
-          "grid-molecule": "INDEXED_INTERFACE",
-          "grid-svg": "INDEXED_INTERFACE",
-          "horizontal-layout": "INDEXED_INTERFACE",
-          "hoverable": "INDEXED_INTERFACE",
-          "node-dot": "INDEXED_INTERFACE",
-          "numbered-step": "INDEXED_INTERFACE",
-          "numbered-step-grid": "INDEXED_INTERFACE",
+          "hero-section": "INDEXED_INTERFACE",
+          "landing": "INDEXED_INTERFACE",
+          "landing-template": "INDEXED_INTERFACE",
+          "nav-bar": "INDEXED_INTERFACE",
           "overlay-layout": "INDEXED_INTERFACE",
-          "popover": "INDEXED_INTERFACE",
-          "separator": "INDEXED_INTERFACE",
-          "sortable-grid": "INDEXED_INTERFACE",
-          "spacer": "INDEXED_INTERFACE",
+          "page-shell": "INDEXED_INTERFACE",
+          "result-section": "INDEXED_INTERFACE",
+          "section-heading": "INDEXED_INTERFACE",
+          "site-navigation-drawer": "INDEXED_INTERFACE",
           "split-layout": "INDEXED_INTERFACE",
           "stack": "INDEXED_INTERFACE",
-          "sticky-layout": "INDEXED_INTERFACE",
-          "vertical-layout": "INDEXED_INTERFACE",
-          "widget-container": "INDEXED_INTERFACE"
+          "step-list": "INDEXED_INTERFACE",
+          "steps-section": "INDEXED_INTERFACE"
         },
         "slot": {
           "badge": "INDEXED_INTERFACE",
           "composite": "INDEXED_INTERFACE",
           "dimensionable": "INDEXED_INTERFACE",
           "divider": "INDEXED_INTERFACE",
-          "drag-and-drop": "INDEXED_INTERFACE",
           "drag-contract": "INDEXED_INTERFACE",
-          "gesture-contract": "INDEXED_INTERFACE",
-          "sortable-grid-item": "INDEXED_INTERFACE"
+          "gesture-contract": "INDEXED_INTERFACE"
         }
       },
       "type": {
@@ -2466,9 +2462,6 @@
           "container-query-type": "INDEXED_TYPE",
           "cursor": "INDEXED_TYPE",
           "density": "INDEXED_TYPE",
-          "gradient-background-direction": "INDEXED_TYPE",
-          "gradient-direction": "INDEXED_TYPE",
-          "gradient-mode": "INDEXED_TYPE",
           "grid-molecule-justify": "INDEXED_TYPE",
           "item-layout-gravity": "INDEXED_TYPE",
           "item-layout-level": "INDEXED_TYPE",
@@ -2484,7 +2477,11 @@
           "trigger": "INDEXED_TYPE"
         },
         "object": {
-          "numbered-step": "INDEXED_TYPE"
+          "landing-card": "INDEXED_TYPE",
+          "landing-nav": "INDEXED_TYPE",
+          "landing-section": "INDEXED_TYPE",
+          "landing-step": "INDEXED_TYPE",
+          "nav-bar-link": "INDEXED_TYPE"
         },
         "preset": {
           "preset": "INDEXED_TYPE"
@@ -2499,6 +2496,7 @@
     "list": {
       "component": {
         "atom": {
+          "drag-and-drop": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
           "list-item-marker": "DEFINED_REACTIVE_STORY_COMPONENT"
         },
         "molecule": {
@@ -2517,11 +2515,13 @@
       "interface": {
         "recipe": {
           "base-card": "INDEXED_INTERFACE",
+          "drag-and-drop": "INDEXED_INTERFACE",
           "drag-and-drop-list": "INDEXED_INTERFACE",
           "list-item-marker": "INDEXED_INTERFACE",
           "sortable-list": "INDEXED_INTERFACE"
         },
         "slot": {
+          "drag-and-drop": "INDEXED_INTERFACE",
           "drag-and-drop-list-item": "INDEXED_INTERFACE",
           "sortable-list": "INDEXED_INTERFACE",
           "sortable-list-item": "INDEXED_INTERFACE"
@@ -2589,6 +2589,131 @@
           "country-flag": "INDEXED_TYPE",
           "translatable-text": "INDEXED_TYPE",
           "translation-locale": "INDEXED_TYPE"
+        }
+      }
+    },
+    "mathml": {
+      "component": {
+        "atom": {
+          "mathml-annotation": "DEFINED_RENDERED_STORY_COMPONENT",
+          "mathml-annotation-xml": "DEFINED_RENDERED_STORY_COMPONENT",
+          "mathml-maction": "DEFINED_RENDERED_STORY_COMPONENT",
+          "mathml-merror": "DEFINED_RENDERED_STORY_COMPONENT",
+          "mathml-mfrac": "DEFINED_RENDERED_STORY_COMPONENT",
+          "mathml-mi": "DEFINED_RENDERED_STORY_COMPONENT",
+          "mathml-mmultiscripts": "DEFINED_RENDERED_STORY_COMPONENT",
+          "mathml-mn": "DEFINED_RENDERED_STORY_COMPONENT",
+          "mathml-mo": "DEFINED_RENDERED_STORY_COMPONENT",
+          "mathml-mover": "DEFINED_RENDERED_STORY_COMPONENT",
+          "mathml-mpadded": "DEFINED_RENDERED_STORY_COMPONENT",
+          "mathml-mphantom": "DEFINED_RENDERED_STORY_COMPONENT",
+          "mathml-mprescripts": "DEFINED_RENDERED_STORY_COMPONENT",
+          "mathml-mroot": "DEFINED_RENDERED_STORY_COMPONENT",
+          "mathml-mrow": "DEFINED_RENDERED_STORY_COMPONENT",
+          "mathml-ms": "DEFINED_RENDERED_STORY_COMPONENT",
+          "mathml-mspace": "DEFINED_RENDERED_STORY_COMPONENT",
+          "mathml-msqrt": "DEFINED_RENDERED_STORY_COMPONENT",
+          "mathml-mstyle": "DEFINED_RENDERED_STORY_COMPONENT",
+          "mathml-msub": "DEFINED_RENDERED_STORY_COMPONENT",
+          "mathml-msubsup": "DEFINED_RENDERED_STORY_COMPONENT",
+          "mathml-msup": "DEFINED_RENDERED_STORY_COMPONENT",
+          "mathml-mtable": "DEFINED_RENDERED_STORY_COMPONENT",
+          "mathml-mtd": "DEFINED_RENDERED_STORY_COMPONENT",
+          "mathml-mtext": "DEFINED_RENDERED_STORY_COMPONENT",
+          "mathml-mtr": "DEFINED_RENDERED_STORY_COMPONENT",
+          "mathml-munder": "DEFINED_RENDERED_STORY_COMPONENT",
+          "mathml-munderover": "DEFINED_RENDERED_STORY_COMPONENT",
+          "mathml-semantics": "DEFINED_RENDERED_STORY_COMPONENT"
+        },
+        "molecule": {
+          "mathml-formula": "DEFINED_STORY_COMPONENT"
+        },
+        "organism": {
+          "mathml-matrix": "DEFINED_STORY_COMPONENT"
+        },
+        "template": {
+          "mathml-node": "DEFINED_RENDERED_STORY_COMPONENT"
+        }
+      },
+      "const": {
+        "record": {
+          "mathml-element": "INDEXED_CONST",
+          "mathml-fence": "INDEXED_CONST"
+        },
+        "value": {
+          "mathml-namespace": "INDEXED_CONST"
+        }
+      },
+      "function": {
+        "check": {
+          "mathml-node": "INDEXED_FUNCTION"
+        },
+        "create": {
+          "mathml-matrix-node": "INDEXED_FUNCTION",
+          "mathml-token-node": "INDEXED_FUNCTION"
+        },
+        "serialize": {
+          "mathml-markup": "INDEXED_FUNCTION"
+        }
+      },
+      "interface": {
+        "recipe": {
+          "mathml-annotation": "INDEXED_INTERFACE",
+          "mathml-annotation-xml": "INDEXED_INTERFACE",
+          "mathml-formula": "INDEXED_INTERFACE",
+          "mathml-maction": "INDEXED_INTERFACE",
+          "mathml-matrix": "INDEXED_INTERFACE",
+          "mathml-merror": "INDEXED_INTERFACE",
+          "mathml-mfrac": "INDEXED_INTERFACE",
+          "mathml-mi": "INDEXED_INTERFACE",
+          "mathml-mmultiscripts": "INDEXED_INTERFACE",
+          "mathml-mn": "INDEXED_INTERFACE",
+          "mathml-mo": "INDEXED_INTERFACE",
+          "mathml-mover": "INDEXED_INTERFACE",
+          "mathml-mpadded": "INDEXED_INTERFACE",
+          "mathml-mphantom": "INDEXED_INTERFACE",
+          "mathml-mprescripts": "INDEXED_INTERFACE",
+          "mathml-mroot": "INDEXED_INTERFACE",
+          "mathml-mrow": "INDEXED_INTERFACE",
+          "mathml-ms": "INDEXED_INTERFACE",
+          "mathml-mspace": "INDEXED_INTERFACE",
+          "mathml-msqrt": "INDEXED_INTERFACE",
+          "mathml-mstyle": "INDEXED_INTERFACE",
+          "mathml-msub": "INDEXED_INTERFACE",
+          "mathml-msubsup": "INDEXED_INTERFACE",
+          "mathml-msup": "INDEXED_INTERFACE",
+          "mathml-mtable": "INDEXED_INTERFACE",
+          "mathml-mtd": "INDEXED_INTERFACE",
+          "mathml-mtext": "INDEXED_INTERFACE",
+          "mathml-mtr": "INDEXED_INTERFACE",
+          "mathml-munder": "INDEXED_INTERFACE",
+          "mathml-munderover": "INDEXED_INTERFACE",
+          "mathml-node": "INDEXED_INTERFACE",
+          "mathml-semantics": "INDEXED_INTERFACE"
+        },
+        "slot": {
+          "mathml-global": "INDEXED_INTERFACE"
+        }
+      },
+      "test": {
+        "render": {
+          "mathml-formula": "FUNCTION_TEST",
+          "mathml-stories": "FUNCTION_TEST"
+        },
+        "unit": {
+          "mathml-element": "FUNCTION_TEST",
+          "mathml-markup": "FUNCTION_TEST",
+          "mathml-node": "FUNCTION_TEST"
+        }
+      },
+      "type": {
+        "alias": {
+          "mathml-fence": "INDEXED_TYPE",
+          "mathml-node": "INDEXED_TYPE",
+          "mathml-tag": "INDEXED_TYPE"
+        },
+        "struct": {
+          "mathml-element-node": "INDEXED_TYPE"
         }
       }
     },
@@ -2972,7 +3097,8 @@
       "const": {
         "record": {
           "flag-registry": "INDEXED_CONST",
-          "icon-registry": "INDEXED_CONST"
+          "icon-registry": "INDEXED_CONST",
+          "icon-size": "INDEXED_CONST"
         }
       },
       "data": {
@@ -2991,6 +3117,7 @@
         "icon": {
           "abbr": "INDEX_SVG",
           "abtest-configurator": "INDEX_SVG",
+          "accessibility": "INDEX_SVG",
           "accessibility-toolbar": "INDEX_SVG",
           "accordion": "INDEX_SVG",
           "action-segmented-control": "INDEX_SVG",
@@ -3076,6 +3203,7 @@
           "breadcrumb-separator": "INDEX_SVG",
           "breadcrumbs": "INDEX_SVG",
           "breakpoints": "INDEX_SVG",
+          "briefcase": "INDEX_SVG",
           "builder": "INDEX_SVG",
           "bulk-order-form": "INDEX_SVG",
           "button": "INDEX_SVG",
@@ -3158,6 +3286,7 @@
           "chevron-left": "INDEX_SVG",
           "chevron-right": "INDEX_SVG",
           "chevron-up": "INDEX_SVG",
+          "chevrons-up-down": "INDEX_SVG",
           "chip": "INDEX_SVG",
           "chrome": "INDEX_SVG",
           "circle": "INDEX_SVG",
@@ -3219,6 +3348,7 @@
           "copyable-code-block": "INDEX_SVG",
           "count": "INDEX_SVG",
           "country-flag": "INDEX_SVG",
+          "crosshair": "INDEX_SVG",
           "cta-banner": "INDEX_SVG",
           "cta-buttons": "INDEX_SVG",
           "cube-control": "INDEX_SVG",
@@ -3274,9 +3404,13 @@
           "expandable-card": "INDEX_SVG",
           "export": "INDEX_SVG",
           "export-panel": "INDEX_SVG",
+          "external-link": "INDEX_SVG",
+          "eye": "INDEX_SVG",
+          "eye-off": "INDEX_SVG",
           "facebook": "INDEX_SVG",
           "family-travel": "INDEX_SVG",
           "faq": "INDEX_SVG",
+          "farm": "INDEX_SVG",
           "favicon": "INDEX_SVG",
           "feature-grid": "INDEX_SVG",
           "feedback": "INDEX_SVG",
@@ -3287,6 +3421,7 @@
           "file-code": "INDEX_SVG",
           "file-input": "INDEX_SVG",
           "file-list-item": "INDEX_SVG",
+          "file-text": "INDEX_SVG",
           "file-upload": "INDEX_SVG",
           "filter": "INDEX_SVG",
           "filter-bar": "INDEX_SVG",
@@ -3304,13 +3439,16 @@
           "forms-organism": "INDEX_SVG",
           "frag": "INDEX_SVG",
           "friend-list": "INDEX_SVG",
+          "frown": "INDEX_SVG",
           "fruit": "INDEX_SVG",
           "function": "INDEX_SVG",
+          "gamepad": "INDEX_SVG",
           "gap": "INDEX_SVG",
           "general-toolbar": "INDEX_SVG",
           "geo": "INDEX_SVG",
           "geo-jsonviewer": "INDEX_SVG",
           "gesture": "INDEX_SVG",
+          "git-branch": "INDEX_SVG",
           "github": "INDEX_SVG",
           "globe": "INDEX_SVG",
           "gradient-background": "INDEX_SVG",
@@ -3328,6 +3466,8 @@
           "grid-layout": "INDEX_SVG",
           "grid-molecule": "INDEX_SVG",
           "grids": "INDEX_SVG",
+          "grip-vertical": "INDEX_SVG",
+          "hand": "INDEX_SVG",
           "heading": "INDEX_SVG",
           "heart": "INDEX_SVG",
           "heatmap": "INDEX_SVG",
@@ -3367,6 +3507,7 @@
           "kanban": "INDEX_SVG",
           "kanban-card": "INDEX_SVG",
           "kbd": "INDEX_SVG",
+          "keyboard": "INDEX_SVG",
           "kpi-indicator": "INDEX_SVG",
           "landing": "INDEX_SVG",
           "language-selector": "INDEX_SVG",
@@ -3375,6 +3516,7 @@
           "layers": "INDEX_SVG",
           "layout": "INDEX_SVG",
           "lazy-loader": "INDEX_SVG",
+          "leaf": "INDEX_SVG",
           "legend-item": "INDEX_SVG",
           "light-mode": "INDEX_SVG",
           "lines": "INDEX_SVG",
@@ -3404,12 +3546,14 @@
           "margin": "INDEX_SVG",
           "markers": "INDEX_SVG",
           "marketing": "INDEX_SVG",
+          "mathml": "INDEX_SVG",
           "max-height": "INDEX_SVG",
           "max-width": "INDEX_SVG",
           "maximize": "INDEX_SVG",
           "md": "INDEX_SVG",
           "media": "INDEX_SVG",
           "media-library": "INDEX_SVG",
+          "meh": "INDEX_SVG",
           "menu": "INDEX_SVG",
           "menus": "INDEX_SVG",
           "menus-molecule": "INDEX_SVG",
@@ -3437,6 +3581,7 @@
           "more-horizontal": "INDEX_SVG",
           "more-vertical": "INDEX_SVG",
           "motion": "INDEX_SVG",
+          "mouse-pointer": "INDEX_SVG",
           "multi-select": "INDEX_SVG",
           "navigation": "INDEX_SVG",
           "navigation-organism": "INDEX_SVG",
@@ -3458,6 +3603,7 @@
           "orientations": "INDEX_SVG",
           "overlay": "INDEX_SVG",
           "overlays": "INDEX_SVG",
+          "package": "INDEX_SVG",
           "padding": "INDEX_SVG",
           "page": "INDEX_SVG",
           "page-builder": "INDEX_SVG",
@@ -3469,6 +3615,7 @@
           "paragraph": "INDEX_SVG",
           "passport": "INDEX_SVG",
           "paste": "INDEX_SVG",
+          "pause": "INDEX_SVG",
           "payment": "INDEX_SVG",
           "pending": "INDEX_SVG",
           "performance-dashboard": "INDEX_SVG",
@@ -3479,6 +3626,7 @@
           "picture-toolbar": "INDEX_SVG",
           "placeholder": "INDEX_SVG",
           "placeholders": "INDEX_SVG",
+          "play": "INDEX_SVG",
           "playground": "INDEX_SVG",
           "playground-ai-assistant": "INDEX_SVG",
           "playground-ai-chat": "INDEX_SVG",
@@ -3522,6 +3670,8 @@
           "progress": "INDEX_SVG",
           "promo-banner": "INDEX_SVG",
           "props-editor": "INDEX_SVG",
+          "prototype-school": "INDEX_SVG",
+          "prototype-shop": "INDEX_SVG",
           "quote-request": "INDEX_SVG",
           "radio-group": "INDEX_SVG",
           "radius": "INDEX_SVG",
@@ -3546,6 +3696,7 @@
           "role-messages": "INDEX_SVG",
           "role-supervisor": "INDEX_SVG",
           "role-tourism-manager": "INDEX_SVG",
+          "rotate-ccw": "INDEX_SVG",
           "route-planner": "INDEX_SVG",
           "sakartvelo": "INDEX_SVG",
           "save": "INDEX_SVG",
@@ -3593,6 +3744,7 @@
           "spacer": "INDEX_SVG",
           "spacing": "INDEX_SVG",
           "spanish": "INDEX_SVG",
+          "sparkles": "INDEX_SVG",
           "spinner": "INDEX_SVG",
           "split-layout": "INDEX_SVG",
           "square": "INDEX_SVG",
@@ -3635,6 +3787,7 @@
           "team-avatar-stack": "INDEX_SVG",
           "team-member-card": "INDEX_SVG",
           "template": "INDEX_SVG",
+          "terminal": "INDEX_SVG",
           "test": "INDEX_SVG",
           "test-results-viewer": "INDEX_SVG",
           "text": "INDEX_SVG",
@@ -3684,6 +3837,7 @@
           "treejs": "INDEX_SVG",
           "trending-down": "INDEX_SVG",
           "trending-up": "INDEX_SVG",
+          "truck": "INDEX_SVG",
           "twitter": "INDEX_SVG",
           "type": "INDEX_SVG",
           "typography": "INDEX_SVG",
@@ -3709,6 +3863,8 @@
           "video": "INDEX_SVG",
           "video-player": "INDEX_SVG",
           "viewport": "INDEX_SVG",
+          "volume-2": "INDEX_SVG",
+          "volume-x": "INDEX_SVG",
           "warning": "INDEX_SVG",
           "warranty-info": "INDEX_SVG",
           "wbd": "INDEX_SVG",
@@ -3721,6 +3877,7 @@
           "yaml": "INDEX_SVG",
           "yoga": "INDEX_SVG",
           "z-index": "INDEX_SVG",
+          "zap": "INDEX_SVG",
           "zoom": "INDEX_SVG",
           "zoom-controls": "INDEX_SVG",
           "zoom-in": "INDEX_SVG",
@@ -3732,6 +3889,9 @@
         "async": {
           "resolve-flag-svg": "INDEXED_FUNCTION",
           "resolve-icon-svg": "INDEXED_FUNCTION"
+        },
+        "check": {
+          "icon-name": "INDEXED_FUNCTION"
         },
         "script": {
           "attribute": "INDEXED_FUNCTION",
@@ -3758,6 +3918,20 @@
         "slot": {
           "icon": "INDEXED_INTERFACE",
           "svg-name": "INDEXED_INTERFACE"
+        }
+      },
+      "test": {
+        "render": {
+          "icon": "FUNCTION_TEST"
+        },
+        "unit": {
+          "icon-name": "FUNCTION_TEST"
+        }
+      },
+      "type": {
+        "alias": {
+          "icon-name": "INDEXED_TYPE",
+          "icon-size": "INDEXED_TYPE"
         }
       }
     },
@@ -3987,6 +4161,11 @@
           "theme-children": "INDEXED_INTERFACE",
           "theme-palette-color": "INDEXED_INTERFACE",
           "theme-settings": "INDEXED_INTERFACE"
+        }
+      },
+      "test": {
+        "unit": {
+          "theme-css-token": "FUNCTION_TEST"
         }
       },
       "type": {
@@ -4295,6 +4474,7 @@
       },
       "component": {
         "atom": {
+          "grid-pattern": "DEFINED_REACTIVE_STORY_COMPONENT",
           "node-connection": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
           "node-header": "DEFINED_REACTIVE_STORY_COMPONENT",
           "node-port": "DEFINED_REACTIVE_STORY_COMPONENT",
@@ -4336,6 +4516,7 @@
       "interface": {
         "recipe": {
           "graph-node-card": "INDEXED_INTERFACE",
+          "grid-pattern": "INDEXED_INTERFACE",
           "minimap": "INDEXED_INTERFACE",
           "node-connection": "INDEXED_INTERFACE",
           "node-header": "INDEXED_INTERFACE",

@@ -1,14 +1,15 @@
 import type { RecipeDevelopmentErrorBoundary } from '$stylist/development/interface/recipe/development-error-boundary';
+import type { TokenIconName } from '$stylist/svg/type/alias/icon-name';
 
 export function createDevelopmentErrorBoundaryState(
 	getProps: () => RecipeDevelopmentErrorBoundary
 ) {
 	const props = $derived(getProps());
-	const Bug = 'bug';
-	const RotateCcw = 'rotate-ccw';
-	const Copy = 'copy';
-	const FileText = 'file-text';
-	const ExternalLink = 'external-link';
+	const Bug: TokenIconName = 'debug';
+	const RotateCcw: TokenIconName = 'rotate-ccw';
+	const Copy: TokenIconName = 'copy';
+	const FileText: TokenIconName = 'file-text';
+	const ExternalLink: TokenIconName = 'external-link';
 
 	let hasError = $state(false);
 	let error: Error | null = $state(null);

@@ -9,6 +9,7 @@
 	import { PageBuilderManager } from '$stylist/development/class/manager/page-builder';
 	import createPageBuilderState from '$stylist/development/component/organism/page-builder/state.svelte';
 	import type { RecipePageBuilder } from '$stylist/development/interface/recipe/page-builder';
+	import { isIconName } from '$stylist/svg/function/check/icon-name';
 
 	let props: RecipePageBuilder = $props();
 	const state = createPageBuilderState(() => props);
@@ -30,7 +31,10 @@
 						onclick={() => state.addElement(item.type)}
 						title={item.label}
 					>
-						<BaseIcon name={item.icon} style="width:1rem;height:1rem;" />
+						<BaseIcon
+							name={isIconName(item.icon) ? item.icon : 'box'}
+							style="width:1rem;height:1rem;"
+						/>
 					</button>
 				{/each}
 			</div>
@@ -122,7 +126,7 @@
 										{@const attrs = element.attributes as
 											SlotPageBuilderButtonAttributes | undefined}
 										<button
-											style={`background-color:${attrs?.backgroundColor ?? 'var(--color-primary-500)'};color:${attrs?.color ?? 'var(--color-background-primary)'};padding:${attrs?.padding ?? 'var(--spacing-2) var(--spacing-4)'};`}
+											style={`background-color:${attrs?.backgroundColor ?? 'var(--color-primary-500)'};color:${attrs?.color ?? 'var(--color-background-primary)'};padding:${attrs?.padding ?? 'var(--space-2) var(--space-4)'};`}
 											class="c-page-builder__btn-element"
 										>
 											{element.content}

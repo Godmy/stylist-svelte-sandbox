@@ -37,54 +37,54 @@
 	:global(.markdown-content h1) {
 		font-size: var(--font-size-8);
 		font-weight: var(--font-weight-bold);
-		margin-top: var(--spacing-8);
-		margin-bottom: var(--spacing-4);
+		margin-top: var(--space-8);
+		margin-bottom: var(--space-4);
 		color: inherit;
 	}
 
 	:global(.markdown-content h2) {
 		font-size: var(--font-size-6);
 		font-weight: var(--font-weight-semibold);
-		margin-top: var(--spacing-6);
-		margin-bottom: var(--spacing-3);
+		margin-top: var(--space-6);
+		margin-bottom: var(--space-3);
 		color: inherit;
 		border-bottom: 1px solid color-mix(in srgb, var(--color-text-primary) 10%, transparent);
-		padding-bottom: var(--spacing-2);
+		padding-bottom: var(--space-2);
 	}
 
 	:global(.markdown-content h3) {
 		font-size: var(--font-size-5);
 		font-weight: var(--font-weight-semibold);
-		margin-top: var(--spacing-5);
-		margin-bottom: var(--spacing-2);
+		margin-top: var(--space-5);
+		margin-bottom: var(--space-2);
 		color: inherit;
 	}
 
 	:global(.markdown-content p) {
-		margin-top: var(--spacing-3);
-		margin-bottom: var(--spacing-3);
+		margin-top: var(--space-3);
+		margin-bottom: var(--space-3);
 		line-height: var(--line-height-relaxed);
 		color: inherit;
 	}
 
 	:global(.markdown-content ul),
 	:global(.markdown-content ol) {
-		margin-top: var(--spacing-3);
-		margin-bottom: var(--spacing-3);
-		padding-left: var(--spacing-6);
+		margin-top: var(--space-3);
+		margin-bottom: var(--space-3);
+		padding-left: var(--space-6);
 		color: inherit;
 	}
 
 	:global(.markdown-content li) {
-		margin-top: var(--spacing-1);
-		margin-bottom: var(--spacing-1);
+		margin-top: var(--space-1);
+		margin-bottom: var(--space-1);
 		color: inherit;
 	}
 
 	:global(.markdown-content code) {
 		background-color: color-mix(in srgb, var(--color-text-primary) 5%, transparent);
-		padding: var(--spacing-1) var(--spacing-1);
-		border-radius: var(--border-radius-base);
+		padding: var(--space-1) var(--space-1);
+		border-radius: var(--radius-1-5);
 		font-size: var(--font-size-3);
 		font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 	}
@@ -95,11 +95,11 @@
 
 	:global(.markdown-content pre) {
 		background-color: color-mix(in srgb, var(--color-text-primary) 5%, transparent);
-		padding: var(--spacing-4);
-		border-radius: var(--border-radius-lg);
+		padding: var(--space-4);
+		border-radius: var(--radius-2);
 		overflow-x: auto;
-		margin-top: var(--spacing-4);
-		margin-bottom: var(--spacing-4);
+		margin-top: var(--space-4);
+		margin-bottom: var(--space-4);
 	}
 
 	:global(.dark .markdown-content pre) {
@@ -114,9 +114,9 @@
 
 	:global(.markdown-content blockquote) {
 		border-left: 4px solid color-mix(in srgb, var(--color-text-primary) 20%, transparent);
-		padding-left: var(--spacing-4);
-		margin-top: var(--spacing-4);
-		margin-bottom: var(--spacing-4);
+		padding-left: var(--space-4);
+		margin-top: var(--space-4);
+		margin-bottom: var(--space-4);
 		color: color-mix(in srgb, var(--color-text-primary) 70%, transparent);
 	}
 
@@ -145,14 +145,14 @@
 	:global(.markdown-content table) {
 		width: 100%;
 		border-collapse: collapse;
-		margin-top: var(--spacing-4);
-		margin-bottom: var(--spacing-4);
+		margin-top: var(--space-4);
+		margin-bottom: var(--space-4);
 	}
 
 	:global(.markdown-content th),
 	:global(.markdown-content td) {
 		border: 1px solid color-mix(in srgb, var(--color-text-primary) 10%, transparent);
-		padding: var(--spacing-2);
+		padding: var(--space-2);
 		text-align: left;
 	}
 
@@ -173,8 +173,8 @@
 	:global(.markdown-content hr) {
 		border: 0;
 		border-top: 1px solid color-mix(in srgb, var(--color-text-primary) 10%, transparent);
-		margin-top: var(--spacing-8);
-		margin-bottom: var(--spacing-8);
+		margin-top: var(--space-8);
+		margin-bottom: var(--space-8);
 	}
 
 	:global(.dark .markdown-content hr) {

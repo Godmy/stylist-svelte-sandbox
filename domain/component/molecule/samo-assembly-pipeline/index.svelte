@@ -1,6 +1,7 @@
 <script lang="ts">
 	import BaseIcon from '$stylist/svg/component/atom/icon/index.svelte';
 	import type { RecipeSamoAssemblyPipeline } from '$stylist/domain/interface/recipe/samo-assembly-pipeline';
+	import { isIconName } from '$stylist/svg/function/check/icon-name';
 
 	let {
 		eyebrow = 'Architecture',
@@ -111,7 +112,7 @@
 					onclick={() => (activeIndex = index)}
 				>
 					<span class="sap-node-icon" aria-hidden="true">
-						<BaseIcon name={cluster.icon} size={22} />
+						<BaseIcon name={isIconName(cluster.icon) ? cluster.icon : 'box'} size={22} />
 					</span>
 					<span class="sap-node-name">{cluster.name}</span>
 				</button>

@@ -2,15 +2,16 @@ import { untrack } from 'svelte';
 import { ClassNamesManager } from '$stylist/layout/class/manager/class-names';
 import type { RecipeMockDataSelector } from '$stylist/development/interface/recipe/mock-data-selector';
 import type { SlotMockDataSelectorSelection } from '$stylist/development/interface/slot/mock-data-selector-selection';
+import type { TokenIconName } from '$stylist/svg/type/alias/icon-name';
 
 export function createMockDataSelectorState(getProps: () => RecipeMockDataSelector) {
 	const props = $derived(getProps());
-	const Database = 'database';
-	const Shuffle = 'shuffle';
-	const Download = 'download';
-	const Upload = 'upload';
-	const Search = 'search';
-	const Filter = 'filter';
+	const Database: TokenIconName = 'cabinet-database';
+	const Shuffle: TokenIconName = 'zap';
+	const Download: TokenIconName = 'download';
+	const Upload: TokenIconName = 'upload';
+	const Search: TokenIconName = 'search';
+	const Filter: TokenIconName = 'filter';
 
 	let selections = $state<SlotMockDataSelectorSelection[]>(
 		untrack(() => props.initialSelections) ?? []

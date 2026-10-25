@@ -92,7 +92,7 @@
 <style>
 	.token-settings {
 		display: grid;
-		gap: var(--spacing-3, 1rem);
+		gap: var(--space-4, 1rem);
 		--token-settings-bg: var(--surface, var(--color-background-primary, #ffffff));
 		--token-settings-bg-muted: var(--bg, var(--color-background-secondary, #f8fafc));
 		--token-settings-border: var(--line, var(--color-border-primary, #cbd5e1));
@@ -108,7 +108,7 @@
 		flex-wrap: wrap;
 		align-items: end;
 		justify-content: space-between;
-		gap: var(--spacing-3, 1rem);
+		gap: var(--space-4, 1rem);
 	}
 
 	.token-settings__header h2 {
@@ -126,7 +126,7 @@
 	.token-settings__tools {
 		display: flex;
 		flex-wrap: wrap;
-		gap: var(--spacing-2, 0.5rem);
+		gap: var(--space-2, 0.5rem);
 		min-width: 0;
 	}
 
@@ -155,25 +155,25 @@
 	.token-settings__grid {
 		display: grid;
 		grid-template-columns: repeat(var(--token-settings-columns, 3), minmax(0, 1fr));
-		gap: var(--spacing-2, 0.75rem);
+		gap: var(--space-3, 0.75rem);
 		min-width: 0;
 	}
 
 	.token-settings__item {
 		box-sizing: border-box;
 		display: grid;
-		gap: var(--spacing-2, 0.75rem);
+		gap: var(--space-3, 0.75rem);
 		min-width: 0;
 		border: 1px solid var(--token-settings-border);
 		border-radius: 0.5rem;
 		background: color-mix(in srgb, var(--token-settings-bg) 94%, var(--token-settings-bg-muted) 6%);
-		padding: var(--spacing-3, 1rem);
+		padding: var(--space-4, 1rem);
 	}
 
 	.token-settings__item header {
 		display: flex;
 		justify-content: space-between;
-		gap: var(--spacing-2, 0.75rem);
+		gap: var(--space-3, 0.75rem);
 		min-width: 0;
 	}
 

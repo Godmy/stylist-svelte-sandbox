@@ -1,10 +1,10 @@
 <script lang="ts">
 	import Icon from '$stylist/svg/component/atom/icon/index.svelte';
 	import Flag from '$stylist/svg/component/atom/flag/index.svelte';
-	import { TOKEN_ICON_REGISTRY } from '$stylist/svg/const/record/icon-registry';
 	import { TOKEN_FLAG_REGISTRY } from '$stylist/svg/const/record/flag-registry';
 	import { resolveFamilyIcon } from '$stylist/domain/function/resolve/family-icon';
 	import type { RecipeJointTabButtons } from '$stylist/domain/interface/recipe/joint-tab-buttons';
+	import { isIconName } from '$stylist/svg/function/check/icon-name';
 
 	let {
 		files = [],
@@ -28,9 +28,10 @@
 	const flagCode = $derived(
 		activeJoint === 'flag' && selectedEntityName in TOKEN_FLAG_REGISTRY ? selectedEntityName : null
 	);
-	const iconName = $derived(
-		flagCode ? null : resolveFamilyIcon(selectedEntityName, (name) => name in TOKEN_ICON_REGISTRY)
-	);
+	const iconName = $derived.by(() => {
+		const picked = flagCode ? null : resolveFamilyIcon(selectedEntityName, isIconName);
+		return isIconName(picked) ? picked : null;
+	});
 </script>
 
 <div class="c-joint-tab-buttons {className}" aria-label="Files">

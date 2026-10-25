@@ -292,7 +292,7 @@
 <style>
 	.c-content-editor {
 		border: 1px solid var(--color-border-primary);
-		border-radius: var(--border-radius-large, 0.5rem);
+		border-radius: var(--radius-2, 0.5rem);
 		overflow: hidden;
 	}
 
@@ -317,7 +317,7 @@
 		margin-block-end: 1rem;
 		padding: 0.5rem;
 		border: 1px solid transparent;
-		border-radius: var(--border-radius-sm, 0.25rem);
+		border-radius: var(--radius-1, 0.25rem);
 	}
 
 	.c-content-editor__content--active {
@@ -326,7 +326,7 @@
 
 	.c-content-editor__btn {
 		padding: 0.5rem;
-		border-radius: var(--border-radius-sm, 0.25rem);
+		border-radius: var(--radius-1, 0.25rem);
 		background: none;
 		border: none;
 		cursor: pointer;
@@ -394,7 +394,7 @@
 	.c-content-editor__add-btn {
 		display: flex;
 		align-items: center;
-		font-size: var(--text-size-sm, 0.875rem);
+		font-size: var(--font-size-3-5, 0.875rem);
 		font-weight: 500;
 		color: var(--color-text-secondary);
 		background: none;
@@ -421,7 +421,7 @@
 	}
 
 	.c-content-editor__heading {
-		font-size: var(--text-size-2xl, 1.5rem);
+		font-size: var(--font-size-6, 1.5rem);
 		font-weight: 700;
 		margin-block-end: 1rem;
 	}
@@ -450,7 +450,7 @@
 
 	.c-content-editor__heading-input {
 		width: 100%;
-		font-size: var(--text-size-2xl, 1.5rem);
+		font-size: var(--font-size-6, 1.5rem);
 		font-weight: 700;
 		outline: none;
 		background: none;
@@ -473,7 +473,7 @@
 
 	.c-content-editor__image-placeholder {
 		border: 2px dashed var(--color-border-primary);
-		border-radius: var(--border-radius-base, 0.375rem);
+		border-radius: var(--radius-1-5, 0.375rem);
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -486,7 +486,7 @@
 	}
 
 	.c-content-editor__image-hint {
-		font-size: var(--text-size-sm, 0.875rem);
+		font-size: var(--font-size-3-5, 0.875rem);
 		color: var(--color-text-tertiary);
 		margin-block-start: 0.25rem;
 	}

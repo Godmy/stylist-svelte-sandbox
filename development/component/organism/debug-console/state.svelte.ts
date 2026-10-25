@@ -3,16 +3,17 @@ import { ClassNamesManager } from '$stylist/layout/class/manager/class-names';
 import type { RecipeDebugConsole } from '$stylist/development/interface/recipe/debug-console';
 import type { DebugConsoleLogLevel } from '$stylist/development/type/alias/debug-console-log-level';
 import type { DebugConsoleLogEntry as SlotDebugConsoleLogEntry } from '$stylist/development/interface/slot/debug-console-log-entry';
+import type { TokenIconName } from '$stylist/svg/type/alias/icon-name';
 
 export function createDebugConsoleState(getProps: () => RecipeDebugConsole) {
 	const props = $derived(getProps());
-	const Terminal = 'terminal';
-	const Bug = 'bug';
-	const Play = 'play';
-	const Square = 'square';
-	const Trash2 = 'trash-2';
-	const Search = 'search';
-	const Filter = 'filter';
+	const Terminal: TokenIconName = 'terminal';
+	const Bug: TokenIconName = 'debug';
+	const Play: TokenIconName = 'play';
+	const Square: TokenIconName = 'square';
+	const Trash2: TokenIconName = 'trash-2';
+	const Search: TokenIconName = 'search';
+	const Filter: TokenIconName = 'filter';
 
 	let filteredLogs = $state<SlotDebugConsoleLogEntry[]>(untrack(() => props.logs) ?? []);
 	let logLevelFilter = $state<DebugConsoleLogLevel[]>(

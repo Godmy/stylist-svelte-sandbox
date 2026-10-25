@@ -1,5 +1,5 @@
 export const PAGE_BUILDER_ICON = {
-	COLUMNS_2: 'columns-2',
+	COLUMNS_2: 'grid-columns',
 	COPY: 'copy',
 	EYE: 'eye',
 	GRIP_VERTICAL: 'grip-vertical',

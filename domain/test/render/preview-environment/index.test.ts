@@ -15,7 +15,7 @@ describe('preview environment', () => {
 		});
 		const root = container.querySelector<HTMLDivElement>('[data-html-skin]')!;
 		expect(root.style.getPropertyValue('--typography-font-family')).toBe(TOKEN_FONT_FAMILY.serif);
-		expect(root.style.getPropertyValue('--typography-font-size-4')).toBe('1.5rem');
+		expect(root.style.getPropertyValue('--font-size-4')).toBe('1.5rem');
 		expect(root.style.getPropertyValue('--density-block')).toBe('0.25rem');
 		const button = container.querySelector('button')!;
 		for (const name of ['mode', 'density', 'fontFamily', '--typography-font-family'])
@@ -42,7 +42,7 @@ describe('preview environment', () => {
 			lineHeight: 'loose'
 		});
 		expect(vars['--typography-font-family']).toBe(TOKEN_FONT_FAMILY.mono);
-		expect(vars['--typography-line-height-normal']).toBe('2');
+		expect(vars['--line-height-normal']).toBe('2');
 		expect(vars['--font-mono']).toBe(TOKEN_FONT_FAMILY.mono);
 		expect(resolvePreviewVariables({})).toEqual({});
 	});

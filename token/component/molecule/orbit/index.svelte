@@ -1,6 +1,7 @@
 <script lang="ts">
 	import OrbitTokenNode from '$stylist/token/component/atom/orbit-token-node/index.svelte';
 	import type { RecipeOrbit } from '$stylist/token/interface/recipe/orbit';
+	import { isIconName } from '$stylist/svg/function/check/icon-name';
 
 	let { opened = false, radius = 112, nodes }: RecipeOrbit = $props();
 
@@ -17,7 +18,7 @@
 		{#each nodes as node, index}
 			<OrbitTokenNode
 				id={node.id}
-				icon={node.icon}
+				icon={isIconName(node.icon) ? node.icon : 'box'}
 				label={node.label}
 				{opened}
 				definition={node.definition}

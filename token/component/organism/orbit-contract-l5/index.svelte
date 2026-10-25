@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Icon from '$stylist/svg/component/atom/icon/index.svelte';
 	import type { RecipeOrbitContractL5 } from '$stylist/token/interface/recipe/orbit-contract-l5';
+	import type { TokenIconName } from '$stylist/svg/type/alias/icon-name';
 
 	let {
 		opened: openedExternal = null,
@@ -12,7 +13,7 @@
 
 	type OrbitNode = {
 		id: string;
-		icon: string;
+		icon: TokenIconName;
 		group: OrbitGroup;
 		index: number;
 		count: number;

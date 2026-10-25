@@ -1,16 +1,16 @@
 <script lang="ts">
 	import DomainFilePreview from '$stylist/domain/component/organism/domain-file-preview/index.svelte';
 	import type { RecipeDomainFilePreview } from '$stylist/domain/interface/recipe/domain-file-preview';
-	import ClickableStory from '$stylist/layout/component/atom/clickable/index.story.svelte';
+	import PageShellStory from '$stylist/layout/component/template/page-shell/index.story.svelte';
 
 	// Render of index.story.ts: the file content follows the preview mode/kind and the story tab embeds a story component.
 	let args: RecipeDomainFilePreview = $props();
 
 	const textContent =
-		'<script lang="ts">\n\timport { Clickable } from \'$stylist/layout/component\';\n<$stylist/script>';
-	const markdownContent = `# Story Coverage\n\n- clickable\n- hoverable\n- focusable`;
+		'<script lang="ts">\n\timport { PageShell } from \'$stylist/layout/component\';\n<$stylist/script>';
+	const markdownContent = `# Story Coverage\n\n- page-shell\n- stack\n- divider`;
 	const jsonContent = JSON.stringify(
-		{ story: 'clickable', ready: true, events: ['click', 'dblclick'] },
+		{ story: 'page-shell', ready: true, slots: ['header', 'children', 'footer'] },
 		null,
 		2
 	);
@@ -30,7 +30,7 @@
 </script>
 
 <div class="_c1">
-	<DomainFilePreview {...args} {previewKind} {fileContent} storyPreviewComponent={ClickableStory} />
+	<DomainFilePreview {...args} {previewKind} {fileContent} storyPreviewComponent={PageShellStory} />
 </div>
 
 <style>

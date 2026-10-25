@@ -1,5 +1,5 @@
 export const PresetCodeEditor = {
 	Copy: 'copy',
 	Download: 'download',
-	RefreshCw: 'refresh-cw'
+	RefreshCw: 'rotate-ccw'
 } as const;

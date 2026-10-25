@@ -20,9 +20,9 @@ export function resolvePreviewVariables(
 	if (settings.fontFamily && Object.hasOwn(TOKEN_FONT_FAMILY, settings.fontFamily))
 		vars['--typography-font-family'] = TOKEN_FONT_FAMILY[settings.fontFamily];
 	if (settings.fontSize && Object.hasOwn(TOKEN_FONT_SIZE, settings.fontSize))
-		vars['--typography-font-size-4'] = TOKEN_FONT_SIZE[settings.fontSize];
+		vars['--font-size-4'] = TOKEN_FONT_SIZE[settings.fontSize];
 	if (settings.lineHeight && Object.hasOwn(TOKEN_LINE_HEIGHT, settings.lineHeight))
-		vars['--typography-line-height-normal'] = TOKEN_LINE_HEIGHT[settings.lineHeight];
+		vars['--line-height-normal'] = TOKEN_LINE_HEIGHT[settings.lineHeight];
 	if (settings.density && Object.hasOwn(DESIGN_TOKEN_DENSITY, settings.density)) {
 		const density = DESIGN_TOKEN_DENSITY[settings.density];
 		vars['--density-block'] = density.block;
