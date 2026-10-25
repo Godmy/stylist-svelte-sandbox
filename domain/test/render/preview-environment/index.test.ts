@@ -3,6 +3,7 @@ import { describe, expect, it } from 'vitest';
 import StoryCanvas from '$stylist/domain/component/molecule/story-canvas/index.svelte';
 import ButtonStory from '$stylist/html/component/atom/button/index.story';
 import CaptionStory from '$stylist/html/component/organism/caption/index.story';
+import StackStory from '$stylist/layout/component/atom/stack/index.story';
 import { TOKEN_FONT_FAMILY } from '$stylist/design-token/const/object/font-family';
 import { resolvePreviewVariables } from '$stylist/domain/function/resolve/preview-variables';
 import { resolvePreviewSkin } from '$stylist/domain/function/resolve/preview-skin';
@@ -17,6 +18,7 @@ describe('preview environment', () => {
 		expect(root.style.getPropertyValue('--typography-font-family')).toBe(TOKEN_FONT_FAMILY.serif);
 		expect(root.style.getPropertyValue('--font-size-4')).toBe('1.5rem');
 		expect(root.style.getPropertyValue('--density-block')).toBe('0.25rem');
+		expect(root.style.getPropertyValue('--density-scale')).toBe('0.75');
 		const button = container.querySelector('button')!;
 		for (const name of ['mode', 'density', 'fontFamily', '--typography-font-family'])
 			expect(button.hasAttribute(name)).toBe(false);
@@ -45,6 +47,21 @@ describe('preview environment', () => {
 		expect(vars['--line-height-normal']).toBe('2');
 		expect(vars['--font-mono']).toBe(TOKEN_FONT_FAMILY.mono);
 		expect(resolvePreviewVariables({})).toEqual({});
+	});
+	it('switches the density scale between compact and comfortable', () => {
+		expect(resolvePreviewVariables({ density: 'compact' })['--density-scale']).toBe('0.75');
+		expect(resolvePreviewVariables({ density: 'comfortable' })['--density-scale']).toBe('1');
+	});
+	it('applies appearance settings to layout stories', async () => {
+		const { container } = render(StoryCanvas, {
+			story: StackStory,
+			environment: { fontSize: '5', lineHeight: 'loose', density: 'compact' }
+		});
+		const root = container.querySelector<HTMLDivElement>('[data-html-skin]')!;
+		expect(root.style.getPropertyValue('--font-size-4')).toBe('1.25rem');
+		expect(root.style.getPropertyValue('--line-height-normal')).toBe('2');
+		expect(root.style.getPropertyValue('--density-scale')).toBe('0.75');
+		expect(resolvePreviewSkin('/src/lib/layout/component/atom/stack/index.story.ts')).toBe(true);
 	});
 	it('excludes metadata and non-HTML stories from appearance controls', () => {
 		expect(resolvePreviewSkin('/src/lib/html/component/atom/base/index.story.ts')).toBe(false);

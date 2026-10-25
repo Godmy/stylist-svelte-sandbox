@@ -27,6 +27,7 @@ export function resolvePreviewVariables(
 		const density = DESIGN_TOKEN_DENSITY[settings.density];
 		vars['--density-block'] = density.block;
 		vars['--density-inline'] = density.inline;
+		vars['--density-scale'] = density.scale;
 	}
 	return vars;
 }
