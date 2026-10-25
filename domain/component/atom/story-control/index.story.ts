@@ -8,7 +8,7 @@ export default {
 	component: StoryControl,
 	title: 'StoryControl',
 	description:
-		'One control of the sandbox story panel: text, number, boolean, select, range or color input, chosen by the control type.',
+		'One control of the sandbox story panel: text, number, boolean, select, range, color or JSON input, chosen by the control type.',
 	args: {
 		name: 'size',
 		control: {
@@ -29,6 +29,14 @@ export default {
 			value: 0.6
 		},
 		Boolean: { name: 'disabled', control: { type: 'boolean', label: 'Disabled' }, value: true },
-		Color: { name: 'accent', control: { type: 'color', label: 'Accent' }, value: '#3b82f6' }
+		Color: { name: 'accent', control: { type: 'color', label: 'Accent' }, value: '#3b82f6' },
+		Json: {
+			name: 'items',
+			control: { type: 'json', label: 'Items', example: [{ id: 'a', label: 'Item' }] },
+			value: [
+				{ id: '1', label: 'First' },
+				{ id: '2', label: 'Second' }
+			]
+		}
 	}
 } satisfies ContractStory<RecipeStoryControl>;

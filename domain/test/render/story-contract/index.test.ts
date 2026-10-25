@@ -1,7 +1,10 @@
 import { afterEach, beforeAll, describe, expect, it, vi } from 'vitest';
 import { flushSync, mount, unmount, type Component } from 'svelte';
 import StoryCanvas from '$stylist/domain/component/molecule/story-canvas/index.svelte';
+import StoryControls from '$stylist/domain/component/molecule/story-controls/index.svelte';
+import { resolveStoryControls } from '$stylist/domain/function/resolve/story-controls';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
+import { transformStoryJson } from '$stylist/domain/function/transform/story-json';
 
 type Loader<T> = Record<string, () => Promise<T>>;
 
@@ -27,7 +30,7 @@ describe('story contracts of the public modules', () => {
 		],
 		{ query: '?raw', import: 'default', eager: true }
 	);
-	const CONTROL_TYPES = ['text', 'number', 'boolean', 'select', 'range', 'color'];
+	const CONTROL_TYPES = ['text', 'number', 'boolean', 'select', 'range', 'color', 'json'];
 	const family = (path: string) =>
 		path.replace(/^\/modules\//, '').replace(/\/index\.story\.\w+$/, '');
 
@@ -87,7 +90,21 @@ describe('story contracts of the public modules', () => {
 				for (const [name, control] of Object.entries(story.controls ?? {})) {
 					expect(CONTROL_TYPES, name).toContain(control!.type);
 					if (control!.type === 'select') expect(control!.options?.length, name).toBeTruthy();
+					if (control!.type === 'json') {
+						const value = (story.args as Record<string, unknown> | undefined)?.[name];
+						const text = value === undefined ? '' : JSON.stringify(value);
+						expect(transformStoryJson(text, control!.example), name).toMatchObject({ ok: true });
+					}
 				}
+			});
+
+			it('gives the story panel a control of a sandbox type for its args', () => {
+				for (const { name, control } of resolveStoryControls(story))
+					expect(CONTROL_TYPES, name).toContain(control.type);
+				const target = document.createElement('div');
+				document.body.append(target);
+				flushSync(() => instances.push(mount(StoryControls, { target, props: { story } })));
+				expect(target.querySelector('.c-story-controls')).not.toBeNull();
 			});
 
 			it('mounts with its args and every preset', () => {

@@ -82,10 +82,11 @@
 					onChange={controlsState.setText}
 				/>
 			{/if}
-			{#each controlsState.controls as [name, control] (name)}
+			{#each controlsState.controls as { name, control, auto } (name)}
 				<StoryControl
 					{name}
-					control={control!}
+					{control}
+					{auto}
 					value={controlsState.args[name]}
 					onChange={(value) => controlsState.set(name, value)}
 				/>

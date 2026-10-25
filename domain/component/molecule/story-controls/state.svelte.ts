@@ -1,5 +1,6 @@
 import { resolveHtmlText } from '$stylist/html/function/resolve/html-text';
 import { transformHtmlText } from '$stylist/html/function/transform/html-text';
+import { resolveStoryControls } from '$stylist/domain/function/resolve/story-controls';
 import type { RecipeStoryControls } from '$stylist/domain/interface/recipe/story-controls';
 
 export default function createStoryControlsState(getProps: () => RecipeStoryControls) {
@@ -9,7 +10,7 @@ export default function createStoryControlsState(getProps: () => RecipeStoryCont
 	let text = $state<string | undefined>();
 	let tab = $state<'controls' | 'html'>('controls');
 
-	const controls = $derived(Object.entries(props.story.controls ?? {}).filter(([, c]) => c));
+	const controls = $derived(resolveStoryControls(props.story));
 	const presets = $derived(Object.keys(props.story.presets ?? {}));
 	const args = $derived<Record<string, unknown>>({
 		...props.story.args,

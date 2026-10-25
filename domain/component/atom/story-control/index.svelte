@@ -1,16 +1,53 @@
 <script lang="ts">
 	import type { RecipeStoryControl } from '$stylist/domain/interface/recipe/story-control';
+	import { transformStoryJson } from '$stylist/domain/function/transform/story-json';
 
-	let { name, control, value, onChange, class: className = '' }: RecipeStoryControl = $props();
+	let {
+		name,
+		control,
+		value,
+		onChange,
+		auto = false,
+		class: className = ''
+	}: RecipeStoryControl = $props();
 
 	const id = $derived(`story-control-${name}`);
 	const text = (event: Event) => (event.currentTarget as HTMLInputElement).value;
 	const number = (event: Event) => (event.currentTarget as HTMLInputElement).valueAsNumber;
+	const json = (input: unknown) => (input === undefined ? '' : JSON.stringify(input, null, 2));
+
+	// `json` keeps the typed text while it is invalid; an outside change (preset, reset)
+	// replaces it with the formatted value.
+	let draft = $state<string | null>(null);
+	let error = $state('');
+	let emitted = '';
+	const source = $derived(draft ?? json(value));
+	const example = $derived(json(control.example));
+	$effect(() => {
+		if (JSON.stringify(value) === emitted) return;
+		draft = null;
+		error = '';
+	});
+
+	function editJson(event: Event) {
+		draft = (event.currentTarget as HTMLTextAreaElement).value;
+		const result = transformStoryJson(draft, control.example);
+		if (!result.ok) {
+			error = result.error;
+			return;
+		}
+		error = '';
+		emitted = JSON.stringify(result.value);
+		onChange?.(result.value);
+	}
 </script>
 
-<div class="c-story-control {className}">
+<div class="c-story-control {className}" data-type={control.type}>
 	<label class="label" for={id}>
-		<span>{control.label ?? name}</span>
+		<span>
+			{control.label ?? name}
+			{#if auto}<span class="auto" title="Inferred from the arg value">auto</span>{/if}
+		</span>
 		{#if control.type === 'range' || control.type === 'number'}
 			<output for={id}>{String(value ?? '')}</output>
 		{/if}
@@ -70,6 +107,20 @@
 				oninput={(event) => onChange?.(text(event))}
 			/>
 		</div>
+	{:else if control.type === 'json'}
+		<textarea
+			{id}
+			class="field code"
+			rows={Math.min(14, Math.max(4, source.split('\n').length))}
+			spellcheck="false"
+			placeholder={example}
+			aria-invalid={error ? 'true' : undefined}
+			aria-describedby={error ? `${id}-error` : undefined}
+			value={source}
+			oninput={editJson}></textarea>
+		{#if error}
+			<p class="error" id="{id}-error">{error}</p>
+		{/if}
 	{:else}
 		<input
 			{id}
@@ -88,6 +139,10 @@
 		min-width: 0;
 	}
 
+	.c-story-control[data-type='json'] {
+		grid-column: 1 / -1;
+	}
+
 	.label {
 		display: flex;
 		justify-content: space-between;
@@ -96,6 +151,16 @@
 		font-weight: 600;
 		color: var(--color-text-primary);
 		overflow-wrap: anywhere;
+	}
+
+	.auto {
+		margin-inline-start: 0.35rem;
+		padding: 0 0.3rem;
+		border: 1px solid var(--color-border-primary);
+		border-radius: 999px;
+		font-size: 0.65rem;
+		font-weight: 500;
+		color: var(--color-text-tertiary);
 	}
 
 	output {
@@ -121,6 +186,26 @@
 		font: inherit;
 		font-size: 0.82rem;
 		color: var(--color-text-primary);
+	}
+
+	.code {
+		resize: vertical;
+		font-family: var(--font-family-mono, ui-monospace, monospace);
+		font-size: 0.78rem;
+		line-height: 1.45;
+		white-space: pre;
+		tab-size: 2;
+	}
+
+	.field[aria-invalid='true'] {
+		border-color: var(--color-danger-500, #dc2626);
+	}
+
+	.error {
+		margin: 0;
+		font-size: 0.75rem;
+		color: var(--color-danger-600, #b91c1c);
+		overflow-wrap: anywhere;
 	}
 
 	.field:focus-visible,

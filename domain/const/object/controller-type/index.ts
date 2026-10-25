@@ -4,5 +4,6 @@ export const TOKEN_CONTROLLER_TYPE = {
 	BOOLEAN: 'boolean',
 	SELECT: 'select',
 	COLOR: 'color',
-	RANGE: 'range'
+	RANGE: 'range',
+	JSON: 'json'
 } as const;

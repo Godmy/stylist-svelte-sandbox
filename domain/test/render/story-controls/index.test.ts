@@ -1,6 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/svelte';
 import { describe, expect, it, vi } from 'vitest';
 import StoryControls from '$stylist/domain/component/molecule/story-controls/index.svelte';
+import ChartLegend from '$stylist/chart/component/molecule/chart-legend/index.svelte';
 import ButtonStory from '$stylist/html/component/atom/button/index.story';
 import { createHtmlStoryNode } from '$stylist/html/function/create/html-story-node';
 import { serializeHtmlMarkup } from '$stylist/html/function/serialize/html-markup';
@@ -26,6 +27,23 @@ describe('story content controls', () => {
 		expect(onChange.mock.calls.at(-1)).toEqual([ButtonStory.args, ButtonStory.content]);
 		await fireEvent.click(screen.getByRole('button', { name: 'Controls' }));
 		expect((screen.getByLabelText('Text content') as HTMLInputElement).value).toBe('Save changes');
+	});
+	it('gives a story without controls editable fields for its args', async () => {
+		const onChange = vi.fn();
+		render(StoryControls, {
+			story: {
+				component: ChartLegend,
+				args: { items: [{ id: 'a', name: 'First', color: '#000000' }], class: 'legend' }
+			},
+			onChange
+		});
+		await fireEvent.input(screen.getByLabelText(/^class/), { target: { value: 'edited' } });
+		const items = [{ id: 'b', name: 'Second', color: '#ffffff' }];
+		await fireEvent.input(screen.getByLabelText(/^items/), {
+			target: { value: JSON.stringify(items) }
+		});
+		expect(onChange.mock.calls.at(-1)![0]).toEqual({ items, class: 'edited' });
+		expect(screen.getAllByText('auto')).toHaveLength(2);
 	});
 	it('does not claim to copy when the clipboard is unavailable', async () => {
 		render(StoryControls, { story: ButtonStory, markup: () => '<button>Test</button>' });
