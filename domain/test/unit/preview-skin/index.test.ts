@@ -20,6 +20,27 @@ describe('resolvePreviewSkin', () => {
 		expect(resolvePreviewSkin('/src/lib/layout/component/page/landing/index.story.ts')).toBe(true);
 	});
 
+	it('keeps context providers, sandbox chrome and svg primitives out', () => {
+		for (const path of [
+			'theme/component/atom/theme-provider',
+			'theme/component/atom/theme-consumer',
+			'theme/component/molecule/theme-context',
+			'theme/component/molecule/story',
+			'svg/component/atom/svg-path',
+			'svg/component/atom/svg-rect',
+			'svg/component/atom/svg-text'
+		])
+			expect(resolvePreviewSkin(`/src/lib/${path}/index.story.ts`), path).toBe(false);
+		for (const path of [
+			'theme/component/atom/theme-mode-toggle',
+			'theme/component/molecule/theme-palette',
+			'svg/component/atom/icon',
+			'svg/component/atom/svg',
+			'mathml/component/atom/x'
+		])
+			expect(resolvePreviewSkin(`/src/lib/${path}/index.story.ts`), path).toBe(true);
+	});
+
 	it('keeps other domains out, including names that merely end in a domain name', () => {
 		expect(resolvePreviewSkin('/src/lib/button/component/atom/button/index.story.ts')).toBe(false);
 		expect(resolvePreviewSkin('/src/lib/page-layout/component/atom/x/index.story.ts')).toBe(false);
