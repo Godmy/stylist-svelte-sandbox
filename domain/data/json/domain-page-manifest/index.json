@@ -184,7 +184,11 @@
       },
       "const": {
         "record": {
-          "audio-icon": "INDEXED_CONST"
+          "audio-icon": "INDEXED_CONST",
+          "audio-player-message": "INDEXED_CONST",
+          "audio-record-button-message": "INDEXED_CONST",
+          "audio-visualizer-message": "INDEXED_CONST",
+          "transcriber-message": "INDEXED_CONST"
         }
       },
       "function": {
@@ -206,6 +210,11 @@
           "audio-slider": "INDEXED_INTERFACE",
           "audio-visualizer": "INDEXED_INTERFACE",
           "transcription-result": "INDEXED_INTERFACE"
+        }
+      },
+      "test": {
+        "render": {
+          "localization": "FUNCTION_TEST"
         }
       },
       "type": {
@@ -433,12 +442,17 @@
         },
         "record": {
           "canvas-tool-definitions": "INDEXED_CONST",
+          "canvas-toolbar-message": "INDEXED_CONST",
+          "collaborative-editor-message": "INDEXED_CONST",
+          "color-palette-message": "INDEXED_CONST",
+          "screenshot-selector-message": "INDEXED_CONST",
           "semantic-zoom-density": "INDEXED_CONST",
           "semantic-zoom-frame": "INDEXED_CONST",
           "semantic-zoom-layer": "INDEXED_CONST",
           "semantic-zoom-level": "INDEXED_CONST",
           "semantic-zoom-shape": "INDEXED_CONST",
-          "semantic-zoom-size": "INDEXED_CONST"
+          "semantic-zoom-size": "INDEXED_CONST",
+          "shared-canvas-message": "INDEXED_CONST"
         },
         "value": {
           "default-foundation-camera": "INDEXED_CONST",
@@ -468,6 +482,11 @@
           "scene-node-point": "INDEXED_INTERFACE",
           "semantic-zoom": "INDEXED_INTERFACE",
           "shared-canvas-object-bounds": "INDEXED_INTERFACE"
+        }
+      },
+      "test": {
+        "render": {
+          "localization": "FUNCTION_TEST"
         }
       },
       "type": {
@@ -561,7 +580,24 @@
           "line-chart-color-scheme": "INDEXED_CONST"
         },
         "record": {
-          "heatmap-gradient-by-scheme": "INDEXED_CONST"
+          "analytics-chart-message": "INDEXED_CONST",
+          "bar-chart-message": "INDEXED_CONST",
+          "chart-canvas-message": "INDEXED_CONST",
+          "chart-message": "INDEXED_CONST",
+          "critical-path-timeline-message": "INDEXED_CONST",
+          "exchange-oracle-forecast-message": "INDEXED_CONST",
+          "expert-agreement-radar-message": "INDEXED_CONST",
+          "expert-spread-matrix-message": "INDEXED_CONST",
+          "heatmap-gradient-by-scheme": "INDEXED_CONST",
+          "heatmap-message": "INDEXED_CONST",
+          "legend-band-diagram-message": "INDEXED_CONST",
+          "legend-bar-diagram-message": "INDEXED_CONST",
+          "line-chart-message": "INDEXED_CONST",
+          "metric-bar-message": "INDEXED_CONST",
+          "outlier-constellation-message": "INDEXED_CONST",
+          "risk-impact-map-message": "INDEXED_CONST",
+          "scatter-plot-message": "INDEXED_CONST",
+          "wideband-delphi-diagram-message": "INDEXED_CONST"
         }
       },
       "interface": {
@@ -622,6 +658,11 @@
           "line-chart-data": "INDEXED_INTERFACE",
           "pie-chart": "INDEXED_INTERFACE",
           "scatter-plot-point": "INDEXED_INTERFACE"
+        }
+      },
+      "test": {
+        "render": {
+          "localization": "FUNCTION_TEST"
         }
       },
       "type": {
@@ -794,6 +835,9 @@
           "spacing": "INDEXED_CONST",
           "token-alias": "INDEXED_CONST",
           "transition": "INDEXED_CONST"
+        },
+        "value": {
+          "font-family-math": "INDEXED_CONST"
         }
       },
       "data": {
@@ -1175,6 +1219,7 @@
           "module-group": "INDEXED_FUNCTION",
           "preview-skin": "INDEXED_FUNCTION",
           "preview-variables": "INDEXED_FUNCTION",
+          "story-controls": "INDEXED_FUNCTION",
           "tree-families": "INDEXED_FUNCTION"
         },
         "serialize": {
@@ -1183,7 +1228,8 @@
         "transform": {
           "cluster-toolbar-items": "INDEXED_FUNCTION",
           "expand-component-tree": "INDEXED_FUNCTION",
-          "normalize-domain-tree": "INDEXED_FUNCTION"
+          "normalize-domain-tree": "INDEXED_FUNCTION",
+          "story-json": "INDEXED_FUNCTION"
         }
       },
       "interface": {
@@ -1258,7 +1304,10 @@
           "private-story-contract": "FUNCTION_TEST",
           "story-canvas": "FUNCTION_TEST",
           "story-contract": "FUNCTION_TEST",
+          "story-control": "FUNCTION_TEST",
           "story-controls": "FUNCTION_TEST",
+          "story-locale": "FUNCTION_TEST",
+          "taxonomy-toolbars": "FUNCTION_TEST",
           "workspace-hints": "FUNCTION_TEST"
         },
         "unit": {
@@ -1267,6 +1316,9 @@
           "element-image": "FUNCTION_TEST",
           "family-icon": "FUNCTION_TEST",
           "module-group": "FUNCTION_TEST",
+          "preview-skin": "FUNCTION_TEST",
+          "story-controls": "FUNCTION_TEST",
+          "story-json": "FUNCTION_TEST",
           "styled-element": "FUNCTION_TEST"
         }
       },
@@ -1344,6 +1396,11 @@
         }
       },
       "const": {
+        "record": {
+          "schema-header-message": "INDEXED_CONST",
+          "schema-text-message": "INDEXED_CONST",
+          "schema-tool-message": "INDEXED_CONST"
+        },
         "value": {
           "schema-text": "INDEXED_CONST",
           "schema-text-candidate": "INDEXED_CONST",
@@ -1381,6 +1438,11 @@
           "erd-settings": "INDEXED_INTERFACE",
           "erd-text": "INDEXED_INTERFACE",
           "erd-tool": "INDEXED_INTERFACE"
+        }
+      },
+      "test": {
+        "render": {
+          "localization": "FUNCTION_TEST"
         }
       },
       "type": {
@@ -1669,9 +1731,14 @@
           "zwicky-cluster-order": "INDEXED_CONST"
         },
         "record": {
+          "graph-cluster-filter-message": "INDEXED_CONST",
+          "graph-tooltip-message": "INDEXED_CONST",
           "material-palette": "INDEXED_CONST",
+          "scene-camera-control-message": "INDEXED_CONST",
+          "scene-message": "INDEXED_CONST",
           "zwicky-cluster-color": "INDEXED_CONST",
-          "zwicky-domain-color": "INDEXED_CONST"
+          "zwicky-domain-color": "INDEXED_CONST",
+          "zwicky-scene-message": "INDEXED_CONST"
         },
         "value": {
           "instanced-max-count": "INDEXED_CONST",
@@ -1731,6 +1798,11 @@
           "zwicky-node": "INDEXED_INTERFACE",
           "zwicky-scheme": "INDEXED_INTERFACE",
           "zwicky-text": "INDEXED_INTERFACE"
+        }
+      },
+      "test": {
+        "render": {
+          "localization": "FUNCTION_TEST"
         }
       },
       "type": {
@@ -1905,6 +1977,7 @@
           "html-content": "INDEXED_CONST",
           "html-input-type": "INDEXED_CONST",
           "html-issue-code": "INDEXED_CONST",
+          "html-layer-order": "INDEXED_CONST",
           "html-level": "INDEXED_CONST",
           "html-namespace": "INDEXED_CONST",
           "html-render": "INDEXED_CONST",
@@ -2199,6 +2272,15 @@
           "image-gallery": "DEFINED_REACTIVE_STORY_COMPONENT"
         }
       },
+      "const": {
+        "record": {
+          "canvas-image-editor-message": "INDEXED_CONST",
+          "image-caption-editor-card-message": "INDEXED_CONST",
+          "image-caption-message": "INDEXED_CONST",
+          "image-gallery-message": "INDEXED_CONST",
+          "media-thumbnail-message": "INDEXED_CONST"
+        }
+      },
       "interface": {
         "recipe": {
           "canvas-image-editor": "INDEXED_INTERFACE",
@@ -2216,7 +2298,8 @@
       },
       "test": {
         "render": {
-          "image-caption-editor-card": "FUNCTION_TEST"
+          "image-caption-editor-card": "FUNCTION_TEST",
+          "localization": "FUNCTION_TEST"
         }
       }
     },
@@ -2449,6 +2532,11 @@
           "gesture-contract": "INDEXED_INTERFACE"
         }
       },
+      "test": {
+        "unit": {
+          "style-layer": "FUNCTION_TEST"
+        }
+      },
       "type": {
         "alias": {
           "alignment": "INDEXED_TYPE",
@@ -2510,6 +2598,9 @@
       "const": {
         "array": {
           "list-item-marker-type": "INDEXED_CONST"
+        },
+        "record": {
+          "sortable-list-message": "INDEXED_CONST"
         }
       },
       "interface": {
@@ -2527,6 +2618,11 @@
           "sortable-list-item": "INDEXED_INTERFACE"
         }
       },
+      "test": {
+        "render": {
+          "localization": "FUNCTION_TEST"
+        }
+      },
       "type": {
         "alias": {
           "list-item-marker-type": "INDEXED_TYPE"
@@ -2534,34 +2630,78 @@
       }
     },
     "localization": {
+      "class": {
+        "manager": {
+          "locale-context": "INDEXED_CLASS"
+        }
+      },
       "component": {
         "atom": {
-          "country-flag": "DEFINED_REACTIVE_STORY_COMPONENT"
+          "country-flag": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "locale-provider": "DEFINED_RENDERED_STORY_COMPONENT"
+        },
+        "molecule": {
+          "locale-preview": "DEFINED_STORY_COMPONENT"
         },
         "organism": {
           "language-selector": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
           "locale-switcher": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
-          "translation-editor": "DEFINED_REACTIVE_STORY_COMPONENT"
+          "translation-editor": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT"
         }
       },
       "const": {
         "array": {
+          "locale-required": "INDEXED_CONST",
+          "locale-rtl": "INDEXED_CONST",
+          "plural-category": "INDEXED_CONST",
           "translation": "INDEXED_CONST",
           "translation-editor-icon": "INDEXED_CONST"
+        },
+        "record": {
+          "country-flag-message": "INDEXED_CONST",
+          "language-selector-message": "INDEXED_CONST",
+          "locale-preview-message": "INDEXED_CONST",
+          "locale-switcher-message": "INDEXED_CONST",
+          "translation-editor-message": "INDEXED_CONST"
+        },
+        "value": {
+          "locale-context": "INDEXED_CONST",
+          "locale-fallback": "INDEXED_CONST"
         }
       },
       "function": {
+        "check": {
+          "message-catalog": "INDEXED_FUNCTION"
+        },
+        "hook": {
+          "use-format": "INDEXED_FUNCTION",
+          "use-locale": "INDEXED_FUNCTION",
+          "use-message": "INDEXED_FUNCTION"
+        },
+        "resolve": {
+          "localized-text": "INDEXED_FUNCTION",
+          "message": "INDEXED_FUNCTION",
+          "text-direction": "INDEXED_FUNCTION"
+        },
         "transform": {
+          "format-date": "INDEXED_FUNCTION",
+          "format-date-time": "INDEXED_FUNCTION",
           "format-day": "INDEXED_FUNCTION",
           "format-moment": "INDEXED_FUNCTION",
           "format-money": "INDEXED_FUNCTION",
+          "format-time": "INDEXED_FUNCTION",
           "format-usd": "INDEXED_FUNCTION"
         }
       },
       "interface": {
+        "contract": {
+          "locale-context": "INDEXED_INTERFACE"
+        },
         "recipe": {
           "country-flag": "INDEXED_INTERFACE",
           "language-selector": "INDEXED_INTERFACE",
+          "locale-preview": "INDEXED_INTERFACE",
+          "locale-provider": "INDEXED_INTERFACE",
           "locale-switcher": "INDEXED_INTERFACE",
           "translation-editor": "INDEXED_INTERFACE"
         },
@@ -2574,19 +2714,34 @@
         }
       },
       "test": {
+        "render": {
+          "locale-provider": "FUNCTION_TEST",
+          "localized-components": "INDEXED_RENDER_TEST_HARNESS"
+        },
         "unit": {
+          "format-date-time": "FUNCTION_TEST",
           "format-day": "FUNCTION_TEST",
           "format-moment": "FUNCTION_TEST",
           "format-money": "FUNCTION_TEST",
-          "format-usd": "FUNCTION_TEST"
+          "format-usd": "FUNCTION_TEST",
+          "message": "FUNCTION_TEST",
+          "message-catalog": "FUNCTION_TEST",
+          "style-layer": "FUNCTION_TEST"
         }
       },
       "type": {
         "alias": {
+          "locale-code": "INDEXED_TYPE",
+          "message-value": "INDEXED_TYPE",
+          "plural-category": "INDEXED_TYPE",
+          "text-direction": "INDEXED_TYPE",
           "translation": "INDEXED_TYPE"
         },
         "object": {
           "country-flag": "INDEXED_TYPE",
+          "localized-text": "INDEXED_TYPE",
+          "message-catalog": "INDEXED_TYPE",
+          "plural-message": "INDEXED_TYPE",
           "translatable-text": "INDEXED_TYPE",
           "translation-locale": "INDEXED_TYPE"
         }
@@ -2703,7 +2858,8 @@
         "unit": {
           "mathml-element": "FUNCTION_TEST",
           "mathml-markup": "FUNCTION_TEST",
-          "mathml-node": "FUNCTION_TEST"
+          "mathml-node": "FUNCTION_TEST",
+          "style-layer": "FUNCTION_TEST"
         }
       },
       "type": {
@@ -2921,6 +3077,17 @@
         "array": {
           "marker": "INDEXED_CONST",
           "notification-channel": "INDEXED_CONST"
+        },
+        "record": {
+          "alert-message": "INDEXED_CONST",
+          "error-message-message": "INDEXED_CONST",
+          "message-timestamp-message": "INDEXED_CONST",
+          "notification-badge-message": "INDEXED_CONST",
+          "notification-center-message": "INDEXED_CONST",
+          "notification-list-message": "INDEXED_CONST",
+          "notification-settings-message": "INDEXED_CONST",
+          "scheduled-notification-message": "INDEXED_CONST",
+          "toast-stack-message": "INDEXED_CONST"
         }
       },
       "function": {
@@ -2943,6 +3110,11 @@
           "scheduled-notification": "INDEXED_INTERFACE",
           "toast": "INDEXED_INTERFACE",
           "toast-stack": "INDEXED_INTERFACE"
+        }
+      },
+      "test": {
+        "render": {
+          "localization": "FUNCTION_TEST"
         }
       },
       "type": {
@@ -3260,6 +3432,7 @@
           "canvas-chart": "INDEX_SVG",
           "canvas-organism": "INDEX_SVG",
           "canvas-toolbar": "INDEX_SVG",
+          "capture": "INDEX_SVG",
           "card": "INDEX_SVG",
           "card-with-image": "INDEX_SVG",
           "cards": "INDEX_SVG",
@@ -3292,6 +3465,7 @@
           "circle": "INDEX_SVG",
           "class": "INDEX_SVG",
           "clock": "INDEX_SVG",
+          "clone": "INDEX_SVG",
           "cluster": "INDEX_SVG",
           "code": "INDEX_SVG",
           "code-block": "INDEX_SVG",
@@ -3330,6 +3504,8 @@
           "component-preview": "INDEX_SVG",
           "component-size": "INDEX_SVG",
           "components": "INDEX_SVG",
+          "composite": "INDEX_SVG",
+          "compute": "INDEX_SVG",
           "config": "INDEX_SVG",
           "confirmation-dialog": "INDEX_SVG",
           "connection-line": "INDEX_SVG",
@@ -3348,7 +3524,9 @@
           "copyable-code-block": "INDEX_SVG",
           "count": "INDEX_SVG",
           "country-flag": "INDEX_SVG",
+          "create": "INDEX_SVG",
           "crosshair": "INDEX_SVG",
+          "css": "INDEX_SVG",
           "cta-banner": "INDEX_SVG",
           "cta-buttons": "INDEX_SVG",
           "cube-control": "INDEX_SVG",
@@ -3426,6 +3604,7 @@
           "filter": "INDEX_SVG",
           "filter-bar": "INDEX_SVG",
           "filter-panel": "INDEX_SVG",
+          "flag": "INDEX_SVG",
           "flow": "INDEX_SVG",
           "folder": "INDEX_SVG",
           "folder-open": "INDEX_SVG",
@@ -3458,6 +3637,7 @@
           "graph-edge": "INDEX_SVG",
           "graph-node": "INDEX_SVG",
           "graph-node-card": "INDEX_SVG",
+          "graphql": "INDEX_SVG",
           "graphviz-directed-edge": "INDEX_SVG",
           "grid": "INDEX_SVG",
           "grid-3x3": "INDEX_SVG",
@@ -3503,6 +3683,7 @@
           "inventory-tracker": "INDEX_SVG",
           "italic": "INDEX_SVG",
           "joint": "INDEX_SVG",
+          "json": "INDEX_SVG",
           "justifications": "INDEX_SVG",
           "kanban": "INDEX_SVG",
           "kanban-card": "INDEX_SVG",
@@ -3680,8 +3861,11 @@
           "recipe": "INDEX_SVG",
           "record": "INDEX_SVG",
           "redo": "INDEX_SVG",
+          "render": "INDEX_SVG",
           "reply": "INDEX_SVG",
+          "resolve": "INDEX_SVG",
           "response-viewer": "INDEX_SVG",
+          "rest": "INDEX_SVG",
           "restore": "INDEX_SVG",
           "return-policy": "INDEX_SVG",
           "review-add": "INDEX_SVG",
@@ -3715,6 +3899,7 @@
           "selectors": "INDEX_SVG",
           "selectors-molecule": "INDEX_SVG",
           "send": "INDEX_SVG",
+          "serialize": "INDEX_SVG",
           "server": "INDEX_SVG",
           "set": "INDEX_SVG",
           "settings": "INDEX_SVG",
@@ -3772,6 +3957,7 @@
           "subscription-manager": "INDEX_SVG",
           "success": "INDEX_SVG",
           "sun": "INDEX_SVG",
+          "svelte": "INDEX_SVG",
           "svg": "INDEX_SVG",
           "tab": "INDEX_SVG",
           "table": "INDEX_SVG",
@@ -3844,6 +4030,7 @@
           "typography-indicator": "INDEX_SVG",
           "underline": "INDEX_SVG",
           "undo": "INDEX_SVG",
+          "unit": "INDEX_SVG",
           "upload": "INDEX_SVG",
           "upload-progress": "INDEX_SVG",
           "upsell": "INDEX_SVG",
@@ -3925,7 +4112,8 @@
           "icon": "FUNCTION_TEST"
         },
         "unit": {
-          "icon-name": "FUNCTION_TEST"
+          "icon-name": "FUNCTION_TEST",
+          "style-layer": "FUNCTION_TEST"
         }
       },
       "type": {
@@ -3978,7 +4166,15 @@
           "cell-header": "INDEX_BARREL"
         },
         "record": {
-          "table-alignment-classes": "INDEXED_CONST"
+          "column-manager-message": "INDEXED_CONST",
+          "comparison-table-message": "INDEXED_CONST",
+          "component-message": "INDEXED_CONST",
+          "data-table-message": "INDEXED_CONST",
+          "data-table-shell-message": "INDEXED_CONST",
+          "filter-text-message": "INDEXED_CONST",
+          "row-expandable-message": "INDEXED_CONST",
+          "table-alignment-classes": "INDEXED_CONST",
+          "table-list-panel-message": "INDEXED_CONST"
         }
       },
       "function": {
@@ -4022,6 +4218,9 @@
         }
       },
       "test": {
+        "render": {
+          "localization": "FUNCTION_TEST"
+        },
         "unit": {
           "column-visibility": "FUNCTION_TEST"
         }
@@ -4165,6 +4364,7 @@
       },
       "test": {
         "unit": {
+          "style-layer": "FUNCTION_TEST",
           "theme-css-token": "FUNCTION_TEST"
         }
       },
@@ -4311,6 +4511,11 @@
           "tree-viewer": "DEFINED_REACTIVE_STORY_COMPONENT"
         }
       },
+      "const": {
+        "record": {
+          "tree-node-item-message": "INDEXED_CONST"
+        }
+      },
       "function": {
         "script": {
           "normalize-tree-viewer-node": "INDEXED_FUNCTION"
@@ -4324,6 +4529,11 @@
           "tree": "INDEXED_INTERFACE",
           "tree-node-item": "INDEXED_INTERFACE",
           "tree-viewer": "INDEXED_INTERFACE"
+        }
+      },
+      "test": {
+        "render": {
+          "localization": "FUNCTION_TEST"
         }
       },
       "type": {
@@ -4383,6 +4593,9 @@
           "heading-story": "FUNCTION_TEST",
           "typography-contract": "FUNCTION_TEST",
           "typography-stories": "FUNCTION_TEST"
+        },
+        "unit": {
+          "style-layer": "FUNCTION_TEST"
         }
       }
     },
@@ -4391,6 +4604,12 @@
         "molecule": {
           "video-player": "DEFINED_REACTIVE_STORY_COMPONENT",
           "video-scene": "DEFINED_STORY_COMPONENT"
+        }
+      },
+      "const": {
+        "record": {
+          "video-player-message": "INDEXED_CONST",
+          "video-scene-message": "INDEXED_CONST"
         }
       },
       "function": {
@@ -4402,6 +4621,11 @@
         "recipe": {
           "video-player": "INDEXED_INTERFACE",
           "video-scene": "INDEXED_INTERFACE"
+        }
+      },
+      "test": {
+        "render": {
+          "localization": "FUNCTION_TEST"
         }
       }
     },
@@ -4427,6 +4651,10 @@
         "array": {
           "shader-fragment": "INDEXED_CONST",
           "shader-vertex": "INDEXED_CONST"
+        },
+        "record": {
+          "scene-launcher-message": "INDEXED_CONST",
+          "shader-field-message": "INDEXED_CONST"
         }
       },
       "data": {
@@ -4459,6 +4687,9 @@
         }
       },
       "test": {
+        "render": {
+          "localization": "FUNCTION_TEST"
+        },
         "unit": {
           "shader-tint": "FUNCTION_TEST"
         }
@@ -4509,8 +4740,16 @@
           "trajectory": "INDEXED_CONST"
         },
         "record": {
+          "graph-node-card-message": "INDEXED_CONST",
+          "minimap-message": "INDEXED_CONST",
+          "node-header-message": "INDEXED_CONST",
+          "node-properties-message": "INDEXED_CONST",
+          "stylist-graph-workspace-message": "INDEXED_CONST",
+          "viewport-message": "INDEXED_CONST",
           "workspace-canvas": "INDEXED_CONST",
-          "workspace-icons": "INDEXED_CONST"
+          "workspace-icons": "INDEXED_CONST",
+          "workspace-message": "INDEXED_CONST",
+          "workspace-palette-message": "INDEXED_CONST"
         }
       },
       "interface": {
@@ -4544,6 +4783,11 @@
           "minimap-viewport": "INDEXED_INTERFACE",
           "node-connection": "INDEXED_INTERFACE",
           "workspace-node": "INDEXED_INTERFACE"
+        }
+      },
+      "test": {
+        "render": {
+          "localization": "FUNCTION_TEST"
         }
       },
       "type": {

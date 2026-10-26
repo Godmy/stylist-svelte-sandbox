@@ -82,8 +82,10 @@ export {
 	resolveModuleGroup,
 	resolvePreviewSkin,
 	resolvePreviewVariables,
+	resolveStoryControls,
 	resolveTreeFamilies,
-	serializeUnknownError
+	serializeUnknownError,
+	transformStoryJson
 } from './function';
 export type {
 	AiModelInfo,

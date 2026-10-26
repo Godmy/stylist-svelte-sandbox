@@ -2130,7 +2130,7 @@
       ],
       "otherImports": [
         "$stylist/tree/type/object/tree-node",
-        "$stylist/tree/function/state/tree-expansion/index.svelte"
+        "$stylist/tree/function/state/tree-expansion/state.svelte"
       ]
     },
     {
@@ -2140,11 +2140,12 @@
       "family": "paragraph",
       "status": "missing-recipe",
       "expectedRecipe": "RecipeParagraph",
-      "importCount": 2,
+      "importCount": 3,
       "recipeImports": [
         "$stylist/typography/interface/recipe/text"
       ],
       "otherImports": [
+        "$stylist/html/component/atom/p/index.svelte",
         "$stylist/typography/component/molecule/paragraph/state.svelte"
       ]
     }
@@ -2153,7 +2154,7 @@
     "total": 151,
     "none": 0,
     "missingRecipe": 151,
-    "valid": 516,
-    "scanned": 667
+    "valid": 518,
+    "scanned": 669
   }
 }

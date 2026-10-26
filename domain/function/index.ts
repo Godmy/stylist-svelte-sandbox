@@ -10,11 +10,13 @@ export {
 	resolveModuleGroup,
 	resolvePreviewSkin,
 	resolvePreviewVariables,
+	resolveStoryControls,
 	resolveTreeFamilies
 } from './resolve';
 export { serializeUnknownError } from './serialize';
 export {
 	createClusterToolbarItems,
 	expandComponentTree,
-	normalizeDomainTree
+	normalizeDomainTree,
+	transformStoryJson
 } from './transform';

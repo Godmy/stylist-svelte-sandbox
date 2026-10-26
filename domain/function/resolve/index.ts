@@ -6,4 +6,5 @@ export { resolveFilePreset } from './file-preset';
 export { resolveModuleGroup } from './module-group';
 export { resolvePreviewSkin } from './preview-skin';
 export { resolvePreviewVariables } from './preview-variables';
+export { resolveStoryControls } from './story-controls';
 export { resolveTreeFamilies } from './tree-families';
