@@ -35,7 +35,7 @@ export function resolveComponentDescriptor(
 	const componentStatePath = existing(`${entity.path}/state.svelte.ts`);
 	const stateFunctionPath =
 		componentStatePath ??
-		existing(`${domain.name}/function/state/${family}/index.svelte.ts`) ??
+		existing(`${domain.name}/function/state/${family}/state.svelte.ts`) ??
 		existing(`${domain.name}/function/state/${family}/index.ts`);
 	// `index.story.ts` is the story; a sibling `index.story.svelte` is then only its render.
 	const storyModulePath =

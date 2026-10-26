@@ -89,8 +89,12 @@ export const PRESET_FILE = {
 	INDEXED_CONST: { type: 'const', files: ['index.ts'] },
 	INDEXED_FUNCTION: { type: 'function', files: ['index.ts'] },
 	FUNCTION_TEST: { type: 'function', files: ['index.test.ts'] },
+	INDEXED_RENDER_TEST_HARNESS: {
+		type: 'barrel',
+		files: ['harness.svelte', 'index.test.ts', 'index.ts']
+	},
 	INDEX_SVG: { type: 'svg', files: ['index.svg'] },
-	REACTIVE_BARREL: { type: 'barrel', files: ['index.svelte.ts', 'index.ts'] },
+	REACTIVE_BARREL: { type: 'barrel', files: ['state.svelte.ts', 'index.ts'] },
 	TESTED_INDEXED_STORY_COMPONENT: {
 		type: 'component',
 		files: ['index.story.svelte', 'index.svelte', 'index.test.ts', 'index.ts']

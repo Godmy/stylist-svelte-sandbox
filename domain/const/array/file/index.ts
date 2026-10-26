@@ -33,6 +33,7 @@ export const ARRAY_FILE = [
 	'geo.svg',
 	'global.d.ts',
 	'global.svg',
+	'harness.svelte',
 	'hooks.server.ts',
 	'hyperspace.frag',
 	'index.css',
