@@ -5,5 +5,6 @@ export const DOMAIN_CLUSTER = [
 	'interface',
 	'class',
 	'function',
-	'component'
+	'component',
+	'test'
 ] as const;

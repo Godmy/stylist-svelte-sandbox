@@ -85,6 +85,7 @@
 			activeCluster={s.activeCluster}
 			activeJoint={s.activeJoint}
 			availableDomains={s.availableDomainNames}
+			availableClusters={s.availableClusterNames}
 			availableJoints={s.availableJointNames}
 			entities={s.entities}
 			activeEntityPath={s.activeEntityPath}

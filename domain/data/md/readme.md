@@ -60,6 +60,12 @@ Other families of this domain are not wired into the shell: `molecule/story-canv
 
 The taxonomy starts with **module → domain → cluster → joint → family**. Module ownership comes from the app's `modules.json`, not from a duplicated domain map. The sidebar shows only modules/domains present in the supplied tree; selecting a module selects its first available domain. Search is global, and selecting a result updates the active module automatically. Module SVGs live in `data/icon/module/` and are loaded directly, without depending on generated SVG barrels.
 
+Cluster buttons come from the selected domain's tree, and joint buttons come from the selected cluster's tree. The built-in catalogs provide standalone story defaults, not navigation allowlists. For example, SVG icons are families under `svg/data/icon`, where `data` is the cluster and `icon` is the joint. Tests are browsable under the `test` cluster with `unit` and `render` joints when present in the manifest.
+
+Joints without entities are hidden. Clusters without joints, including clusters whose joints are all empty, are hidden too. Navigation and automatic selection use this filtered tree.
+
+Within `interface`, joints follow `behavior → slot → recipe`, then the remaining joints (including `contract`).
+
 Selecting a domain, cluster, joint or family opens the component browser. Family selection from the sidebar and from search uses the same policy: keep Markdown when it is already selected and the destination has documentation; otherwise prefer a story, then documentation, then source. Documentation prefers `readme.md`, with `index.md` as a legacy fallback. Source preserves the previous filename when available, otherwise prefers `index.svelte`, then `index.ts`. Late content responses cannot overwrite another selection.
 
 The domain screen stays within the browser window; the explorer and preview scroll inside their own panels. Landing and guide keep normal page scrolling.

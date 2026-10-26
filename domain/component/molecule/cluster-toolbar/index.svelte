@@ -6,13 +6,14 @@
 
 	let {
 		active,
+		availableClusters,
 		orientation = TOKEN_ORIENTATION[0],
 		showLabel = true,
 		onSelect,
 		class: className = ''
 	}: RecipeClusterToolbar = $props();
 
-	const items = createClusterToolbarItems();
+	const items = $derived(createClusterToolbarItems(availableClusters));
 </script>
 
 <IconToolbar
@@ -21,6 +22,7 @@
 	{active}
 	{orientation}
 	{showLabel}
+	emptyText="no clusters"
 	{onSelect}
 	class="c-cluster-toolbar {className}"
 />

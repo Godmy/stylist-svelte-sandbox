@@ -12,10 +12,14 @@
 		onSelect,
 		class: className = ''
 	}: RecipeJointToolbar = $props();
+
+	const items = $derived(
+		availableJoints ? availableJoints.map((name) => ({ name })) : JOINT_TOOLBAR_ITEMS
+	);
 </script>
 
 <IconToolbar
-	items={JOINT_TOOLBAR_ITEMS}
+	{items}
 	label="joint"
 	{active}
 	{orientation}

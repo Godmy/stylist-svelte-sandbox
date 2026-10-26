@@ -20,6 +20,7 @@
 		activeCluster,
 		activeJoint,
 		availableDomains = [],
+		availableClusters,
 		availableJoints,
 		entities = [],
 		activeEntityPath,
@@ -69,7 +70,12 @@
 			onSelect={onDomainSelect}
 		/>
 
-		<ClusterToolbar active={activeCluster} showLabel={false} onSelect={onClusterSelect} />
+		<ClusterToolbar
+			active={activeCluster}
+			{availableClusters}
+			showLabel={false}
+			onSelect={onClusterSelect}
+		/>
 
 		<JointToolbar
 			active={activeJoint}

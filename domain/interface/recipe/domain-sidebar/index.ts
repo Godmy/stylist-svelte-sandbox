@@ -4,6 +4,7 @@ export interface RecipeDomainSidebar {
 	activeCluster?: string;
 	activeJoint?: string;
 	availableDomains?: readonly string[];
+	availableClusters?: readonly string[];
 	availableJoints?: readonly string[];
 	entities?: SlotDomainEntity[];
 	activeEntityPath?: string;
