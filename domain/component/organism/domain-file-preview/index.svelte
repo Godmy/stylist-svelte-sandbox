@@ -185,7 +185,7 @@
 		frame?.contentWindow?.postMessage(
 			{
 				type: 'stylist:preview-environment',
-				settings: visualHtml ? $state.snapshot(environment) : {}
+				settings: visualHtml ? $state.snapshot(environment) : { locale: environment.locale }
 			},
 			window.location.origin
 		);
@@ -356,10 +356,11 @@
 						</header>
 						{#if captureError}<p class="story-panel__error" role="alert">{captureError}</p>{/if}
 						<div class="story-controls">
-							{#if visualHtml}<PreviewSettings
-									value={environment}
-									onChange={(next) => (environment = next)}
-								/>{/if}
+							<PreviewSettings
+								value={environment}
+								appearance={visualHtml}
+								onChange={(next) => (environment = next)}
+							/>
 							{#key storyPath}
 								<StoryControls {story} onChange={sendArgs} markup={storyMarkup} />
 							{/key}

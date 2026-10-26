@@ -9,5 +9,10 @@ export const PREVIEW_CONTROLS = {
 	fontFamily: { type: 'select', label: 'Font family', options: Object.keys(TOKEN_FONT_FAMILY) },
 	fontSize: { type: 'select', label: 'Body font size', options: Object.keys(TOKEN_FONT_SIZE) },
 	lineHeight: { type: 'select', label: 'Line height', options: Object.keys(TOKEN_LINE_HEIGHT) },
-	density: { type: 'select', label: 'Density', options: Object.keys(DESIGN_TOKEN_DENSITY) }
+	density: { type: 'select', label: 'Density', options: Object.keys(DESIGN_TOKEN_DENSITY) },
+	locale: {
+		type: 'select',
+		label: 'Language',
+		options: ['en', 'ru', 'ka', 'es', 'zh', 'hi', 'ar', 'he']
+	}
 } as const;

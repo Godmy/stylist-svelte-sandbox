@@ -2,7 +2,10 @@
 	import StoryControl from '$stylist/domain/component/atom/story-control/index.svelte';
 	import { PREVIEW_CONTROLS } from '$stylist/domain/const/object/preview-controls';
 	import type { RecipePreviewSettings } from '$stylist/domain/interface/recipe/preview-settings';
-	let { value, onChange }: RecipePreviewSettings = $props();
+	let { value, onChange, appearance = true }: RecipePreviewSettings = $props();
+	const controls = $derived(
+		Object.entries(PREVIEW_CONTROLS).filter(([name]) => appearance || name === 'locale')
+	);
 </script>
 
 <section class="preview-settings" aria-label="Preview appearance">
@@ -12,7 +15,7 @@
 		>
 	</header>
 	<div class="controls">
-		{#each Object.entries(PREVIEW_CONTROLS) as [name, control] (name)}
+		{#each controls as [name, control] (name)}
 			<StoryControl
 				{name}
 				{control}

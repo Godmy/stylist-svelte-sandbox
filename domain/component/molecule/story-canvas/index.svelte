@@ -5,12 +5,14 @@
 	import { resolvePreviewVariables } from '$stylist/domain/function/resolve/preview-variables';
 	import { serializeHtmlStylesheet } from '$stylist/html/function/serialize/html-stylesheet';
 	import HtmlStyle from '$stylist/html/component/atom/style/index.svelte';
+	import LocaleProvider from '$stylist/localization/component/atom/locale-provider/index.svelte';
 
 	let {
 		story,
 		args,
 		content,
 		environment,
+		locale,
 		render = null,
 		class: className = ''
 	}: RecipeStoryCanvas = $props();
@@ -57,15 +59,17 @@
 	data-layout={story.layout ?? 'padded'}
 	data-html-skin={skin || undefined}
 >
-	{#if render}
-		{@const Render = render}
-		<Render {...values} />
-	{:else if story.context}
-		<!-- svelte2tsx types a template snippet as a function; the cast matches scratch-route-script. -->
-		<Node node={story.context} outlet={element as Snippet} />
-	{:else}
-		{@render element()}
-	{/if}
+	<LocaleProvider locale={locale ?? environment?.locale}>
+		{#if render}
+			{@const Render = render}
+			<Render {...values} />
+		{:else if story.context}
+			<!-- svelte2tsx types a template snippet as a function; the cast matches scratch-route-script. -->
+			<Node node={story.context} outlet={element as Snippet} />
+		{:else}
+			{@render element()}
+		{/if}
+	</LocaleProvider>
 </div>
 
 <style>
