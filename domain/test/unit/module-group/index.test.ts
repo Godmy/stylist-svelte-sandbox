@@ -26,11 +26,7 @@ describe('resolveModuleGroup', () => {
 			'global',
 			'prototype'
 		]);
-		expect(byName.prototype).toEqual([
-			...registry.prototype.domains,
-			'presentation',
-			'scratch'
-		]);
+		expect(byName.prototype).toEqual([...registry.prototype.domains, 'presentation', 'scratch']);
 		expect(byName.global).toEqual(['commerce', 'product', 'geo']);
 		expect(byName.business).toEqual(
 			expect.arrayContaining(['booking', 'sakartvelo', 'wbd', 'spanish', 'farm'])

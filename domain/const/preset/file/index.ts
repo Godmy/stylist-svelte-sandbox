@@ -1,17 +1,56 @@
 import type { TypeFile } from '$stylist/domain/type/alias/file';
 
 export const PRESET_FILE = {
-	ANIMATION_LEGACY_NOTICES: { type: 'data', files: ["images-carousel-zoom.md","svelte-tilt-LICENSE.md","svelte-tilt.md"] },
-	AUTH_LEGACY_NOTICES: { type: 'data', files: ["sveltekit-auth-starter-LICENSE.md"] },
-	DEMO_LEGACY_NOTICES: { type: 'data', files: ["CopeTube-LICENSE.md","Vontigo-LICENSE.md","c2c-pay-com-LICENSE.md","caasa-LICENSE.md","cms-frontend-LICENSE.md","editable-website-LICENSE.md","finances-LICENSE.md","kantina-LICENSE.md","netcore-svelte-saas-kit-LICENSE.md","portfolio-LICENSE.md","primo-LICENSE.md","restaurant-orders-management-LICENSE.md","svelte-saas-kit-LICENSE.md","sveltekit-LICENSE.md","sveltekit-typescript-vanilla-extract-starter-LICENSE.md","trpc-sveltekit-example-LICENSE.md","unding-LICENSE.md"] },
-	DEMO_SOURCE_CONTEXT: { type: 'data', files: ["c2c-pay-com-local-changes.md","c2c-pay-ru-current-layout.md"] },
-	FILE_LEGACY_NOTICES: { type: 'data', files: ["MyStorage-LICENSE.md"] },
-	GEO_LEGACY_NOTICES: { type: 'data', files: ["chs-map-LICENSE.md","svelte-mapbox-LICENSE.md"] },
-	MENU_LEGACY_NOTICES: { type: 'data', files: ["components-svelte-LICENSE.md"] },
-	PROTOTYPE_SCHOOL_LEGACY_NOTICES: { type: 'data', files: ["2024-sba-LICENSE.md","Flexi-LICENSE.md","LibreHomework-LICENSE.md","dever-generator-LICENSE.md","huntabyte.com-admin-LICENSE.md"] },
-	PROTOTYPE_SCHOOL_LESSON_PLANNING_PROMPTS: { type: 'data', files: ["chqcompetition.md"] },
-	PROTOTYPE_SHOP_LEGACY_NOTICES: { type: 'data', files: ["svelte-commerce-LICENSE.md"] },
-	TREEJS_LEGACY_NOTICES: { type: 'data', files: ["three-0.180.0-LICENSE.md","threejs-webgl-planet-for-production-LICENSE.md"] },
+	ANIMATION_LEGACY_NOTICES: {
+		type: 'data',
+		files: ['images-carousel-zoom.md', 'svelte-tilt-LICENSE.md', 'svelte-tilt.md']
+	},
+	AUTH_LEGACY_NOTICES: { type: 'data', files: ['sveltekit-auth-starter-LICENSE.md'] },
+	DEMO_LEGACY_NOTICES: {
+		type: 'data',
+		files: [
+			'CopeTube-LICENSE.md',
+			'Vontigo-LICENSE.md',
+			'c2c-pay-com-LICENSE.md',
+			'caasa-LICENSE.md',
+			'cms-frontend-LICENSE.md',
+			'editable-website-LICENSE.md',
+			'finances-LICENSE.md',
+			'kantina-LICENSE.md',
+			'netcore-svelte-saas-kit-LICENSE.md',
+			'portfolio-LICENSE.md',
+			'primo-LICENSE.md',
+			'restaurant-orders-management-LICENSE.md',
+			'svelte-saas-kit-LICENSE.md',
+			'sveltekit-LICENSE.md',
+			'sveltekit-typescript-vanilla-extract-starter-LICENSE.md',
+			'trpc-sveltekit-example-LICENSE.md',
+			'unding-LICENSE.md'
+		]
+	},
+	DEMO_SOURCE_CONTEXT: {
+		type: 'data',
+		files: ['c2c-pay-com-local-changes.md', 'c2c-pay-ru-current-layout.md']
+	},
+	FILE_LEGACY_NOTICES: { type: 'data', files: ['MyStorage-LICENSE.md'] },
+	GEO_LEGACY_NOTICES: { type: 'data', files: ['chs-map-LICENSE.md', 'svelte-mapbox-LICENSE.md'] },
+	MENU_LEGACY_NOTICES: { type: 'data', files: ['components-svelte-LICENSE.md'] },
+	PROTOTYPE_SCHOOL_LEGACY_NOTICES: {
+		type: 'data',
+		files: [
+			'2024-sba-LICENSE.md',
+			'Flexi-LICENSE.md',
+			'LibreHomework-LICENSE.md',
+			'dever-generator-LICENSE.md',
+			'huntabyte.com-admin-LICENSE.md'
+		]
+	},
+	PROTOTYPE_SCHOOL_LESSON_PLANNING_PROMPTS: { type: 'data', files: ['chqcompetition.md'] },
+	PROTOTYPE_SHOP_LEGACY_NOTICES: { type: 'data', files: ['svelte-commerce-LICENSE.md'] },
+	TREEJS_LEGACY_NOTICES: {
+		type: 'data',
+		files: ['three-0.180.0-LICENSE.md', 'threejs-webgl-planet-for-production-LICENSE.md']
+	},
 	INDEXED_COMPONENT: { type: 'component', files: ['index.svelte', 'index.ts'] },
 	INDEXED_REACTIVE_COMPONENT: {
 		type: 'component',
@@ -120,7 +159,12 @@ export const PRESET_FILE = {
 	},
 	WEBGL_FRAGMENT_SHADERS: {
 		type: 'shader',
-		files: ['concentric-circles.frag', 'hyperspace.frag', 'interference-field.frag', 'turtle-dissolve.frag']
+		files: [
+			'concentric-circles.frag',
+			'hyperspace.frag',
+			'interference-field.frag',
+			'turtle-dissolve.frag'
+		]
 	},
 	FULL_SCREEN_VERTEX_SHADER: { type: 'shader', files: ['full-screen.vert'] },
 	MODULE_ICONS: {
