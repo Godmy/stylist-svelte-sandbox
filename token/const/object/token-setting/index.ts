@@ -13,7 +13,7 @@ import { TOKEN_LAYOUT_SETTING } from '$stylist/token/const/object/layout';
 import { TOKEN_LOCALIZATION_SETTING } from '$stylist/token/const/object/localization';
 import { TOKEN_NOTIFICATION_SETTING } from '$stylist/token/const/object/notification';
 import { TOKEN_SVG_SETTING } from '$stylist/token/const/object/svg';
-import { TOKEN_TABLE_SETTING } from '$stylist/token/const/object/table';
+import { TOKEN_DOMAIN_SETTING } from '$stylist/token/const/object/domain';
 import { TOKEN_THEME_SETTING } from '$stylist/token/const/object/theme';
 import { TOKEN_TYPOGRAPHY_SETTING } from '$stylist/token/const/object/typography';
 
@@ -33,7 +33,7 @@ export const TOKEN_SETTING = [
 	...TOKEN_LOCALIZATION_SETTING,
 	...TOKEN_NOTIFICATION_SETTING,
 	...TOKEN_SVG_SETTING,
-	...TOKEN_TABLE_SETTING,
+	...TOKEN_DOMAIN_SETTING,
 	...TOKEN_THEME_SETTING,
 	...TOKEN_TYPOGRAPHY_SETTING
 ] as const;
