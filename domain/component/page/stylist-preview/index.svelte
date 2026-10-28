@@ -146,7 +146,7 @@
 								class:pcc-preview-icon--missing={!iconName}
 								title={iconName ? `Icon: ${iconName}` : t('iconMissing')}
 							>
-								<BaseIcon name={iconName ?? 'component'} size={48} />
+								<BaseIcon name={iconName ?? 'component'} size={48} color="inherit" />
 							</span>
 							<code class="pcc-icon-name" class:pcc-icon-name--missing={!iconName}
 								>{iconName ?? `component · ${t('iconMissing')}`}</code
@@ -495,10 +495,10 @@
 	}
 	.pcc-preview-icon {
 		display: flex;
-		color: var(--pcc-text);
+		color: var(--color-icon-primary, var(--color-primary-600, currentColor));
 	}
 	.pcc-preview-icon--missing {
-		color: var(--pcc-secondary);
+		color: var(--color-icon-secondary, var(--pcc-secondary));
 		opacity: 0.5;
 	}
 	.pcc-icon-name {

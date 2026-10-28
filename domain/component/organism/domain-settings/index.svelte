@@ -6,7 +6,7 @@
 
 	let {
 		open = false,
-		iconSizes = $bindable({ module: 16, domain: 16, cluster: 16, joint: 16, search: 16 }),
+		iconSizes = $bindable({ module: 32, domain: 32, cluster: 24, joint: 24, search: 24 }),
 		onClose,
 		class: className = ''
 	}: RecipeDomainSettings = $props();
@@ -76,7 +76,7 @@
 					type="button"
 					class="reset-icons"
 					onclick={() =>
-						(iconSizes = { module: 16, domain: 16, cluster: 16, joint: 16, search: 16 })}
+						(iconSizes = { module: 32, domain: 32, cluster: 24, joint: 24, search: 24 })}
 				>
 					Reset icon sizes
 				</button>

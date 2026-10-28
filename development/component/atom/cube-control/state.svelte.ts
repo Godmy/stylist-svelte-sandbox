@@ -14,7 +14,6 @@ export function createCubeControlState(getProps: () => RecipeCubeControl) {
 	const autoRotate = $derived(props.autoRotate ?? true);
 	const rotationDuration = $derived(props.rotationDuration ?? 24);
 	const interactive = $derived(props.interactive ?? true);
-	const inertiaEnabled = $derived(props.inertiaEnabled ?? true);
 	const inertiaFriction = $derived(props.inertiaFriction ?? 0.94);
 	const inertiaSensitivity = $derived(props.inertiaSensitivity ?? 1);
 	const faceLabels = $derived(props.faceLabels ?? true);

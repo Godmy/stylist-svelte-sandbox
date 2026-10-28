@@ -9,7 +9,6 @@
 	const CheckCircle = 'check-circle';
 	const Code2 = 'code';
 	const ExternalLink = 'external-link';
-	const Package = 'package';
 	const Terminal = 'terminal';
 
 	let props: RecipeEnhancedExportPanel & HTMLAttributes<HTMLDivElement> = $props();

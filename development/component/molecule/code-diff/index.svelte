@@ -31,7 +31,7 @@
 	<div class={state.mainContentClass}>
 		{#if showLineNumbers}
 			<div class={state.lineNumbersContainerClass}>
-				{#each state.diffLines as line, index}
+				{#each state.diffLines as line (line.lineNumber)}
 					<div class={state.lineNumberItemClass}>
 						{line.lineNumber}
 					</div>
@@ -41,7 +41,7 @@
 
 		<div class={state.contentContainerClass}>
 			<div class={state.getDiffContentClass}>
-				{#each state.diffLines as line}
+				{#each state.diffLines as line (line.lineNumber)}
 					{#if line.type === 'unchanged'}
 						<div class={state.diffLineClass(line.type)}>
 							<span class={state.diffSpanClass(line.type)}>{line.original}</span>

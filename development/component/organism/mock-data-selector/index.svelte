@@ -43,7 +43,7 @@
 				<fieldset class="mds-fieldset">
 					<legend class="mds-label">Filter by Tags</legend>
 					<div class="mds-tags">
-						{#each state.availableTags as tag}
+						{#each state.availableTags as tag (tag)}
 							<button
 								type="button"
 								class={`mds-tag ${state.selectedTags.includes(tag) ? 'mds-tag--active' : 'mds-tag--inactive'}`}
@@ -70,7 +70,7 @@
 		<div class="mds-schemas-section">
 			<h4 class="mds-section-title">Available Schemas</h4>
 			<div class="mds-schema-grid">
-				{#each state.getFilteredSchemas() as schema}
+				{#each state.getFilteredSchemas() as schema (schema.id)}
 					<div class={`mds-schema-card ${state.selectorClass}`}>
 						<div class="mds-card-header">
 							<div>
@@ -89,7 +89,7 @@
 
 						<div class="mds-card-tags">
 							<div class="mds-card-tags-inner">
-								{#each schema.tags as tag}
+								{#each schema.tags as tag, tagIndex (tagIndex)}
 									<span class="mds-tag-chip">{tag}</span>
 								{/each}
 							</div>
@@ -109,7 +109,7 @@
 			<div>
 				<h4 class="mds-section-title">Selected Schemas</h4>
 				<div class="mds-selections">
-					{#each state.selections as selection, index}
+					{#each state.selections as selection, index (index)}
 						{@const schema = state.schemas.find((s) => s.id === selection.schemaId)}
 						{#if schema}
 							<div class={`mds-selection-card ${state.previewClass}`}>
@@ -166,7 +166,7 @@
 									<div class="mds-field-section">
 										<h6 class="mds-field-title">Select Fields</h6>
 										<div class="mds-fields-wrap">
-											{#each schema.fields as field}
+											{#each schema.fields as field (field.name)}
 												<label
 													class={`mds-field-chip ${state.selections[index].selectedFields?.includes(field.name) ? 'mds-field-chip--active' : ''}`}
 												>
@@ -190,7 +190,7 @@
 										<table class="mds-table">
 											<thead>
 												<tr>
-													{#each schema.fields as field}
+													{#each schema.fields as field (field.name)}
 														{#if !state.selections[index].selectedFields || state.selections[index].selectedFields.includes(field.name)}
 															<th class="mds-th">{field.name}</th>
 														{/if}
@@ -198,9 +198,9 @@
 												</tr>
 											</thead>
 											<tbody class="mds-tbody">
-												{#each state.getSampleData(schema.id, Math.min(2, selection.count), state.selections[index].selectedFields) as item, i}
+												{#each state.getSampleData(schema.id, Math.min(2, selection.count), state.selections[index].selectedFields) as item, i (i)}
 													<tr>
-														{#each schema.fields as field}
+														{#each schema.fields as field (field.name)}
 															{#if !state.selections[index].selectedFields || state.selections[index].selectedFields.includes(field.name)}
 																<td class="mds-td">{item[field.name]?.toString()}</td>
 															{/if}

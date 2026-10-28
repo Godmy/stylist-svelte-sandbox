@@ -148,13 +148,13 @@ export function createMockDataSelectorState(getProps: () => RecipeMockDataSelect
 
 		const result = [];
 		for (let i = 0; i < count; i++) {
-			const item: any = {};
+			const item: Record<string, string | number | boolean> = {};
 			const fieldsToUse =
 				fields && fields.length > 0 ? fields : schema.fields.map((f: { name: string }) => f.name);
 
 			schema.fields
 				.filter((f: { name: string }) => fieldsToUse.includes(f.name))
-				.forEach((field: any) => {
+				.forEach((field) => {
 					switch (field.type) {
 						case 'string':
 							item[field.name] = field.example || `${field.name}_${i}`;

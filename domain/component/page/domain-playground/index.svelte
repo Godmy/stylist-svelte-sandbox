@@ -28,11 +28,11 @@
 	const catalog = createStylistPreviewCatalogState(() => tree);
 	const selectedStory = $derived(screenState.selectedStoryPath.split('/'));
 	let iconSizes = $state<NonNullable<RecipeDomainSettings['iconSizes']>>({
-		module: 16,
-		domain: 16,
-		cluster: 16,
-		joint: 16,
-		search: 16
+		module: 32,
+		domain: 32,
+		cluster: 24,
+		joint: 24,
+		search: 24
 	});
 	let iconSizesLoaded = $state(false);
 	onMount(() => {

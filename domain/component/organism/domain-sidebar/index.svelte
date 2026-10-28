@@ -230,6 +230,7 @@
 		outline-offset: -2px;
 	}
 	.module-toolbar :global(svg) {
+		color: var(--color-icon-primary, currentColor);
 		width: var(--domain-module-icon-size, 16px);
 		height: var(--domain-module-icon-size, 16px);
 	}
