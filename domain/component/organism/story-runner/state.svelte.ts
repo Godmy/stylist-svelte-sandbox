@@ -67,7 +67,7 @@ export function createStoryRunnerState(getProps: () => RecipeStoryRunner) {
 		'/modules/*/*/component/**/*.story.{svelte,ts}',
 		'/modules/*/component/**/*.story.{svelte,ts}',
 		// The runner's own story would mount the runner inside itself.
-		'!/modules/sandbox/domain/component/page/story-runner/**'
+		'!/modules/sandbox/domain/component/organism/story-runner/**'
 	]) as Record<string, () => Promise<StoryModule>>;
 
 	const allStories: StoryEntry[] = Object.entries(storyModules)

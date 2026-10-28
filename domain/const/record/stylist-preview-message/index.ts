@@ -1,0 +1,75 @@
+/** Interface messages of the component catalog; story descriptions stay data. */
+export const DOMAIN_STYLIST_PREVIEW_MESSAGE = {
+	en: {
+		iconMissing: 'not assigned',
+		loadMore: 'Show more components',
+		found: 'Found: {count}',
+		library: 'Library',
+		title: 'Component library',
+		intro:
+			'Find your next building block. Browse components, explore their stories, and make them your own.',
+		components: 'components',
+		searchLabel: 'Search components',
+		sortLabel: 'Sort components',
+		viewLabel: 'Catalog view',
+		filters: 'Filters',
+		search: 'Search components…',
+		clearSearch: 'Clear search',
+		gridView: 'Grid view',
+		listView: 'List view',
+		sortName: 'Sort by Name',
+		sortCategory: 'Sort by Category',
+		sortRecent: 'Catalog Order',
+		showFilters: 'Show filters',
+		hideFilters: 'Hide filters',
+		categories: 'Categories',
+		tags: 'Domains',
+		clearFilters: 'Clear all filters',
+		stats: {
+			one: 'Showing {filtered} of {count} component',
+			other: 'Showing {filtered} of {count} components'
+		},
+		preview: 'Preview',
+		aiGenerated: 'AI-Generated',
+		open: 'Open',
+		emptyTitle: 'No components found',
+		emptyText: 'Try adjusting your search or filters'
+	},
+	ru: {
+		iconMissing: 'не назначена',
+		loadMore: 'Показать ещё компоненты',
+		found: 'Найдено: {count}',
+		library: 'Библиотека',
+		title: 'Библиотека компонентов',
+		intro:
+			'Найдите основу для нового интерфейса. Выбирайте компоненты, изучайте примеры и собирайте своё.',
+		components: 'компонентов',
+		searchLabel: 'Поиск компонентов',
+		sortLabel: 'Сортировка компонентов',
+		viewLabel: 'Вид каталога',
+		filters: 'Фильтры',
+		search: 'Поиск компонентов…',
+		clearSearch: 'Очистить поиск',
+		gridView: 'Плитка',
+		listView: 'Список',
+		sortName: 'По названию',
+		sortCategory: 'По категории',
+		sortRecent: 'Порядок каталога',
+		showFilters: 'Показать фильтры',
+		hideFilters: 'Скрыть фильтры',
+		categories: 'Категории',
+		tags: 'Домены',
+		clearFilters: 'Сбросить все фильтры',
+		stats: {
+			one: 'Показано {filtered} из {count} компонента',
+			few: 'Показано {filtered} из {count} компонентов',
+			many: 'Показано {filtered} из {count} компонентов',
+			other: 'Показано {filtered} из {count} компонента'
+		},
+		preview: 'Предпросмотр',
+		aiGenerated: 'Создано ИИ',
+		open: 'Открыть',
+		emptyTitle: 'Компоненты не найдены',
+		emptyText: 'Измените запрос или фильтры'
+	}
+} as const;

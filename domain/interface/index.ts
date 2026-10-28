@@ -51,8 +51,9 @@ export type {
 	RecipeStoryControls,
 	RecipeStoryRunner,
 	RecipeStylistHero,
-	RecipeStylistHeroIntro,
+	RecipeStylistLanding,
 	RecipeStylistMission,
+	RecipeStylistPreview,
 	RecipeTaxonomyBreadcrumbs,
 	RecipeWorkspaceHints
 } from './recipe';

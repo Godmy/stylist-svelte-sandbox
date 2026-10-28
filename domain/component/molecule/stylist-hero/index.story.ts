@@ -1,11 +1,11 @@
-import StylistHeroIntro from '$stylist/domain/component/molecule/stylist-hero-intro/index.svelte';
-import type { RecipeStylistHeroIntro } from '$stylist/domain/interface/recipe/stylist-hero-intro';
+import StylistHero from '$stylist/domain/component/molecule/stylist-hero/index.svelte';
+import type { RecipeStylistHero } from '$stylist/domain/interface/recipe/stylist-hero';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 
 /** Landing hero; the AI model list defaults to the component's own list. */
 export default {
-	component: StylistHeroIntro,
-	title: 'StylistHeroIntro',
+	component: StylistHero,
+	title: 'StylistHero',
 	description: 'Landing hero with the product badge, headline, counters and AI model credits.',
 	args: {
 		title: 'Stylist Svelte',
@@ -28,4 +28,4 @@ export default {
 		storyModuleCount: { type: 'number', min: 0 }
 	},
 	layout: 'fullscreen'
-} satisfies ContractStory<RecipeStylistHeroIntro>;
+} satisfies ContractStory<RecipeStylistHero>;

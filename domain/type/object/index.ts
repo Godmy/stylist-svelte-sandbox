@@ -40,4 +40,5 @@ export type { SamoRule } from './samo-rule';
 export type { SamoSnippet } from './samo-snippet';
 export type { SamoStep } from './samo-step';
 export type { SamoTokenLoad } from './samo-token-load';
+export type { StylistPreviewStory } from './stylist-preview-story';
 export type { TabFile } from './tab-file';

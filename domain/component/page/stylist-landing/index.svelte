@@ -2,9 +2,9 @@
 	import CtaButtons from '$stylist/domain/component/molecule/cta-buttons/index.svelte';
 	import FeatureGrid from '$stylist/domain/component/molecule/feature-grid/index.svelte';
 	import SamoMethodology from '$stylist/domain/component/organism/samo-methodology/index.svelte';
-	import StylistHeroIntro from '$stylist/domain/component/molecule/stylist-hero-intro/index.svelte';
+	import StylistHero from '$stylist/domain/component/molecule/stylist-hero/index.svelte';
 	import StylistMission from '$stylist/domain/component/molecule/stylist-mission/index.svelte';
-	import type { RecipeStylistHero } from '$stylist/domain/interface/recipe/stylist-hero';
+	import type { RecipeStylistLanding } from '$stylist/domain/interface/recipe/stylist-landing';
 
 	let {
 		rootDomainCount = 0,
@@ -14,12 +14,12 @@
 		onOpenWorkspace,
 		onOpenGuide,
 		class: className = ''
-	}: RecipeStylistHero = $props();
+	}: RecipeStylistLanding = $props();
 </script>
 
 <section class={`c-stylist-landing ${className}`} aria-label="Stylist landing">
 	<div class="landing-flow">
-		<StylistHeroIntro {rootDomainCount} {storyModuleCount} />
+		<StylistHero {rootDomainCount} {storyModuleCount} />
 
 		<div class="content-band content-band--cta">
 			<div class="content-shell content-shell--narrow">

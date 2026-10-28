@@ -34,6 +34,7 @@
 		initialDomain,
 		initialCluster,
 		initialJoint,
+		initialEntityPath,
 		initialPreviewMode,
 		onSelectionChange,
 		storyDevice = $bindable('desktop'),
@@ -51,6 +52,7 @@
 			initialDomain,
 			initialCluster,
 			initialJoint,
+			initialEntityPath,
 			initialPreviewMode
 		})
 	);
@@ -194,8 +196,11 @@
 		border-right: 0;
 	}
 	.viewer-chrome {
+		position: relative;
+		z-index: 1;
 		min-width: 0;
-		overflow: hidden;
+		/* Search results extend over the preview below this row. */
+		overflow: visible;
 	}
 	.fullscreen {
 		grid-template-columns: 0 minmax(0, 1fr);

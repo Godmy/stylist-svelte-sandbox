@@ -2,7 +2,7 @@
 	import AnimatedBackground from '$stylist/animation/component/atom/animated-background/index.svelte';
 	import AnimatedDigit from '$stylist/animation/component/atom/animated-digit/index.svelte';
 	import BaseIcon from '$stylist/svg/component/atom/icon/index.svelte';
-	import type { RecipeStylistHeroIntro } from '$stylist/domain/interface/recipe/stylist-hero-intro';
+	import type { RecipeStylistHero } from '$stylist/domain/interface/recipe/stylist-hero';
 	import heartIconUrl from '$stylist/svg/data/icon/heart/index.svg?url';
 
 	const StylistMark = 'stylist';
@@ -50,7 +50,7 @@
 			}
 		],
 		class: className = ''
-	}: RecipeStylistHeroIntro = $props();
+	}: RecipeStylistHero = $props();
 
 	// Counts up from 0 on every page load.
 	const formatCount = (value: number) => Math.round(value).toString();

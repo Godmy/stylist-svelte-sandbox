@@ -162,7 +162,7 @@
 					{
 						name: 'molecule',
 						description: 'Combinations of atoms with one clear purpose.',
-						examples: ['cta-buttons', 'feature-grid', 'stylist-hero-intro']
+						examples: ['cta-buttons', 'feature-grid', 'stylist-hero']
 					},
 					{
 						name: 'organism',
@@ -180,7 +180,7 @@
 						examples: ['domain-landing', 'domain-playground']
 					}
 				],
-				code: 'domain/component/\n  page/domain-landing           ← this page\n  organism/stylist-hero         ← the landing flow\n  organism/samo-methodology     ← this whole section\n  molecule/samo-nested-methods  ← you are here\n  molecule/stylist-hero-intro   ← the hero above\nsvg/component/atom/icon         ← every icon on the page',
+				code: 'domain/component/\n  page/domain-landing           ← this page\n  page/stylist-landing         ← the landing flow\n  organism/samo-methodology     ← this whole section\n  molecule/samo-nested-methods  ← you are here\n  molecule/stylist-hero   ← the hero above\nsvg/component/atom/icon         ← every icon on the page',
 				note: 'A self-analysis pass estimates component complexity, looks for duplicates and recommends moving a component up or down a level.'
 			},
 			{

@@ -2,34 +2,68 @@ import { DOMAIN_SCREEN } from '$stylist/domain/const/object/domain-screen';
 import type { TypeDomainScreen } from '$stylist/domain/type/alias/domain-screen';
 import type { RecipeDomainPlayground } from '$stylist/domain/interface/recipe/domain-playground';
 
-export function createDomainPlaygroundState(
-	initialScreen: RecipeDomainPlayground['initialScreen'] = DOMAIN_SCREEN.LANDING
-) {
-	let currentScreen = $state<TypeDomainScreen>(initialScreen);
+export function createDomainPlaygroundState(getProps: () => RecipeDomainPlayground) {
+	const props = $derived(getProps());
+	let currentScreen = $state<TypeDomainScreen>(getProps().initialScreen ?? DOMAIN_SCREEN.LANDING);
 	let isSettingsOpen = $state(false);
+	let selectedStoryPath = $state('');
+	let catalogVisited = $state(getProps().initialScreen === DOMAIN_SCREEN.COMPONENTS);
+	let settingsReturnRoute = '/';
 
-	function handleDomainToggle() {
-		currentScreen = DOMAIN_SCREEN.DOMAIN;
+	function applyRoute(route: string) {
+		const url = new URL(route, 'https://stylist.invalid');
+		const path = url.pathname.replace(/\/$/, '') || '/';
+		isSettingsOpen = path === '/settings';
+		if (isSettingsOpen) return;
+		settingsReturnRoute = route;
+		currentScreen =
+			path === '/components'
+				? DOMAIN_SCREEN.COMPONENTS
+				: path === '/playground'
+					? DOMAIN_SCREEN.DOMAIN
+					: path === '/about'
+						? DOMAIN_SCREEN.HOW_IT_WORKS
+						: DOMAIN_SCREEN.LANDING;
+		selectedStoryPath =
+			path === '/playground' ? url.searchParams.get('component') || 'html/component/atom/h1' : '';
+		if (currentScreen === DOMAIN_SCREEN.COMPONENTS) catalogVisited = true;
 	}
 
-	function handleLandingToggle() {
-		currentScreen = DOMAIN_SCREEN.LANDING;
-	}
+	if (getProps().route) applyRoute(getProps().route!);
+	$effect(() => {
+		if (props.route) applyRoute(props.route);
+	});
 
-	function handleHowItWorksToggle() {
-		currentScreen = DOMAIN_SCREEN.HOW_IT_WORKS;
-		// The guide is a long read: always open it from the top, wherever the landing was scrolled.
-		if (typeof window !== 'undefined') {
-			window.scrollTo({ top: 0 });
+	function navigate(route: string) {
+		if (props.onNavigate) {
+			if (route !== props.route) props.onNavigate(route);
+		} else {
+			applyRoute(route);
+			if (typeof window !== 'undefined') window.scrollTo({ top: 0 });
 		}
 	}
 
-	function handleSettingsToggle() {
-		isSettingsOpen = !isSettingsOpen;
+	function handleComponentsToggle() {
+		navigate('/components');
 	}
-
+	function openStory(path: string) {
+		navigate('/playground?component=' + encodeURIComponent(path));
+	}
+	function handleDomainToggle() {
+		navigate('/playground');
+	}
+	function handleLandingToggle() {
+		navigate('/');
+	}
+	function handleHowItWorksToggle() {
+		navigate('/about');
+	}
+	function handleSettingsToggle() {
+		if (isSettingsOpen) closeSettings();
+		else navigate('/settings');
+	}
 	function closeSettings() {
-		isSettingsOpen = false;
+		navigate(settingsReturnRoute);
 	}
 
 	function handleManifestReload() {
@@ -39,12 +73,20 @@ export function createDomainPlaygroundState(
 	}
 
 	return {
+		get catalogVisited() {
+			return catalogVisited;
+		},
 		get currentScreen() {
 			return currentScreen;
 		},
 		get isSettingsOpen() {
 			return isSettingsOpen;
 		},
+		get selectedStoryPath() {
+			return selectedStoryPath;
+		},
+		handleComponentsToggle,
+		openStory,
 		handleDomainToggle,
 		handleLandingToggle,
 		handleHowItWorksToggle,

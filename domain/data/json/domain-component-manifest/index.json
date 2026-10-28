@@ -1,0 +1,1033 @@
+{
+  "tree": {
+    "animation": {
+      "component": {
+        "atom": [
+          "animated-background",
+          "animated-digit",
+          "arc-letter",
+          "beach-water",
+          "css-3d-cube",
+          "floating-icon",
+          "layout-transformation",
+          "letter-arc-path",
+          "marquee-ticker",
+          "palm-sway",
+          "progress-bar",
+          "scroll-phase-debug",
+          "skeleton",
+          "spinner",
+          "tooltip",
+          "transformable",
+          "turtle-crawl",
+          "turtle-logo-mark",
+          "vector-scene",
+          "wave-surf",
+          "whale-spout"
+        ],
+        "molecule": [
+          "atomic-tier-card",
+          "carousel-zoom",
+          "loading",
+          "phrase-arc-flight",
+          "tilt-card"
+        ],
+        "organism": [
+          "atomic-principles-showcase",
+          "component-library-stats",
+          "media-slider"
+        ],
+        "page": [
+          "tilt-showcase"
+        ]
+      }
+    },
+    "audio": {
+      "component": {
+        "atom": [
+          "audio-record-button",
+          "audio-slider",
+          "audio-visualizer"
+        ],
+        "organism": [
+          "audio-player",
+          "transcriber"
+        ]
+      }
+    },
+    "button": {
+      "component": {
+        "atom": [
+          "animated-button",
+          "arrow-button",
+          "button",
+          "button-composed",
+          "close-button",
+          "copy-button",
+          "fill-button",
+          "follow-button",
+          "glow-button",
+          "icon-button",
+          "morph-button",
+          "selection-button",
+          "shine-button",
+          "split-button",
+          "tool-button",
+          "whatsapp-button"
+        ]
+      }
+    },
+    "calendar": {
+      "component": {
+        "atom": [
+          "calendar-day",
+          "time-slot"
+        ],
+        "molecule": [
+          "calendar-grid",
+          "date-picker",
+          "date-time-picker",
+          "form-date-picker",
+          "month-range-picker",
+          "time-picker",
+          "timeline"
+        ],
+        "organism": [
+          "calendar",
+          "calendar-range",
+          "calendar-view",
+          "date-pair-picker",
+          "date-range-picker",
+          "date-time-range-picker",
+          "event-calendar",
+          "mini-calendar",
+          "time-grid",
+          "timetable"
+        ]
+      }
+    },
+    "canvas": {
+      "component": {
+        "molecule": [
+          "canvas-toolbar",
+          "color-palette",
+          "drawing-overlay",
+          "drawing-surface",
+          "screenshot-selector"
+        ],
+        "organism": [
+          "collaborative-editor",
+          "shared-canvas"
+        ]
+      }
+    },
+    "chart": {
+      "component": {
+        "atom": [
+          "chart-axis-x",
+          "chart-axis-y",
+          "chart-axis-z",
+          "chart-background",
+          "chart-name",
+          "chart-polyline",
+          "metric-bar"
+        ],
+        "molecule": [
+          "bar-chart",
+          "chart-canvas",
+          "chart-legend",
+          "chart-legend-band",
+          "chart-legend-bar",
+          "metric-bars-card",
+          "pie-chart",
+          "range-bars-chart",
+          "vertical-bars-chart"
+        ],
+        "organism": [
+          "analytics-chart",
+          "canvas-chart",
+          "chart",
+          "critical-path-timeline",
+          "exchange-oracle-forecast",
+          "expert-agreement-radar",
+          "expert-spread-matrix",
+          "heatmap",
+          "legend-band-diagram",
+          "legend-bar-diagram",
+          "line-chart",
+          "outlier-constellation",
+          "risk-impact-map",
+          "scatter-plot",
+          "wideband-delphi-diagram"
+        ]
+      }
+    },
+    "control": {
+      "component": {
+        "atom": [
+          "action-segmented-control",
+          "autocomplete-dropdown",
+          "checkbox",
+          "chip",
+          "radio",
+          "stepper",
+          "switch",
+          "tag",
+          "tick",
+          "toggle-group-item",
+          "toggle-group-root",
+          "zoom-controls"
+        ],
+        "molecule": [
+          "combobox",
+          "icon-toolbar",
+          "range-input",
+          "range-slider",
+          "selector",
+          "slider-with-input"
+        ],
+        "organism": [
+          "accessibility-toolbar",
+          "multi-select",
+          "shortcuts-panel"
+        ]
+      }
+    },
+    "development": {
+      "component": {
+        "atom": [
+          "cube-control",
+          "npm-badge",
+          "syntax-highlighted-code"
+        ],
+        "molecule": [
+          "code-block",
+          "code-diff",
+          "code-editor",
+          "component-preview",
+          "documentation-block",
+          "privacy-settings"
+        ],
+        "organism": [
+          "code-viewer",
+          "content-editor",
+          "debug-console",
+          "development-error-boundary",
+          "enhanced-export-panel",
+          "error-boundary",
+          "generic-code-viewer",
+          "live-code-section",
+          "mock-data-selector",
+          "page-builder"
+        ]
+      }
+    },
+    "dialog": {
+      "component": {
+        "atom": [
+          "accordion-layout",
+          "breadcrumb-dropdown",
+          "breadcrumb-link",
+          "breadcrumb-separator",
+          "breadcrumbs",
+          "tab",
+          "tab-list",
+          "tab-panel",
+          "tab-panels"
+        ],
+        "molecule": [
+          "accordion",
+          "accordion-group",
+          "breadcrumbs",
+          "confirmation-dialog",
+          "dialog-confirm",
+          "general-toolbar",
+          "popover",
+          "stepper",
+          "stylist-tab",
+          "tabs"
+        ],
+        "organism": [
+          "component-info-card",
+          "dialog",
+          "modal",
+          "simple-modal",
+          "text-input-dialog"
+        ]
+      }
+    },
+    "domain": {
+      "component": {
+        "atom": [
+          "domain-entity",
+          "domain-list-header",
+          "domain-search-field",
+          "domain-search-toggle",
+          "story-control"
+        ],
+        "molecule": [
+          "cluster-toolbar",
+          "cta-buttons",
+          "device-viewport",
+          "domain-list",
+          "domain-menu",
+          "domain-search",
+          "domain-toolbar",
+          "feature-grid",
+          "joint-tab-buttons",
+          "joint-toolbar",
+          "json-tree-viewer",
+          "preview-settings",
+          "samo-adoption-roadmap",
+          "samo-architecture-compare",
+          "samo-assembly-pipeline",
+          "samo-change-flow",
+          "samo-extension-walkthrough",
+          "samo-guide-hero",
+          "samo-local-dev",
+          "samo-morphology-box",
+          "samo-nested-methods",
+          "samo-overview",
+          "samo-platform-stack",
+          "samo-practice",
+          "samo-risk-board",
+          "samo-solid-grid",
+          "samo-umbrella-map",
+          "story-canvas",
+          "story-controls",
+          "stylist-hero",
+          "stylist-mission",
+          "taxonomy-breadcrumbs",
+          "workspace-hints"
+        ],
+        "organism": [
+          "device-frame",
+          "domain-ai-agent",
+          "domain-cluster-balance",
+          "domain-component-import-diagnostics",
+          "domain-explorer",
+          "domain-file-domain-grid",
+          "domain-file-preview",
+          "domain-settings",
+          "domain-sidebar",
+          "markdown-renderer",
+          "samo-methodology",
+          "story-runner"
+        ],
+        "page": [
+          "domain-how-it-works",
+          "domain-landing",
+          "domain-playground",
+          "stylist-landing",
+          "stylist-preview"
+        ]
+      }
+    },
+    "erd": {
+      "component": {
+        "atom": [
+          "schema-dependency",
+          "schema-table-field",
+          "schema-table-header"
+        ],
+        "molecule": [
+          "schema-table"
+        ],
+        "organism": [
+          "schema",
+          "schema-header",
+          "schema-text",
+          "schema-tool",
+          "schema-view"
+        ]
+      }
+    },
+    "file": {
+      "component": {
+        "atom": [
+          "file-input"
+        ],
+        "molecule": [
+          "attachment-preview",
+          "data-exporter",
+          "download-card",
+          "file-upload",
+          "quantity-selector"
+        ],
+        "organism": [
+          "document-preview",
+          "drag-drop-file-upload",
+          "drop-zone",
+          "export-panel",
+          "file-browser",
+          "file-explorer",
+          "file-list-item",
+          "file-manager",
+          "media-library",
+          "upload-progress",
+          "zip-viewer"
+        ],
+        "page": [
+          "file-storage"
+        ]
+      }
+    },
+    "form": {
+      "component": {
+        "atom": [
+          "form-footer",
+          "form-header"
+        ],
+        "molecule": [
+          "checkbox-group",
+          "form-selection",
+          "toggle-button-group",
+          "validation"
+        ],
+        "organism": [
+          "address-form",
+          "form-with-validation",
+          "login-form",
+          "rating-feedback",
+          "schema-form-dialog",
+          "screen-reader",
+          "search-form"
+        ],
+        "page": [
+          "feedback-scenario",
+          "support-counter"
+        ]
+      }
+    },
+    "graph": {
+      "component": {
+        "atom": [
+          "graph-dot",
+          "graph-edge",
+          "graph-node",
+          "graph-tooltip",
+          "node-icon"
+        ],
+        "molecule": [
+          "field-highlighter",
+          "graph-cluster-filter",
+          "graph-legend",
+          "graphviz-directed-edge",
+          "ontology-edge-component",
+          "ontology-node-component",
+          "scene-camera-control"
+        ],
+        "organism": [
+          "scene",
+          "zwicky-scene"
+        ]
+      }
+    },
+    "html": {
+      "component": {
+        "atom": [
+          "a",
+          "abbr",
+          "area",
+          "b",
+          "base",
+          "bdi",
+          "bdo",
+          "br",
+          "button",
+          "canvas",
+          "cite",
+          "code",
+          "col",
+          "data",
+          "del",
+          "dfn",
+          "em",
+          "embed",
+          "h1",
+          "h2",
+          "h3",
+          "h4",
+          "h5",
+          "h6",
+          "hr",
+          "i",
+          "iframe",
+          "img",
+          "input",
+          "input-button",
+          "input-checkbox",
+          "input-color",
+          "input-date",
+          "input-datetime-local",
+          "input-email",
+          "input-file",
+          "input-hidden",
+          "input-image",
+          "input-month",
+          "input-number",
+          "input-password",
+          "input-radio",
+          "input-range",
+          "input-reset",
+          "input-search",
+          "input-submit",
+          "input-tel",
+          "input-text",
+          "input-time",
+          "input-url",
+          "input-week",
+          "ins",
+          "kbd",
+          "label",
+          "legend",
+          "link",
+          "mark",
+          "math",
+          "meta",
+          "meter",
+          "noscript",
+          "object",
+          "option",
+          "output",
+          "p",
+          "pre",
+          "progress",
+          "q",
+          "raw-text",
+          "rp",
+          "rt",
+          "s",
+          "samp",
+          "script",
+          "selectedcontent",
+          "slot",
+          "small",
+          "source",
+          "span",
+          "strong",
+          "style",
+          "sub",
+          "summary",
+          "sup",
+          "svg",
+          "textarea",
+          "time",
+          "title",
+          "track",
+          "u",
+          "var",
+          "wbr"
+        ],
+        "molecule": [
+          "audio",
+          "colgroup",
+          "datalist",
+          "details",
+          "dl",
+          "fieldset",
+          "figure",
+          "hgroup",
+          "map",
+          "menu",
+          "ol",
+          "optgroup",
+          "picture",
+          "ruby",
+          "select",
+          "table",
+          "tbody",
+          "tfoot",
+          "thead",
+          "tr",
+          "ul",
+          "video"
+        ],
+        "organism": [
+          "address",
+          "article",
+          "aside",
+          "blockquote",
+          "caption",
+          "dd",
+          "dialog",
+          "div",
+          "dt",
+          "figcaption",
+          "footer",
+          "form",
+          "header",
+          "li",
+          "main",
+          "nav",
+          "search",
+          "section",
+          "td",
+          "template",
+          "th"
+        ],
+        "template": [
+          "body",
+          "head",
+          "node"
+        ],
+        "page": [
+          "html"
+        ]
+      }
+    },
+    "idef-zero": {
+      "component": {
+        "atom": [
+          "idef0-connector",
+          "idef0-function-box",
+          "idef0-port-label"
+        ],
+        "molecule": [
+          "idef0-black-box",
+          "idef0-inputs",
+          "idef0-outputs"
+        ],
+        "organism": [
+          "idef0-decomposition",
+          "idef0-diagram"
+        ]
+      }
+    },
+    "image": {
+      "component": {
+        "atom": [
+          "image",
+          "image-caption"
+        ],
+        "molecule": [
+          "card",
+          "divider-heading-image-text",
+          "media-thumbnail"
+        ],
+        "organism": [
+          "canvas-image-editor",
+          "image-caption-editor-card",
+          "image-gallery"
+        ]
+      }
+    },
+    "input": {
+      "component": {
+        "atom": [
+          "characters-count",
+          "input-addon",
+          "input-error",
+          "input-helper",
+          "input-label",
+          "input-pin-digit",
+          "input-stepper"
+        ],
+        "molecule": [
+          "checkbox-group",
+          "input-double",
+          "input-email",
+          "input-group",
+          "input-name",
+          "input-password",
+          "input-text",
+          "number-input",
+          "phone-number-input",
+          "radio-button-group",
+          "radio-group",
+          "rich-text-format-toolbar",
+          "text-area"
+        ],
+        "organism": [
+          "rich-text-editor",
+          "tag-input"
+        ]
+      }
+    },
+    "layout": {
+      "component": {
+        "atom": [
+          "aspect-ratio",
+          "background",
+          "border",
+          "container",
+          "divider",
+          "stack"
+        ],
+        "molecule": [
+          "centered-layout",
+          "container-query",
+          "feature-items",
+          "grid",
+          "nav-bar",
+          "overlay-layout",
+          "section-heading",
+          "split-layout",
+          "step-list"
+        ],
+        "organism": [
+          "cards-section",
+          "comparison-section",
+          "definition-section",
+          "hero-section",
+          "result-section",
+          "site-navigation-drawer",
+          "steps-section"
+        ],
+        "template": [
+          "landing-template",
+          "page-shell"
+        ],
+        "page": [
+          "landing"
+        ]
+      }
+    },
+    "list": {
+      "component": {
+        "atom": [
+          "drag-and-drop",
+          "list-item-marker"
+        ],
+        "molecule": [
+          "base-card",
+          "drag-and-drop-list"
+        ],
+        "organism": [
+          "sortable-list"
+        ]
+      }
+    },
+    "localization": {
+      "component": {
+        "atom": [
+          "country-flag",
+          "locale-provider"
+        ],
+        "molecule": [
+          "locale-preview"
+        ],
+        "organism": [
+          "language-selector",
+          "locale-switcher",
+          "translation-editor"
+        ]
+      }
+    },
+    "mathml": {
+      "component": {
+        "atom": [
+          "mathml-annotation",
+          "mathml-annotation-xml",
+          "mathml-maction",
+          "mathml-merror",
+          "mathml-mfrac",
+          "mathml-mi",
+          "mathml-mmultiscripts",
+          "mathml-mn",
+          "mathml-mo",
+          "mathml-mover",
+          "mathml-mpadded",
+          "mathml-mphantom",
+          "mathml-mprescripts",
+          "mathml-mroot",
+          "mathml-mrow",
+          "mathml-ms",
+          "mathml-mspace",
+          "mathml-msqrt",
+          "mathml-mstyle",
+          "mathml-msub",
+          "mathml-msubsup",
+          "mathml-msup",
+          "mathml-mtable",
+          "mathml-mtd",
+          "mathml-mtext",
+          "mathml-mtr",
+          "mathml-munder",
+          "mathml-munderover",
+          "mathml-semantics"
+        ],
+        "molecule": [
+          "mathml-formula"
+        ],
+        "organism": [
+          "mathml-matrix"
+        ],
+        "template": [
+          "mathml-node"
+        ]
+      }
+    },
+    "menu": {
+      "component": {
+        "atom": [
+          "burger-menu",
+          "mega-menu-link",
+          "mega-menu-trigger",
+          "menu-item"
+        ],
+        "molecule": [
+          "dropdown-menu",
+          "mega-menu-column",
+          "mega-menu-feature",
+          "mega-menu-panel"
+        ],
+        "organism": [
+          "app-header",
+          "drawer",
+          "mega-menu",
+          "site-menu"
+        ]
+      }
+    },
+    "navigation": {
+      "component": {
+        "atom": [
+          "floating-action-button"
+        ],
+        "molecule": [
+          "navigation-item",
+          "section-bar"
+        ],
+        "organism": [
+          "bottom-sheet",
+          "navigation-drawer",
+          "sidebar",
+          "top-app-bar",
+          "workspace-menu"
+        ],
+        "template": [
+          "fragment"
+        ],
+        "page": [
+          "activity",
+          "navigation-graph",
+          "navigation-patterns"
+        ]
+      }
+    },
+    "notification": {
+      "component": {
+        "atom": [
+          "alert",
+          "count-badge",
+          "counter",
+          "error-message",
+          "message-timestamp",
+          "notification-badge"
+        ],
+        "molecule": [
+          "notification-settings",
+          "toast-stack"
+        ],
+        "organism": [
+          "notification-center",
+          "notification-list",
+          "scheduled-notification"
+        ]
+      }
+    },
+    "pager": {
+      "component": {
+        "atom": [
+          "page-button",
+          "page-ellipsis"
+        ],
+        "organism": [
+          "pagination"
+        ]
+      }
+    },
+    "search": {
+      "component": {
+        "atom": [
+          "auto-search",
+          "search-suggestion"
+        ],
+        "molecule": [
+          "search-bar"
+        ],
+        "organism": [
+          "auto-complete",
+          "search-form",
+          "search-results"
+        ]
+      }
+    },
+    "svg": {
+      "component": {
+        "atom": [
+          "flag",
+          "icon",
+          "svg",
+          "svg-circle",
+          "svg-group",
+          "svg-line",
+          "svg-path",
+          "svg-polygon",
+          "svg-polyline",
+          "svg-rect",
+          "svg-text"
+        ]
+      }
+    },
+    "table": {
+      "component": {
+        "atom": [
+          "cell",
+          "cell-header",
+          "cell-icon",
+          "cell-pill",
+          "cell-text",
+          "row",
+          "table"
+        ],
+        "molecule": [
+          "column",
+          "column-manager",
+          "comparison-table",
+          "filter-bar",
+          "filter-pills",
+          "filter-text",
+          "row-expandable"
+        ],
+        "organism": [
+          "data-table",
+          "data-table-shell",
+          "table-list-panel"
+        ]
+      }
+    },
+    "theme": {
+      "component": {
+        "atom": [
+          "color-swatch",
+          "theme-consumer",
+          "theme-mode-toggle",
+          "theme-provider"
+        ],
+        "molecule": [
+          "color-picker",
+          "story",
+          "theme-context",
+          "theme-surface",
+          "theme-switcher"
+        ],
+        "organism": [
+          "theme-palette",
+          "theme-settings"
+        ]
+      }
+    },
+    "token": {
+      "component": {
+        "atom": [
+          "card-close",
+          "card-open",
+          "card-shell",
+          "orbit-background",
+          "orbit-token-node",
+          "token-chip-set",
+          "token-control-base",
+          "token-icon",
+          "token-radio",
+          "token-range",
+          "token-select",
+          "token-text"
+        ],
+        "molecule": [
+          "domain-descriptor-panel",
+          "orbit",
+          "ribbon-menu",
+          "token",
+          "token-setting"
+        ],
+        "organism": [
+          "domain-builder",
+          "orbit-contract-l5",
+          "prismatic-orbit-l6",
+          "token-settings"
+        ]
+      }
+    },
+    "tree": {
+      "component": {
+        "molecule": [
+          "flat-tree",
+          "tree-node-item",
+          "tree-viewer"
+        ]
+      }
+    },
+    "typography": {
+      "component": {
+        "atom": [
+          "badge",
+          "blockquote",
+          "heading",
+          "link",
+          "text"
+        ],
+        "molecule": [
+          "badge-group",
+          "paragraph",
+          "rich-text"
+        ]
+      }
+    },
+    "video": {
+      "component": {
+        "molecule": [
+          "video-player",
+          "video-scene"
+        ]
+      }
+    },
+    "webgl": {
+      "component": {
+        "atom": [
+          "gl-canvas"
+        ],
+        "molecule": [
+          "concentric-circles-scene",
+          "hyperspace-scene",
+          "interference-field-scene",
+          "turtle-dissolve-scene"
+        ],
+        "organism": [
+          "scene-launcher"
+        ],
+        "page": [
+          "shader-field"
+        ]
+      }
+    },
+    "workspace": {
+      "component": {
+        "atom": [
+          "grid-pattern",
+          "node-connection",
+          "node-header",
+          "node-port",
+          "node-property",
+          "stage",
+          "viewport",
+          "workspace-canvas"
+        ],
+        "molecule": [
+          "graph-node-card",
+          "node-port-group",
+          "node-properties",
+          "workspace-toolbar"
+        ],
+        "organism": [
+          "minimap",
+          "stylist-graph-workspace",
+          "workspace",
+          "workspace-node",
+          "workspace-palette"
+        ]
+      }
+    }
+  }
+}

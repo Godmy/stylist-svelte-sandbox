@@ -50,8 +50,9 @@ export {
 	StoryControls,
 	StoryRunner,
 	StylistHero,
-	StylistHeroIntro,
+	StylistLanding,
 	StylistMission,
+	StylistPreview,
 	TaxonomyBreadcrumbs,
 	WorkspaceHints
 } from './component';
@@ -61,18 +62,22 @@ export {
 	DOMAIN_CLUSTER,
 	DOMAIN_REGIME,
 	DOMAIN_SCREEN,
+	DOMAIN_STYLIST_PREVIEW_MESSAGE,
 	FAMILY_ICON,
 	JOINT_TOOLBAR_ITEMS,
 	PRESET_FILE,
 	PREVIEW_CONTROLS,
 	STYLIST_GRAPH_WORKSPACE_SEED,
-	TOKEN_CONTROLLER_TYPE
+	TOKEN_CONTROLLER_TYPE,
+	TOKEN_STYLIST_PREVIEW_SORT_BY,
+	TOKEN_STYLIST_PREVIEW_VIEW_MODE
 } from './const';
 export {
 	captureElementImage,
 	cloneStyledElement,
 	countDomainStories,
 	createClusterToolbarItems,
+	createStylistPreviewCatalogState,
 	expandComponentTree,
 	normalizeDomainTree,
 	resolveComponentDescriptor,
@@ -123,6 +128,9 @@ export type {
 	SamoSnippet,
 	SamoStep,
 	SamoTokenLoad,
+	StylistPreviewSortBy,
+	StylistPreviewStory,
+	StylistPreviewViewMode,
 	TabFile,
 	TokenControllerType,
 	TypeDomainComponentDescriptor,
@@ -189,8 +197,9 @@ export type {
 	RecipeStoryControls,
 	RecipeStoryRunner,
 	RecipeStylistHero,
-	RecipeStylistHeroIntro,
+	RecipeStylistLanding,
 	RecipeStylistMission,
+	RecipeStylistPreview,
 	RecipeTaxonomyBreadcrumbs,
 	RecipeWorkspaceHints,
 	SlotDomainEntity

@@ -1144,7 +1144,7 @@
           "samo-umbrella-map": "DEFINED_STORY_COMPONENT",
           "story-canvas": "DEFINED_RENDERED_STORY_COMPONENT",
           "story-controls": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
-          "stylist-hero-intro": "DEFINED_STORY_COMPONENT",
+          "stylist-hero": "DEFINED_STORY_COMPONENT",
           "stylist-mission": "DEFINED_STORY_COMPONENT",
           "taxonomy-breadcrumbs": "DEFINED_STORY_COMPONENT",
           "workspace-hints": "DEFINED_RENDERED_STORY_COMPONENT"
@@ -1161,20 +1161,23 @@
           "domain-sidebar": "DEFINED_RENDERED_STORY_COMPONENT",
           "markdown-renderer": "DEFINED_REACTIVE_STORY_COMPONENT",
           "samo-methodology": "DEFINED_STORY_COMPONENT",
-          "stylist-hero": "DEFINED_STORY_COMPONENT"
+          "story-runner": "DEFINED_REACTIVE_STORY_COMPONENT"
         },
         "page": {
           "domain-how-it-works": "DEFINED_STORY_COMPONENT",
           "domain-landing": "DEFINED_STORY_COMPONENT",
           "domain-playground": "DEFINED_REACTIVE_STORY_COMPONENT",
-          "story-runner": "DEFINED_REACTIVE_STORY_COMPONENT"
+          "stylist-landing": "DEFINED_STORY_COMPONENT",
+          "stylist-preview": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT"
         }
       },
       "const": {
         "array": {
           "device-frame-viewport": "INDEXED_CONST",
           "domain-cluster": "INDEXED_CONST",
-          "file": "INDEXED_CONST"
+          "file": "INDEXED_CONST",
+          "stylist-preview-sort-by": "INDEXED_CONST",
+          "stylist-preview-view-mode": "INDEXED_CONST"
         },
         "map": {
           "controller-type": "INDEX_BARREL"
@@ -1188,7 +1191,8 @@
           "file": "INDEXED_CONST"
         },
         "record": {
-          "family-icon": "INDEXED_CONST"
+          "family-icon": "INDEXED_CONST",
+          "stylist-preview-message": "INDEXED_CONST"
         },
         "value": {
           "domain-regime": "INDEXED_CONST",
@@ -1224,6 +1228,9 @@
         },
         "serialize": {
           "unknown-error": "INDEXED_FUNCTION"
+        },
+        "state": {
+          "stylist-preview-catalog": "REACTIVE_BARREL"
         },
         "transform": {
           "cluster-toolbar-items": "INDEXED_FUNCTION",
@@ -1287,8 +1294,9 @@
           "story-controls": "INDEXED_INTERFACE",
           "story-runner": "INDEXED_INTERFACE",
           "stylist-hero": "INDEXED_INTERFACE",
-          "stylist-hero-intro": "INDEXED_INTERFACE",
+          "stylist-landing": "INDEXED_INTERFACE",
           "stylist-mission": "INDEXED_INTERFACE",
+          "stylist-preview": "INDEXED_INTERFACE",
           "taxonomy-breadcrumbs": "INDEXED_INTERFACE",
           "workspace-hints": "INDEXED_INTERFACE"
         },
@@ -1299,6 +1307,7 @@
       "test": {
         "render": {
           "domain-file-preview": "FUNCTION_TEST",
+          "domain-menu": "FUNCTION_TEST",
           "joint-tab-buttons": "FUNCTION_TEST",
           "preview-environment": "FUNCTION_TEST",
           "private-story-contract": "FUNCTION_TEST",
@@ -1319,7 +1328,8 @@
           "preview-skin": "FUNCTION_TEST",
           "story-controls": "FUNCTION_TEST",
           "story-json": "FUNCTION_TEST",
-          "styled-element": "FUNCTION_TEST"
+          "styled-element": "FUNCTION_TEST",
+          "stylist-preview-catalog": "FUNCTION_TEST"
         }
       },
       "type": {
@@ -1329,7 +1339,9 @@
           "domain-screen": "INDEXED_TYPE",
           "domain-tree-input": "INDEXED_TYPE",
           "file": "INDEXED_TYPE",
-          "file-preset": "INDEXED_TYPE"
+          "file-preset": "INDEXED_TYPE",
+          "stylist-preview-sort-by": "INDEXED_TYPE",
+          "stylist-preview-view-mode": "INDEXED_TYPE"
         },
         "object": {
           "ai-model-info": "INDEXED_TYPE",
@@ -1373,6 +1385,7 @@
           "samo-snippet": "INDEXED_TYPE",
           "samo-step": "INDEXED_TYPE",
           "samo-token-load": "INDEXED_TYPE",
+          "stylist-preview-story": "INDEXED_TYPE",
           "tab-file": "INDEXED_TYPE"
         }
       }
@@ -1980,7 +1993,9 @@
           "html-layer-order": "INDEXED_CONST",
           "html-level": "INDEXED_CONST",
           "html-namespace": "INDEXED_CONST",
-          "html-render": "INDEXED_CONST",
+          "html-render": "INDEXED_CONST"
+        },
+        "preset": {
           "html-style": "INDEXED_CONST"
         },
         "record": {
@@ -4150,7 +4165,6 @@
           "row-expandable": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT"
         },
         "organism": {
-          "component": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
           "data-table": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
           "data-table-shell": "DEFINED_REACTIVE_STORY_COMPONENT",
           "table-list-panel": "DEFINED_RENDERED_STORY_COMPONENT"
@@ -4158,8 +4172,6 @@
       },
       "const": {
         "array": {
-          "playground-component-catalog-sort-by": "INDEXED_CONST",
-          "playground-component-catalog-view-mode": "INDEXED_CONST",
           "sort-direction": "INDEXED_CONST"
         },
         "preset": {
@@ -4168,7 +4180,6 @@
         "record": {
           "column-manager-message": "INDEXED_CONST",
           "comparison-table-message": "INDEXED_CONST",
-          "component-message": "INDEXED_CONST",
           "data-table-message": "INDEXED_CONST",
           "data-table-shell-message": "INDEXED_CONST",
           "filter-text-message": "INDEXED_CONST",
@@ -4196,7 +4207,6 @@
           "column": "INDEX_BARREL",
           "column-manager": "INDEXED_INTERFACE",
           "comparison-table": "INDEXED_INTERFACE",
-          "component": "INDEXED_INTERFACE",
           "data-table": "INDEXED_INTERFACE",
           "data-table-shell": "INDEXED_INTERFACE",
           "filter-bar": "INDEXED_INTERFACE",
@@ -4227,15 +4237,12 @@
       },
       "type": {
         "alias": {
-          "cell-type": "INDEX_BARREL",
-          "playground-component-catalog-sort-by": "INDEXED_TYPE",
-          "playground-component-catalog-view-mode": "INDEXED_TYPE"
+          "cell-type": "INDEX_BARREL"
         },
         "object": {
           "column": "INDEX_BARREL",
           "comparison-table-feature": "INDEXED_TYPE",
           "comparison-table-product": "INDEXED_TYPE",
-          "component-story": "INDEXED_TYPE",
           "filter": "INDEX_BARREL",
           "row-expandable-props": "INDEX_BARREL",
           "table": "INDEX_BARREL"
@@ -4435,6 +4442,7 @@
           "color": "INDEXED_CONST",
           "control": "INDEXED_CONST",
           "device-frame": "INDEXED_CONST",
+          "domain": "INDEXED_CONST",
           "file": "INDEXED_CONST",
           "geo": "INDEXED_CONST",
           "graph": "INDEXED_CONST",
@@ -4444,7 +4452,6 @@
           "notification": "INDEXED_CONST",
           "orbit-control-definition": "INDEXED_CONST",
           "svg": "INDEXED_CONST",
-          "table": "INDEXED_CONST",
           "theme": "INDEXED_CONST",
           "token-setting": "INDEXED_CONST",
           "typography": "INDEXED_CONST"

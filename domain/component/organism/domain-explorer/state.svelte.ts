@@ -7,7 +7,12 @@ type StoryModule = { default: unknown };
 
 interface DomainPageInput extends Pick<
 	RecipeDomainExplorer,
-	'tree' | 'initialDomain' | 'initialCluster' | 'initialJoint' | 'initialPreviewMode'
+	| 'tree'
+	| 'initialDomain'
+	| 'initialCluster'
+	| 'initialJoint'
+	| 'initialPreviewMode'
+	| 'initialEntityPath'
 > {
 	storyModules: Record<string, () => Promise<StoryModule>>;
 }
@@ -44,7 +49,7 @@ export function createDomainPageState(input: DomainPageInput) {
 	);
 	let activeCluster = $state(initialCluster ?? '');
 	let activeJoint = $state(initialJoint ?? '');
-	let activeEntityPath = $state('');
+	let activeEntityPath = $state(input.initialEntityPath ?? '');
 	let activeFilePath = $state('');
 	let fileContent = $state('');
 	let fileError = $state('');
@@ -172,6 +177,9 @@ export function createDomainPageState(input: DomainPageInput) {
 		if (!activeEntityPath || !entities.some((e) => e.path === activeEntityPath)) {
 			const first = entities[0];
 			handleEntitySelect(first.path, first.files);
+		} else if (!activeFilePath) {
+			const selected = entities.find((entity) => entity.path === activeEntityPath)!;
+			handleEntitySelect(selected.path, selected.files);
 		}
 	});
 

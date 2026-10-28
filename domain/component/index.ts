@@ -36,7 +36,7 @@ export {
 	SamoUmbrellaMap,
 	StoryCanvas,
 	StoryControls,
-	StylistHeroIntro,
+	StylistHero,
 	StylistMission,
 	TaxonomyBreadcrumbs,
 	WorkspaceHints
@@ -53,11 +53,12 @@ export {
 	DomainSidebar,
 	MarkdownRenderer,
 	SamoMethodology,
-	StylistHero
+	StoryRunner
 } from './organism';
 export {
 	DomainHowItWorks,
 	DomainLanding,
 	DomainPlayground,
-	StoryRunner
+	StylistLanding,
+	StylistPreview
 } from './page';

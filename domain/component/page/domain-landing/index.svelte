@@ -1,5 +1,5 @@
 <script lang="ts">
-	import StylistLanding from '$stylist/domain/component/organism/stylist-hero/index.svelte';
+	import StylistLanding from '$stylist/domain/component/page/stylist-landing/index.svelte';
 	import type { RecipeDomainLanding } from '$stylist/domain/interface/recipe/domain-landing';
 
 	let {

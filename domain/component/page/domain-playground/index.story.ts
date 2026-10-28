@@ -8,7 +8,7 @@ export default {
 	component: DomainPlayground,
 	title: 'DomainPlayground',
 	description:
-		'Root domain shell: switches between landing/components/how-it-works screens and always shows DomainMenu on top.',
+		'Root domain shell: switches between landing/components/playground/how-it-works screens and always shows DomainMenu on top.',
 	// The tree and initial screen seed the shell once; navigation is internal state.
 	args: {
 		tree: [

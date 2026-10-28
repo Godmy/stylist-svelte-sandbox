@@ -2,7 +2,9 @@
 export {
 	ARRAY_FILE,
 	DEVICE_FRAME_VIEWPORT,
-	DOMAIN_CLUSTER
+	DOMAIN_CLUSTER,
+	TOKEN_STYLIST_PREVIEW_SORT_BY,
+	TOKEN_STYLIST_PREVIEW_VIEW_MODE
 } from './array';
 export { TOKEN_CONTROLLER_TYPE } from './map';
 export {
@@ -10,7 +12,10 @@ export {
 	PREVIEW_CONTROLS
 } from './object';
 export { PRESET_FILE } from './preset';
-export { FAMILY_ICON } from './record';
+export {
+	DOMAIN_STYLIST_PREVIEW_MESSAGE,
+	FAMILY_ICON
+} from './record';
 export {
 	DOMAIN_REGIME,
 	JOINT_TOOLBAR_ITEMS,

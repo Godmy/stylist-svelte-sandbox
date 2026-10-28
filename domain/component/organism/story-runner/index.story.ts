@@ -1,4 +1,4 @@
-import StoryRunner from '$stylist/domain/component/page/story-runner/index.svelte';
+import StoryRunner from '$stylist/domain/component/organism/story-runner/index.svelte';
 import type { RecipeStoryRunner } from '$stylist/domain/interface/recipe/story-runner';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 

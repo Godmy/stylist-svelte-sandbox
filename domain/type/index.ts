@@ -1,6 +1,8 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 export type {
 	DeviceFrameViewport,
+	StylistPreviewSortBy,
+	StylistPreviewViewMode,
 	TokenControllerType,
 	TypeDomainScreen,
 	TypeDomainTreeInput,
@@ -42,6 +44,7 @@ export type {
 	SamoSnippet,
 	SamoStep,
 	SamoTokenLoad,
+	StylistPreviewStory,
 	TabFile,
 	TypeDomainComponentDescriptor,
 	TypeDomainComponentProjection,

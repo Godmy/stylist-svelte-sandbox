@@ -5,6 +5,7 @@ export interface RecipeDomainExplorer {
 	initialDomain?: string;
 	initialCluster?: string;
 	initialJoint?: string;
+	initialEntityPath?: string;
 	initialPreviewMode?: 'file' | 'markdown' | 'story' | 'json-tree' | 'di';
 	onSelectionChange?: (selection: {
 		domain: string;

@@ -4,7 +4,7 @@
 	import createStoryRunnerState, {
 		formatDuration,
 		getTimingTone
-	} from '$stylist/domain/component/page/story-runner/state.svelte';
+	} from '$stylist/domain/component/organism/story-runner/state.svelte';
 
 	let props: RecipeStoryRunner = $props();
 	const className = $derived(props.class ?? '');

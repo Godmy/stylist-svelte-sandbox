@@ -1,10 +1,11 @@
 <script lang="ts">
-	import { onMount, untrack } from 'svelte';
+	import { onMount } from 'svelte';
 	import { DOMAIN_SCREEN } from '$stylist/domain/const/object/domain-screen';
 	import DomainMenu from '$stylist/domain/component/molecule/domain-menu/index.svelte';
 	import DeviceViewport from '$stylist/domain/component/molecule/device-viewport/index.svelte';
 	import WorkspaceHints from '$stylist/domain/component/molecule/workspace-hints/index.svelte';
 	import createDomainPlaygroundState from '$stylist/domain/component/page/domain-playground/state.svelte';
+	import createStylistPreviewCatalogState from '$stylist/domain/function/state/stylist-preview-catalog/state.svelte';
 	import DomainLanding from '$stylist/domain/component/page/domain-landing/index.svelte';
 	import type { DeviceFrameViewport } from '$stylist/domain/type/alias/device-frame-viewport';
 	import type { RecipeDomainPlayground } from '$stylist/domain/interface/recipe/domain-playground';
@@ -14,6 +15,8 @@
 	let {
 		tree = {},
 		initialScreen = DOMAIN_SCREEN.LANDING,
+		route,
+		onNavigate,
 		initialDomain,
 		initialCluster,
 		initialJoint,
@@ -21,7 +24,9 @@
 		class: className = ''
 	}: RecipeDomainPlayground = $props();
 
-	const screenState = createDomainPlaygroundState(untrack(() => initialScreen));
+	const screenState = createDomainPlaygroundState(() => ({ initialScreen, route, onNavigate }));
+	const catalog = createStylistPreviewCatalogState(() => tree);
+	const selectedStory = $derived(screenState.selectedStoryPath.split('/'));
 	let iconSizes = $state<NonNullable<RecipeDomainSettings['iconSizes']>>({
 		module: 16,
 		domain: 16,
@@ -64,6 +69,8 @@
 	let deviceViewportVisible = $state(false);
 	const storyModuleCount = $derived(countDomainStories(tree));
 
+	const loadStylistPreview = () =>
+		import('$stylist/domain/component/page/stylist-preview/index.svelte');
 	const loadDomainExplorer = () =>
 		import('$stylist/domain/component/organism/domain-explorer/index.svelte');
 	const loadDomainHowItWorks = () =>
@@ -78,8 +85,25 @@
 	}}
 />
 
+{#snippet domainMenu()}
+	<DomainMenu
+		landingVisible={screenState.currentScreen === DOMAIN_SCREEN.LANDING}
+		componentsVisible={screenState.currentScreen === DOMAIN_SCREEN.COMPONENTS}
+		domainVisible={screenState.currentScreen === DOMAIN_SCREEN.DOMAIN}
+		howItWorksOpen={screenState.currentScreen === DOMAIN_SCREEN.HOW_IT_WORKS}
+		settingsOpen={screenState.isSettingsOpen}
+		onLandingToggle={screenState.handleLandingToggle}
+		onComponentsToggle={screenState.handleComponentsToggle}
+		onDomainToggle={screenState.handleDomainToggle}
+		onHowItWorksToggle={screenState.handleHowItWorksToggle}
+		onSettingsToggle={screenState.handleSettingsToggle}
+		onManifestReload={screenState.handleManifestReload}
+	/>
+{/snippet}
+
 <div
 	class="c-domain-playground {className}"
+	class:c-domain-playground--components={screenState.currentScreen === DOMAIN_SCREEN.COMPONENTS}
 	class:c-domain-playground--domain={screenState.currentScreen === DOMAIN_SCREEN.DOMAIN}
 	class:fullscreen={fullscreen && screenState.currentScreen === DOMAIN_SCREEN.DOMAIN}
 	style:--domain-module-icon-size="{iconSizes.module}px"
@@ -91,62 +115,68 @@
 	{#if screenState.currentScreen === DOMAIN_SCREEN.DOMAIN}
 		{#await loadDomainExplorer() then module}
 			{@const DomainExplorer = module.default}
-			<DomainExplorer
-				{tree}
-				{initialDomain}
-				{initialCluster}
-				{initialJoint}
-				{initialPreviewMode}
-				storyWidth={storyWidths[storyDevice]}
-				bind:storyDevice
-				bind:fullscreen
-				bind:deviceViewportVisible
-			/>
+			{#key screenState.selectedStoryPath}
+				<DomainExplorer
+					{tree}
+					initialDomain={selectedStory[0] || initialDomain}
+					initialCluster={selectedStory[1] || initialCluster}
+					initialJoint={selectedStory[2] || initialJoint}
+					initialEntityPath={screenState.selectedStoryPath || undefined}
+					initialPreviewMode={screenState.selectedStoryPath ? 'story' : initialPreviewMode}
+					storyWidth={storyWidths[storyDevice]}
+					bind:storyDevice
+					bind:fullscreen
+					bind:deviceViewportVisible
+				/>
+			{/key}
 		{/await}
 	{:else if screenState.currentScreen === DOMAIN_SCREEN.HOW_IT_WORKS}
 		{#await loadDomainHowItWorks() then module}
 			{@const DomainHowItWorks = module.default}
 			<DomainHowItWorks
 				onOpenLanding={screenState.handleLandingToggle}
-				onBrowseComponents={screenState.handleDomainToggle}
+				onBrowseComponents={screenState.handleComponentsToggle}
 			/>
 		{/await}
-	{:else}
+	{:else if screenState.currentScreen === DOMAIN_SCREEN.LANDING}
 		<DomainLanding
 			rootDomainCount={Array.isArray(tree) ? tree.length : Object.keys(tree).length}
 			{storyModuleCount}
-			onBrowseComponents={screenState.handleDomainToggle}
+			onBrowseComponents={screenState.handleComponentsToggle}
 			onOpenPlayground={screenState.handleDomainToggle}
 			onOpenWorkspace={screenState.handleDomainToggle}
 			onOpenGuide={screenState.handleHowItWorksToggle}
 		/>
 	{/if}
 
-	<div class="menu-shell">
-		{#if screenState.currentScreen === DOMAIN_SCREEN.DOMAIN && deviceViewportVisible}
-			<DeviceViewport
-				value={storyDevice}
-				width={storyWidths[storyDevice]}
-				widths={storyWidths}
-				onWidthChange={(width) => (storyWidths[storyDevice] = width)}
-				{fullscreen}
-				onChange={(next) => (storyDevice = next)}
-				onFullscreenChange={(next) => (fullscreen = next)}
-			/>
-		{/if}
+	{#if screenState.catalogVisited}
+		<div class="components-screen" hidden={screenState.currentScreen !== DOMAIN_SCREEN.COMPONENTS}>
+			{#await loadStylistPreview() then module}
+				{@const StylistPreview = module.default}
+				<StylistPreview {...catalog} onOpenStory={screenState.openStory}>
+					{#snippet menu()}{@render domainMenu()}{/snippet}
+				</StylistPreview>
+			{/await}
+		</div>
+	{/if}
 
-		<DomainMenu
-			landingVisible={screenState.currentScreen === DOMAIN_SCREEN.LANDING}
-			domainVisible={screenState.currentScreen === DOMAIN_SCREEN.DOMAIN}
-			howItWorksOpen={screenState.currentScreen === DOMAIN_SCREEN.HOW_IT_WORKS}
-			settingsOpen={screenState.isSettingsOpen}
-			onLandingToggle={screenState.handleLandingToggle}
-			onDomainToggle={screenState.handleDomainToggle}
-			onHowItWorksToggle={screenState.handleHowItWorksToggle}
-			onSettingsToggle={screenState.handleSettingsToggle}
-			onManifestReload={screenState.handleManifestReload}
-		/>
-	</div>
+	{#if screenState.currentScreen !== DOMAIN_SCREEN.COMPONENTS}
+		<div class="menu-shell">
+			{#if screenState.currentScreen === DOMAIN_SCREEN.DOMAIN && deviceViewportVisible}
+				<DeviceViewport
+					value={storyDevice}
+					width={storyWidths[storyDevice]}
+					widths={storyWidths}
+					onWidthChange={(width) => (storyWidths[storyDevice] = width)}
+					{fullscreen}
+					onChange={(next) => (storyDevice = next)}
+					onFullscreenChange={(next) => (fullscreen = next)}
+				/>
+			{/if}
+
+			{@render domainMenu()}
+		</div>
+	{/if}
 </div>
 
 <WorkspaceHints />
@@ -168,10 +198,17 @@
 		min-height: 100vh;
 	}
 
+	:global(html:has(.c-domain-playground)) {
+		scrollbar-gutter: stable;
+	}
+
+	:global(body:has(.c-domain-playground)) {
+		scrollbar-gutter: auto;
+	}
+
 	:global(html:has(.c-domain-playground--domain)),
 	:global(body:has(.c-domain-playground--domain)) {
 		overflow: hidden;
-		scrollbar-gutter: auto;
 	}
 
 	.c-domain-playground--domain {
@@ -182,6 +219,12 @@
 	}
 
 	.c-domain-playground.fullscreen {
+		padding-top: 0;
+	}
+
+	.components-screen {
+		min-height: 100dvh;
+		box-sizing: border-box;
 		padding-top: 0;
 	}
 
@@ -200,6 +243,13 @@
 	@media (max-width: 840px) {
 		.c-domain-playground {
 			padding-top: calc(env(safe-area-inset-top, 0px) + 6rem);
+		}
+
+		.c-domain-playground--components {
+			padding-top: 0;
+		}
+		.components-screen {
+			padding-top: 0;
 		}
 
 		.menu-shell {

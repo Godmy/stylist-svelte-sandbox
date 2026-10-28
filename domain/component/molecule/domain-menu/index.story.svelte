@@ -6,12 +6,14 @@
 	let args: RecipeDomainMenu = $props();
 	// These follow the args and are overwritten by the menu toggles.
 	let landingVisible = $derived(args.landingVisible ?? false);
+	let componentsVisible = $derived(args.componentsVisible ?? false);
 	let domainVisible = $derived(args.domainVisible ?? false);
 	let howItWorksOpen = $derived(args.howItWorksOpen ?? false);
 	let settingsOpen = $derived(args.settingsOpen ?? false);
 
-	function show(screen: 'landing' | 'domain') {
+	function show(screen: 'landing' | 'components' | 'domain') {
 		landingVisible = screen === 'landing';
+		componentsVisible = screen === 'components';
 		domainVisible = screen === 'domain';
 	}
 </script>
@@ -20,18 +22,24 @@
 	<DomainMenu
 		{...args}
 		{landingVisible}
+		{componentsVisible}
 		{domainVisible}
 		{howItWorksOpen}
 		{settingsOpen}
 		onLandingToggle={() => show('landing')}
+		onComponentsToggle={() => show('components')}
 		onDomainToggle={() => show('domain')}
 		onHowItWorksToggle={() => (howItWorksOpen = !howItWorksOpen)}
 		onSettingsToggle={() => (settingsOpen = !settingsOpen)}
 	/>
 	<p class="_c2">
-		Screen: {landingVisible ? 'landing' : domainVisible ? 'domain' : 'none'} · Settings: {settingsOpen
-			? 'open'
-			: 'closed'}
+		Screen: {landingVisible
+			? 'landing'
+			: componentsVisible
+				? 'components'
+				: domainVisible
+					? 'domain'
+					: 'none'} · Settings: {settingsOpen ? 'open' : 'closed'}
 	</p>
 </div>
 

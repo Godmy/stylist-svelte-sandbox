@@ -1,14 +1,17 @@
 <script lang="ts">
+	import { DOMAIN_REGIME } from '$stylist/domain/const/value/domain-regime';
 	import Icon from '$stylist/svg/component/atom/icon/index.svelte';
 	import ThemeModeToggle from '$stylist/theme/component/atom/theme-mode-toggle/index.svelte';
 	import type { RecipeDomainMenu } from '$stylist/domain/interface/recipe/domain-menu';
 
 	let {
 		landingVisible = false,
+		componentsVisible = false,
 		domainVisible = true,
 		howItWorksOpen = false,
 		settingsOpen = false,
 		onLandingToggle,
+		onComponentsToggle,
 		onDomainToggle,
 		onHowItWorksToggle,
 		onSettingsToggle,
@@ -32,12 +35,24 @@
 
 	<button
 		type="button"
+		class:active={componentsVisible}
+		class="menu-button menu-button--icon"
+		onclick={onComponentsToggle}
+		aria-pressed={componentsVisible}
+		aria-label="Show components"
+		title="Show components"
+	>
+		<Icon name="component" size={18} />
+	</button>
+
+	<button
+		type="button"
 		class:active={domainVisible}
 		class="menu-button menu-button--icon"
 		onclick={onDomainToggle}
 		aria-pressed={domainVisible}
-		aria-label="Show components"
-		title="Show components"
+		aria-label="Show playground"
+		title="Show playground"
 	>
 		<Icon name="domain" size={18} />
 	</button>
@@ -54,7 +69,7 @@
 		<span class="menu-help-mark" aria-hidden="true">?</span>
 	</button>
 
-	{#if onManifestReload}
+	{#if DOMAIN_REGIME === 'dev' && onManifestReload}
 		<button
 			type="button"
 			class="menu-button menu-button--icon"
