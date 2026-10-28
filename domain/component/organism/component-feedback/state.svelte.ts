@@ -1,5 +1,7 @@
+import type { RecipeComponentFeedback } from '$stylist/domain/interface/recipe/component-feedback';
+
 /** In-memory feedback for the story; no local server or persisted selection is used. */
-export function createComponentFeedbackStoryState() {
+export function createComponentFeedbackStoryState(): RecipeComponentFeedback['feedback'] {
 	let selected = $state(true);
 	let expanded = $state(true);
 	let kind = $state('components');
