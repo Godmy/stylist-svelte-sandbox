@@ -17,8 +17,6 @@ export type { RecipeDomainListHeader } from './domain-list-header';
 export type { RecipeDomainMenu } from './domain-menu';
 export type { RecipeDomainPlayground } from './domain-playground';
 export type { RecipeDomainSearch } from './domain-search';
-export type { RecipeDomainSearchField } from './domain-search-field';
-export type { RecipeDomainSearchToggle } from './domain-search-toggle';
 export type { RecipeDomainSettings } from './domain-settings';
 export type { RecipeDomainSidebar } from './domain-sidebar';
 export type { RecipeDomainToolbar } from './domain-toolbar';

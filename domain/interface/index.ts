@@ -19,8 +19,6 @@ export type {
 	RecipeDomainMenu,
 	RecipeDomainPlayground,
 	RecipeDomainSearch,
-	RecipeDomainSearchField,
-	RecipeDomainSearchToggle,
 	RecipeDomainSettings,
 	RecipeDomainSidebar,
 	RecipeDomainToolbar,

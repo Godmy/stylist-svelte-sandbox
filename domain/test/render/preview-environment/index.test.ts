@@ -62,6 +62,9 @@ describe('preview environment', () => {
 		expect(root.style.getPropertyValue('--line-height-normal')).toBe('2');
 		expect(root.style.getPropertyValue('--density-scale')).toBe('0.75');
 		expect(resolvePreviewSkin('/src/lib/layout/component/atom/stack/index.story.ts')).toBe(true);
+		expect(
+			resolvePreviewSkin('/modules/interaction/search/component/atom/search-field/index.story.ts')
+		).toBe(true);
 	});
 	it('excludes metadata and non-HTML stories from appearance controls', () => {
 		expect(resolvePreviewSkin('/src/lib/html/component/atom/base/index.story.ts')).toBe(false);

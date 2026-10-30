@@ -1,11 +1,9 @@
-import { tick } from 'svelte';
 import type { RecipeDomainSearch } from '$stylist/domain/interface/recipe/domain-search';
 
 export function createDomainSearchState(getProps: () => RecipeDomainSearch) {
 	const props = $derived(getProps());
 	let open = $state(false);
 	let query = $state('');
-	let inputRef = $state<HTMLInputElement | null>(null);
 	let pathCopied = $state(false);
 	let copyResetTimeout: ReturnType<typeof setTimeout> | undefined;
 
@@ -40,25 +38,9 @@ export function createDomainSearchState(getProps: () => RecipeDomainSearch) {
 			.map((item) => item.entry);
 	});
 
-	async function openSearch(): Promise<void> {
-		open = true;
-		await tick();
-		inputRef?.focus();
-		inputRef?.select();
-	}
-
 	function closeSearch(): void {
 		open = false;
 		query = '';
-	}
-
-	function handleToggle(): void {
-		if (open) {
-			closeSearch();
-			return;
-		}
-
-		void openSearch();
 	}
 
 	function handleSelect(entryId: string): void {
@@ -78,17 +60,14 @@ export function createDomainSearchState(getProps: () => RecipeDomainSearch) {
 		get open() {
 			return open;
 		},
+		set open(value: boolean) {
+			open = value;
+		},
 		get query() {
 			return query;
 		},
 		set query(value: string) {
 			query = value;
-		},
-		get inputRef() {
-			return inputRef;
-		},
-		set inputRef(value: HTMLInputElement | null) {
-			inputRef = value;
 		},
 		get pathCopied() {
 			return pathCopied;
@@ -96,8 +75,6 @@ export function createDomainSearchState(getProps: () => RecipeDomainSearch) {
 		get filteredEntries() {
 			return filteredEntries;
 		},
-		closeSearch,
-		handleToggle,
 		handleSelect,
 		handleCopyPath
 	};
