@@ -261,8 +261,6 @@
         "atom": [
           "domain-entity",
           "domain-list-header",
-          "domain-search-field",
-          "domain-search-toggle",
           "story-control"
         ],
         "molecule": [
@@ -301,6 +299,7 @@
           "workspace-hints"
         ],
         "organism": [
+          "component-feedback",
           "device-frame",
           "domain-ai-agent",
           "domain-cluster-balance",
@@ -390,8 +389,7 @@
           "login-form",
           "rating-feedback",
           "schema-form-dialog",
-          "screen-reader",
-          "search-form"
+          "screen-reader"
         ],
         "page": [
           "feedback-scenario",
@@ -841,11 +839,13 @@
     "search": {
       "component": {
         "atom": [
-          "auto-search",
-          "search-suggestion"
+          "search-field",
+          "search-suggestion",
+          "search-toggle"
         ],
         "molecule": [
-          "search-bar"
+          "search-bar",
+          "search-overlay"
         ],
         "organism": [
           "auto-complete",

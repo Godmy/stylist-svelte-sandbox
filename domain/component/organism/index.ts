@@ -1,4 +1,5 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
+export { ComponentFeedback } from './component-feedback/index';
 export { DeviceFrame } from './device-frame/index';
 export { DomainAiAgent } from './domain-ai-agent/index';
 export { DomainClusterBalance } from './domain-cluster-balance/index';

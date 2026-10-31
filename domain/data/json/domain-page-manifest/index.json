@@ -1110,8 +1110,6 @@
         "atom": {
           "domain-entity": "DEFINED_STORY_COMPONENT",
           "domain-list-header": "DEFINED_STORY_COMPONENT",
-          "domain-search-field": "DEFINED_RENDERED_STORY_COMPONENT",
-          "domain-search-toggle": "DEFINED_RENDERED_STORY_COMPONENT",
           "story-control": "DEFINED_STORY_COMPONENT"
         },
         "molecule": {
@@ -1150,6 +1148,7 @@
           "workspace-hints": "DEFINED_RENDERED_STORY_COMPONENT"
         },
         "organism": {
+          "component-feedback": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
           "device-frame": "DEFINED_REACTIVE_STORY_COMPONENT",
           "domain-ai-agent": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
           "domain-cluster-balance": "DEFINED_STORY_COMPONENT",
@@ -1230,6 +1229,7 @@
           "unknown-error": "INDEXED_FUNCTION"
         },
         "state": {
+          "component-feedback": "REACTIVE_BARREL",
           "stylist-preview-catalog": "REACTIVE_BARREL"
         },
         "transform": {
@@ -1245,6 +1245,7 @@
         },
         "recipe": {
           "cluster-toolbar": "INDEXED_INTERFACE",
+          "component-feedback": "INDEXED_INTERFACE",
           "cta-buttons": "INDEXED_INTERFACE",
           "device-frame": "INDEXED_INTERFACE",
           "device-viewport": "INDEXED_INTERFACE",
@@ -1262,8 +1263,6 @@
           "domain-menu": "INDEXED_INTERFACE",
           "domain-playground": "INDEXED_INTERFACE",
           "domain-search": "INDEXED_INTERFACE",
-          "domain-search-field": "INDEXED_INTERFACE",
-          "domain-search-toggle": "INDEXED_INTERFACE",
           "domain-settings": "INDEXED_INTERFACE",
           "domain-sidebar": "INDEXED_INTERFACE",
           "domain-toolbar": "INDEXED_INTERFACE",
@@ -1306,6 +1305,7 @@
       },
       "test": {
         "render": {
+          "component-feedback": "FUNCTION_TEST",
           "domain-file-preview": "FUNCTION_TEST",
           "domain-menu": "FUNCTION_TEST",
           "joint-tab-buttons": "FUNCTION_TEST",
@@ -1640,8 +1640,7 @@
           "login-form": "DEFINED_REACTIVE_STORY_COMPONENT",
           "rating-feedback": "DEFINED_STORY_COMPONENT",
           "schema-form-dialog": "DEFINED_RENDERED_STORY_COMPONENT",
-          "screen-reader": "DEFINED_REACTIVE_STORY_COMPONENT",
-          "search-form": "DEFINED_REACTIVE_STORY_COMPONENT"
+          "screen-reader": "DEFINED_REACTIVE_STORY_COMPONENT"
         },
         "page": {
           "feedback-scenario": "DEFINED_STORY_COMPONENT",
@@ -1651,9 +1650,6 @@
       "const": {
         "preset": {
           "rating-feedback-labels": "INDEXED_CONST"
-        },
-        "value": {
-          "search-icon-name": "INDEXED_CONST"
         }
       },
       "function": {
@@ -1679,7 +1675,6 @@
           "rating-feedback": "INDEXED_INTERFACE",
           "schema-form-dialog": "INDEXED_INTERFACE",
           "screen-reader": "INDEXED_INTERFACE",
-          "search-form": "INDEXED_INTERFACE",
           "support-counter": "INDEXED_INTERFACE",
           "toggle-button-group": "INDEXED_INTERFACE",
           "validation": "INDEXED_INTERFACE"
@@ -3182,11 +3177,13 @@
       },
       "component": {
         "atom": {
-          "auto-search": "DEFINED_REACTIVE_STORY_COMPONENT",
-          "search-suggestion": "DEFINED_REACTIVE_STORY_COMPONENT"
+          "search-field": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "search-suggestion": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "search-toggle": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT"
         },
         "molecule": {
-          "search-bar": "DEFINED_REACTIVE_STORY_COMPONENT"
+          "search-bar": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "search-overlay": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT"
         },
         "organism": {
           "auto-complete": "DEFINED_REACTIVE_STORY_COMPONENT",
@@ -3196,30 +3193,44 @@
       },
       "const": {
         "value": {
-          "search-icon-name": "INDEXED_CONST"
+          "search-icon-name": "INDEXED_CONST",
+          "search-skin-scope": "INDEXED_CONST"
         }
       },
       "interface": {
         "recipe": {
           "auto-complete": "INDEXED_INTERFACE",
-          "auto-search": "INDEXED_INTERFACE",
           "search-bar": "INDEXED_INTERFACE",
+          "search-field": "INDEXED_INTERFACE",
           "search-form": "INDEXED_INTERFACE",
+          "search-overlay": "INDEXED_INTERFACE",
           "search-results": "INDEXED_INTERFACE",
-          "search-suggestion": "INDEXED_INTERFACE"
+          "search-suggestion": "INDEXED_INTERFACE",
+          "search-toggle": "INDEXED_INTERFACE"
         },
         "slot": {
           "auto-complete": "INDEXED_INTERFACE",
-          "auto-search": "INDEXED_INTERFACE",
           "search-bar": "INDEXED_INTERFACE",
-          "search-bar-events": "INDEXED_INTERFACE",
-          "search-suggestion": "INDEXED_INTERFACE"
+          "search-field": "INDEXED_INTERFACE",
+          "search-form": "INDEXED_INTERFACE",
+          "search-overlay": "INDEXED_INTERFACE",
+          "search-results": "INDEXED_INTERFACE",
+          "search-skin": "INDEXED_INTERFACE",
+          "search-suggestion": "INDEXED_INTERFACE",
+          "search-toggle": "INDEXED_INTERFACE"
+        }
+      },
+      "test": {
+        "render": {
+          "html-contract": "FUNCTION_TEST",
+          "stories": "FUNCTION_TEST"
         }
       },
       "type": {
         "object": {
           "auto-complete-option": "INDEXED_TYPE",
-          "search-results-item": "INDEXED_TYPE"
+          "search-results-item": "INDEXED_TYPE",
+          "search-suggestion-item": "INDEXED_TYPE"
         }
       }
     },
@@ -3311,7 +3322,9 @@
           "active": "INDEX_SVG",
           "activity": "INDEX_SVG",
           "add": "INDEX_SVG",
+          "addon-rule-row": "INDEX_SVG",
           "admin": "INDEX_SVG",
+          "admin-kpi-row": "INDEX_SVG",
           "advanced-password-input": "INDEX_SVG",
           "agile": "INDEX_SVG",
           "ai": "INDEX_SVG",
@@ -3369,6 +3382,7 @@
           "backlog-status-progress": "INDEX_SVG",
           "backlog-status-todo": "INDEX_SVG",
           "badge": "INDEX_SVG",
+          "base": "INDEX_SVG",
           "base-card": "INDEX_SVG",
           "beach": "INDEX_SVG",
           "behavior": "INDEX_SVG",
@@ -3426,6 +3440,7 @@
           "cabinet-reports": "INDEX_SVG",
           "cabinet-requests": "INDEX_SVG",
           "cabinet-reviews": "INDEX_SVG",
+          "cabinet-schedule": "INDEX_SVG",
           "cabinet-service": "INDEX_SVG",
           "cabinet-settings": "INDEX_SVG",
           "cabinet-site": "INDEX_SVG",
@@ -3897,6 +3912,8 @@
           "role-tourism-manager": "INDEX_SVG",
           "rotate-ccw": "INDEX_SVG",
           "route-planner": "INDEX_SVG",
+          "rsm": "INDEX_SVG",
+          "rsm-request": "INDEX_SVG",
           "sakartvelo": "INDEX_SVG",
           "save": "INDEX_SVG",
           "scale": "INDEX_SVG",
@@ -4039,6 +4056,7 @@
           "trending-down": "INDEX_SVG",
           "trending-up": "INDEX_SVG",
           "truck": "INDEX_SVG",
+          "tube": "INDEX_SVG",
           "twitter": "INDEX_SVG",
           "type": "INDEX_SVG",
           "typography": "INDEX_SVG",
@@ -4128,6 +4146,7 @@
         },
         "unit": {
           "icon-name": "FUNCTION_TEST",
+          "icon-palette": "FUNCTION_TEST",
           "style-layer": "FUNCTION_TEST"
         }
       },
@@ -4305,6 +4324,7 @@
           "scheme-forest": "INDEXED_CONST",
           "scheme-minimal": "INDEXED_CONST",
           "scheme-ocean": "INDEXED_CONST",
+          "scheme-spanish": "INDEXED_CONST",
           "scheme-sunset": "INDEXED_CONST",
           "scheme-weoracle": "INDEXED_CONST",
           "theme-layout": "INDEXED_CONST",
@@ -4371,6 +4391,7 @@
       },
       "test": {
         "unit": {
+          "icon-palette": "FUNCTION_TEST",
           "style-layer": "FUNCTION_TEST",
           "theme-css-token": "FUNCTION_TEST"
         }

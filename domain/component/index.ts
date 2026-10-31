@@ -40,6 +40,7 @@ export {
 	WorkspaceHints
 } from './molecule';
 export {
+	ComponentFeedback,
 	DeviceFrame,
 	DomainAiAgent,
 	DomainClusterBalance,

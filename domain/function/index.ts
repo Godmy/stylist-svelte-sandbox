@@ -14,7 +14,10 @@ export {
 	resolveTreeFamilies
 } from './resolve';
 export { serializeUnknownError } from './serialize';
-export { createStylistPreviewCatalogState } from './state';
+export {
+	createComponentFeedbackState,
+	createStylistPreviewCatalogState
+} from './state';
 export {
 	createClusterToolbarItems,
 	expandComponentTree,

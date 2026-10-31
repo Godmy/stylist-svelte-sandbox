@@ -2,6 +2,7 @@
 export type { ContractPreviewEnvironment } from './contract';
 export type {
 	RecipeClusterToolbar,
+	RecipeComponentFeedback,
 	RecipeCtaButtons,
 	RecipeDeviceFrame,
 	RecipeDeviceViewport,

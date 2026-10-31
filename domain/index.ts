@@ -1,6 +1,7 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 export {
 	ClusterToolbar,
+	ComponentFeedback,
 	CtaButtons,
 	DeviceFrame,
 	DeviceViewport,
@@ -75,6 +76,7 @@ export {
 	cloneStyledElement,
 	countDomainStories,
 	createClusterToolbarItems,
+	createComponentFeedbackState,
 	createStylistPreviewCatalogState,
 	expandComponentTree,
 	normalizeDomainTree,
@@ -146,6 +148,7 @@ export type {
 export type {
 	ContractPreviewEnvironment,
 	RecipeClusterToolbar,
+	RecipeComponentFeedback,
 	RecipeCtaButtons,
 	RecipeDeviceFrame,
 	RecipeDeviceViewport,

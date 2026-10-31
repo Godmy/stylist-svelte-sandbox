@@ -1,5 +1,6 @@
 /** AREA: STYLIST CODER MODEL -> AUTO-GENERATED */
 export type { RecipeClusterToolbar } from './cluster-toolbar';
+export type { RecipeComponentFeedback } from './component-feedback';
 export type { RecipeCtaButtons } from './cta-buttons';
 export type { RecipeDeviceFrame } from './device-frame';
 export type { RecipeDeviceViewport } from './device-viewport';
