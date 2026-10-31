@@ -6,6 +6,8 @@ export interface RecipeStylistHero {
 	description?: string;
 	badgeLabel?: string;
 	badgeHref?: string;
+	sponsorLabel?: string;
+	sponsorHref?: string;
 	poweredByLabel?: string;
 	creditNote?: string;
 	rootDomainCount?: number;

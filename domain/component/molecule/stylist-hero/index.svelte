@@ -15,6 +15,8 @@
 		description = 'A Svelte component ecosystem built through orchestrated AI development. Explore UI components, interactive stories, documentation, and development tools — created and continuously evolved by AI agents working under the SAMO methodology.',
 		badgeLabel = 'Built with SAMO · Powered by multi-agent development',
 		badgeHref = 'https://www.npmjs.com/package/stylist-svelte',
+		sponsorLabel = 'Sponsor',
+		sponsorHref = 'https://github.com/sponsors/Godmy',
 		poweredByLabel = 'Developed with multiple AI perspectives',
 		creditNote = 'Human-directed development',
 		rootDomainCount = 0,
@@ -101,6 +103,12 @@
 							<AnimatedDigit to={storyModuleCount} duration="1500ms" format={formatCount} />
 						</div>
 					</div>
+					{#if sponsorHref}
+						<a href={sponsorHref} target="_blank" rel="noopener noreferrer" class="sh-sponsor">
+							<BaseIcon name="heart" class="sh-sponsor-icon" />
+							<span>{sponsorLabel}</span>
+						</a>
+					{/if}
 				</div>
 			</div>
 
@@ -406,6 +414,53 @@
 		font-size: 1.875rem;
 		font-weight: 900;
 		color: var(--color-text-primary);
+	}
+
+	/* GitHub Sponsors call-to-action under the stats. */
+	.sh-sponsor {
+		margin-top: 1.25rem;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		border-radius: 9999px;
+		border: 1px solid color-mix(in srgb, var(--color-error-500, #ef4444) 45%, transparent);
+		background-color: color-mix(in srgb, var(--color-background-primary) 80%, transparent);
+		padding: 0.625rem 1.25rem;
+		font-size: 0.9375rem;
+		font-weight: 700;
+		color: var(--color-text-primary);
+		text-decoration: none;
+		box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+		backdrop-filter: blur(4px);
+		transition:
+			transform 0.2s,
+			border-color 0.2s;
+	}
+
+	.sh-sponsor:hover {
+		transform: translateY(-2px);
+		border-color: var(--color-error-500, #ef4444);
+	}
+
+	.sh-sponsor:focus-visible {
+		outline: 2px solid var(--color-error-500, #ef4444);
+		outline-offset: 2px;
+	}
+
+	:global(.sh-sponsor-icon) {
+		width: 1.125rem;
+		height: 1.125rem;
+		color: var(--color-error-500, #ef4444);
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.sh-sponsor {
+			transition: none;
+		}
+
+		.sh-sponsor:hover {
+			transform: none;
+		}
 	}
 
 	.sh-credits {
