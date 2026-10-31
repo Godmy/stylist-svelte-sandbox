@@ -1,5 +1,6 @@
 /** Visual domains whose components inherit the html skin: the design system and search. */
-const SKINNED_DOMAIN = /(^|\/)(typography|svg|mathml|layout|theme|localization|search)\/component\//;
+const SKINNED_DOMAIN =
+	/(^|\/)(typography|svg|mathml|layout|theme|localization|search)\/component\//;
 
 /** Families without a visual part of their own: context providers, sandbox chrome, svg primitives. */
 const UNSKINNED_FAMILY = new Set([
