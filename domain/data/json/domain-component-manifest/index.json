@@ -885,6 +885,7 @@
         "molecule": [
           "column",
           "column-manager",
+          "comparison-card",
           "comparison-table",
           "filter-bar",
           "filter-pills",

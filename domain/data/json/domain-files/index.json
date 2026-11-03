@@ -3262,7 +3262,7 @@
     },
     {
       "name": "svg",
-      "fileCount": 884,
+      "fileCount": 885,
       "components": {
         "atoms": 11,
         "molecules": 0,
@@ -3295,7 +3295,7 @@
         },
         {
           "name": "data",
-          "fileCount": 801,
+          "fileCount": 802,
           "joints": [
             {
               "name": "flag",
@@ -3304,8 +3304,8 @@
             },
             {
               "name": "icon",
-              "entityCount": 791,
-              "fileCount": 791
+              "entityCount": 792,
+              "fileCount": 792
             }
           ]
         },
@@ -3377,10 +3377,10 @@
     },
     {
       "name": "table",
-      "fileCount": 144,
+      "fileCount": 151,
       "components": {
         "atoms": 7,
-        "molecules": 7,
+        "molecules": 8,
         "organisms": 3,
         "templates": 0,
         "pages": 0
@@ -3399,7 +3399,7 @@
         },
         {
           "name": "component",
-          "fileCount": 77,
+          "fileCount": 81,
           "joints": [
             {
               "name": "atom",
@@ -3408,8 +3408,8 @@
             },
             {
               "name": "molecule",
-              "entityCount": 7,
-              "fileCount": 33
+              "entityCount": 8,
+              "fileCount": 37
             },
             {
               "name": "organism",
@@ -3457,12 +3457,12 @@
         },
         {
           "name": "interface",
-          "fileCount": 27,
+          "fileCount": 28,
           "joints": [
             {
               "name": "recipe",
-              "entityCount": 17,
-              "fileCount": 18
+              "entityCount": 18,
+              "fileCount": 19
             },
             {
               "name": "slot",
@@ -3489,7 +3489,7 @@
         },
         {
           "name": "type",
-          "fileCount": 12,
+          "fileCount": 14,
           "joints": [
             {
               "name": "alias",
@@ -3498,8 +3498,8 @@
             },
             {
               "name": "object",
-              "entityCount": 6,
-              "fileCount": 7
+              "entityCount": 8,
+              "fileCount": 9
             },
             {
               "name": "record",
@@ -4210,9 +4210,9 @@
   ],
   "totals": {
     "domains": 38,
-    "files": 5934,
+    "files": 5942,
     "atoms": 294,
-    "molecules": 195,
+    "molecules": 196,
     "organisms": 158,
     "templates": 7,
     "pages": 15
