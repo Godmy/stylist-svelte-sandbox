@@ -4417,6 +4417,7 @@
           "scheme-forest": "INDEXED_CONST",
           "scheme-minimal": "INDEXED_CONST",
           "scheme-ocean": "INDEXED_CONST",
+          "scheme-pavarenkin": "INDEXED_CONST",
           "scheme-spanish": "INDEXED_CONST",
           "scheme-sunset": "INDEXED_CONST",
           "scheme-weoracle": "INDEXED_CONST",
