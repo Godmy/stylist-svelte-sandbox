@@ -162,6 +162,14 @@
         ]
       }
     },
+    "content": {
+      "component": {
+        "organism": [
+          "article-block-editor",
+          "article-reader"
+        ]
+      }
+    },
     "control": {
       "component": {
         "atom": [

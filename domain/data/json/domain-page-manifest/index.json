@@ -674,6 +674,75 @@
         }
       }
     },
+    "content": {
+      "component": {
+        "organism": {
+          "article-block-editor": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "article-reader": "DEFINED_REACTIVE_STORY_COMPONENT"
+        }
+      },
+      "const": {
+        "array": {
+          "article-block-options": "INDEXED_CONST"
+        }
+      },
+      "function": {
+        "check": {
+          "article-blocks": "INDEXED_FUNCTION"
+        },
+        "create": {
+          "article-block": "INDEXED_FUNCTION"
+        },
+        "resolve": {
+          "article-block-label": "INDEXED_FUNCTION"
+        },
+        "script": {
+          "article-contents": "INDEXED_FUNCTION",
+          "split-article-sections": "INDEXED_FUNCTION"
+        },
+        "transform": {
+          "article-html": "INDEXED_FUNCTION",
+          "article-plain-text": "INDEXED_FUNCTION"
+        }
+      },
+      "interface": {
+        "behavior": {
+          "article-block-editor": "INDEXED_INTERFACE",
+          "article-reader": "INDEXED_INTERFACE"
+        },
+        "recipe": {
+          "article-block-editor": "INDEXED_INTERFACE",
+          "article-reader": "INDEXED_INTERFACE"
+        },
+        "slot": {
+          "article-block-editor": "INDEXED_INTERFACE",
+          "article-reader": "INDEXED_INTERFACE"
+        }
+      },
+      "test": {
+        "render": {
+          "article-blocks": "FUNCTION_TEST"
+        },
+        "unit": {
+          "article-model": "FUNCTION_TEST"
+        }
+      },
+      "type": {
+        "alias": {
+          "article-block": "INDEXED_TYPE"
+        },
+        "object": {
+          "article-block-problem": "INDEXED_TYPE",
+          "article-comparison-column": "INDEXED_TYPE",
+          "article-editor-run": "INDEXED_TYPE",
+          "article-editor-section": "INDEXED_TYPE",
+          "article-link": "INDEXED_TYPE"
+        },
+        "struct": {
+          "article-document": "INDEXED_TYPE"
+        }
+      }
+    },
     "control": {
       "class": {
         "manager": {
@@ -2311,6 +2380,12 @@
           "image-caption-editor-card": "FUNCTION_TEST",
           "localization": "FUNCTION_TEST"
         }
+      },
+      "type": {
+        "object": {
+          "credited-image": "INDEXED_TYPE",
+          "image-attribution": "INDEXED_TYPE"
+        }
       }
     },
     "input": {
@@ -3197,7 +3272,15 @@
           "search-skin-scope": "INDEXED_CONST"
         }
       },
+      "function": {
+        "state": {
+          "async-search": "REACTIVE_BARREL"
+        }
+      },
       "interface": {
+        "contract": {
+          "async-search": "INDEXED_INTERFACE"
+        },
         "recipe": {
           "auto-complete": "INDEXED_INTERFACE",
           "search-bar": "INDEXED_INTERFACE",
@@ -3224,6 +3307,9 @@
         "render": {
           "html-contract": "FUNCTION_TEST",
           "stories": "FUNCTION_TEST"
+        },
+        "unit": {
+          "async-search": "FUNCTION_TEST"
         }
       },
       "type": {
