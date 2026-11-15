@@ -840,6 +840,7 @@
           "page-ellipsis"
         ],
         "organism": [
+          "carousel",
           "pagination"
         ]
       }

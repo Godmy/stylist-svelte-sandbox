@@ -3221,6 +3221,7 @@
           "page-ellipsis": "DEFINED_RENDERED_STORY_COMPONENT"
         },
         "organism": {
+          "carousel": "DEFINED_RENDERED_STORY_COMPONENT",
           "pagination": "DEFINED_STORY_COMPONENT"
         }
       },
@@ -3231,6 +3232,7 @@
       },
       "function": {
         "state": {
+          "carousel": "REACTIVE_BARREL",
           "page-button": "REACTIVE_BARREL",
           "page-ellipsis": "REACTIVE_BARREL",
           "pagination": "REACTIVE_BARREL"
@@ -3238,6 +3240,7 @@
       },
       "interface": {
         "recipe": {
+          "carousel": "INDEXED_INTERFACE",
           "page-button": "INDEXED_INTERFACE",
           "page-ellipsis": "INDEXED_INTERFACE",
           "pagination": "INDEXED_INTERFACE"

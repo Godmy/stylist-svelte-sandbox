@@ -3179,18 +3179,18 @@
     },
     {
       "name": "pager",
-      "fileCount": 30,
+      "fileCount": 37,
       "components": {
         "atoms": 2,
         "molecules": 0,
-        "organisms": 1,
+        "organisms": 2,
         "templates": 0,
         "pages": 0
       },
       "clusters": [
         {
           "name": "component",
-          "fileCount": 13,
+          "fileCount": 17,
           "joints": [
             {
               "name": "atom",
@@ -3199,8 +3199,8 @@
             },
             {
               "name": "organism",
-              "entityCount": 1,
-              "fileCount": 4
+              "entityCount": 2,
+              "fileCount": 8
             }
           ]
         },
@@ -3217,23 +3217,23 @@
         },
         {
           "name": "function",
-          "fileCount": 8,
+          "fileCount": 10,
           "joints": [
             {
               "name": "state",
-              "entityCount": 3,
-              "fileCount": 7
+              "entityCount": 4,
+              "fileCount": 9
             }
           ]
         },
         {
           "name": "interface",
-          "fileCount": 5,
+          "fileCount": 6,
           "joints": [
             {
               "name": "recipe",
-              "entityCount": 3,
-              "fileCount": 4
+              "entityCount": 4,
+              "fileCount": 5
             }
           ]
         }
@@ -4366,10 +4366,10 @@
   ],
   "totals": {
     "domains": 39,
-    "files": 6007,
+    "files": 6014,
     "atoms": 294,
     "molecules": 196,
-    "organisms": 160,
+    "organisms": 161,
     "templates": 7,
     "pages": 15
   }
