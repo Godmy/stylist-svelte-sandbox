@@ -1,3 +1,6 @@
 [submodule "src/lib/server"]
 	path = server
 	url = https://github.com/Godmy/stylist-svelte-server.git
+[submodule "tools"]
+	path = tools
+	url = https://github.com/Godmy/stylist-svelte-tools.git
