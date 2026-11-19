@@ -4,9 +4,11 @@ export interface RecipeDomainMenu {
 	domainVisible?: boolean;
 	howItWorksOpen?: boolean;
 	settingsOpen?: boolean;
+	reportsVisible?: boolean;
 	onLandingToggle?: () => void;
 	onComponentsToggle?: () => void;
 	onDomainToggle?: () => void;
+	onReportsToggle?: () => void;
 	onHowItWorksToggle?: () => void;
 	onSettingsToggle?: () => void;
 	onManifestReload?: () => void;

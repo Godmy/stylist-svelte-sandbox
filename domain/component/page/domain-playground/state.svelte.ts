@@ -23,7 +23,9 @@ export function createDomainPlaygroundState(getProps: () => RecipeDomainPlaygrou
 					? DOMAIN_SCREEN.DOMAIN
 					: path === '/about'
 						? DOMAIN_SCREEN.HOW_IT_WORKS
-						: DOMAIN_SCREEN.LANDING;
+						: path === '/reports' && props.reports
+							? DOMAIN_SCREEN.REPORTS
+							: DOMAIN_SCREEN.LANDING;
 		selectedStoryPath =
 			path === '/playground' ? url.searchParams.get('component') || 'html/component/atom/h1' : '';
 		if (currentScreen === DOMAIN_SCREEN.COMPONENTS) catalogVisited = true;
@@ -58,6 +60,9 @@ export function createDomainPlaygroundState(getProps: () => RecipeDomainPlaygrou
 	function handleHowItWorksToggle() {
 		navigate('/about');
 	}
+	function handleReportsToggle() {
+		navigate('/reports');
+	}
 	function handleSettingsToggle() {
 		if (isSettingsOpen) closeSettings();
 		else navigate('/settings');
@@ -90,6 +95,7 @@ export function createDomainPlaygroundState(getProps: () => RecipeDomainPlaygrou
 		handleDomainToggle,
 		handleLandingToggle,
 		handleHowItWorksToggle,
+		handleReportsToggle,
 		handleSettingsToggle,
 		closeSettings,
 		handleManifestReload

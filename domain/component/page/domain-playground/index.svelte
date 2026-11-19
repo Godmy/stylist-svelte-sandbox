@@ -17,6 +17,7 @@
 		initialScreen = DOMAIN_SCREEN.LANDING,
 		route,
 		onNavigate,
+		reports,
 		initialDomain,
 		initialCluster,
 		initialJoint,
@@ -24,7 +25,12 @@
 		class: className = ''
 	}: RecipeDomainPlayground = $props();
 
-	const screenState = createDomainPlaygroundState(() => ({ initialScreen, route, onNavigate }));
+	const screenState = createDomainPlaygroundState(() => ({
+		initialScreen,
+		route,
+		onNavigate,
+		reports
+	}));
 	const catalog = createStylistPreviewCatalogState(() => tree);
 	const selectedStory = $derived(screenState.selectedStoryPath.split('/'));
 	let iconSizes = $state<NonNullable<RecipeDomainSettings['iconSizes']>>({
@@ -92,6 +98,8 @@
 		domainVisible={screenState.currentScreen === DOMAIN_SCREEN.DOMAIN}
 		howItWorksOpen={screenState.currentScreen === DOMAIN_SCREEN.HOW_IT_WORKS}
 		settingsOpen={screenState.isSettingsOpen}
+		reportsVisible={screenState.currentScreen === DOMAIN_SCREEN.REPORTS}
+		onReportsToggle={reports ? screenState.handleReportsToggle : undefined}
 		onLandingToggle={screenState.handleLandingToggle}
 		onComponentsToggle={screenState.handleComponentsToggle}
 		onDomainToggle={screenState.handleDomainToggle}
@@ -130,6 +138,8 @@
 				/>
 			{/key}
 		{/await}
+	{:else if screenState.currentScreen === DOMAIN_SCREEN.REPORTS && reports}
+		{@render reports()}
 	{:else if screenState.currentScreen === DOMAIN_SCREEN.HOW_IT_WORKS}
 		{#await loadDomainHowItWorks() then module}
 			{@const DomainHowItWorks = module.default}

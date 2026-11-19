@@ -146,6 +146,7 @@ export const PRESET_FILE = {
 	DATA_MARKDOWN: { type: 'data', files: ['index.md'] },
 	INDEX_STYLESHEET: { type: 'stylesheet', files: ['index.css'] },
 	INDEX_JSON: { type: 'json', files: ['index.json'] },
+	TOOLS_PARITY_FIXTURES: { type: 'data', files: ['expected.json', 'inputs.json'] },
 	LANDING_IMAGE: { type: 'image', files: ['2026-09-17-otono.jpg'] },
 	LANDING_MARKDOWN: { type: 'markdown', files: ['2026-09-17-otono.md'] },
 	PRODUCT_IMAGES: { type: 'image', files: ['logo.png', 'picture.png'] },
