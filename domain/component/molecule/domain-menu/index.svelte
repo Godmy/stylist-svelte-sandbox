@@ -10,9 +10,11 @@
 		domainVisible = true,
 		howItWorksOpen = false,
 		settingsOpen = false,
+		reportsVisible = false,
 		onLandingToggle,
 		onComponentsToggle,
 		onDomainToggle,
+		onReportsToggle,
 		onHowItWorksToggle,
 		onSettingsToggle,
 		onManifestReload,
@@ -56,6 +58,20 @@
 	>
 		<Icon name="domain" size={18} />
 	</button>
+
+	{#if onReportsToggle}
+		<button
+			type="button"
+			class="menu-button menu-button--icon"
+			class:active={reportsVisible}
+			onclick={onReportsToggle}
+			aria-pressed={reportsVisible}
+			aria-label="Отчёты"
+			title="Отчёты"
+		>
+			<Icon name="file" size={18} />
+		</button>
+	{/if}
 
 	<button
 		type="button"
