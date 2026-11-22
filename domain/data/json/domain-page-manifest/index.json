@@ -52,7 +52,8 @@
         "array": {
           "connector": "INDEXED_CONST",
           "interaction-feedback": "INDEXED_CONST",
-          "loading": "INDEXED_CONST"
+          "loading": "INDEXED_CONST",
+          "named-easings": "INDEXED_CONST"
         },
         "preset": {
           "atomic-principles-showcase": "INDEXED_CONST",
@@ -69,6 +70,9 @@
         }
       },
       "function": {
+        "check": {
+          "reduced-motion": "INDEXED_FUNCTION"
+        },
         "resolve": {
           "carousel-index": "INDEXED_FUNCTION"
         },
@@ -83,6 +87,7 @@
           "sticky-scroll-progress": "REACTIVE_BARREL"
         },
         "transform": {
+          "duration-ms": "INDEXED_FUNCTION",
           "pointer-position": "INDEXED_FUNCTION",
           "tilt-rotation": "INDEXED_FUNCTION",
           "tilt-sample": "INDEXED_FUNCTION"
@@ -140,6 +145,9 @@
         }
       },
       "test": {
+        "render": {
+          "animated-digit": "FUNCTION_TEST"
+        },
         "unit": {
           "carousel-index": "FUNCTION_TEST",
           "pointer-position": "FUNCTION_TEST",
@@ -226,7 +234,7 @@
     "button": {
       "component": {
         "atom": {
-          "animated-button": "DOCUMENTED_DEFINED_STORY_COMPONENT",
+          "animated-button": "DOCUMENTED_DEFINED_REACTIVE_STORY_COMPONENT",
           "arrow-button": "DEFINED_STORY_COMPONENT",
           "button": "DEFINED_REACTIVE_STORY_COMPONENT",
           "button-composed": "DEFINED_REACTIVE_STORY_COMPONENT",
@@ -1467,6 +1475,7 @@
           "schema-table-header": "DEFINED_STORY_COMPONENT"
         },
         "molecule": {
+          "schema-gravity": "DEFINED_STORY_COMPONENT",
           "schema-table": "DEFINED_STORY_COMPONENT"
         },
         "organism": {
@@ -1479,6 +1488,7 @@
       },
       "const": {
         "record": {
+          "schema-gravity-message": "INDEXED_CONST",
           "schema-header-message": "INDEXED_CONST",
           "schema-text-message": "INDEXED_CONST",
           "schema-tool-message": "INDEXED_CONST"
@@ -1495,10 +1505,17 @@
         }
       },
       "function": {
+        "create": {
+          "schema-dependency-routes": "INDEXED_FUNCTION"
+        },
         "merge": {
           "schema-documents": "INDEXED_FUNCTION"
         },
+        "serialize": {
+          "schema-route-path": "INDEXED_FUNCTION"
+        },
         "transform": {
+          "bundle-schema-dependency-routes": "INDEXED_FUNCTION",
           "schema-document-to-text": "INDEXED_FUNCTION",
           "schema-text-to-document": "INDEXED_FUNCTION"
         }
@@ -1511,6 +1528,7 @@
           "erd-table-field": "INDEXED_INTERFACE",
           "erd-table-header": "INDEXED_INTERFACE",
           "schema": "INDEXED_INTERFACE",
+          "schema-gravity": "INDEXED_INTERFACE",
           "schema-header": "INDEXED_INTERFACE",
           "schema-text": "INDEXED_INTERFACE",
           "schema-tool": "INDEXED_INTERFACE"
@@ -1524,7 +1542,13 @@
       },
       "test": {
         "render": {
-          "localization": "FUNCTION_TEST"
+          "localization": "FUNCTION_TEST",
+          "schema-gravity-controls": "FUNCTION_TEST",
+          "schema-view-navigation": "FUNCTION_TEST"
+        },
+        "unit": {
+          "schema-dependency-routes": "FUNCTION_TEST",
+          "schema-route-bundling": "FUNCTION_TEST"
         }
       },
       "type": {
@@ -1534,8 +1558,11 @@
         },
         "object": {
           "schema-dependency": "INDEXED_TYPE",
+          "schema-dependency-route": "INDEXED_TYPE",
           "schema-document": "INDEXED_TYPE",
           "schema-field": "INDEXED_TYPE",
+          "schema-gravity-settings": "INDEXED_TYPE",
+          "schema-gravity-zone": "INDEXED_TYPE",
           "schema-parse-result": "INDEXED_TYPE",
           "schema-table": "INDEXED_TYPE",
           "schema-table-position": "INDEXED_TYPE"
@@ -1705,6 +1732,7 @@
         },
         "organism": {
           "address-form": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "contact-form": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
           "form-with-validation": "DEFINED_REACTIVE_STORY_COMPONENT",
           "login-form": "DEFINED_REACTIVE_STORY_COMPONENT",
           "rating-feedback": "DEFINED_STORY_COMPONENT",
@@ -1717,6 +1745,9 @@
         }
       },
       "const": {
+        "object": {
+          "contact-form-messages": "INDEXED_CONST"
+        },
         "preset": {
           "rating-feedback-labels": "INDEXED_CONST"
         }
@@ -1734,6 +1765,7 @@
           "account-forms": "INDEXED_INTERFACE",
           "address-form": "INDEXED_INTERFACE",
           "checkbox-group": "INDEXED_INTERFACE",
+          "contact-form": "INDEXED_INTERFACE",
           "feedback-scenario": "INDEXED_INTERFACE",
           "form-footer": "INDEXED_INTERFACE",
           "form-header": "INDEXED_INTERFACE",
@@ -1750,6 +1782,7 @@
         },
         "slot": {
           "address-data": "INDEXED_INTERFACE",
+          "contact-form-messages": "INDEXED_INTERFACE",
           "feedback-scenario": "INDEXED_INTERFACE",
           "form-data": "INDEXED_INTERFACE",
           "form-footer": "INDEXED_INTERFACE",
@@ -1762,8 +1795,17 @@
         }
       },
       "test": {
+        "render": {
+          "contact-form": "FUNCTION_TEST"
+        },
         "unit": {
           "cooldown-counter": "FUNCTION_TEST"
+        }
+      },
+      "type": {
+        "object": {
+          "contact-form-feedback": "INDEXED_TYPE",
+          "contact-form-messages": "INDEXED_TYPE"
         }
       }
     },
@@ -2522,6 +2564,7 @@
           "cards-section": "DEFINED_STORY_COMPONENT",
           "comparison-section": "DEFINED_REACTIVE_STORY_COMPONENT",
           "definition-section": "DEFINED_STORY_COMPONENT",
+          "hero-banner": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
           "hero-section": "DEFINED_STORY_COMPONENT",
           "result-section": "DEFINED_STORY_COMPONENT",
           "site-navigation-drawer": "DEFINED_STORY_COMPONENT",
@@ -2594,6 +2637,7 @@
           "divider": "INDEXED_INTERFACE",
           "feature-items": "INDEXED_INTERFACE",
           "grid": "INDEXED_INTERFACE",
+          "hero-banner": "INDEXED_INTERFACE",
           "hero-section": "INDEXED_INTERFACE",
           "landing": "INDEXED_INTERFACE",
           "landing-template": "INDEXED_INTERFACE",
@@ -2618,6 +2662,9 @@
         }
       },
       "test": {
+        "render": {
+          "hero-banner": "FUNCTION_TEST"
+        },
         "unit": {
           "style-layer": "FUNCTION_TEST"
         }
@@ -3622,6 +3669,7 @@
           "color-tone-tertiary": "INDEX_SVG",
           "color-tone-warning": "INDEX_SVG",
           "colors": "INDEX_SVG",
+          "columns": "INDEX_SVG",
           "combobox": "INDEX_SVG",
           "comment-system": "INDEX_SVG",
           "comment-thread": "INDEX_SVG",
@@ -3629,6 +3677,7 @@
           "commerce": "INDEX_SVG",
           "communication": "INDEX_SVG",
           "comparison-card": "INDEX_SVG",
+          "compass": "INDEX_SVG",
           "component": "INDEX_SVG",
           "component-library-stats": "INDEX_SVG",
           "component-preview": "INDEX_SVG",
@@ -3783,10 +3832,12 @@
           "grids": "INDEX_SVG",
           "grip-vertical": "INDEX_SVG",
           "hand": "INDEX_SVG",
+          "handshake": "INDEX_SVG",
           "heading": "INDEX_SVG",
           "heart": "INDEX_SVG",
           "heatmap": "INDEX_SVG",
           "height": "INDEX_SVG",
+          "help-circle": "INDEX_SVG",
           "hero": "INDEX_SVG",
           "home": "INDEX_SVG",
           "hook": "INDEX_SVG",
@@ -3828,6 +3879,7 @@
           "keyboard": "INDEX_SVG",
           "kite": "INDEX_SVG",
           "kpi-indicator": "INDEX_SVG",
+          "labels": "INDEX_SVG",
           "lake": "INDEX_SVG",
           "landing": "INDEX_SVG",
           "language-selector": "INDEX_SVG",
@@ -3839,6 +3891,7 @@
           "leaf": "INDEX_SVG",
           "legend-item": "INDEX_SVG",
           "light-mode": "INDEX_SVG",
+          "lightbulb": "INDEX_SVG",
           "lighthouse": "INDEX_SVG",
           "lines": "INDEX_SVG",
           "link": "INDEX_SVG",
@@ -4335,7 +4388,7 @@
         "organism": {
           "data-table": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
           "data-table-shell": "DEFINED_REACTIVE_STORY_COMPONENT",
-          "table-list-panel": "DEFINED_RENDERED_STORY_COMPONENT"
+          "table-list-panel": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT"
         }
       },
       "const": {
@@ -4398,7 +4451,9 @@
       },
       "test": {
         "render": {
-          "localization": "FUNCTION_TEST"
+          "data-table-shell": "FUNCTION_TEST",
+          "localization": "FUNCTION_TEST",
+          "table-list-panel": "FUNCTION_TEST"
         },
         "unit": {
           "column-visibility": "FUNCTION_TEST"
@@ -4690,16 +4745,23 @@
           "flat-tree": "DEFINED_STORY_COMPONENT",
           "tree-node-item": "DEFINED_REACTIVE_STORY_COMPONENT",
           "tree-viewer": "DEFINED_REACTIVE_STORY_COMPONENT"
+        },
+        "organism": {
+          "catalog": "DEFINED_REACTIVE_STORY_COMPONENT"
         }
       },
       "const": {
         "record": {
+          "catalog-message": "INDEXED_CONST",
           "tree-node-item-message": "INDEXED_CONST"
         }
       },
       "function": {
         "script": {
-          "normalize-tree-viewer-node": "INDEXED_FUNCTION"
+          "build-catalog-tree": "INDEXED_FUNCTION",
+          "filter-catalog-tree": "INDEXED_FUNCTION",
+          "normalize-tree-viewer-node": "INDEXED_FUNCTION",
+          "pretty-json": "INDEXED_FUNCTION"
         },
         "state": {
           "tree-expansion": "REACTIVE_BARREL"
@@ -4707,6 +4769,7 @@
       },
       "interface": {
         "recipe": {
+          "catalog": "INDEXED_INTERFACE",
           "tree": "INDEXED_INTERFACE",
           "tree-node-item": "INDEXED_INTERFACE",
           "tree-viewer": "INDEXED_INTERFACE"
@@ -4714,11 +4777,17 @@
       },
       "test": {
         "render": {
+          "catalog": "FUNCTION_TEST",
           "localization": "FUNCTION_TEST"
+        },
+        "script": {
+          "catalog-tree": "FUNCTION_TEST"
         }
       },
       "type": {
         "object": {
+          "catalog-field": "INDEXED_TYPE",
+          "catalog-tree-node": "INDEXED_TYPE",
           "tree-node": "INDEXED_TYPE",
           "tree-node-item-node": "INDEXED_TYPE"
         }

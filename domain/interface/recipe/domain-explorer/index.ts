@@ -1,6 +1,9 @@
 import type { TypeDomainTreeInput } from '$stylist/domain/type/alias/domain-tree-input';
 import type { DeviceFrameViewport } from '$stylist/domain/type/alias/device-frame-viewport';
+import type { Snippet } from 'svelte';
+
 export interface RecipeDomainExplorer {
+	menu?: Snippet;
 	tree: TypeDomainTreeInput;
 	initialDomain?: string;
 	initialCluster?: string;

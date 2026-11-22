@@ -110,13 +110,14 @@
       "family": "schema-view",
       "status": "missing-recipe",
       "expectedRecipe": "RecipeSchemaView",
-      "importCount": 4,
+      "importCount": 5,
       "recipeImports": [
         "$stylist/erd/interface/recipe/erd-schema-view"
       ],
       "otherImports": [
         "$stylist/erd/component/atom/schema-dependency/index.svelte",
         "$stylist/erd/component/molecule/schema-table/index.svelte",
+        "$stylist/erd/component/molecule/schema-gravity/index.svelte",
         "$stylist/erd/component/organism/schema-view/state.svelte"
       ]
     },
@@ -2154,7 +2155,7 @@
     "total": 151,
     "none": 0,
     "missingRecipe": 151,
-    "valid": 522,
-    "scanned": 673
+    "valid": 526,
+    "scanned": 677
   }
 }

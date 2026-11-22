@@ -338,6 +338,7 @@
           "schema-table-header"
         ],
         "molecule": [
+          "schema-gravity",
           "schema-table"
         ],
         "organism": [
@@ -393,6 +394,7 @@
         ],
         "organism": [
           "address-form",
+          "contact-form",
           "form-with-validation",
           "login-form",
           "rating-feedback",
@@ -675,6 +677,7 @@
           "cards-section",
           "comparison-section",
           "definition-section",
+          "hero-banner",
           "hero-section",
           "result-section",
           "site-navigation-drawer",
@@ -966,6 +969,9 @@
           "flat-tree",
           "tree-node-item",
           "tree-viewer"
+        ],
+        "organism": [
+          "catalog"
         ]
       }
     },

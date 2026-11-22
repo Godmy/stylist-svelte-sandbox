@@ -1,3 +1,4 @@
+import { MediaQuery } from 'svelte/reactivity';
 import type { TreeNode } from '$stylist/tree/type/object/tree-node';
 import { expandComponentTree } from '$stylist/domain/function/transform/expand-component-tree';
 import type { RecipeDomainExplorer } from '$stylist/domain/interface/recipe/domain-explorer';
@@ -39,6 +40,8 @@ interface DomainDependencyFile {
 }
 
 export function createDomainPageState(input: DomainPageInput) {
+	const mobile = new MediaQuery('(max-width: 840px)');
+	let drawerOpen = $state(false);
 	const { storyModules, initialDomain, initialCluster, initialJoint, initialPreviewMode } = input;
 	const tree = expandComponentTree(input.tree);
 
@@ -433,6 +436,22 @@ export function createDomainPageState(input: DomainPageInput) {
 	}
 
 	return {
+		get mobile() {
+			return mobile.current;
+		},
+		get drawerOpen() {
+			return drawerOpen;
+		},
+		openDrawer() {
+			drawerOpen = true;
+		},
+		closeDrawer() {
+			drawerOpen = false;
+		},
+		selectNavigationEntity(path: string) {
+			handleEntitySelect(path);
+			drawerOpen = false;
+		},
 		get activeDomain() {
 			return activeDomain;
 		},

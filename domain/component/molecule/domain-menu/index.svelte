@@ -5,6 +5,7 @@
 	import type { RecipeDomainMenu } from '$stylist/domain/interface/recipe/domain-menu';
 
 	let {
+		variant = 'full',
 		landingVisible = false,
 		componentsVisible = false,
 		domainVisible = true,
@@ -23,75 +24,104 @@
 </script>
 
 <nav class="c-domain-menu {className}" aria-label="Domain menu">
-	<button
-		type="button"
-		class:active={landingVisible}
-		class="menu-button menu-button--icon"
-		onclick={onLandingToggle}
-		aria-pressed={landingVisible}
-		aria-label="Show landing"
-		title="Show landing"
-	>
-		<Icon name="landing" size={18} />
-	</button>
-
-	<button
-		type="button"
-		class:active={componentsVisible}
-		class="menu-button menu-button--icon"
-		onclick={onComponentsToggle}
-		aria-pressed={componentsVisible}
-		aria-label="Show components"
-		title="Show components"
-	>
-		<Icon name="component" size={18} />
-	</button>
-
-	<button
-		type="button"
-		class:active={domainVisible}
-		class="menu-button menu-button--icon"
-		onclick={onDomainToggle}
-		aria-pressed={domainVisible}
-		aria-label="Show playground"
-		title="Show playground"
-	>
-		<Icon name="domain" size={18} />
-	</button>
-
-	{#if onReportsToggle}
+	{#if variant !== 'settings'}
 		<button
 			type="button"
+			class:active={landingVisible}
 			class="menu-button menu-button--icon"
-			class:active={reportsVisible}
-			onclick={onReportsToggle}
-			aria-pressed={reportsVisible}
-			aria-label="Отчёты"
-			title="Отчёты"
+			onclick={onLandingToggle}
+			aria-pressed={landingVisible}
+			aria-label="Show landing"
+			title="Show landing"
 		>
-			<Icon name="file" size={18} />
+			<Icon name="landing" size={18} />
 		</button>
-	{/if}
 
-	<button
-		type="button"
-		class:active={howItWorksOpen}
-		class="menu-button menu-button--icon menu-button--help"
-		onclick={onHowItWorksToggle}
-		aria-pressed={howItWorksOpen}
-		aria-label="How it works"
-		title="How it works"
-	>
-		<span class="menu-help-mark" aria-hidden="true">?</span>
-	</button>
-
-	{#if DOMAIN_REGIME === 'dev' && onManifestReload}
 		<button
 			type="button"
+			class:active={componentsVisible}
 			class="menu-button menu-button--icon"
-			onclick={onManifestReload}
-			aria-label="Reload manifest"
-			title="Reload manifest (refresh page after running auditor CLI)"
+			onclick={onComponentsToggle}
+			aria-pressed={componentsVisible}
+			aria-label="Show components"
+			title="Show components"
+		>
+			<Icon name="component" size={18} />
+		</button>
+
+		<button
+			type="button"
+			class:active={domainVisible}
+			class="menu-button menu-button--icon"
+			onclick={onDomainToggle}
+			aria-pressed={domainVisible}
+			aria-label="Show playground"
+			title="Show playground"
+		>
+			<Icon name="domain" size={18} />
+		</button>
+
+		{#if onReportsToggle}
+			<button
+				type="button"
+				class="menu-button menu-button--icon"
+				class:active={reportsVisible}
+				onclick={onReportsToggle}
+				aria-pressed={reportsVisible}
+				aria-label="Отчёты"
+				title="Отчёты"
+			>
+				<Icon name="file" size={18} />
+			</button>
+		{/if}
+
+		<button
+			type="button"
+			class:active={howItWorksOpen}
+			class="menu-button menu-button--icon menu-button--help"
+			onclick={onHowItWorksToggle}
+			aria-pressed={howItWorksOpen}
+			aria-label="How it works"
+			title="How it works"
+		>
+			<span class="menu-help-mark" aria-hidden="true">?</span>
+		</button>
+
+		{#if DOMAIN_REGIME === 'dev' && onManifestReload}
+			<button
+				type="button"
+				class="menu-button menu-button--icon"
+				onclick={onManifestReload}
+				aria-label="Reload manifest"
+				title="Reload manifest (refresh page after running auditor CLI)"
+			>
+				<svg
+					width="18"
+					height="18"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					aria-hidden="true"
+				>
+					<path
+						d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"
+					/>
+				</svg>
+			</button>
+		{/if}
+	{/if}
+	{#if variant !== 'pages'}
+		<button
+			type="button"
+			class:active={settingsOpen}
+			class="menu-button menu-button--icon"
+			onclick={onSettingsToggle}
+			aria-pressed={settingsOpen}
+			aria-label="Settings"
+			title="Settings"
 		>
 			<svg
 				width="18"
@@ -104,45 +134,21 @@
 				stroke-linejoin="round"
 				aria-hidden="true"
 			>
+				<circle cx="12" cy="12" r="3" />
 				<path
-					d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"
+					d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"
 				/>
 			</svg>
 		</button>
 	{/if}
-
-	<button
-		type="button"
-		class:active={settingsOpen}
-		class="menu-button menu-button--icon"
-		onclick={onSettingsToggle}
-		aria-pressed={settingsOpen}
-		aria-label="Settings"
-		title="Settings"
-	>
-		<svg
-			width="18"
-			height="18"
-			viewBox="0 0 24 24"
-			fill="none"
-			stroke="currentColor"
-			stroke-width="2"
-			stroke-linecap="round"
-			stroke-linejoin="round"
-			aria-hidden="true"
-		>
-			<circle cx="12" cy="12" r="3" />
-			<path
-				d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"
-			/>
-		</svg>
-	</button>
-
-	<ThemeModeToggle class="menu-button menu-button--theme" />
+	{#if variant !== 'settings'}
+		<ThemeModeToggle class="menu-button menu-button--theme" />
+	{/if}
 </nav>
 
 <style>
 	.c-domain-menu {
+		flex-wrap: wrap;
 		display: inline-flex;
 		align-items: center;
 		gap: 0.55rem;
@@ -254,7 +260,7 @@
 		.c-domain-menu {
 			flex-wrap: wrap;
 			justify-content: flex-end;
-			width: 100%;
+			max-width: 100%;
 		}
 	}
 </style>
