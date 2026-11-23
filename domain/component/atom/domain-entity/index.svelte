@@ -46,10 +46,19 @@
 		cursor: pointer;
 	}
 
-	.c-domain-entity:hover,
-	.c-domain-entity.is-active {
+	.c-domain-entity:hover {
 		border-color: var(--color-border-primary);
 		background: var(--color-background-secondary);
+	}
+
+	.c-domain-entity.is-active {
+		border-color: color-mix(in srgb, var(--color-primary-500) 45%, var(--color-border-primary));
+		background: color-mix(in srgb, var(--color-primary-500) 15%, transparent);
+		color: var(--color-primary-600);
+	}
+
+	.c-domain-entity.is-active .entity-count {
+		color: inherit;
 	}
 
 	.entity-name {
