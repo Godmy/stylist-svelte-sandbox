@@ -40,7 +40,7 @@
 				<label class="token-settings__column-control">
 					<span>Columns</span>
 					<select bind:value={gridColumns} aria-label="Token card columns">
-						{#each columnOptions as option}
+						{#each columnOptions as option, optionIndex (optionIndex)}
 							<option value={option}>{option}</option>
 						{/each}
 					</select>
@@ -53,7 +53,7 @@
 				aria-label="Search token settings"
 			/>
 			<select bind:value={settingsState.domain} aria-label="Filter by domain">
-				{#each settingsState.domains as domain}
+				{#each settingsState.domains as domain, domainIndex (domainIndex)}
 					<option value={domain}>{domain}</option>
 				{/each}
 			</select>
@@ -61,7 +61,7 @@
 	</header>
 
 	<div class="token-settings__grid">
-		{#each settingsState.filteredSettings as setting}
+		{#each settingsState.filteredSettings as setting (setting.key)}
 			{@const currentValue = settingsState.getValue(setting.key, setting.values[0] ?? '')}
 			<article class="token-settings__item">
 				<header>

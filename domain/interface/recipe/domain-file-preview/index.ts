@@ -7,7 +7,7 @@ export interface RecipeDomainFilePreview {
 	fileContent?: string;
 	fileLoading?: boolean;
 	fileError?: string;
-	storyPreviewComponent?: any;
+	storyPreviewComponent?: unknown;
 	storyPreviewLoading?: boolean;
 	storyPreviewError?: string;
 	dependencyItems?: DomainDependency[];

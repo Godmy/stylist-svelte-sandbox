@@ -130,7 +130,7 @@
 	</header>
 
 	<ol class="smb-steps">
-		{#each steps as step, index}
+		{#each steps as step, index (index)}
 			<li class="smb-step">
 				<span class="smb-step-index">{index + 1}</span>
 				<div>
@@ -148,7 +148,7 @@
 				<thead>
 					<tr>
 						<th scope="col" class="smb-corner">cluster ↓ / domain →</th>
-						{#each domains as domain, columnIndex}
+						{#each domains as domain, columnIndex (columnIndex)}
 							<th scope="col" class="smb-domain" class:is-active={columnIndex === activeColumn}>
 								{domain}
 							</th>
@@ -156,12 +156,12 @@
 					</tr>
 				</thead>
 				<tbody>
-					{#each rows as row, rowIndex}
+					{#each rows as row, rowIndex (rowIndex)}
 						<tr style={`--smb-accent:${row.accent}`}>
 							<th scope="row" class="smb-cluster" class:is-active={rowIndex === activeRow}>
 								{row.cluster}
 							</th>
-							{#each row.cells as cell, columnIndex}
+							{#each row.cells as cell, columnIndex (columnIndex)}
 								<td class="smb-cell-wrap">
 									<button
 										type="button"

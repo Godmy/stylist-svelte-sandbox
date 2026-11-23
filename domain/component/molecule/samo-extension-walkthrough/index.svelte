@@ -73,7 +73,7 @@
 			</div>
 
 			<ol class="sew-files">
-				{#each steps as step, index}
+				{#each steps as step, index (index)}
 					<li>
 						<button
 							type="button"
@@ -113,7 +113,7 @@
 						<code>{activeStep.path}</code>
 					</div>
 					<pre><code
-							>{#each activeStep.code.split('\n') as line}<span
+							>{#each activeStep.code.split('\n') as line, lineIndex (lineIndex)}<span
 									class="sew-code-line"
 									class:is-add={line.startsWith('+')}
 									class:is-same={line.startsWith('=')}>{line}</span

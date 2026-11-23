@@ -60,7 +60,7 @@
 	</header>
 
 	<ol class="sar-road">
-		{#each stages as stage, index}
+		{#each stages as stage, index (index)}
 			<li class="sar-stage" style={`--sar-delay:${index * 0.12}s`}>
 				<div class="sar-marker">
 					<span class="sar-marker-dot">{index + 1}</span>
@@ -69,7 +69,7 @@
 					<h3 class="sar-stage-title">{stage.title}</h3>
 					<p class="sar-stage-desc">{stage.description}</p>
 					<ul class="sar-deliverables">
-						{#each stage.deliverables as deliverable}
+						{#each stage.deliverables as deliverable, deliverableIndex (deliverableIndex)}
 							<li>{deliverable}</li>
 						{/each}
 					</ul>
@@ -79,7 +79,7 @@
 	</ol>
 
 	<div class="sar-audiences">
-		{#each audiences as audience}
+		{#each audiences as audience, audienceIndex (audienceIndex)}
 			<article class="sar-audience">
 				<h3 class="sar-audience-title">{audience.title}</h3>
 				<p class="sar-audience-desc">{audience.description}</p>

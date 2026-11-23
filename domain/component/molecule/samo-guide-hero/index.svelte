@@ -87,7 +87,7 @@
 				<code class="sgh-terminal-name">samo · change</code>
 			</div>
 			<ol class="sgh-terminal-lines">
-				{#each terminalLines as line, index}
+				{#each terminalLines as line, index (index)}
 					<li
 						class="sgh-line"
 						class:sgh-line--ok={line.startsWith('✓')}
@@ -104,7 +104,7 @@
 	</div>
 
 	<ol class="sgh-chapters">
-		{#each chapters as chapter, index}
+		{#each chapters as chapter, index (chapter.id)}
 			<li>
 				<button type="button" class="sgh-chapter" onclick={() => openChapter(chapter.id)}>
 					<span class="sgh-chapter-index">{String(index + 1).padStart(2, '0')}</span>

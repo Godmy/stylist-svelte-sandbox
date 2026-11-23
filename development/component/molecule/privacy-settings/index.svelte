@@ -15,7 +15,7 @@
 <div class={state.containerClass} {...restProps}>
 	<h2 class={state.titleClass}>Privacy Settings</h2>
 	<div class={state.settingsContainerClass}>
-		{#each state.localSettings as setting}
+		{#each state.localSettings as setting (setting.id)}
 			<div class={state.settingItemClass}>
 				<div class={state.settingContentClass}>
 					<h3 class={state.settingLabelClass}>{setting.label}</h3>

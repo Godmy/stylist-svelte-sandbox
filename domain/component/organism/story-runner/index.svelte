@@ -69,7 +69,7 @@
 		<label class="select-field">
 			<span>Domain</span>
 			<select bind:value={state.selectedDomain}>
-				{#each state.domainOptions as option}
+				{#each state.domainOptions as option, optionIndex (optionIndex)}
 					<option value={option}>{option === 'all' ? 'All domains' : toWords(option)}</option>
 				{/each}
 			</select>

@@ -31,7 +31,7 @@
 
 	<div class="strip" class:opened aria-hidden={!opened}>
 		<div class="strip-items">
-			{#each items as item, index}
+			{#each items as item, index (index)}
 				<button
 					type="button"
 					class="node"

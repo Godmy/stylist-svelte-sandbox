@@ -164,7 +164,7 @@
 	</div>
 
 	<div class="sld-tabs" role="tablist" aria-label="Development scenarios">
-		{#each scenarios as scenario, index}
+		{#each scenarios as scenario, index (scenario.id)}
 			<button
 				type="button"
 				role="tab"
@@ -184,7 +184,7 @@
 			<p class="sld-summary">{activeScenario.summary}</p>
 
 			<div class="sld-snippets">
-				{#each activeScenario.snippets as snippet}
+				{#each activeScenario.snippets as snippet, snippetIndex (snippetIndex)}
 					<figure class="sld-snippet">
 						<figcaption class="sld-snippet-bar">
 							<span class="sld-dots" aria-hidden="true"><i></i><i></i><i></i></span>
@@ -196,7 +196,7 @@
 			</div>
 
 			<ul class="sld-notes">
-				{#each activeScenario.notes as note}
+				{#each activeScenario.notes as note, noteIndex (noteIndex)}
 					<li>{note}</li>
 				{/each}
 			</ul>
@@ -206,7 +206,7 @@
 	<div class="sld-checklist">
 		<h3 class="sld-subtitle">Checklist for a consuming site</h3>
 		<ul class="sld-rules">
-			{#each checklist as item}
+			{#each checklist as item, itemIndex (itemIndex)}
 				<li class="sld-rule" class:is-denied={!item.allowed}>
 					<span class="sld-rule-mark" aria-hidden="true">{item.allowed ? '✓' : '✕'}</span>
 					<div>

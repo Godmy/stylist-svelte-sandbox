@@ -70,7 +70,7 @@
 	</header>
 
 	<ol class="sp-steps">
-		{#each steps as step, index}
+		{#each steps as step, index (index)}
 			<li class="sp-step">
 				<span class="sp-step-index">{index + 1}</span>
 				<p class="sp-step-title">{step.title}</p>
@@ -80,7 +80,7 @@
 	</ol>
 
 	<div class="sp-cases">
-		{#each cases as practiceCase}
+		{#each cases as practiceCase, practiceCaseIndex (practiceCaseIndex)}
 			<article class="sp-case">
 				<h3 class="sp-case-title">{practiceCase.title}</h3>
 				<div class="sp-case-pair">

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { onMount, untrack } from 'svelte';
+	import { onMount, untrack, type Component } from 'svelte';
 	import DomainDescriptorPanel from '$stylist/token/component/molecule/domain-descriptor-panel/index.svelte';
 	import DomainSidebar from '$stylist/domain/component/organism/domain-sidebar/index.svelte';
 	import type { RecipeDomainBuilder } from '$stylist/token/interface/recipe/domain-builder';
@@ -884,7 +884,7 @@
 					</div>
 
 					<div class="section-grid">
-						{#each section.items as columnItems, columnIndex}
+						{#each section.items as columnItems, columnIndex (columnIndex)}
 							<div
 								class:selected={selectedSectionId === section.id &&
 									selectedColumnIndex === columnIndex}
@@ -989,7 +989,9 @@
 												{#if instance.componentLoading}
 													<div class="component-placeholder">Loading component...</div>
 												{:else if instance.componentModule}
-													{@const PreviewComponent = instance.componentModule as any}
+													{@const PreviewComponent = instance.componentModule as Component<
+														Record<string, unknown>
+													>}
 													<PreviewComponent {...instance.config} />
 												{:else if instance.componentError}
 													<div class="component-placeholder component-placeholder--error">

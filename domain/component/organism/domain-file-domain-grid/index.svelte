@@ -56,7 +56,7 @@
 			/>
 
 			<div class="component-grid" aria-label={`${domain.name} component counts`}>
-				{#each componentKeys as key}
+				{#each componentKeys as key, keyIndex (keyIndex)}
 					<div>
 						<span>{componentLabels[key]}</span>
 						<strong>{domain.components[key]}</strong>

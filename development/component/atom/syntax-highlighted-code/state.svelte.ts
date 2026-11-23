@@ -29,7 +29,7 @@ export function createSyntaxHighlightedCodeState(getProps: () => RecipeSyntaxHig
 		)
 	);
 	const code = $derived(props.code ?? '');
-	const language = $derived((props.language ?? 'text') as any);
+	const language = $derived(props.language ?? 'text');
 	const showLineNumbers = $derived(props.showLineNumbers ?? false);
 
 	return {

@@ -15,12 +15,12 @@
 		onChange
 	}: RecipeTokenSetting = $props();
 
-	const architectureSvgs = (import.meta as any).glob('/src/lib/architecture/data/svg/*.svg', {
+	const architectureSvgs = import.meta.glob<string>('/src/lib/architecture/data/svg/*.svg', {
 		eager: true,
 		query: '?raw',
 		import: 'default'
 	}) as Record<string, string>;
-	const informationSvgs = (import.meta as any).glob('/src/lib/information/data/svg/*.svg', {
+	const informationSvgs = import.meta.glob<string>('/src/lib/information/data/svg/*.svg', {
 		eager: true,
 		query: '?raw',
 		import: 'default'
@@ -168,7 +168,7 @@
 					/>
 				{:else if defaultTokenView === 'radio'}
 					<div class="token-setting-molecule__chips">
-						{#each definition.options as option}
+						{#each definition.options as option, optionIndex (optionIndex)}
 							<button
 								type="button"
 								class={`token-setting-molecule__chip ${internalValue === option.value ? 'token-setting-molecule__chip--active' : ''}`.trim()}
@@ -188,7 +188,7 @@
 							setValue(option?.value ?? next);
 						}}
 					>
-						{#each definition.options as option}
+						{#each definition.options as option, optionIndex2 (optionIndex2)}
 							<option value={String(option.value)}>{option.label}</option>
 						{/each}
 					</select>

@@ -51,7 +51,7 @@
 	</div>
 
 	<div class="fg-grid">
-		{#each features as feature}
+		{#each features as feature, featureIndex (featureIndex)}
 			<div class={`fg-card ${feature.palette}`}>
 				<div class={`fg-icon-box ${feature.iconBg}`}>
 					<BaseIcon

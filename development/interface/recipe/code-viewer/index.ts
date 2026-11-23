@@ -3,7 +3,7 @@ import type { SlotTypography } from '$stylist/typography/interface/slot/typograp
 import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 export interface RecipeCodeViewer extends ComputeIntersectAll<[SlotThemeBorder, SlotTypography]> {
 	componentName?: string;
-	props?: Record<string, any>;
+	props?: Record<string, unknown>;
 	theme?: 'light' | 'dark' | 'github-light' | 'github-dark';
 	onCopySuccess?: () => void;
 	onCopyError?: (error: unknown) => void;

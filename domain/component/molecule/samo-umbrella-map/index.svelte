@@ -179,7 +179,7 @@
 				</span>
 			</div>
 			<ul class="sum-tree-list">
-				{#each modules as module, index}
+				{#each modules as module, index (index)}
 					<li>
 						<button
 							type="button"
@@ -209,7 +209,7 @@
 				<p class="sum-detail-label">Domains it owns</p>
 				{#if activeModule.domains.length > 0}
 					<ul class="sum-chips">
-						{#each activeModule.domains as domain}
+						{#each activeModule.domains as domain, domainIndex (domainIndex)}
 							<li class:is-nested={activeModule.nested.includes(domain)}>{domain}</li>
 						{/each}
 					</ul>
@@ -220,7 +220,7 @@
 				{#if activeModule.nested.length > 0}
 					<p class="sum-detail-label">Nested repositories (own .gitmodules)</p>
 					<ul class="sum-chips sum-chips--nested">
-						{#each activeModule.nested as nested}
+						{#each activeModule.nested as nested, nestedIndex (nestedIndex)}
 							<li>{nested}</li>
 						{/each}
 					</ul>
@@ -232,7 +232,7 @@
 	<div class="sum-block">
 		<h3 class="sum-subtitle">From a logical import to a physical file</h3>
 		<ol class="sum-resolution">
-			{#each resolution as snippet, index}
+			{#each resolution as snippet, index (index)}
 				<li class="sum-resolution-step">
 					<span class="sum-resolution-label">
 						<span class="sum-resolution-index">{index + 1}</span>
@@ -252,7 +252,7 @@
 		<div>
 			<h3 class="sum-subtitle">Commits travel up the nesting</h3>
 			<ol class="sum-commit-steps">
-				{#each commitSteps as step, index}
+				{#each commitSteps as step, index (index)}
 					<li>
 						<span class="sum-commit-index">{index + 1}</span>
 						<div>
@@ -267,7 +267,7 @@
 	</div>
 
 	<ul class="sum-rules">
-		{#each rules as rule}
+		{#each rules as rule, ruleIndex (ruleIndex)}
 			<li class="sum-rule" class:is-denied={!rule.allowed}>
 				<span class="sum-rule-mark" aria-hidden="true">{rule.allowed ? '✓' : '✕'}</span>
 				<div>

@@ -131,7 +131,7 @@
 	</header>
 
 	<div class="so-pillars">
-		{#each pillars as pillar}
+		{#each pillars as pillar, pillarIndex (pillarIndex)}
 			<article class="so-pillar">
 				<span class="so-pillar-letter" aria-hidden="true">{pillar.letter}</span>
 				<h3 class="so-pillar-title">{pillar.title}</h3>
@@ -151,7 +151,7 @@
 		</div>
 
 		<div class="so-address-picker" role="tablist" aria-label="Example addresses">
-			{#each addresses as address, index}
+			{#each addresses as address, index (index)}
 				<button
 					type="button"
 					role="tab"
@@ -174,7 +174,7 @@
 				</span>
 				<span class="so-path-slash" aria-hidden="true">/</span>
 			{/if}
-			{#each addressSegments as segment, index}
+			{#each addressSegments as segment, index (index)}
 				<button
 					type="button"
 					class={`so-path-segment so-path-segment--${index}`}

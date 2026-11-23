@@ -53,7 +53,7 @@
 			{/if}
 		</div>
 		{#if open}
-			{#each entries as [k, v]}
+			{#each entries as [k, v], entryIndex (entryIndex)}
 				{@render renderNode(v, t === 'object' ? k : null, `${path}/${k}`, depth + 1)}
 			{/each}
 			<div class="close-line" style:padding-left="{depth * 16}px">

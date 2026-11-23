@@ -115,7 +115,7 @@ export function createStoryRunnerState(getProps: () => RecipeStoryRunner) {
 	let searchQuery = $state('');
 	let selectedDomain = $state('all');
 	let diagnosticsRunning = $state(false);
-	let diagnosticsComponent = $state<any>(null);
+	let diagnosticsComponent = $state<Component | null>(null);
 	let diagnosticsStory = $state<{ story: ContractStory; render: Component | null } | null>(null);
 	let diagnosticsResults = $state<DiagnosticResult[]>([]);
 	let diagnosticsProgress = $state(0);
@@ -203,7 +203,7 @@ export function createStoryRunnerState(getProps: () => RecipeStoryRunner) {
 								story: component as ContractStory,
 								render: entry.loadRender ? ((await entry.loadRender()).default as Component) : null
 							};
-						else diagnosticsComponent = component;
+						else diagnosticsComponent = component as Component;
 						await tick();
 						await new Promise((resolve) => setTimeout(resolve, 250));
 						mountMs = performance.now() - mountStart;

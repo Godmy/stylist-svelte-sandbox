@@ -71,7 +71,7 @@
 			<div class="orbit orbit-information" aria-hidden="true"></div>
 			<div class="orbit orbit-interaction" aria-hidden="true"></div>
 
-			{#each nodes as node}
+			{#each nodes as node (node.id)}
 				<button
 					type="button"
 					class="node"

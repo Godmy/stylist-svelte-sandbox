@@ -98,7 +98,7 @@
 
 	<div class="sps-stack-board">
 		<ol class="sps-stack" aria-label="Platform layers, top to bottom">
-			{#each layers as layer, index}
+			{#each layers as layer, index (index)}
 				<li style={`--sps-offset:${index}`}>
 					<button
 						type="button"
@@ -120,7 +120,7 @@
 				<h3 class="sps-layer-title">{layers[activeLayer].name}</h3>
 				<p class="sps-layer-desc">{layers[activeLayer].description}</p>
 				<ul class="sps-tags">
-					{#each layers[activeLayer].examples as example}
+					{#each layers[activeLayer].examples as example, exampleIndex (exampleIndex)}
 						<li>{example}</li>
 					{/each}
 				</ul>
@@ -132,12 +132,12 @@
 		<div class="sps-modules">
 			<h3 class="sps-subtitle">Public modules and the domains they own</h3>
 			<div class="sps-module-grid">
-				{#each modules as module}
+				{#each modules as module, moduleIndex (moduleIndex)}
 					<article class="sps-module">
 						<p class="sps-module-name">{module.name}</p>
 						<p class="sps-module-desc">{module.description}</p>
 						<ul class="sps-module-domains">
-							{#each module.examples as domain}
+							{#each module.examples as domain, domainIndex (domainIndex)}
 								<li>{domain}</li>
 							{/each}
 						</ul>
@@ -153,7 +153,7 @@
 				<span aria-hidden="true">📦</span> Ships to npm
 			</h3>
 			<ul>
-				{#each shipped as item}
+				{#each shipped as item, itemIndex (itemIndex)}
 					<li>{item}</li>
 				{/each}
 			</ul>
@@ -166,7 +166,7 @@
 				<span aria-hidden="true">🔒</span> Stays in the workspace
 			</h3>
 			<ul>
-				{#each excluded as item}
+				{#each excluded as item, itemIndex2 (itemIndex2)}
 					<li>{item}</li>
 				{/each}
 			</ul>

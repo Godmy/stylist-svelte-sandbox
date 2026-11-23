@@ -49,7 +49,7 @@
 				{/if}
 				{#if tags.length > 0}
 					<div class={state.tagsContainerClass}>
-						{#each tags as tag}
+						{#each tags as tag, tagIndex (tagIndex)}
 							<Badge variant="default" class={state.tagClass}>{tag}</Badge>
 						{/each}
 					</div>
@@ -61,7 +61,7 @@
 	<div class={state.getMainContentClass}>
 		{#if showLineNumbers}
 			<div class={state.lineNumbersContainerClass}>
-				{#each state.codeLines as _, index}
+				{#each state.codeLines as _, index (index)}
 					<div class={state.lineNumberItemClass(highlightLines.includes(index + 1))}>
 						{index + 1}
 					</div>

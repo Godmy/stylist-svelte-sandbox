@@ -1,4 +1,5 @@
 <script lang="ts">
+	import type { Component } from 'svelte';
 	import MarkdownRenderer from '$stylist/domain/component/organism/markdown-renderer/index.svelte';
 	import JsonTreeViewer from '$stylist/domain/component/molecule/json-tree-viewer/index.svelte';
 	import FlatTree from '$stylist/tree/component/molecule/flat-tree/index.svelte';
@@ -261,7 +262,7 @@
 			</div>
 		</div>
 	{:else if previewMode === 'story' && storyPreviewComponent}
-		{@const StoryPreviewComponent = storyPreviewComponent}
+		{@const StoryPreviewComponent = storyPreviewComponent as Component | ContractStory}
 		{#snippet screenshotButton(floating: boolean)}
 			<button
 				type="button"

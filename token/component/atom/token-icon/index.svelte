@@ -15,7 +15,7 @@
 <div class={`token-icon ${className}`.trim()}>
 	<div class="token-icon__label">{title}</div>
 	<div class="token-icon__list" role="listbox" aria-label={title}>
-		{#each icons as icon}
+		{#each icons as icon, iconIndex (iconIndex)}
 			<button
 				type="button"
 				role="option"

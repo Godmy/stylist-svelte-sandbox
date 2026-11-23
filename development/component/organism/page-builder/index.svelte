@@ -24,7 +24,7 @@
 	{#if state.showToolbar}
 		<div class="c-page-builder__toolbar">
 			<div class="c-page-builder__toolbar-left">
-				{#each PAGE_BUILDER_TOOLBAR_ITEMS as item}
+				{#each PAGE_BUILDER_TOOLBAR_ITEMS as item, itemIndex (itemIndex)}
 					<button
 						type="button"
 						class="c-page-builder__toolbar-btn"
@@ -66,7 +66,7 @@
 		<div class="c-page-builder__canvas" data-preview={state.isPreviewMode || undefined}>
 			{#if state.isPreviewMode || !state.editable}
 				<div class="c-page-builder__canvas-inner">
-					{#each state.elements as element}
+					{#each state.elements as element (element.id)}
 						<div>{@html PageBuilderManager.renderElement(element)}</div>
 					{/each}
 				</div>
@@ -82,7 +82,7 @@
 						</div>
 					{:else}
 						<div class="c-page-builder__elements">
-							{#each state.elements as element, index}
+							{#each state.elements as element, index (element.id)}
 								<div
 									class="c-page-builder__element"
 									data-selected={state.selectedElementId === element.id || undefined}
@@ -255,7 +255,10 @@
 								const FONT_SIZE = `${(event.target as HTMLInputElement).value}px`;
 								if (state.selectedElement) {
 									state.updateElement(state.selectedElement.id, {
-										attributes: { ...(state.selectedElement.attributes ?? {}), FONT_SIZE } as any
+										attributes: {
+											...(state.selectedElement.attributes ?? {}),
+											FONT_SIZE
+										} as SlotPageBuilderTextAttributes
 									});
 								}
 							}}

@@ -62,7 +62,7 @@
 						<td>
 							{#if row.recipeImports.length > 0}
 								<div class="import-list">
-									{#each row.recipeImports as entry}
+									{#each row.recipeImports as entry, entryIndex (entryIndex)}
 										<code>{entry}</code>
 									{/each}
 								</div>
@@ -73,7 +73,7 @@
 						<td>
 							{#if row.otherImports.length > 0}
 								<div class="import-list">
-									{#each row.otherImports as entry}
+									{#each row.otherImports as entry, entryIndex2 (entryIndex2)}
 										<code>{entry}</code>
 									{/each}
 								</div>

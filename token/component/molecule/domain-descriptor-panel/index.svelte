@@ -214,7 +214,7 @@
 	</div>
 
 	<div class="mode-row" role="tablist" aria-label="Descriptor modes">
-		{#each Object.entries(modeLabels) as [mode, label]}
+		{#each Object.entries(modeLabels) as [mode, label], entryIndex (entryIndex)}
 			<button
 				type="button"
 				class:active={activeMode === mode}
@@ -273,7 +273,7 @@
 			{:else if activeMode === 'architecture'}
 				<p class="summary-card__title">Recipe and state pipeline</p>
 				<div class="pipeline-graph" aria-label="Architecture pipeline">
-					{#each architecturePipeline as node, index}
+					{#each architecturePipeline as node, index (index)}
 						<div class:missing={!node.value} class="pipeline-node">
 							<span class="pipeline-node__kind">{node.kind}</span>
 							<strong class="pipeline-node__label">{node.label}</strong>
@@ -285,7 +285,7 @@
 					{/each}
 				</div>
 				<div class="summary-card__stack">
-					{#each architectureRows as row}
+					{#each architectureRows as row, rowIndex (rowIndex)}
 						<div class="summary-item">
 							<p class="summary-item__label">{row.label}</p>
 							<pre class="summary-item__value">{row.value}</pre>
@@ -295,11 +295,11 @@
 			{:else if activeMode === 'information'}
 				<p class="summary-card__title">JSON information sources</p>
 				<div class="summary-card__stack">
-					{#each informationGroups as group}
+					{#each informationGroups as group, groupIndex (groupIndex)}
 						<div class="summary-item">
 							<p class="summary-item__label">{group.label}</p>
 							{#if group.items.length > 0}
-								{#each group.items as item, index}
+								{#each group.items as item, index (index)}
 									<pre class="summary-item__value">#{index + 1} {slicePreview(item)}</pre>
 								{/each}
 							{:else}
@@ -311,7 +311,7 @@
 			{:else if activeMode === 'interaction'}
 				<p class="summary-card__title">Interactive runtime surface</p>
 				<div class="summary-card__stack">
-					{#each interactionRows as row}
+					{#each interactionRows as row, rowIndex2 (rowIndex2)}
 						<div class="summary-item">
 							<p class="summary-item__label">{row.label}</p>
 							<pre class="summary-item__value">{row.value}</pre>
@@ -332,7 +332,7 @@
 				<p class="summary-card__title">Control definition sources</p>
 				<div class="summary-card__stack">
 					{#if controlCards.length > 0}
-						{#each controlCards as control}
+						{#each controlCards as control, controlIndex (controlIndex)}
 							<div class="control-card">
 								<div class="control-card__header">
 									<strong>{control.title}</strong>
@@ -353,7 +353,7 @@
 				<p class="summary-card__title">Contract sources</p>
 				<div class="summary-card__stack">
 					{#if contractFiles.length > 0}
-						{#each contractFiles as file}
+						{#each contractFiles as file, fileIndex (fileIndex)}
 							<div class="summary-item">
 								<p class="summary-item__label">{file.path}</p>
 								<pre class="summary-item__value">{file.content

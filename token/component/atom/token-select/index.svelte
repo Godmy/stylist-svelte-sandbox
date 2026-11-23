@@ -9,7 +9,7 @@
 
 <TokenControlBase definition={state.definition} layout="inline">
 	<select class="token-select__input" value={state.internalIndex} onchange={state.handleChange}>
-		{#each state.definition.options as option, index}
+		{#each state.definition.options as option, index (index)}
 			<option value={index}>{option.label}</option>
 		{/each}
 	</select>

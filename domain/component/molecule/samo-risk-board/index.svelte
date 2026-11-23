@@ -56,7 +56,7 @@
 	</header>
 
 	<div class="srb-grid">
-		{#each risks as item, index}
+		{#each risks as item, index (index)}
 			<details class="srb-card" open={index === 0}>
 				<summary class="srb-summary">
 					<span class="srb-index">{String(index + 1).padStart(2, '0')}</span>

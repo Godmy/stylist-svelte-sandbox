@@ -5,14 +5,14 @@ export interface RecipeContentEditorStateProps extends ComputeIntersectAll<[]> {
 		id: string;
 		type: ContentType;
 		content: string;
-		attributes?: Record<string, any>;
+		attributes?: Record<string, unknown>;
 	}[];
 	onSave?: (
 		content: {
 			id: string;
 			type: ContentType;
 			content: string;
-			attributes?: Record<string, any>;
+			attributes?: Record<string, unknown>;
 		}[]
 	) => void;
 	onPreview?: () => void;

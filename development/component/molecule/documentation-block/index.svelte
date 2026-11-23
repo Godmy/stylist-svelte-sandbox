@@ -35,7 +35,7 @@
 				{/if}
 				{#if tags && tags.length > 0}
 					<div class={state.tagsContainerClass}>
-						{#each tags as tag}
+						{#each tags as tag, tagIndex (tagIndex)}
 							<Badge variant="default" class={state.tagClass}>{tag}</Badge>
 						{/each}
 					</div>
@@ -50,14 +50,14 @@
 
 	{#if codeExamples && codeExamples.length > 0}
 		<div class={state.codeExamplesContainerClass}>
-			{#each codeExamples as example, i}
+			{#each codeExamples as example, i (i)}
 				{#if i > 0}
 					<Divider class={state.codeExampleDividerClass} />
 				{/if}
 				<Code
 					title={example.title}
 					code={example.code}
-					language={example.language as any}
+					language={example.language}
 					showLineNumbers={example.showLineNumbers}
 				/>
 			{/each}

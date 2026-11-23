@@ -38,7 +38,7 @@
 	<nav class="smt-nav" aria-label={navLabel}>
 		<span class="smt-nav-label">{navLabel}</span>
 		<ul class="smt-nav-list">
-			{#each chapters as chapter, index}
+			{#each chapters as chapter, index (chapter.id)}
 				<li>
 					<button type="button" class="smt-nav-link" onclick={() => openChapter(chapter.id)}>
 						<span class="smt-nav-index">{String(index + 1).padStart(2, '0')}</span>

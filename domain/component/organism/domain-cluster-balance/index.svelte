@@ -78,7 +78,7 @@
 			<thead>
 				<tr>
 					<th>Domain</th>
-					{#each anomalyMetricKeys as key}
+					{#each anomalyMetricKeys as key, keyIndex (keyIndex)}
 						<th>{anomalyMetricLabels[key]}</th>
 					{/each}
 				</tr>
@@ -90,7 +90,7 @@
 							<span>{formatDomainName(row.domain)}</span>
 							<code>{row.domain}</code>
 						</th>
-						{#each anomalyMetricKeys as key}
+						{#each anomalyMetricKeys as key, keyIndex2 (keyIndex2)}
 							<td>
 								<div
 									class="heat-cell"

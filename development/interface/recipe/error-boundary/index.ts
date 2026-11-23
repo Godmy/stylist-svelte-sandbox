@@ -6,7 +6,7 @@ export interface RecipeErrorBoundary extends ComputeIntersectAll<
 	[SlotThemeBorder, SlotTypography]
 > {
 	component: ComponentType | null | undefined;
-	props?: Record<string, any>;
+	props?: Record<string, unknown>;
 	children?: Snippet;
 
 	class?: string;

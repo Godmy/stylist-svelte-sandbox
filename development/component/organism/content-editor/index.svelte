@@ -117,7 +117,7 @@
 	<div class={state.editorClasses}>
 		{#if state.isPreviewMode}
 			<div class={state.previewClasses}>
-				{#each state.contentElements as element}
+				{#each state.contentElements as element (element.id)}
 					{#if element.type === 'text'}
 						<p class="c-content-editor__preview-p">
 							{element.content || props.placeholder || 'Start writing here...'}
@@ -134,7 +134,7 @@
 				{/each}
 			</div>
 		{:else}
-			{#each state.contentElements as element, index}
+			{#each state.contentElements as element, index (element.id)}
 				<div
 					class={`${state.contentClasses} ${state.activeElementId === element.id ? state.activeElementClasses : state.inactiveElementClasses}`}
 					role="button"

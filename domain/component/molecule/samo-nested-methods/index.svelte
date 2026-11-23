@@ -257,7 +257,7 @@
 	<div class={`snm-layer snm-layer--${depth % 5}`}>
 		<span class="snm-layer-label">{layers[depth]}</span>
 		<div class="snm-layer-chips">
-			{#each methods.filter((method) => method.depth === depth) as method}
+			{#each methods.filter((method) => method.depth === depth) as method (method.id)}
 				<button
 					type="button"
 					class="snm-chip"
@@ -299,14 +299,14 @@
 				</div>
 
 				<ol class="snm-levels">
-					{#each activeMethod.levels as level, index}
+					{#each activeMethod.levels as level, index (index)}
 						<li class="snm-level">
 							<span class="snm-level-index">{index + 1}</span>
 							<div>
 								<p class="snm-level-name">{level.name}</p>
 								<p class="snm-level-desc">{level.description}</p>
 								<ul class="snm-level-examples">
-									{#each level.examples as example}
+									{#each level.examples as example, exampleIndex (exampleIndex)}
 										<li>{example}</li>
 									{/each}
 								</ul>

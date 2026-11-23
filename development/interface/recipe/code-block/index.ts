@@ -13,7 +13,7 @@ export interface RecipeCodeBlock extends ComputeIntersectAll<
 			SlotThemeBorder &
 			SlotTypography & {
 				code?: string;
-				language?: TokenCodeLanguage | 'text';
+				language?: TokenCodeLanguage | 'text' | (string & {});
 				variant?: TokenCodeView;
 				size?: TokenSize;
 				showLineNumbers?: boolean;

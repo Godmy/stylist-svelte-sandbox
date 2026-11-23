@@ -55,7 +55,7 @@
 	</header>
 
 	<ol class="ssg-grid">
-		{#each principles as principle}
+		{#each principles as principle, principleIndex (principleIndex)}
 			<li class="ssg-card">
 				<span class="ssg-letter" aria-hidden="true">{principle.letter}</span>
 				<h3 class="ssg-card-title">{principle.title}</h3>

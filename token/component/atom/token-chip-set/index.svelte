@@ -22,7 +22,7 @@
 <div class={`token-chip-set ${state.className}`.trim()}>
 	<div class="token-chip-set__title">{state.title}</div>
 	<div class="token-chip-set__items">
-		{#each state.displayTokens as token}
+		{#each state.displayTokens as token, tokenIndex (tokenIndex)}
 			<button
 				type="button"
 				class={`token-chip-set__chip ${state.value === token ? 'token-chip-set__chip--active' : ''}`.trim()}

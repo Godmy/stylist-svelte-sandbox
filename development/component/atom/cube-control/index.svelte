@@ -44,7 +44,7 @@
 	>
 		<div class="cube-orbit" style={`transform:${state.orbitTransform};`}>
 			<div class="cube">
-				{#each state.FACE_NAMES as faceName, faceIndex}
+				{#each state.FACE_NAMES as faceName, faceIndex (faceIndex)}
 					<div class={`cube-face cube-face-${faceName}`}>
 						{#if state.faceLabels}
 							<div
@@ -80,7 +80,7 @@
 								</button>
 								<div class="face-content">
 									<div class="face-matrix">
-										{#each state.HORIZONTAL_ICONS as icon, iconIndex}
+										{#each state.HORIZONTAL_ICONS as icon, iconIndex (iconIndex)}
 											<button
 												type="button"
 												class={`template-icon template-axis-icon template-axis-icon-horizontal ${state.selectedIconId === `${faceIndex}-h-${icon.type}` ? 'template-icon-selected' : ''}`}
@@ -120,7 +120,7 @@
 											</button>
 										{/each}
 
-										{#each state.VERTICAL_ICONS as icon, iconIndex}
+										{#each state.VERTICAL_ICONS as icon, iconIndex (iconIndex)}
 											<button
 												type="button"
 												class={`template-icon template-axis-icon template-axis-icon-vertical ${state.selectedIconId === `${faceIndex}-v-${icon.type}` ? 'template-icon-selected' : ''}`}
@@ -168,7 +168,7 @@
 											</button>
 										{/each}
 
-										{#each state.faceNumbers[faceIndex] as value, cellIndex}
+										{#each state.faceNumbers[faceIndex] as value, cellIndex (cellIndex)}
 											<button
 												type="button"
 												class={`number-cell ${state.activeCells[faceIndex] === cellIndex ? 'number-cell-active' : ''} ${state.selectedCellByFace[faceIndex] === cellIndex ? 'number-cell-selected' : ''}`}

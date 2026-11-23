@@ -128,7 +128,7 @@
 
 	<div class="scf-body">
 		<ol class="scf-timeline">
-			{#each steps as step, index}
+			{#each steps as step, index (index)}
 				<li class="scf-item">
 					<button
 						type="button"

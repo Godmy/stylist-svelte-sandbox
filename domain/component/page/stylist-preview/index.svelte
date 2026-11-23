@@ -93,7 +93,7 @@
 		</header>
 		<div class="pcc-controls">
 			<div class="pcc-categories" role="group" aria-label={t('categories')}>
-				{#each state.categories as category}
+				{#each state.categories as category, categoryIndex (categoryIndex)}
 					<button
 						type="button"
 						onclick={() => state.onToggleCategory(category)}
@@ -109,7 +109,7 @@
 				<div class="pcc-filter-panel">
 					<h2>{t('tags')}</h2>
 					<div class="pcc-tags">
-						{#each state.tags as tag}
+						{#each state.tags as tag, tagIndex (tagIndex)}
 							<button
 								type="button"
 								onclick={() => state.onToggleTag(tag)}

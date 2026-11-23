@@ -88,7 +88,7 @@
 					: 'Start the simulator or add logs.'}
 			</div>
 		{:else}
-			{#each state.filteredLogs as log}
+			{#each state.filteredLogs as log, logIndex (logIndex)}
 				<div class={`dc-log-entry ${state.getLevelColor(log.level)} ${state.entryClass}`}>
 					<div class="dc-log-inner">
 						{#if state.showTimestamps}

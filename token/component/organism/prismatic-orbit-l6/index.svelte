@@ -153,7 +153,7 @@
 		style={`left:${seedX + CARD_OFFSET_X}px; top:${seedY + CARD_OFFSET_Y}px; position:absolute;`}
 	>
 		<CardShell {expanded} title="Graph Node Controls">
-			{#each items as item, index}
+			{#each items as item, index (index)}
 				<span class:hidden={!expanded} style={`--i:${index};`}>
 					<button type="button" class="item-btn" aria-label={item.label} title={item.label}>
 						<span class="dot"></span>

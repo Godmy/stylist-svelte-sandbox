@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { HTMLAttributes } from 'svelte/elements';
+	import { ClassNamesManager } from '$stylist/layout/class/manager/class-names';
 	import { PresetCodeEditor } from '$stylist/development/const/preset/code-editor';
 	import Icon from '$stylist/svg/component/atom/icon/index.svelte';
 	import type { RecipeCodeEditor } from '$stylist/development/interface/recipe/code-editor';
@@ -28,7 +29,7 @@
 		showLineNumbers,
 		FONT_SIZE,
 		showCopyButton,
-		class: className as any,
+		class: ClassNamesManager.merge(className),
 		onCodeChange,
 		...restProps
 	}));

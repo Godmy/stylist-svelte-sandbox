@@ -9,7 +9,7 @@
 
 <TokenControlBase definition={state.definition} layout="inline">
 	<div class="token-radio">
-		{#each state.definition.options as option}
+		{#each state.definition.options as option, optionIndex (optionIndex)}
 			<button
 				type="button"
 				class="token-radio__option"

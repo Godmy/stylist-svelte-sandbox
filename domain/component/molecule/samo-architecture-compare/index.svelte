@@ -100,7 +100,7 @@
 			</p>
 		</div>
 		<ul class="sac-bars">
-			{#each tokenLoads as tokenLoad}
+			{#each tokenLoads as tokenLoad, tokenLoadIndex (tokenLoadIndex)}
 				<li class="sac-bar-row">
 					<div class="sac-bar-meta">
 						<span class="sac-bar-label">{tokenLoad.label}</span>
@@ -121,7 +121,7 @@
 		<article class="sac-column sac-column--before">
 			<h3 class="sac-column-title">Traditional approach</h3>
 			<ul class="sac-list">
-				{#each before as item}
+				{#each before as item, itemIndex (itemIndex)}
 					<li>
 						<BaseIcon name="x" size={16} class="sac-list-icon" />
 						<span>{item}</span>
@@ -132,7 +132,7 @@
 		<article class="sac-column sac-column--after">
 			<h3 class="sac-column-title">SAMO architecture</h3>
 			<ul class="sac-list">
-				{#each after as item}
+				{#each after as item, itemIndex2 (itemIndex2)}
 					<li>
 						<BaseIcon name="check" size={16} class="sac-list-icon" />
 						<span>{item}</span>
@@ -150,7 +150,7 @@
 			of controlled delivery.
 		</p>
 		<ul class="sac-rules">
-			{#each rules as rule}
+			{#each rules as rule, ruleIndex (ruleIndex)}
 				<li class="sac-rule" class:is-denied={!rule.allowed}>
 					<span class="sac-rule-mark" aria-hidden="true">{rule.allowed ? '✓' : '✕'}</span>
 					<div>

@@ -100,7 +100,7 @@
 	</header>
 
 	<ol class="sap-track" aria-label="Assembly direction">
-		{#each clusters as cluster, index}
+		{#each clusters as cluster, index (index)}
 			<li class="sap-step" style={`--sap-accent:${cluster.accent}`}>
 				<button
 					type="button"
@@ -133,7 +133,7 @@
 
 				<p class="sap-detail-label">Allowed joints</p>
 				<ul class="sap-joints">
-					{#each activeCluster.joints as joint}
+					{#each activeCluster.joints as joint, jointIndex (jointIndex)}
 						<li class="sap-joint">{joint}</li>
 					{/each}
 				</ul>

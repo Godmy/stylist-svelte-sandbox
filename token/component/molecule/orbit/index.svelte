@@ -15,7 +15,7 @@
 >
 	<div class="token-orbit__ring" aria-hidden="true"></div>
 	{#if opened}
-		{#each nodes as node, index}
+		{#each nodes as node, index (node.id)}
 			<OrbitTokenNode
 				id={node.id}
 				icon={isIconName(node.icon) ? node.icon : 'box'}

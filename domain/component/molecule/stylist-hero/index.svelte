@@ -63,7 +63,7 @@
 <AnimatedBackground class={`c-stylist-hero ${className}`}>
 	<div class="sh-inner">
 		<div class="sh-particles" aria-hidden="true">
-			{#each particleIndexes as particleIndex}
+			{#each particleIndexes as particleIndex, particleIndexIndex (particleIndexIndex)}
 				<div
 					class="hero-particle sh-particle"
 					style={`width:${24 + (particleIndex % 5) * 18}px;height:${24 + (particleIndex % 5) * 18}px;left:${5 + ((particleIndex * 11) % 90)}%;top:${8 + ((particleIndex * 7) % 78)}%;animation-delay:${(particleIndex % 6) * 0.6}s;animation-duration:${8 + (particleIndex % 5) * 2}s;`}
@@ -120,7 +120,7 @@
 						<BaseIcon name="stylist" size={16} />
 						<span>Stylist</span>
 					</li>
-					{#each aiModels as model}
+					{#each aiModels as model, modelIndex (modelIndex)}
 						<li class="sh-credit">
 							<a
 								href={model.url}

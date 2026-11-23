@@ -6,7 +6,7 @@ export interface RecipeEnhancedExportPanel extends ComputeIntersectAll<
 > {
 	componentName?: string;
 	svelteCode?: string;
-	props?: Record<string, any>;
+	props?: Record<string, unknown>;
 
 	class?: string;
 }
