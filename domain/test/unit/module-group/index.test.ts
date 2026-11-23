@@ -26,8 +26,19 @@ describe('resolveModuleGroup', () => {
 			'global',
 			'prototype'
 		]);
-		expect(byName.prototype).toEqual([...registry.prototype.domains, 'presentation', 'scratch']);
-		expect(byName.global).toEqual(['commerce', 'product', 'geo']);
+		expect(byName.prototype).toEqual([
+			...registry.prototype.domains,
+			...registry.prezi.domains,
+			...registry.scratch.domains,
+			...registry.motion.domains,
+			...registry.blender.domains
+		]);
+		expect(byName.global).toEqual([
+			...registry.global.domains,
+			...registry.geo.domains,
+			...registry.maplibre.domains,
+			...registry.weather.domains
+		]);
 		expect(byName.business).toEqual(
 			expect.arrayContaining(['booking', 'sakartvelo', 'wbd', 'spanish', 'farm'])
 		);
