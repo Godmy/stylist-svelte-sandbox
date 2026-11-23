@@ -91,7 +91,9 @@
 	}}
 />
 
-{#snippet domainMenu(variant: 'settings' | 'pages' = 'settings')}
+{#snippet domainMenu(
+	variant: 'full' | 'settings' | 'pages' = screenState.mobile ? 'settings' : 'full'
+)}
 	<DomainMenu
 		{variant}
 		landingVisible={screenState.currentScreen === DOMAIN_SCREEN.LANDING}
@@ -111,7 +113,7 @@
 {/snippet}
 
 <div
-	inert={screenState.isSettingsOpen}
+	inert={screenState.mobile && screenState.isSettingsOpen}
 	class="c-domain-playground {className}"
 	class:c-domain-playground--components={screenState.currentScreen === DOMAIN_SCREEN.COMPONENTS}
 	class:c-domain-playground--domain={screenState.currentScreen === DOMAIN_SCREEN.DOMAIN}
@@ -175,6 +177,9 @@
 
 	{#if screenState.currentScreen !== DOMAIN_SCREEN.COMPONENTS}
 		<div class="menu-shell">
+			{#if !screenState.mobile && deviceViewportVisible}
+				{@render displaySettings()}
+			{/if}
 			{@render domainMenu()}
 		</div>
 	{/if}
@@ -203,8 +208,9 @@
 		{@const DomainSettings = module.default}
 		<DomainSettings
 			open={screenState.isSettingsOpen}
-			navigation={pageNavigation}
-			{displaySettings}
+			modal={screenState.mobile}
+			navigation={screenState.mobile ? pageNavigation : undefined}
+			displaySettings={screenState.mobile ? displaySettings : undefined}
 			bind:iconSizes
 			onClose={screenState.closeSettings}
 		/>
@@ -228,7 +234,6 @@
 	:global(html:has(.c-domain-playground--domain)),
 	:global(body:has(.c-domain-playground--domain)) {
 		overflow: hidden;
-		scrollbar-gutter: auto;
 	}
 
 	.c-domain-playground--domain {
@@ -261,6 +266,9 @@
 	}
 
 	@media (max-width: 840px) {
+		:global(html:has(.c-domain-playground--domain)) {
+			scrollbar-gutter: auto;
+		}
 		.c-domain-playground {
 			padding-top: calc(env(safe-area-inset-top, 0px) + 6rem);
 		}

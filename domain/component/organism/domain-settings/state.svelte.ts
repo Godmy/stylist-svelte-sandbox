@@ -3,8 +3,13 @@ import type { RecipeDomainSettings } from '$stylist/domain/interface/recipe/doma
 export default function createDomainSettingsState(getProps: () => RecipeDomainSettings) {
 	let element = $state<HTMLDialogElement>();
 	$effect(() => {
-		if (getProps().open && element && !element.open) element.showModal();
-		else if (!getProps().open && element?.open) element.close();
+		const { open, modal } = getProps();
+		if (!element) return;
+		if (element.open) element.close();
+		if (open) {
+			if (modal) element.showModal();
+			else element.show();
+		}
 	});
 	return {
 		get element() {

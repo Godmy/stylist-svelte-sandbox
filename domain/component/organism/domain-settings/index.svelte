@@ -7,6 +7,7 @@
 
 	let {
 		open = false,
+		modal = false,
 		navigation,
 		displaySettings,
 		iconSizes = $bindable({ module: 32, domain: 32, cluster: 24, joint: 24, search: 24 }),
@@ -14,7 +15,7 @@
 		class: className = ''
 	}: RecipeDomainSettings = $props();
 	const id = $props.id();
-	const state = createDomainSettingsState(() => ({ open }));
+	const state = createDomainSettingsState(() => ({ open, modal }));
 	const panels = ['module', 'domain', 'cluster', 'joint', 'search'] as const;
 
 	const themeContext = ManagerThemeContext.getOptional();
@@ -48,8 +49,8 @@
 	>
 		<header class="panel-head">
 			<div>
-				<p class="eyebrow">Settings</p>
-				<h2>Domain settings</h2>
+				{#if !navigation}<p class="eyebrow">Settings</p>{/if}
+				<h2>{navigation ? 'Select pages' : 'Domain settings'}</h2>
 			</div>
 			<button
 				type="button"
@@ -63,16 +64,18 @@
 
 		<div class="panel-body">
 			{#if navigation}
-				<section class="icon-settings" aria-label="Pages">
-					<h3>Pages</h3>
+				<section class="page-settings" aria-label="Select pages">
 					{@render navigation()}
 				</section>
 			{/if}
 			{#if displaySettings}
-				<section class="icon-settings" aria-label="Display settings">
-					<h3>Display</h3>
+				<section class="playground-settings" aria-labelledby="{id}-playground">
+					<h2 id="{id}-playground">Playground settings</h2>
 					{@render displaySettings()}
 				</section>
+			{/if}
+			{#if navigation || displaySettings}
+				<h2 class="domain-settings-heading">Domain settings</h2>
 			{/if}
 			<section class="icon-settings" aria-labelledby="{id}-icons">
 				<h3 id="{id}-icons">Panel icon sizes</h3>
@@ -117,11 +120,65 @@
 {/if}
 
 <style>
-	.icon-settings :global(.c-device-viewport) {
-		flex-wrap: wrap;
-		justify-content: flex-start;
-		max-width: 100%;
-		box-sizing: border-box;
+	.page-settings {
+		margin-bottom: 2rem;
+	}
+	.page-settings :global(.c-domain-menu) {
+		display: grid;
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		justify-items: center;
+		gap: 0.9rem;
+		width: 100%;
+		padding: 0;
+		border: 0;
+		border-radius: 0;
+		background: none;
+		box-shadow: none;
+		backdrop-filter: none;
+	}
+	.playground-settings {
+		display: grid;
+		gap: 1.25rem;
+		margin-bottom: 2rem;
+		padding-bottom: 2rem;
+		border-bottom: 1px solid var(--color-border-primary);
+	}
+	.playground-settings h2,
+	.domain-settings-heading {
+		margin: 0;
+		font-size: 1.1rem;
+		font-weight: 600;
+		line-height: 1.4;
+	}
+	.domain-settings-heading {
+		margin-bottom: 1.25rem;
+	}
+	.playground-settings :global(.c-device-viewport) {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		justify-items: center;
+		gap: 1rem;
+		width: 100%;
+		padding: 0;
+		border: 0;
+		border-radius: 0;
+		background: none;
+		box-shadow: none;
+		backdrop-filter: none;
+	}
+	.playground-settings :global(.viewport-size) {
+		grid-column: span 2;
+		width: 100%;
+		padding: 0;
+		border: 0;
+	}
+	.playground-settings :global(.viewport-select-wrap),
+	.playground-settings :global(.viewport-select-wrap select) {
+		width: 100%;
+	}
+	.playground-settings :global(.fullscreen-button) {
+		margin: 0;
+		outline: 0;
 	}
 	.icon-settings {
 		display: grid;
@@ -364,6 +421,15 @@
 
 		.settings-offset {
 			transform: translate(-8px, -4px);
+		}
+		.panel-head {
+			padding: 1.5rem 1.25rem;
+		}
+		.panel-head h2 {
+			font-size: 1.25rem;
+		}
+		.panel-body {
+			padding: 1.5rem 1.25rem;
 		}
 	}
 </style>
