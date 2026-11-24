@@ -4,6 +4,7 @@
 	import { ManagerThemeContext } from '$stylist/theme/class/manager/theme-context';
 	import type { RecipeDomainSettings } from '$stylist/domain/interface/recipe/domain-settings';
 	import createDomainSettingsState from '$stylist/domain/component/organism/domain-settings/state.svelte';
+	import { createSwipeDismiss } from '$stylist/domain/function/create/swipe-dismiss';
 
 	let {
 		open = false,
@@ -16,6 +17,10 @@
 	}: RecipeDomainSettings = $props();
 	const id = $props.id();
 	const state = createDomainSettingsState(() => ({ open, modal }));
+	const swipe = createSwipeDismiss(
+		() => open && modal,
+		() => onClose?.()
+	);
 	const panels = ['module', 'domain', 'cluster', 'joint', 'search'] as const;
 
 	const themeContext = ManagerThemeContext.getOptional();
@@ -39,32 +44,46 @@
 
 {#if open}
 	<dialog
+		{...swipe}
 		bind:this={state.element}
 		class="c-domain-settings {className}"
-		aria-label="Domain settings"
+		aria-label={modal ? 'Settings' : 'Domain settings'}
 		oncancel={(event) => {
 			event.preventDefault();
 			onClose?.();
 		}}
 	>
-		<header class="panel-head">
+		<header class="panel-head" class:panel-head--mobile={modal}>
 			<div>
-				{#if !navigation}<p class="eyebrow">Settings</p>{/if}
-				<h2>{navigation ? 'Select pages' : 'Domain settings'}</h2>
+				{#if !modal}<p class="eyebrow">Settings</p>{/if}
+				<h2>{modal ? 'Settings' : 'Domain settings'}</h2>
 			</div>
 			<button
 				type="button"
 				class="close-button"
 				onclick={onClose}
-				aria-label="Close settings panel"
+				aria-label={modal ? 'Back from settings' : 'Close settings panel'}
 			>
-				Close
+				{#if modal}
+					<svg
+						width="24"
+						height="24"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						aria-hidden="true"><path d="m12 19-7-7 7-7M5 12h14" /></svg
+					>
+				{:else}Close{/if}
 			</button>
 		</header>
 
 		<div class="panel-body">
 			{#if navigation}
-				<section class="page-settings" aria-label="Select pages">
+				<section class="page-settings" aria-labelledby="{id}-pages">
+					<h3 id="{id}-pages">Select pages</h3>
 					{@render navigation()}
 				</section>
 			{/if}
@@ -121,7 +140,14 @@
 
 <style>
 	.page-settings {
+		display: grid;
+		gap: 1.25rem;
 		margin-bottom: 2rem;
+	}
+	.page-settings h3 {
+		margin: 0;
+		font-size: 1.1rem;
+		font-weight: 600;
 	}
 	.page-settings :global(.c-domain-menu) {
 		display: grid;
@@ -272,6 +298,20 @@
 		padding: 1rem 1rem 0.85rem;
 		border-bottom: 1px solid color-mix(in srgb, var(--color-border-primary) 78%, transparent);
 	}
+	.panel-head--mobile {
+		justify-content: flex-start;
+	}
+	.panel-head--mobile .close-button {
+		order: -1;
+		display: grid;
+		place-items: center;
+		width: 44px;
+		height: 44px;
+		padding: 0;
+		border: 0;
+		background: none;
+		flex-shrink: 0;
+	}
 
 	.eyebrow {
 		margin: 0 0 0.25rem;
@@ -409,7 +449,7 @@
 	@media (max-width: 840px) {
 		.c-domain-settings {
 			inset: 0;
-			width: 100%;
+			width: 100vw;
 			max-width: none;
 			height: 100dvh;
 			max-height: none;
@@ -417,6 +457,7 @@
 			border-radius: 0;
 			padding-block: env(safe-area-inset-top, 0px) env(safe-area-inset-bottom, 0px);
 			box-sizing: border-box;
+			touch-action: pan-y;
 		}
 
 		.settings-offset {

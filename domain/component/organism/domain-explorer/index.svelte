@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { untrack } from 'svelte';
+	import { createSwipeDismiss } from '$stylist/domain/function/create/swipe-dismiss';
 	import NavigationDrawer from '$stylist/navigation/component/organism/navigation-drawer/index.svelte';
 	import TopAppBar from '$stylist/navigation/component/organism/top-app-bar/index.svelte';
 	import Fragment from '$stylist/navigation/component/template/fragment/index.svelte';
@@ -67,6 +68,7 @@
 			entry.domains.includes(s.activeDomain)
 		)?.name
 	);
+	const drawerSwipe = createSwipeDismiss(() => s.mobile && s.drawerOpen, s.closeDrawer);
 	$effect(() => {
 		onSelectionChange?.({
 			domain: s.activeDomain,
@@ -104,14 +106,29 @@
 <main class="c-domain-explorer {className}" class:fullscreen>
 	{#if s.mobile}
 		<NavigationDrawer
+			{...drawerSwipe}
 			sections={[]}
 			open={s.drawerOpen}
 			onClose={s.closeDrawer}
-			label="Components"
+			label="Navigation"
 			class="explorer-drawer"
 		>
-			{#snippet header()}<button type="button" onclick={s.closeDrawer}>Close navigation</button
-				>{/snippet}
+			{#snippet header()}
+				<button type="button" onclick={s.closeDrawer} aria-label="Back from navigation">
+					<svg
+						width="24"
+						height="24"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						aria-hidden="true"><path d="m12 19-7-7 7-7M5 12h14" /></svg
+					>
+				</button>
+				<h2>Navigation</h2>
+			{/snippet}
 			{#snippet footer()}{@render sidebar()}{/snippet}
 		</NavigationDrawer>
 	{:else}
@@ -206,10 +223,27 @@
 	:global(.explorer-fragment > .c-domain-file-preview) {
 		flex: 1;
 	}
-	:global(.explorer-drawer.c-navigation-drawer) {
+	:global(.explorer-drawer.c-navigation-drawer[data-mode='modal']) {
 		padding: 0;
-		width: min(32rem, calc(100vw - 1rem));
+		width: 100vw;
+		max-width: none;
+		height: 100dvh;
+		border-radius: 0;
+		padding-block: env(safe-area-inset-top, 0px) env(safe-area-inset-bottom, 0px);
+		touch-action: pan-y;
+		overscroll-behavior: contain;
 		overflow: hidden;
+	}
+	:global(.explorer-drawer .c-navigation-drawer__header) {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		padding: 1rem 1.25rem;
+		border-bottom: 1px solid var(--color-border-primary);
+	}
+	:global(.explorer-drawer .c-navigation-drawer__header h2) {
+		margin: 0;
+		font-size: 1.25rem;
 	}
 	:global(.explorer-drawer .c-navigation-drawer__nav) {
 		display: none;
@@ -225,12 +259,15 @@
 		min-height: 0;
 	}
 	:global(.explorer-drawer .c-navigation-drawer__header button) {
+		display: grid;
+		place-items: center;
+		min-width: 44px;
 		min-height: 44px;
-		padding-inline: 1rem;
+		padding: 0;
 		font: inherit;
 		color: var(--color-text-primary);
 		background: var(--color-background-primary);
-		border: 1px solid var(--color-border-primary);
+		border: 0;
 		border-radius: 8px;
 	}
 
