@@ -1,6 +1,7 @@
 import { tick, type Component } from 'svelte';
 import type { ContractStory } from '$stylist/html/interface/contract/story';
 import type { RecipeStoryRunner } from '$stylist/domain/interface/recipe/story-runner';
+import { unique } from '$stylist/theme/function/script/collection/unique';
 
 type StoryModule = {
 	default: unknown;
@@ -110,7 +111,7 @@ export function createStoryRunnerState(getProps: () => RecipeStoryRunner) {
 				left.title.localeCompare(right.title)
 		);
 
-	const domainOptions = ['all', ...new Set(allStories.map((entry) => entry.domain))];
+	const domainOptions = ['all', ...unique(allStories.map((entry) => entry.domain))];
 
 	let searchQuery = $state('');
 	let selectedDomain = $state('all');

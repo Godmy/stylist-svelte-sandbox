@@ -3,13 +3,16 @@ import type { TypeDomainTreeInput } from '$stylist/domain/type/alias/domain-tree
 import type { StylistPreviewSortBy } from '$stylist/domain/type/alias/stylist-preview-sort-by';
 import type { StylistPreviewViewMode } from '$stylist/domain/type/alias/stylist-preview-view-mode';
 import type { StylistPreviewStory } from '$stylist/domain/type/object/stylist-preview-story';
+import { toSet } from '$stylist/theme/function/script/collection/to-set';
+import { toggleInSet } from '$stylist/theme/function/script/collection/toggle-in-set';
+import { unique } from '$stylist/theme/function/script/collection/unique';
 
 /** Catalog controls and component stories derived from the current workspace manifest. */
 export function createStylistPreviewCatalogState(getTree: () => TypeDomainTreeInput) {
 	let thumbnails = $state<Record<string, string>>({});
 	let searchQuery = $state('');
-	let selectedCategories = $state(new Set<string>());
-	let selectedTags = $state(new Set<string>());
+	let selectedCategories = $state(toSet<string>());
+	let selectedTags = $state(toSet<string>());
 	let viewMode = $state<StylistPreviewViewMode>('grid');
 	let sortBy = $state<StylistPreviewSortBy>('name');
 	let showFilters = $state(false);
@@ -46,9 +49,11 @@ export function createStylistPreviewCatalogState(getTree: () => TypeDomainTreeIn
 				)
 		)
 	);
-	const categories = $derived([...new Set(entries.map((entry) => entry.category))]);
+	const categories = $derived(unique(entries.map((entry) => entry.category)));
 	const tags = $derived(
-		[...new Set(entries.map((entry) => entry.subcategory ?? ''))].filter(Boolean).sort()
+		unique(entries.map((entry) => entry.subcategory ?? ''))
+			.filter(Boolean)
+			.sort()
 	);
 	const categoryCounts = $derived.by(() =>
 		Object.fromEntries(
@@ -78,12 +83,7 @@ export function createStylistPreviewCatalogState(getTree: () => TypeDomainTreeIn
 			);
 		return filtered;
 	});
-	function toggleSelection(set: Set<string>, value: string) {
-		const next = new Set(set);
-		if (next.has(value)) next.delete(value);
-		else next.add(value);
-		return next;
-	}
+	const toggleSelection = (set: Set<string>, value: string) => toggleInSet(set, value);
 	return {
 		async loadThumbnails() {
 			try {
@@ -154,8 +154,8 @@ export function createStylistPreviewCatalogState(getTree: () => TypeDomainTreeIn
 		},
 		onClearFilters() {
 			searchQuery = '';
-			selectedCategories = new Set();
-			selectedTags = new Set();
+			selectedCategories = toSet();
+			selectedTags = toSet();
 		}
 	};
 }

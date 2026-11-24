@@ -1,10 +1,9 @@
 import type { RecipeTokenChipSet } from '$stylist/token/interface/recipe/token-chip-set';
+import { unique } from '$stylist/theme/function/script/collection/unique';
 
 export function createTokenChipSetState(getProps: () => RecipeTokenChipSet) {
 	const props = $derived(getProps());
-	const displayTokens = $derived(
-		props.dedupe ? Array.from(new Set(props.tokens)) : [...props.tokens]
-	);
+	const displayTokens = $derived(props.dedupe ? unique(props.tokens) : [...props.tokens]);
 	const title = $derived(props.title);
 	const className = $derived(props.class ?? '');
 

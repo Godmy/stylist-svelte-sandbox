@@ -1,4 +1,5 @@
 import type { RecipeTokenSettings } from '$stylist/token/interface/recipe/token-settings';
+import { unique } from '$stylist/theme/function/script/collection/unique';
 
 export function createTokenSettingsState(
 	getProps: () => Required<Pick<RecipeTokenSettings, 'settings'>>
@@ -10,7 +11,7 @@ export function createTokenSettingsState(
 
 	const domains = $derived.by(() => [
 		'all',
-		...Array.from(new Set(props.settings.map((setting) => setting.domain))).sort()
+		...unique(props.settings.map((setting) => setting.domain)).sort()
 	]);
 
 	const filteredSettings = $derived.by(() => {

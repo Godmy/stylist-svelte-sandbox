@@ -4,6 +4,7 @@ import type { RecipeDebugConsole } from '$stylist/development/interface/recipe/d
 import type { DebugConsoleLogLevel } from '$stylist/development/type/alias/debug-console-log-level';
 import type { DebugConsoleLogEntry as SlotDebugConsoleLogEntry } from '$stylist/development/interface/slot/debug-console-log-entry';
 import type { TokenIconName } from '$stylist/svg/type/alias/icon-name';
+import { now } from '$stylist/calendar/function/script/date/now';
 
 export function createDebugConsoleState(getProps: () => RecipeDebugConsole) {
 	const props = $derived(getProps());
@@ -100,7 +101,7 @@ export function createDebugConsoleState(getProps: () => RecipeDebugConsole) {
 
 			const log: SlotDebugConsoleLogEntry = {
 				id: `log-${Date.now()}-${Math.floor(Math.random() * 1000)}`,
-				timestamp: new Date(),
+				timestamp: now(),
 				level: levels[Math.floor(Math.random() * levels.length)],
 				message: messages[Math.floor(Math.random() * messages.length)]
 			};

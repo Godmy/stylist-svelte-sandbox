@@ -3,6 +3,8 @@ import { ClassNamesManager } from '$stylist/layout/class/manager/class-names';
 import type { RecipeMockDataSelector } from '$stylist/development/interface/recipe/mock-data-selector';
 import type { SlotMockDataSelectorSelection } from '$stylist/development/interface/slot/mock-data-selector-selection';
 import type { TokenIconName } from '$stylist/svg/type/alias/icon-name';
+import { unique } from '$stylist/theme/function/script/collection/unique';
+import { toDate } from '$stylist/calendar/function/script/date/to-date';
 
 export function createMockDataSelectorState(getProps: () => RecipeMockDataSelector) {
 	const props = $derived(getProps());
@@ -18,9 +20,11 @@ export function createMockDataSelectorState(getProps: () => RecipeMockDataSelect
 	);
 	let searchQuery = $state('');
 	let selectedTags = $state<string[]>([]);
-	let availableTags = $state<string[]>([]);
 
 	const schemas = $derived(props.schemas ?? []);
+	const availableTags = $derived(
+		unique(schemas.flatMap((schema) => schema.tags as string[])).sort()
+	);
 	const title = $derived(props.title ?? 'Mock Data Selector');
 	const description = $derived(
 		props.description ?? 'Select mock data schemas to generate sample data'
@@ -49,15 +53,6 @@ export function createMockDataSelectorState(getProps: () => RecipeMockDataSelect
 	const footerComputedClass = $derived.by(() => {
 		const footer = 'mt-6 flex justify-end gap-3';
 		return footerClass ? `${footer} ${footerClass}` : footer;
-	});
-
-	// Initialize tags
-	$effect(() => {
-		const tagsSet = new Set<string>();
-		schemas.forEach((schema) => {
-			schema.tags.forEach((tag: string) => tagsSet.add(tag));
-		});
-		availableTags = Array.from(tagsSet).sort();
 	});
 
 	function addSelection(schemaId: string) {
@@ -166,7 +161,7 @@ export function createMockDataSelectorState(getProps: () => RecipeMockDataSelect
 							item[field.name] = Math.random() > 0.5;
 							break;
 						case 'date':
-							item[field.name] = new Date(
+							item[field.name] = toDate(
 								Date.now() - Math.floor(Math.random() * 365 * 24 * 60 * 60 * 1000)
 							)
 								.toISOString()

@@ -29,11 +29,8 @@ export function createStylistPreviewState(
 	let headerInline = $state(false);
 	const props = $derived(getProps());
 	const stories = $derived(props.stories);
-	let visibleCount = $state(60);
+	let visibleCount = $derived(Math.min(60, stories.length));
 	const visibleStories = $derived(stories.slice(0, visibleCount));
-	$effect(() => {
-		visibleCount = Math.min(60, stories.length);
-	});
 	const categories = $derived.by(() => {
 		const order = ['atom', 'molecule', 'organism', 'template', 'page'];
 		return [...props.categories].sort((a, b) => {

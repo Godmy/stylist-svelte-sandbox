@@ -1,5 +1,6 @@
 import type { RecipeDomainAiAgent } from '$stylist/domain/interface/recipe/domain-ai-agent';
 import type { SlotTranscriptionResult } from '$stylist/audio/interface/slot/transcription-result';
+import { now } from '$stylist/calendar/function/script/date/now';
 
 const OWN_FILE_NAMES = ['index.svelte', 'index.story.ts', 'index.story.svelte', 'index.ts'];
 const DEPENDENCY_ATTACH_LIMIT = 20;
@@ -154,7 +155,7 @@ export function createDomainAiAgentState(getProps: () => RecipeDomainAiAgent) {
 		if (!trimmed || isSending) return;
 
 		errorMessage = '';
-		messages = [...messages, { role: 'user', text: trimmed, createdAt: new Date() }];
+		messages = [...messages, { role: 'user', text: trimmed, createdAt: now() }];
 		isSending = true;
 
 		const context = attachments.length
@@ -175,7 +176,7 @@ export function createDomainAiAgentState(getProps: () => RecipeDomainAiAgent) {
 			}
 			messages = [
 				...messages,
-				{ role: 'assistant', text: String(payload.reply ?? ''), createdAt: new Date() }
+				{ role: 'assistant', text: String(payload.reply ?? ''), createdAt: now() }
 			];
 			draftText = '';
 		} catch (error) {
