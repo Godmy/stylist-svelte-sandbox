@@ -3,14 +3,19 @@
 	import { ManagerThemeSettings } from '$stylist/theme/class/manager/theme-settings';
 	import { ManagerThemeContext } from '$stylist/theme/class/manager/theme-context';
 	import type { RecipeDomainSettings } from '$stylist/domain/interface/recipe/domain-settings';
+	import createDomainSettingsState from '$stylist/domain/component/organism/domain-settings/state.svelte';
 
 	let {
 		open = false,
+		modal = false,
+		navigation,
+		displaySettings,
 		iconSizes = $bindable({ module: 32, domain: 32, cluster: 24, joint: 24, search: 24 }),
 		onClose,
 		class: className = ''
 	}: RecipeDomainSettings = $props();
 	const id = $props.id();
+	const state = createDomainSettingsState(() => ({ open, modal }));
 	const panels = ['module', 'domain', 'cluster', 'joint', 'search'] as const;
 
 	const themeContext = ManagerThemeContext.getOptional();
@@ -33,11 +38,19 @@
 </script>
 
 {#if open}
-	<aside class="c-domain-settings {className}" aria-label="Domain settings">
+	<dialog
+		bind:this={state.element}
+		class="c-domain-settings {className}"
+		aria-label="Domain settings"
+		oncancel={(event) => {
+			event.preventDefault();
+			onClose?.();
+		}}
+	>
 		<header class="panel-head">
 			<div>
-				<p class="eyebrow">Settings</p>
-				<h2>Domain settings</h2>
+				{#if !navigation}<p class="eyebrow">Settings</p>{/if}
+				<h2>{navigation ? 'Select pages' : 'Domain settings'}</h2>
 			</div>
 			<button
 				type="button"
@@ -50,6 +63,20 @@
 		</header>
 
 		<div class="panel-body">
+			{#if navigation}
+				<section class="page-settings" aria-label="Select pages">
+					{@render navigation()}
+				</section>
+			{/if}
+			{#if displaySettings}
+				<section class="playground-settings" aria-labelledby="{id}-playground">
+					<h2 id="{id}-playground">Playground settings</h2>
+					{@render displaySettings()}
+				</section>
+			{/if}
+			{#if navigation || displaySettings}
+				<h2 class="domain-settings-heading">Domain settings</h2>
+			{/if}
 			<section class="icon-settings" aria-labelledby="{id}-icons">
 				<h3 id="{id}-icons">Panel icon sizes</h3>
 				<p>Adjust each navigation panel independently.</p>
@@ -89,10 +116,70 @@
 				/>
 			</div>
 		</div>
-	</aside>
+	</dialog>
 {/if}
 
 <style>
+	.page-settings {
+		margin-bottom: 2rem;
+	}
+	.page-settings :global(.c-domain-menu) {
+		display: grid;
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		justify-items: center;
+		gap: 0.9rem;
+		width: 100%;
+		padding: 0;
+		border: 0;
+		border-radius: 0;
+		background: none;
+		box-shadow: none;
+		backdrop-filter: none;
+	}
+	.playground-settings {
+		display: grid;
+		gap: 1.25rem;
+		margin-bottom: 2rem;
+		padding-bottom: 2rem;
+		border-bottom: 1px solid var(--color-border-primary);
+	}
+	.playground-settings h2,
+	.domain-settings-heading {
+		margin: 0;
+		font-size: 1.1rem;
+		font-weight: 600;
+		line-height: 1.4;
+	}
+	.domain-settings-heading {
+		margin-bottom: 1.25rem;
+	}
+	.playground-settings :global(.c-device-viewport) {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		justify-items: center;
+		gap: 1rem;
+		width: 100%;
+		padding: 0;
+		border: 0;
+		border-radius: 0;
+		background: none;
+		box-shadow: none;
+		backdrop-filter: none;
+	}
+	.playground-settings :global(.viewport-size) {
+		grid-column: span 2;
+		width: 100%;
+		padding: 0;
+		border: 0;
+	}
+	.playground-settings :global(.viewport-select-wrap),
+	.playground-settings :global(.viewport-select-wrap select) {
+		width: 100%;
+	}
+	.playground-settings :global(.fullscreen-button) {
+		margin: 0;
+		outline: 0;
+	}
 	.icon-settings {
 		display: grid;
 		gap: 0.8rem;
@@ -153,10 +240,15 @@
 	}
 
 	.c-domain-settings {
+		margin: 0;
+		padding: 0;
+		left: auto;
+		bottom: auto;
+		color: var(--color-text-primary);
 		position: fixed;
 		top: 5.25rem;
 		right: 0.7rem;
-		z-index: 30;
+		z-index: 1600;
 		width: min(calc(30rem + 4px), calc(100vw - 2rem));
 		max-height: calc(100vh - 6.25rem);
 		display: grid;
@@ -316,14 +408,28 @@
 
 	@media (max-width: 840px) {
 		.c-domain-settings {
-			top: 6.5rem;
-			right: 0.75rem;
-			left: 0.75rem;
-			width: auto;
+			inset: 0;
+			width: 100%;
+			max-width: none;
+			height: 100dvh;
+			max-height: none;
+			border: 0;
+			border-radius: 0;
+			padding-block: env(safe-area-inset-top, 0px) env(safe-area-inset-bottom, 0px);
+			box-sizing: border-box;
 		}
 
 		.settings-offset {
 			transform: translate(-8px, -4px);
+		}
+		.panel-head {
+			padding: 1.5rem 1.25rem;
+		}
+		.panel-head h2 {
+			font-size: 1.25rem;
+		}
+		.panel-body {
+			padding: 1.5rem 1.25rem;
 		}
 	}
 </style>

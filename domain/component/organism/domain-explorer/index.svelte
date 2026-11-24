@@ -1,5 +1,8 @@
 <script lang="ts">
 	import { untrack } from 'svelte';
+	import NavigationDrawer from '$stylist/navigation/component/organism/navigation-drawer/index.svelte';
+	import TopAppBar from '$stylist/navigation/component/organism/top-app-bar/index.svelte';
+	import Fragment from '$stylist/navigation/component/template/fragment/index.svelte';
 	import DomainFilePreview from '$stylist/domain/component/organism/domain-file-preview/index.svelte';
 	import DomainSearch from '$stylist/domain/component/molecule/domain-search/index.svelte';
 	import DomainSidebar from '$stylist/domain/component/organism/domain-sidebar/index.svelte';
@@ -30,6 +33,7 @@
 	);
 
 	let {
+		menu,
 		tree,
 		initialDomain,
 		initialCluster,
@@ -80,24 +84,52 @@
 	});
 </script>
 
+{#snippet sidebar()}
+	<DomainSidebar
+		activeDomain={s.activeDomain}
+		activeCluster={s.activeCluster}
+		activeJoint={s.activeJoint}
+		availableDomains={s.availableDomainNames}
+		availableClusters={s.availableClusterNames}
+		availableJoints={s.availableJointNames}
+		entities={s.entities}
+		activeEntityPath={s.activeEntityPath}
+		onDomainSelect={s.handleDomainSelect}
+		onClusterSelect={s.handleClusterSelect}
+		onJointSelect={s.handleJointSelect}
+		onEntitySelect={s.selectNavigationEntity}
+	/>
+{/snippet}
+
 <main class="c-domain-explorer {className}" class:fullscreen>
-	<div class="explorer-rail" inert={fullscreen}>
-		<DomainSidebar
-			activeDomain={s.activeDomain}
-			activeCluster={s.activeCluster}
-			activeJoint={s.activeJoint}
-			availableDomains={s.availableDomainNames}
-			availableClusters={s.availableClusterNames}
-			availableJoints={s.availableJointNames}
-			entities={s.entities}
-			activeEntityPath={s.activeEntityPath}
-			onDomainSelect={s.handleDomainSelect}
-			onClusterSelect={s.handleClusterSelect}
-			onJointSelect={s.handleJointSelect}
-			onEntitySelect={s.handleEntitySelect}
-		/>
-	</div>
-	<section class="content-panel" aria-label="Content viewer">
+	{#if s.mobile}
+		<NavigationDrawer
+			sections={[]}
+			open={s.drawerOpen}
+			onClose={s.closeDrawer}
+			label="Components"
+			class="explorer-drawer"
+		>
+			{#snippet header()}<button type="button" onclick={s.closeDrawer}>Close navigation</button
+				>{/snippet}
+			{#snippet footer()}{@render sidebar()}{/snippet}
+		</NavigationDrawer>
+	{:else}
+		<div class="explorer-rail" inert={fullscreen}>
+			{@render sidebar()}
+		</div>
+	{/if}
+	<section class="content-panel" aria-label="Content viewer" inert={s.mobile && s.drawerOpen}>
+		{#if s.mobile}
+			<TopAppBar
+				heading={s.activeFamilyName || 'Playground'}
+				navigation="menu"
+				navigationLabel="Choose component"
+				menuOpen={s.drawerOpen}
+				onNavigation={s.openDrawer}
+				actions={menu}
+			/>
+		{/if}
 		<div class="viewer">
 			<div class="viewer-chrome" inert={fullscreen}>
 				<div class="taxonomy-row">
@@ -143,32 +175,65 @@
 					/>
 				{/if}
 			</div>
-			<DomainFilePreview
-				{storyWidth}
-				{fullscreen}
-				storyPath={s.storyFile?.path}
-				previewMode={s.previewMode}
-				fileContent={s.fileContent}
-				fileLoading={s.fileLoading}
-				fileError={s.fileError}
-				storyPreviewComponent={s.storyPreviewComponent}
-				storyPreviewLoading={s.storyPreviewLoading}
-				storyPreviewError={s.storyPreviewError}
-				dependencyItems={s.dependencyItems}
-				dependencyTreeNodes={s.dependencyTreeNodes}
-				selectedDependencyKey={s.selectedDependencyKey}
-				selectedDependencyFiles={s.selectedDependencyFiles}
-				dependencyLoading={s.dependencyLoading}
-				dependencyError={s.dependencyError}
-				onDependencySelect={s.handleDependencySelect}
-				previewKind={s.previewKind}
-				bind:storyDevice
-			/>
+			<Fragment layout="fill" class="explorer-fragment">
+				<DomainFilePreview
+					{storyWidth}
+					{fullscreen}
+					storyPath={s.storyFile?.path}
+					previewMode={s.previewMode}
+					fileContent={s.fileContent}
+					fileLoading={s.fileLoading}
+					fileError={s.fileError}
+					storyPreviewComponent={s.storyPreviewComponent}
+					storyPreviewLoading={s.storyPreviewLoading}
+					storyPreviewError={s.storyPreviewError}
+					dependencyItems={s.dependencyItems}
+					dependencyTreeNodes={s.dependencyTreeNodes}
+					selectedDependencyKey={s.selectedDependencyKey}
+					selectedDependencyFiles={s.selectedDependencyFiles}
+					dependencyLoading={s.dependencyLoading}
+					dependencyError={s.dependencyError}
+					onDependencySelect={s.handleDependencySelect}
+					previewKind={s.previewKind}
+					bind:storyDevice
+				/>
+			</Fragment>
 		</div>
 	</section>
 </main>
 
 <style>
+	:global(.explorer-fragment > .c-domain-file-preview) {
+		flex: 1;
+	}
+	:global(.explorer-drawer.c-navigation-drawer) {
+		padding: 0;
+		width: min(32rem, calc(100vw - 1rem));
+		overflow: hidden;
+	}
+	:global(.explorer-drawer .c-navigation-drawer__nav) {
+		display: none;
+	}
+	:global(.explorer-drawer .c-navigation-drawer__footer) {
+		flex: 1;
+		min-height: 0;
+		padding: 0;
+		margin: 0;
+	}
+	:global(.explorer-drawer .c-domain-sidebar) {
+		height: 100%;
+		min-height: 0;
+	}
+	:global(.explorer-drawer .c-navigation-drawer__header button) {
+		min-height: 44px;
+		padding-inline: 1rem;
+		font: inherit;
+		color: var(--color-text-primary);
+		background: var(--color-background-primary);
+		border: 1px solid var(--color-border-primary);
+		border-radius: 8px;
+	}
+
 	.c-domain-explorer {
 		display: grid;
 		grid-template-columns: minmax(281px, max-content) minmax(0, 1fr);
@@ -223,6 +288,7 @@
 	}
 
 	.content-panel {
+		grid-template-rows: minmax(0, 1fr);
 		display: grid;
 		min-width: 0;
 		min-height: 0;
@@ -269,6 +335,9 @@
 	}
 
 	@media (max-width: 840px) {
+		.content-panel {
+			grid-template-rows: auto minmax(0, 1fr);
+		}
 		.fullscreen .explorer-rail {
 			display: none;
 		}
@@ -277,7 +346,7 @@
 		}
 		.c-domain-explorer {
 			grid-template-columns: 1fr;
-			grid-template-rows: minmax(0, 35%) minmax(0, 1fr);
+			grid-template-rows: minmax(0, 1fr);
 		}
 		.c-domain-explorer.fullscreen {
 			grid-template-rows: minmax(0, 1fr);

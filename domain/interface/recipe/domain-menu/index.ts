@@ -1,4 +1,5 @@
 export interface RecipeDomainMenu {
+	variant?: 'full' | 'settings' | 'pages';
 	landingVisible?: boolean;
 	componentsVisible?: boolean;
 	domainVisible?: boolean;

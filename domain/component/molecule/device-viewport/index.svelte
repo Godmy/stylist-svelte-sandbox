@@ -116,6 +116,9 @@
 					value={selectedWidth}
 					onchange={(event) => onWidthChange?.(Number(event.currentTarget.value))}
 				>
+					{#if selectedWidth && !WIDTHS[value].includes(selectedWidth)}
+						<option value={selectedWidth}>{selectedWidth} px</option>
+					{/if}
 					{#each WIDTHS[value] as preset (preset)}
 						<option value={preset}>{preset} px</option>
 					{/each}

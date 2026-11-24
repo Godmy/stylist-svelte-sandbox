@@ -1,10 +1,21 @@
+import { onMount } from 'svelte';
+import { MediaQuery } from 'svelte/reactivity';
+import type { DeviceFrameViewport } from '$stylist/domain/type/alias/device-frame-viewport';
 import { DOMAIN_SCREEN } from '$stylist/domain/const/object/domain-screen';
 import type { TypeDomainScreen } from '$stylist/domain/type/alias/domain-screen';
 import type { RecipeDomainPlayground } from '$stylist/domain/interface/recipe/domain-playground';
 
 export function createDomainPlaygroundState(getProps: () => RecipeDomainPlayground) {
 	const props = $derived(getProps());
+	const mobile = new MediaQuery('(max-width: 840px)');
 	let currentScreen = $state<TypeDomainScreen>(getProps().initialScreen ?? DOMAIN_SCREEN.LANDING);
+	let storyDevice = $state<DeviceFrameViewport>('desktop');
+	let fullscreen = $state(false);
+	onMount(() => {
+		const mobile = window.matchMedia('(max-width: 840px)').matches;
+		storyDevice = mobile ? 'mobile' : 'desktop';
+		fullscreen = mobile;
+	});
 	let isSettingsOpen = $state(false);
 	let selectedStoryPath = $state('');
 	let catalogVisited = $state(getProps().initialScreen === DOMAIN_SCREEN.COMPONENTS);
@@ -78,6 +89,21 @@ export function createDomainPlaygroundState(getProps: () => RecipeDomainPlaygrou
 	}
 
 	return {
+		get mobile() {
+			return mobile.current;
+		},
+		get storyDevice() {
+			return storyDevice;
+		},
+		set storyDevice(value: DeviceFrameViewport) {
+			storyDevice = value;
+		},
+		get fullscreen() {
+			return fullscreen;
+		},
+		set fullscreen(value: boolean) {
+			fullscreen = value;
+		},
 		get catalogVisited() {
 			return catalogVisited;
 		},

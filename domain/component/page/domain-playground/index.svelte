@@ -42,6 +42,7 @@
 	});
 	let iconSizesLoaded = $state(false);
 	onMount(() => {
+		if (window.matchMedia('(max-width: 840px)').matches) storyWidths.mobile = window.innerWidth;
 		try {
 			const saved = JSON.parse(localStorage.getItem('stylist-domain-icon-sizes') ?? 'null');
 			for (const key of ['module', 'domain', 'cluster', 'joint', 'search'] as const) {
@@ -64,14 +65,12 @@
 			// Resizing still works when browser storage is unavailable.
 		}
 	});
-	let storyDevice = $state<DeviceFrameViewport>('desktop');
 	let storyWidths = $state<Record<DeviceFrameViewport, number | null>>({
 		mobile: 375,
 		tablet: 768,
 		desktop: 1440,
 		fullscreen: null
 	});
-	let fullscreen = $state(false);
 	let deviceViewportVisible = $state(false);
 	const storyModuleCount = $derived(countDomainStories(tree));
 
@@ -87,12 +86,16 @@
 
 <svelte:window
 	onkeydown={(event) => {
-		if (event.key === 'Escape') fullscreen = false;
+		if (event.target instanceof Element && event.target.closest('[role="dialog"], dialog')) return;
+		if (event.key === 'Escape') screenState.fullscreen = false;
 	}}
 />
 
-{#snippet domainMenu()}
+{#snippet domainMenu(
+	variant: 'full' | 'settings' | 'pages' = screenState.mobile ? 'settings' : 'full'
+)}
 	<DomainMenu
+		{variant}
 		landingVisible={screenState.currentScreen === DOMAIN_SCREEN.LANDING}
 		componentsVisible={screenState.currentScreen === DOMAIN_SCREEN.COMPONENTS}
 		domainVisible={screenState.currentScreen === DOMAIN_SCREEN.DOMAIN}
@@ -110,10 +113,11 @@
 {/snippet}
 
 <div
+	inert={screenState.mobile && screenState.isSettingsOpen}
 	class="c-domain-playground {className}"
 	class:c-domain-playground--components={screenState.currentScreen === DOMAIN_SCREEN.COMPONENTS}
 	class:c-domain-playground--domain={screenState.currentScreen === DOMAIN_SCREEN.DOMAIN}
-	class:fullscreen={fullscreen && screenState.currentScreen === DOMAIN_SCREEN.DOMAIN}
+	class:fullscreen={screenState.fullscreen && screenState.currentScreen === DOMAIN_SCREEN.DOMAIN}
 	style:--domain-module-icon-size="{iconSizes.module}px"
 	style:--domain-domain-icon-size="{iconSizes.domain}px"
 	style:--domain-cluster-icon-size="{iconSizes.cluster}px"
@@ -131,9 +135,10 @@
 					initialJoint={selectedStory[2] || initialJoint}
 					initialEntityPath={screenState.selectedStoryPath || undefined}
 					initialPreviewMode={screenState.selectedStoryPath ? 'story' : initialPreviewMode}
-					storyWidth={storyWidths[storyDevice]}
-					bind:storyDevice
-					bind:fullscreen
+					storyWidth={storyWidths[screenState.storyDevice]}
+					bind:storyDevice={screenState.storyDevice}
+					bind:fullscreen={screenState.fullscreen}
+					menu={domainMenu}
 					bind:deviceViewportVisible
 				/>
 			{/key}
@@ -172,18 +177,9 @@
 
 	{#if screenState.currentScreen !== DOMAIN_SCREEN.COMPONENTS}
 		<div class="menu-shell">
-			{#if screenState.currentScreen === DOMAIN_SCREEN.DOMAIN && deviceViewportVisible}
-				<DeviceViewport
-					value={storyDevice}
-					width={storyWidths[storyDevice]}
-					widths={storyWidths}
-					onWidthChange={(width) => (storyWidths[storyDevice] = width)}
-					{fullscreen}
-					onChange={(next) => (storyDevice = next)}
-					onFullscreenChange={(next) => (fullscreen = next)}
-				/>
+			{#if !screenState.mobile && deviceViewportVisible}
+				{@render displaySettings()}
 			{/if}
-
 			{@render domainMenu()}
 		</div>
 	{/if}
@@ -191,11 +187,30 @@
 
 <WorkspaceHints />
 
+{#snippet displaySettings()}
+	{#if screenState.currentScreen === DOMAIN_SCREEN.DOMAIN}
+		<DeviceViewport
+			value={screenState.storyDevice}
+			width={storyWidths[screenState.storyDevice]}
+			widths={storyWidths}
+			onWidthChange={(width) => (storyWidths[screenState.storyDevice] = width)}
+			fullscreen={screenState.fullscreen}
+			onChange={(next) => (screenState.storyDevice = next)}
+			onFullscreenChange={(next) => (screenState.fullscreen = next)}
+		/>
+	{/if}
+{/snippet}
+
+{#snippet pageNavigation()}{@render domainMenu('pages')}{/snippet}
+
 {#if screenState.isSettingsOpen}
 	{#await loadDomainSettings() then module}
 		{@const DomainSettings = module.default}
 		<DomainSettings
 			open={screenState.isSettingsOpen}
+			modal={screenState.mobile}
+			navigation={screenState.mobile ? pageNavigation : undefined}
+			displaySettings={screenState.mobile ? displaySettings : undefined}
 			bind:iconSizes
 			onClose={screenState.closeSettings}
 		/>
@@ -251,12 +266,19 @@
 	}
 
 	@media (max-width: 840px) {
+		:global(html:has(.c-domain-playground--domain)) {
+			scrollbar-gutter: auto;
+		}
 		.c-domain-playground {
 			padding-top: calc(env(safe-area-inset-top, 0px) + 6rem);
 		}
 
-		.c-domain-playground--components {
+		.c-domain-playground--components,
+		.c-domain-playground--domain {
 			padding-top: 0;
+		}
+		.c-domain-playground--domain .menu-shell {
+			display: none;
 		}
 		.components-screen {
 			padding-top: 0;
