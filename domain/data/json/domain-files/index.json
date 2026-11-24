@@ -485,7 +485,7 @@
     },
     {
       "name": "canvas",
-      "fileCount": 96,
+      "fileCount": 124,
       "components": {
         "atoms": 0,
         "molecules": 5,
@@ -496,12 +496,12 @@
       "clusters": [
         {
           "name": "class",
-          "fileCount": 7,
+          "fileCount": 13,
           "joints": [
             {
               "name": "manager",
-              "entityCount": 5,
-              "fileCount": 6
+              "entityCount": 11,
+              "fileCount": 12
             }
           ]
         },
@@ -523,17 +523,17 @@
         },
         {
           "name": "const",
-          "fileCount": 25,
+          "fileCount": 31,
           "joints": [
             {
               "name": "array",
-              "entityCount": 5,
-              "fileCount": 6
+              "entityCount": 8,
+              "fileCount": 9
             },
             {
               "name": "map",
-              "entityCount": 1,
-              "fileCount": 2
+              "entityCount": 4,
+              "fileCount": 5
             },
             {
               "name": "record",
@@ -544,6 +544,17 @@
               "name": "value",
               "entityCount": 2,
               "fileCount": 3
+            }
+          ]
+        },
+        {
+          "name": "function",
+          "fileCount": 3,
+          "joints": [
+            {
+              "name": "resolve",
+              "entityCount": 1,
+              "fileCount": 2
             }
           ]
         },
@@ -565,10 +576,15 @@
         },
         {
           "name": "test",
-          "fileCount": 1,
+          "fileCount": 3,
           "joints": [
             {
               "name": "render",
+              "entityCount": 2,
+              "fileCount": 2
+            },
+            {
+              "name": "unit",
               "entityCount": 1,
               "fileCount": 1
             }
@@ -576,17 +592,22 @@
         },
         {
           "name": "type",
-          "fileCount": 9,
+          "fileCount": 20,
           "joints": [
             {
               "name": "alias",
+              "entityCount": 9,
+              "fileCount": 10
+            },
+            {
+              "name": "object",
               "entityCount": 5,
               "fileCount": 6
             },
             {
               "name": "struct",
-              "entityCount": 1,
-              "fileCount": 2
+              "entityCount": 2,
+              "fileCount": 3
             }
           ]
         }
@@ -1262,7 +1283,7 @@
     },
     {
       "name": "domain",
-      "fileCount": 401,
+      "fileCount": 402,
       "components": {
         "atoms": 3,
         "molecules": 33,
@@ -1273,7 +1294,7 @@
       "clusters": [
         {
           "name": "component",
-          "fileCount": 194,
+          "fileCount": 195,
           "joints": [
             {
               "name": "atom",
@@ -1288,7 +1309,7 @@
             {
               "name": "organism",
               "entityCount": 13,
-              "fileCount": 51
+              "fileCount": 52
             },
             {
               "name": "page",
@@ -3469,10 +3490,10 @@
     },
     {
       "name": "svg",
-      "fileCount": 948,
+      "fileCount": 975,
       "components": {
         "atoms": 11,
-        "molecules": 0,
+        "molecules": 2,
         "organisms": 0,
         "templates": 0,
         "pages": 0
@@ -3480,19 +3501,29 @@
       "clusters": [
         {
           "name": "component",
-          "fileCount": 39,
+          "fileCount": 48,
           "joints": [
             {
               "name": "atom",
               "entityCount": 11,
               "fileCount": 38
+            },
+            {
+              "name": "molecule",
+              "entityCount": 2,
+              "fileCount": 9
             }
           ]
         },
         {
           "name": "const",
-          "fileCount": 5,
+          "fileCount": 7,
           "joints": [
+            {
+              "name": "object",
+              "entityCount": 1,
+              "fileCount": 2
+            },
             {
               "name": "record",
               "entityCount": 3,
@@ -3518,7 +3549,7 @@
         },
         {
           "name": "function",
-          "fileCount": 12,
+          "fileCount": 14,
           "joints": [
             {
               "name": "async",
@@ -3531,6 +3562,11 @@
               "fileCount": 2
             },
             {
+              "name": "create",
+              "entityCount": 1,
+              "fileCount": 2
+            },
+            {
               "name": "script",
               "entityCount": 5,
               "fileCount": 6
@@ -3539,42 +3575,57 @@
         },
         {
           "name": "interface",
-          "fileCount": 16,
+          "fileCount": 25,
           "joints": [
             {
+              "name": "behavior",
+              "entityCount": 2,
+              "fileCount": 3
+            },
+            {
+              "name": "contract",
+              "entityCount": 1,
+              "fileCount": 2
+            },
+            {
               "name": "recipe",
-              "entityCount": 11,
-              "fileCount": 12
+              "entityCount": 13,
+              "fileCount": 14
             },
             {
               "name": "slot",
-              "entityCount": 2,
-              "fileCount": 3
+              "entityCount": 4,
+              "fileCount": 5
             }
           ]
         },
         {
           "name": "test",
-          "fileCount": 4,
+          "fileCount": 6,
           "joints": [
             {
               "name": "render",
-              "entityCount": 1,
-              "fileCount": 1
+              "entityCount": 2,
+              "fileCount": 2
             },
             {
               "name": "unit",
-              "entityCount": 3,
-              "fileCount": 3
+              "entityCount": 4,
+              "fileCount": 4
             }
           ]
         },
         {
           "name": "type",
-          "fileCount": 4,
+          "fileCount": 7,
           "joints": [
             {
               "name": "alias",
+              "entityCount": 2,
+              "fileCount": 3
+            },
+            {
+              "name": "object",
               "entityCount": 2,
               "fileCount": 3
             }
@@ -4427,9 +4478,9 @@
   ],
   "totals": {
     "domains": 39,
-    "files": 6138,
+    "files": 6194,
     "atoms": 294,
-    "molecules": 197,
+    "molecules": 199,
     "organisms": 164,
     "templates": 7,
     "pages": 15

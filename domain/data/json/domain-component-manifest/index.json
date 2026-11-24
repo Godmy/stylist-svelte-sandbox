@@ -880,6 +880,10 @@
           "svg-polyline",
           "svg-rect",
           "svg-text"
+        ],
+        "molecule": [
+          "svg-shorts",
+          "svg-timeline"
         ]
       }
     },

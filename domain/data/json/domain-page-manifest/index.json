@@ -418,6 +418,12 @@
       "class": {
         "manager": {
           "canvas": "INDEXED_CLASS",
+          "canvas-board": "INDEXED_CLASS",
+          "canvas-geometry": "INDEXED_CLASS",
+          "canvas-history": "INDEXED_CLASS",
+          "canvas-shape": "INDEXED_CLASS",
+          "canvas-surface": "INDEXED_CLASS",
+          "canvas-viewport": "INDEXED_CLASS",
           "color-palette": "INDEXED_CLASS",
           "foundation": "INDEXED_CLASS",
           "semantic-zoom": "INDEXED_CLASS",
@@ -439,6 +445,9 @@
       },
       "const": {
         "array": {
+          "canvas-board-icon": "INDEXED_CONST",
+          "canvas-color-swatch": "INDEXED_CONST",
+          "canvas-shape-kind": "INDEXED_CONST",
           "canvas-toolbar-drawing-tool": "INDEXED_CONST",
           "foundation-axes": "INDEXED_CONST",
           "foundation-axis-directions": "INDEXED_CONST",
@@ -446,7 +455,10 @@
           "foundation-semantic-zoom-stages": "INDEXED_CONST"
         },
         "map": {
-          "canvas-action-icons": "INDEXED_CONST"
+          "canvas-action-icons": "INDEXED_CONST",
+          "canvas-board-glyph": "INDEXED_CONST",
+          "canvas-font-family": "INDEXED_CONST",
+          "canvas-zoom-limits": "INDEXED_CONST"
         },
         "record": {
           "canvas-tool-definitions": "INDEXED_CONST",
@@ -465,6 +477,11 @@
         "value": {
           "default-foundation-camera": "INDEXED_CONST",
           "foundation-depth-range": "INDEXED_CONST"
+        }
+      },
+      "function": {
+        "resolve": {
+          "canvas-color": "INDEXED_FUNCTION"
         }
       },
       "interface": {
@@ -494,18 +511,34 @@
       },
       "test": {
         "render": {
+          "canvas-interaction": "FUNCTION_TEST",
           "localization": "FUNCTION_TEST"
+        },
+        "unit": {
+          "canvas-core": "FUNCTION_TEST"
         }
       },
       "type": {
         "alias": {
+          "canvas-font-family": "INDEXED_TYPE",
+          "canvas-object": "INDEXED_TYPE",
+          "canvas-resize-handle": "INDEXED_TYPE",
+          "canvas-shape-kind": "INDEXED_TYPE",
           "canvas-toolbar-drawing-tool": "INDEXED_TYPE",
           "foundation-axis": "INDEXED_TYPE",
           "foundation-semantic-zoom-stage": "INDEXED_TYPE",
           "shared-canvas-tool": "INDEXED_TYPE",
           "shared-canvas-tool-definition": "INDEXED_TYPE"
         },
+        "object": {
+          "canvas-board-style": "INDEXED_TYPE",
+          "canvas-font": "INDEXED_TYPE",
+          "canvas-stroke": "INDEXED_TYPE",
+          "canvas-user": "INDEXED_TYPE",
+          "canvas-viewport": "INDEXED_TYPE"
+        },
         "struct": {
+          "canvas-history": "INDEXED_TYPE",
           "foundation-depth-threshold": "INDEXED_TYPE"
         }
       }
@@ -1233,7 +1266,7 @@
           "domain-explorer": "DEFINED_REACTIVE_STORY_COMPONENT",
           "domain-file-domain-grid": "DEFINED_STORY_COMPONENT",
           "domain-file-preview": "DEFINED_RENDERED_STORY_COMPONENT",
-          "domain-settings": "DEFINED_RENDERED_STORY_COMPONENT",
+          "domain-settings": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
           "domain-sidebar": "DEFINED_RENDERED_STORY_COMPONENT",
           "markdown-renderer": "DEFINED_REACTIVE_STORY_COMPONENT",
           "samo-methodology": "DEFINED_STORY_COMPONENT",
@@ -3426,9 +3459,16 @@
           "svg-polyline": "DEFINED_STORY_COMPONENT",
           "svg-rect": "DEFINED_STORY_COMPONENT",
           "svg-text": "DEFINED_STORY_COMPONENT"
+        },
+        "molecule": {
+          "svg-shorts": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "svg-timeline": "DEFINED_REACTIVE_STORY_COMPONENT"
         }
       },
       "const": {
+        "object": {
+          "svg-short-demo": "INDEXED_CONST"
+        },
         "record": {
           "flag-registry": "INDEXED_CONST",
           "icon-registry": "INDEXED_CONST",
@@ -4053,7 +4093,6 @@
           "progress": "INDEX_SVG",
           "promo-banner": "INDEX_SVG",
           "props-editor": "INDEX_SVG",
-          "prototype-school": "INDEX_SVG",
           "prototype-shop": "INDEX_SVG",
           "quote-request": "INDEX_SVG",
           "radio-group": "INDEX_SVG",
@@ -4094,6 +4133,7 @@
           "scatter-plot": "INDEX_SVG",
           "scene": "INDEX_SVG",
           "schedule-calendar": "INDEX_SVG",
+          "school": "INDEX_SVG",
           "science": "INDEX_SVG",
           "scratch": "INDEX_SVG",
           "script": "INDEX_SVG",
@@ -4314,6 +4354,9 @@
         "check": {
           "icon-name": "INDEXED_FUNCTION"
         },
+        "create": {
+          "svg-playback": "INDEXED_FUNCTION"
+        },
         "script": {
           "attribute": "INDEXED_FUNCTION",
           "class-list": "INDEXED_FUNCTION",
@@ -4323,6 +4366,13 @@
         }
       },
       "interface": {
+        "behavior": {
+          "svg-playback": "INDEXED_INTERFACE",
+          "svg-preview": "INDEXED_INTERFACE"
+        },
+        "contract": {
+          "svg-playback": "INDEXED_INTERFACE"
+        },
         "recipe": {
           "flag": "INDEXED_INTERFACE",
           "icon": "INDEXED_INTERFACE",
@@ -4334,27 +4384,37 @@
           "svg-polygon": "INDEXED_INTERFACE",
           "svg-polyline": "INDEXED_INTERFACE",
           "svg-rect": "INDEXED_INTERFACE",
-          "svg-text": "INDEXED_INTERFACE"
+          "svg-shorts": "INDEXED_INTERFACE",
+          "svg-text": "INDEXED_INTERFACE",
+          "svg-timeline": "INDEXED_INTERFACE"
         },
         "slot": {
           "icon": "INDEXED_INTERFACE",
-          "svg-name": "INDEXED_INTERFACE"
+          "svg-name": "INDEXED_INTERFACE",
+          "svg-shorts": "INDEXED_INTERFACE",
+          "svg-timeline": "INDEXED_INTERFACE"
         }
       },
       "test": {
         "render": {
-          "icon": "FUNCTION_TEST"
+          "icon": "FUNCTION_TEST",
+          "svg-shorts": "FUNCTION_TEST"
         },
         "unit": {
           "icon-name": "FUNCTION_TEST",
           "icon-palette": "FUNCTION_TEST",
-          "style-layer": "FUNCTION_TEST"
+          "style-layer": "FUNCTION_TEST",
+          "svg-playback": "FUNCTION_TEST"
         }
       },
       "type": {
         "alias": {
           "icon-name": "INDEXED_TYPE",
           "icon-size": "INDEXED_TYPE"
+        },
+        "object": {
+          "svg-playback-snapshot": "INDEXED_TYPE",
+          "svg-timeline-track": "INDEXED_TYPE"
         }
       }
     },

@@ -35,7 +35,7 @@ export const PRESET_FILE = {
 	FILE_LEGACY_NOTICES: { type: 'data', files: ['MyStorage-LICENSE.md'] },
 	GEO_LEGACY_NOTICES: { type: 'data', files: ['chs-map-LICENSE.md', 'svelte-mapbox-LICENSE.md'] },
 	MENU_LEGACY_NOTICES: { type: 'data', files: ['components-svelte-LICENSE.md'] },
-	PROTOTYPE_SCHOOL_LEGACY_NOTICES: {
+	SCHOOL_LEGACY_NOTICES: {
 		type: 'data',
 		files: [
 			'2024-sba-LICENSE.md',
@@ -45,7 +45,7 @@ export const PRESET_FILE = {
 			'huntabyte.com-admin-LICENSE.md'
 		]
 	},
-	PROTOTYPE_SCHOOL_LESSON_PLANNING_PROMPTS: { type: 'data', files: ['chqcompetition.md'] },
+	SCHOOL_LESSON_PLANNING_PROMPTS: { type: 'data', files: ['chqcompetition.md'] },
 	PROTOTYPE_SHOP_LEGACY_NOTICES: { type: 'data', files: ['svelte-commerce-LICENSE.md'] },
 	TREEJS_LEGACY_NOTICES: {
 		type: 'data',
