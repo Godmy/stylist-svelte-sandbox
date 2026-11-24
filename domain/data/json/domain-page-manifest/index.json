@@ -17,11 +17,11 @@
           "css-3d-cube": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
           "floating-icon": "DEFINED_STORY_COMPONENT",
           "layout-transformation": "DEFINED_REACTIVE_STORY_COMPONENT",
-          "letter-arc-path": "DEFINED_STORY_COMPONENT",
-          "marquee-ticker": "DEFINED_RENDERED_STORY_COMPONENT",
+          "letter-arc-path": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "marquee-ticker": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
           "palm-sway": "DEFINED_STORY_COMPONENT",
           "progress-bar": "DEFINED_REACTIVE_STORY_COMPONENT",
-          "scroll-phase-debug": "DEFINED_STORY_COMPONENT",
+          "scroll-phase-debug": "DEFINED_REACTIVE_STORY_COMPONENT",
           "skeleton": "DEFINED_REACTIVE_STORY_COMPONENT",
           "spinner": "DEFINED_REACTIVE_STORY_COMPONENT",
           "tooltip": "DEFINED_REACTIVE_STORY_COMPONENT",
@@ -34,10 +34,10 @@
         },
         "molecule": {
           "atomic-tier-card": "DEFINED_STORY_COMPONENT",
-          "carousel-zoom": "DEFINED_RENDERED_STORY_COMPONENT",
+          "carousel-zoom": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
           "loading": "DEFINED_REACTIVE_STORY_COMPONENT",
-          "phrase-arc-flight": "DEFINED_STORY_COMPONENT",
-          "tilt-card": "DEFINED_RENDERED_STORY_COMPONENT"
+          "phrase-arc-flight": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "tilt-card": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT"
         },
         "organism": {
           "atomic-principles-showcase": "DEFINED_REACTIVE_STORY_COMPONENT",
@@ -45,7 +45,7 @@
           "media-slider": "DOCUMENTED_DEFINED_RENDERED_REACTIVE_STORY_COMPONENT"
         },
         "page": {
-          "tilt-showcase": "DEFINED_STORY_COMPONENT"
+          "tilt-showcase": "DEFINED_REACTIVE_STORY_COMPONENT"
         }
       },
       "const": {
@@ -138,10 +138,7 @@
           "whale-spout": "INDEXED_INTERFACE"
         },
         "slot": {
-          "carousel-images": "INDEXED_INTERFACE",
-          "component-library-stats": "INDEXED_INTERFACE",
-          "tilt-card": "INDEXED_INTERFACE",
-          "tilt-showcase": "INDEXED_INTERFACE"
+          "component-library-stats": "INDEXED_INTERFACE"
         }
       },
       "test": {
@@ -213,9 +210,7 @@
           "transcriber": "INDEXED_INTERFACE"
         },
         "slot": {
-          "audio-player": "INDEXED_INTERFACE",
           "audio-recording": "INDEXED_INTERFACE",
-          "audio-slider": "INDEXED_INTERFACE",
           "audio-visualizer": "INDEXED_INTERFACE",
           "transcription-result": "INDEXED_INTERFACE"
         }
@@ -288,7 +283,6 @@
           "close-button": "INDEXED_INTERFACE",
           "copy-button": "INDEXED_INTERFACE",
           "fill-button": "INDEXED_INTERFACE",
-          "focusable": "INDEXED_INTERFACE",
           "follow-button": "INDEXED_INTERFACE",
           "glow-button": "INDEXED_INTERFACE",
           "icon-button": "INDEXED_INTERFACE",
@@ -301,7 +295,8 @@
         },
         "slot": {
           "button-attributes-base": "INDEXED_INTERFACE",
-          "button-dom": "INDEXED_INTERFACE"
+          "button-dom": "INDEXED_INTERFACE",
+          "focusable": "INDEXED_INTERFACE"
         }
       },
       "type": {
@@ -322,7 +317,7 @@
           "date-picker": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
           "date-time-picker": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
           "form-date-picker": "DEFINED_REACTIVE_STORY_COMPONENT",
-          "month-range-picker": "DEFINED_STORY_COMPONENT",
+          "month-range-picker": "DEFINED_REACTIVE_STORY_COMPONENT",
           "time-picker": "DEFINED_REACTIVE_STORY_COMPONENT",
           "timeline": "DEFINED_REACTIVE_STORY_COMPONENT"
         },
@@ -330,13 +325,13 @@
           "calendar": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
           "calendar-range": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
           "calendar-view": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
-          "date-pair-picker": "DEFINED_RENDERED_STORY_COMPONENT",
+          "date-pair-picker": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
           "date-range-picker": "DEFINED_REACTIVE_STORY_COMPONENT",
           "date-time-range-picker": "DEFINED_REACTIVE_STORY_COMPONENT",
           "event-calendar": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
           "mini-calendar": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
           "time-grid": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
-          "timetable": "DEFINED_STORY_COMPONENT"
+          "timetable": "DEFINED_REACTIVE_STORY_COMPONENT"
         }
       },
       "const": {
@@ -354,6 +349,7 @@
         },
         "script": {
           "calendar-utils": "INDEXED_FUNCTION",
+          "date": "INDEX_BARREL",
           "date-format": "INDEXED_FUNCTION",
           "generate-calendar-days": "INDEXED_FUNCTION"
         }
@@ -386,8 +382,7 @@
         "slot": {
           "calendar-day": "INDEXED_INTERFACE",
           "calendar-event": "INDEXED_INTERFACE",
-          "date-picker": "INDEXED_INTERFACE",
-          "timetable": "INDEXED_INTERFACE"
+          "date-picker": "INDEXED_INTERFACE"
         }
       },
       "test": {
@@ -421,6 +416,8 @@
           "canvas-board": "INDEXED_CLASS",
           "canvas-geometry": "INDEXED_CLASS",
           "canvas-history": "INDEXED_CLASS",
+          "canvas-image": "INDEXED_CLASS",
+          "canvas-recognition": "INDEXED_CLASS",
           "canvas-shape": "INDEXED_CLASS",
           "canvas-surface": "INDEXED_CLASS",
           "canvas-viewport": "INDEXED_CLASS",
@@ -512,16 +509,21 @@
       "test": {
         "render": {
           "canvas-interaction": "FUNCTION_TEST",
+          "canvas-lesson": "FUNCTION_TEST",
           "localization": "FUNCTION_TEST"
         },
         "unit": {
-          "canvas-core": "FUNCTION_TEST"
+          "canvas-core": "FUNCTION_TEST",
+          "canvas-lesson": "FUNCTION_TEST",
+          "canvas-recognition": "FUNCTION_TEST"
         }
       },
       "type": {
         "alias": {
+          "canvas-board-role": "INDEXED_TYPE",
           "canvas-font-family": "INDEXED_TYPE",
           "canvas-object": "INDEXED_TYPE",
+          "canvas-recognition": "INDEXED_TYPE",
           "canvas-resize-handle": "INDEXED_TYPE",
           "canvas-shape-kind": "INDEXED_TYPE",
           "canvas-toolbar-drawing-tool": "INDEXED_TYPE",
@@ -535,9 +537,11 @@
           "canvas-font": "INDEXED_TYPE",
           "canvas-stroke": "INDEXED_TYPE",
           "canvas-user": "INDEXED_TYPE",
+          "canvas-view": "INDEXED_TYPE",
           "canvas-viewport": "INDEXED_TYPE"
         },
         "struct": {
+          "canvas-change": "INDEXED_TYPE",
           "canvas-history": "INDEXED_TYPE",
           "foundation-depth-threshold": "INDEXED_TYPE"
         }
@@ -754,10 +758,6 @@
         "recipe": {
           "article-block-editor": "INDEXED_INTERFACE",
           "article-reader": "INDEXED_INTERFACE"
-        },
-        "slot": {
-          "article-block-editor": "INDEXED_INTERFACE",
-          "article-reader": "INDEXED_INTERFACE"
         }
       },
       "test": {
@@ -808,7 +808,7 @@
         },
         "molecule": {
           "combobox": "DEFINED_REACTIVE_STORY_COMPONENT",
-          "icon-toolbar": "DEFINED_RENDERED_STORY_COMPONENT",
+          "icon-toolbar": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
           "range-input": "DEFINED_REACTIVE_STORY_COMPONENT",
           "range-slider": "DEFINED_REACTIVE_STORY_COMPONENT",
           "selector": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
@@ -850,36 +850,28 @@
           "focus-state": "INDEXED_INTERFACE",
           "icon-toolbar": "INDEXED_INTERFACE",
           "multi-select": "INDEXED_INTERFACE",
-          "overlay": "INDEXED_INTERFACE",
-          "progress-bar": "INDEXED_INTERFACE",
           "radio": "INDEXED_INTERFACE",
           "range-input": "INDEXED_INTERFACE",
           "range-slider": "INDEXED_INTERFACE",
-          "select": "INDEXED_INTERFACE",
           "selection-state": "INDEXED_INTERFACE",
           "selector": "INDEXED_INTERFACE",
           "shortcuts-panel": "INDEXED_INTERFACE",
-          "slider": "INDEXED_INTERFACE",
           "slider-with-input": "INDEXED_INTERFACE",
           "stepper": "INDEXED_INTERFACE",
           "switch": "INDEXED_INTERFACE",
           "tag": "INDEXED_INTERFACE",
           "tick": "INDEXED_INTERFACE",
-          "time-slot": "INDEXED_INTERFACE",
           "toggle-group-item": "INDEXED_INTERFACE",
           "toggle-group-root": "INDEXED_INTERFACE",
           "zoom-controls": "INDEXED_INTERFACE"
         },
         "slot": {
-          "autocomplete-dropdown": "INDEXED_INTERFACE",
           "autocomplete-dropdown-option": "INDEXED_INTERFACE",
           "combobox-item": "INDEXED_INTERFACE",
           "combobox-style-classes": "INDEXED_INTERFACE",
           "multi-select-option": "INDEXED_INTERFACE",
           "range-input": "INDEXED_INTERFACE",
-          "range-slider": "INDEXED_INTERFACE",
           "select-style-classes": "INDEXED_INTERFACE",
-          "slider-with-input": "INDEXED_INTERFACE",
           "toggle-base": "INDEXED_INTERFACE",
           "toggle-group-context": "INDEXED_INTERFACE",
           "toggle-input": "INDEXED_INTERFACE",
@@ -1134,7 +1126,7 @@
       },
       "component": {
         "atom": {
-          "accordion-layout": "DEFINED_RENDERED_STORY_COMPONENT",
+          "accordion-layout": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
           "breadcrumb-dropdown": "DEFINED_REACTIVE_STORY_COMPONENT",
           "breadcrumb-link": "DEFINED_REACTIVE_STORY_COMPONENT",
           "breadcrumb-separator": "DEFINED_REACTIVE_STORY_COMPONENT",
@@ -1200,18 +1192,11 @@
           "text-input-dialog": "INDEXED_INTERFACE"
         },
         "slot": {
-          "accordion": "INDEXED_INTERFACE",
-          "accordion-group": "INDEXED_INTERFACE",
-          "accordion-layout": "INDEXED_INTERFACE",
           "breadcrumb-dropdown-item": "INDEXED_INTERFACE",
           "breadcrumb-item": "INDEXED_INTERFACE",
-          "confirmation-dialog": "INDEXED_INTERFACE",
-          "dialog": "INDEXED_INTERFACE",
-          "modal": "INDEXED_INTERFACE",
           "stylist-tab-item": "INDEXED_INTERFACE",
-          "tab-container": "INDEXED_INTERFACE",
-          "tab-panel": "INDEXED_INTERFACE",
-          "tab-tabs": "INDEXED_INTERFACE"
+          "tab": "INDEXED_INTERFACE",
+          "tab-container": "INDEXED_INTERFACE"
         }
       }
     },
@@ -1220,7 +1205,7 @@
         "atom": {
           "domain-entity": "DEFINED_STORY_COMPONENT",
           "domain-list-header": "DEFINED_STORY_COMPONENT",
-          "story-control": "DEFINED_STORY_COMPONENT"
+          "story-control": "DEFINED_REACTIVE_STORY_COMPONENT"
         },
         "molecule": {
           "cluster-toolbar": "DEFINED_RENDERED_STORY_COMPONENT",
@@ -1229,45 +1214,45 @@
           "domain-list": "DEFINED_RENDERED_STORY_COMPONENT",
           "domain-menu": "DEFINED_RENDERED_STORY_COMPONENT",
           "domain-search": "DEFINED_REACTIVE_STORY_COMPONENT",
-          "domain-toolbar": "DEFINED_RENDERED_STORY_COMPONENT",
+          "domain-toolbar": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
           "feature-grid": "DEFINED_STORY_COMPONENT",
-          "joint-tab-buttons": "DEFINED_RENDERED_STORY_COMPONENT",
-          "joint-toolbar": "DEFINED_RENDERED_STORY_COMPONENT",
-          "json-tree-viewer": "DEFINED_STORY_COMPONENT",
-          "preview-settings": "DEFINED_RENDERED_STORY_COMPONENT",
+          "joint-tab-buttons": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "joint-toolbar": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "json-tree-viewer": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "preview-settings": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
           "samo-adoption-roadmap": "DEFINED_STORY_COMPONENT",
           "samo-architecture-compare": "DEFINED_STORY_COMPONENT",
-          "samo-assembly-pipeline": "DEFINED_STORY_COMPONENT",
-          "samo-change-flow": "DEFINED_STORY_COMPONENT",
-          "samo-extension-walkthrough": "DEFINED_STORY_COMPONENT",
+          "samo-assembly-pipeline": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "samo-change-flow": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "samo-extension-walkthrough": "DEFINED_REACTIVE_STORY_COMPONENT",
           "samo-guide-hero": "DEFINED_STORY_COMPONENT",
-          "samo-local-dev": "DEFINED_STORY_COMPONENT",
-          "samo-morphology-box": "DEFINED_STORY_COMPONENT",
-          "samo-nested-methods": "DEFINED_STORY_COMPONENT",
-          "samo-overview": "DEFINED_STORY_COMPONENT",
-          "samo-platform-stack": "DEFINED_STORY_COMPONENT",
+          "samo-local-dev": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "samo-morphology-box": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "samo-nested-methods": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "samo-overview": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "samo-platform-stack": "DEFINED_REACTIVE_STORY_COMPONENT",
           "samo-practice": "DEFINED_STORY_COMPONENT",
           "samo-risk-board": "DEFINED_STORY_COMPONENT",
           "samo-solid-grid": "DEFINED_STORY_COMPONENT",
-          "samo-umbrella-map": "DEFINED_STORY_COMPONENT",
-          "story-canvas": "DEFINED_RENDERED_STORY_COMPONENT",
+          "samo-umbrella-map": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "story-canvas": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
           "story-controls": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
           "stylist-hero": "DEFINED_STORY_COMPONENT",
           "stylist-mission": "DEFINED_STORY_COMPONENT",
           "taxonomy-breadcrumbs": "DEFINED_STORY_COMPONENT",
-          "workspace-hints": "DEFINED_RENDERED_STORY_COMPONENT"
+          "workspace-hints": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT"
         },
         "organism": {
           "component-feedback": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
           "device-frame": "DEFINED_REACTIVE_STORY_COMPONENT",
           "domain-ai-agent": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
-          "domain-cluster-balance": "DEFINED_STORY_COMPONENT",
+          "domain-cluster-balance": "DEFINED_REACTIVE_STORY_COMPONENT",
           "domain-component-import-diagnostics": "DEFINED_STORY_COMPONENT",
           "domain-explorer": "DEFINED_REACTIVE_STORY_COMPONENT",
-          "domain-file-domain-grid": "DEFINED_STORY_COMPONENT",
-          "domain-file-preview": "DEFINED_RENDERED_STORY_COMPONENT",
+          "domain-file-domain-grid": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "domain-file-preview": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
           "domain-settings": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
-          "domain-sidebar": "DEFINED_RENDERED_STORY_COMPONENT",
+          "domain-sidebar": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
           "markdown-renderer": "DEFINED_REACTIVE_STORY_COMPONENT",
           "samo-methodology": "DEFINED_STORY_COMPONENT",
           "story-runner": "DEFINED_REACTIVE_STORY_COMPONENT"
@@ -1549,6 +1534,7 @@
         },
         "transform": {
           "bundle-schema-dependency-routes": "INDEXED_FUNCTION",
+          "order-domains-by-connection": "INDEXED_FUNCTION",
           "schema-document-to-text": "INDEXED_FUNCTION",
           "schema-text-to-document": "INDEXED_FUNCTION"
         }
@@ -1556,7 +1542,6 @@
       "interface": {
         "recipe": {
           "erd-dependency": "INDEXED_INTERFACE",
-          "erd-schema-view": "INDEXED_INTERFACE",
           "erd-table": "INDEXED_INTERFACE",
           "erd-table-field": "INDEXED_INTERFACE",
           "erd-table-header": "INDEXED_INTERFACE",
@@ -1564,13 +1549,11 @@
           "schema-gravity": "INDEXED_INTERFACE",
           "schema-header": "INDEXED_INTERFACE",
           "schema-text": "INDEXED_INTERFACE",
-          "schema-tool": "INDEXED_INTERFACE"
+          "schema-tool": "INDEXED_INTERFACE",
+          "schema-view": "INDEXED_INTERFACE"
         },
         "slot": {
-          "erd-header": "INDEXED_INTERFACE",
-          "erd-settings": "INDEXED_INTERFACE",
-          "erd-text": "INDEXED_INTERFACE",
-          "erd-tool": "INDEXED_INTERFACE"
+          "erd-settings": "INDEXED_INTERFACE"
         }
       },
       "test": {
@@ -1638,13 +1621,13 @@
           "file-browser": "DEFINED_REACTIVE_STORY_COMPONENT",
           "file-explorer": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
           "file-list-item": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
-          "file-manager": "DEFINED_STORY_COMPONENT",
+          "file-manager": "DEFINED_REACTIVE_STORY_COMPONENT",
           "media-library": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
           "upload-progress": "DEFINED_REACTIVE_STORY_COMPONENT",
           "zip-viewer": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT"
         },
         "page": {
-          "file-storage": "DEFINED_STORY_COMPONENT"
+          "file-storage": "DEFINED_REACTIVE_STORY_COMPONENT"
         }
       },
       "const": {
@@ -1705,20 +1688,16 @@
         "slot": {
           "attachment": "INDEXED_INTERFACE",
           "data-item": "INDEXED_INTERFACE",
-          "document-preview": "INDEXED_INTERFACE",
           "drag-drop-file": "INDEXED_INTERFACE",
           "drag-drop-upload-file": "INDEXED_INTERFACE",
           "drop-item": "INDEXED_INTERFACE",
           "drop-zone-style-classes": "INDEXED_INTERFACE",
           "export-panel-style-classes": "INDEXED_INTERFACE",
           "file-item": "INDEXED_INTERFACE",
-          "file-manager": "INDEXED_INTERFACE",
-          "file-storage": "INDEXED_INTERFACE",
           "file-system-item": "INDEXED_INTERFACE",
           "folder-item": "INDEXED_INTERFACE",
           "media-item": "INDEXED_INTERFACE",
           "upload-file": "INDEXED_INTERFACE",
-          "upload-progress": "INDEXED_INTERFACE",
           "zip-entry": "INDEXED_INTERFACE",
           "zip-viewer-style-classes": "INDEXED_INTERFACE"
         }
@@ -1755,10 +1734,12 @@
       "component": {
         "atom": {
           "form-footer": "DEFINED_REACTIVE_STORY_COMPONENT",
-          "form-header": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT"
+          "form-header": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "form-honeypot": "DEFINED_STORY_COMPONENT"
         },
         "molecule": {
           "checkbox-group": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "form-consent": "DEFINED_RENDERED_STORY_COMPONENT",
           "form-selection": "DEFINED_REACTIVE_STORY_COMPONENT",
           "toggle-button-group": "DEFINED_REACTIVE_STORY_COMPONENT",
           "validation": "DEFINED_REACTIVE_STORY_COMPONENT"
@@ -1768,13 +1749,13 @@
           "contact-form": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
           "form-with-validation": "DEFINED_REACTIVE_STORY_COMPONENT",
           "login-form": "DEFINED_REACTIVE_STORY_COMPONENT",
-          "rating-feedback": "DEFINED_STORY_COMPONENT",
-          "schema-form-dialog": "DEFINED_RENDERED_STORY_COMPONENT",
+          "rating-feedback": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "schema-form-dialog": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
           "screen-reader": "DEFINED_REACTIVE_STORY_COMPONENT"
         },
         "page": {
-          "feedback-scenario": "DEFINED_STORY_COMPONENT",
-          "support-counter": "DEFINED_STORY_COMPONENT"
+          "feedback-scenario": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "support-counter": "DEFINED_REACTIVE_STORY_COMPONENT"
         }
       },
       "const": {
@@ -1795,16 +1776,16 @@
           "rating-feedback": "INDEXED_INTERFACE"
         },
         "recipe": {
-          "account-forms": "INDEXED_INTERFACE",
           "address-form": "INDEXED_INTERFACE",
           "checkbox-group": "INDEXED_INTERFACE",
           "contact-form": "INDEXED_INTERFACE",
           "feedback-scenario": "INDEXED_INTERFACE",
+          "form-consent": "INDEXED_INTERFACE",
           "form-footer": "INDEXED_INTERFACE",
           "form-header": "INDEXED_INTERFACE",
+          "form-honeypot": "INDEXED_INTERFACE",
           "form-selection": "INDEXED_INTERFACE",
           "form-with-validation": "INDEXED_INTERFACE",
-          "interaction-forms": "INDEXED_INTERFACE",
           "login-form": "INDEXED_INTERFACE",
           "rating-feedback": "INDEXED_INTERFACE",
           "schema-form-dialog": "INDEXED_INTERFACE",
@@ -1815,21 +1796,16 @@
         },
         "slot": {
           "address-data": "INDEXED_INTERFACE",
-          "contact-form-messages": "INDEXED_INTERFACE",
-          "feedback-scenario": "INDEXED_INTERFACE",
           "form-data": "INDEXED_INTERFACE",
-          "form-footer": "INDEXED_INTERFACE",
-          "form-header": "INDEXED_INTERFACE",
           "form-selection-state": "INDEXED_INTERFACE",
           "login-credentials": "INDEXED_INTERFACE",
-          "rating-feedback": "INDEXED_INTERFACE",
-          "support-counter": "INDEXED_INTERFACE",
           "validation-errors": "INDEXED_INTERFACE"
         }
       },
       "test": {
         "render": {
-          "contact-form": "FUNCTION_TEST"
+          "contact-form": "FUNCTION_TEST",
+          "form-consent": "FUNCTION_TEST"
         },
         "unit": {
           "cooldown-counter": "FUNCTION_TEST"
@@ -1862,8 +1838,8 @@
         },
         "molecule": {
           "field-highlighter": "DEFINED_REACTIVE_STORY_COMPONENT",
-          "graph-cluster-filter": "DEFINED_RENDERED_STORY_COMPONENT",
-          "graph-legend": "DEFINED_RENDERED_STORY_COMPONENT",
+          "graph-cluster-filter": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "graph-legend": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
           "graphviz-directed-edge": "DEFINED_REACTIVE_STORY_COMPONENT",
           "ontology-edge-component": "DEFINED_REACTIVE_STORY_COMPONENT",
           "ontology-node-component": "DEFINED_REACTIVE_STORY_COMPONENT",
@@ -1922,7 +1898,6 @@
           "zwicky-scene": "INDEXED_INTERFACE"
         },
         "slot": {
-          "field-highlighter": "INDEXED_INTERFACE",
           "field-highlighter-selected-field": "INDEXED_INTERFACE",
           "graph-bounds-3d": "INDEXED_INTERFACE",
           "graph-connection": "INDEXED_INTERFACE",
@@ -2097,7 +2072,7 @@
           "blockquote": "DEFINED_STORY_COMPONENT",
           "caption": "DEFINED_STORY_COMPONENT",
           "dd": "DEFINED_STORY_COMPONENT",
-          "dialog": "DEFINED_STORY_COMPONENT",
+          "dialog": "DEFINED_REACTIVE_STORY_COMPONENT",
           "div": "DEFINED_STORY_COMPONENT",
           "dt": "DEFINED_STORY_COMPONENT",
           "figcaption": "DEFINED_STORY_COMPONENT",
@@ -2119,7 +2094,7 @@
         "template": {
           "body": "DEFINED_STORY_COMPONENT",
           "head": "DEFINED_STORY_COMPONENT",
-          "node": "DEFINED_RENDERED_STORY_COMPONENT"
+          "node": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT"
         }
       },
       "const": {
@@ -2422,7 +2397,7 @@
         },
         "organism": {
           "canvas-image-editor": "DEFINED_REACTIVE_STORY_COMPONENT",
-          "image-caption-editor-card": "DEFINED_STORY_COMPONENT",
+          "image-caption-editor-card": "DEFINED_REACTIVE_STORY_COMPONENT",
           "image-gallery": "DEFINED_REACTIVE_STORY_COMPONENT"
         }
       },
@@ -2467,9 +2442,9 @@
       "component": {
         "atom": {
           "characters-count": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
-          "input-addon": "DEFINED_RENDERED_STORY_COMPONENT",
-          "input-error": "DEFINED_STORY_COMPONENT",
-          "input-helper": "DEFINED_STORY_COMPONENT",
+          "input-addon": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "input-error": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "input-helper": "DEFINED_REACTIVE_STORY_COMPONENT",
           "input-label": "DEFINED_REACTIVE_STORY_COMPONENT",
           "input-pin-digit": "DEFINED_RENDERED_STORY_COMPONENT",
           "input-stepper": "DEFINED_STORY_COMPONENT"
@@ -2544,14 +2519,10 @@
         "slot": {
           "input-base": "INDEXED_INTERFACE",
           "input-core": "INDEXED_INTERFACE",
-          "input-label": "INDEXED_INTERFACE",
           "input-state-options": "INDEXED_INTERFACE",
           "input-with-helper": "INDEXED_INTERFACE",
           "input-with-label": "INDEXED_INTERFACE",
-          "input-with-validation": "INDEXED_INTERFACE",
-          "number-input": "INDEXED_INTERFACE",
-          "phone-number-input": "INDEXED_INTERFACE",
-          "tag-input": "INDEXED_INTERFACE"
+          "input-with-validation": "INDEXED_INTERFACE"
         }
       },
       "test": {
@@ -2591,7 +2562,7 @@
           "overlay-layout": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
           "section-heading": "DEFINED_STORY_COMPONENT",
           "split-layout": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
-          "step-list": "DEFINED_STORY_COMPONENT"
+          "step-list": "DEFINED_REACTIVE_STORY_COMPONENT"
         },
         "organism": {
           "cards-section": "DEFINED_STORY_COMPONENT",
@@ -2607,7 +2578,7 @@
           "landing": "DEFINED_STORY_COMPONENT"
         },
         "template": {
-          "landing-template": "DEFINED_STORY_COMPONENT",
+          "landing-template": "DEFINED_REACTIVE_STORY_COMPONENT",
           "page-shell": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT"
         }
       },
@@ -2689,7 +2660,6 @@
           "badge": "INDEXED_INTERFACE",
           "composite": "INDEXED_INTERFACE",
           "dimensionable": "INDEXED_INTERFACE",
-          "divider": "INDEXED_INTERFACE",
           "drag-contract": "INDEXED_INTERFACE",
           "gesture-contract": "INDEXED_INTERFACE"
         }
@@ -2777,9 +2747,7 @@
           "sortable-list": "INDEXED_INTERFACE"
         },
         "slot": {
-          "drag-and-drop": "INDEXED_INTERFACE",
           "drag-and-drop-list-item": "INDEXED_INTERFACE",
-          "sortable-list": "INDEXED_INTERFACE",
           "sortable-list-item": "INDEXED_INTERFACE"
         }
       },
@@ -2803,7 +2771,7 @@
       "component": {
         "atom": {
           "country-flag": "DEFINED_REACTIVE_STORY_COMPONENT",
-          "locale-provider": "DEFINED_RENDERED_STORY_COMPONENT"
+          "locale-provider": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT"
         },
         "molecule": {
           "locale-preview": "DEFINED_STORY_COMPONENT"
@@ -2871,9 +2839,7 @@
           "translation-editor": "INDEXED_INTERFACE"
         },
         "slot": {
-          "extended-translation-editor": "INDEXED_INTERFACE",
           "language-selector-style-classes": "INDEXED_INTERFACE",
-          "locale-switcher": "INDEXED_INTERFACE",
           "locale-switcher-locale": "INDEXED_INTERFACE",
           "number-format-options": "INDEXED_INTERFACE"
         }
@@ -2946,7 +2912,7 @@
           "mathml-semantics": "DEFINED_RENDERED_STORY_COMPONENT"
         },
         "molecule": {
-          "mathml-formula": "DEFINED_STORY_COMPONENT"
+          "mathml-formula": "DEFINED_REACTIVE_STORY_COMPONENT"
         },
         "organism": {
           "mathml-matrix": "DEFINED_STORY_COMPONENT"
@@ -3047,21 +3013,21 @@
       "component": {
         "atom": {
           "burger-menu": "DEFINED_RENDERED_STORY_COMPONENT",
-          "mega-menu-link": "DEFINED_STORY_COMPONENT",
-          "mega-menu-trigger": "DEFINED_RENDERED_STORY_COMPONENT",
+          "mega-menu-link": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "mega-menu-trigger": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
           "menu-item": "DEFINED_STORY_COMPONENT"
         },
         "molecule": {
           "dropdown-menu": "DEFINED_RENDERED_STORY_COMPONENT",
-          "mega-menu-column": "DEFINED_STORY_COMPONENT",
-          "mega-menu-feature": "DEFINED_STORY_COMPONENT",
-          "mega-menu-panel": "DEFINED_STORY_COMPONENT"
+          "mega-menu-column": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "mega-menu-feature": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "mega-menu-panel": "DEFINED_REACTIVE_STORY_COMPONENT"
         },
         "organism": {
           "app-header": "DEFINED_RENDERED_STORY_COMPONENT",
           "drawer": "DEFINED_RENDERED_STORY_COMPONENT",
           "mega-menu": "DEFINED_RENDERED_STORY_COMPONENT",
-          "site-menu": "DEFINED_STORY_COMPONENT"
+          "site-menu": "DEFINED_REACTIVE_STORY_COMPONENT"
         }
       },
       "const": {
@@ -3113,8 +3079,7 @@
           "mega-menu-column": "INDEXED_INTERFACE",
           "mega-menu-feature": "INDEXED_INTERFACE",
           "mega-menu-link": "INDEXED_INTERFACE",
-          "mega-menu-section": "INDEXED_INTERFACE",
-          "site-menu": "INDEXED_INTERFACE"
+          "mega-menu-section": "INDEXED_INTERFACE"
         }
       },
       "test": {
@@ -3146,15 +3111,15 @@
         },
         "organism": {
           "bottom-sheet": "DEFINED_RENDERED_STORY_COMPONENT",
-          "navigation-drawer": "DEFINED_STORY_COMPONENT",
+          "navigation-drawer": "DEFINED_REACTIVE_STORY_COMPONENT",
           "sidebar": "DEFINED_STORY_COMPONENT",
           "top-app-bar": "DEFINED_STORY_COMPONENT",
           "workspace-menu": "DEFINED_STORY_COMPONENT"
         },
         "page": {
-          "activity": "DEFINED_RENDERED_STORY_COMPONENT",
-          "navigation-graph": "DEFINED_STORY_COMPONENT",
-          "navigation-patterns": "DEFINED_STORY_COMPONENT"
+          "activity": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
+          "navigation-graph": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "navigation-patterns": "DEFINED_REACTIVE_STORY_COMPONENT"
         },
         "template": {
           "fragment": "DEFINED_STORY_COMPONENT"
@@ -3205,10 +3170,7 @@
           "workspace-menu": "INDEXED_INTERFACE"
         },
         "slot": {
-          "nav-item": "INDEXED_INTERFACE",
-          "navigation-patterns": "INDEXED_INTERFACE",
-          "section-bar": "INDEXED_INTERFACE",
-          "workspace-menu": "INDEXED_INTERFACE"
+          "nav-item": "INDEXED_INTERFACE"
         }
       },
       "test": {
@@ -3270,11 +3232,12 @@
           "notification-badge": "INDEXED_INTERFACE",
           "notification-center": "INDEXED_INTERFACE",
           "notification-list": "INDEXED_INTERFACE",
-          "notification-options": "INDEXED_INTERFACE",
           "notification-settings": "INDEXED_INTERFACE",
           "scheduled-notification": "INDEXED_INTERFACE",
-          "toast": "INDEXED_INTERFACE",
           "toast-stack": "INDEXED_INTERFACE"
+        },
+        "slot": {
+          "toast": "INDEXED_INTERFACE"
         }
       },
       "test": {
@@ -3375,15 +3338,7 @@
           "search-toggle": "INDEXED_INTERFACE"
         },
         "slot": {
-          "auto-complete": "INDEXED_INTERFACE",
-          "search-bar": "INDEXED_INTERFACE",
-          "search-field": "INDEXED_INTERFACE",
-          "search-form": "INDEXED_INTERFACE",
-          "search-overlay": "INDEXED_INTERFACE",
-          "search-results": "INDEXED_INTERFACE",
-          "search-skin": "INDEXED_INTERFACE",
-          "search-suggestion": "INDEXED_INTERFACE",
-          "search-toggle": "INDEXED_INTERFACE"
+          "search-skin": "INDEXED_INTERFACE"
         }
       },
       "test": {
@@ -4391,7 +4346,6 @@
         "slot": {
           "icon": "INDEXED_INTERFACE",
           "svg-name": "INDEXED_INTERFACE",
-          "svg-shorts": "INDEXED_INTERFACE",
           "svg-timeline": "INDEXED_INTERFACE"
         }
       },
@@ -4501,12 +4455,9 @@
         },
         "slot": {
           "column-config": "INDEXED_INTERFACE",
-          "column-manager": "INDEXED_INTERFACE",
           "data-table": "INDEX_BARREL",
           "data-table-shell": "INDEX_BARREL",
-          "filter-bar": "INDEXED_INTERFACE",
-          "filter-pills": "INDEXED_INTERFACE",
-          "filter-text": "INDEXED_INTERFACE"
+          "filter-pills": "INDEXED_INTERFACE"
         }
       },
       "test": {
@@ -4530,7 +4481,6 @@
           "comparison-table-feature": "INDEXED_TYPE",
           "comparison-table-product": "INDEXED_TYPE",
           "filter": "INDEX_BARREL",
-          "row-expandable-props": "INDEX_BARREL",
           "table": "INDEX_BARREL"
         },
         "record": {
@@ -4615,6 +4565,7 @@
           "aria-label": "INDEXED_FUNCTION"
         },
         "script": {
+          "collection": "INDEX_BARREL",
           "css": "INDEX_BARREL",
           "dom": "INDEX_BARREL",
           "format-label": "INDEXED_FUNCTION",
@@ -4690,7 +4641,7 @@
           "card-open": "DEFINED_STORY_COMPONENT",
           "card-shell": "DEFINED_RENDERED_STORY_COMPONENT",
           "orbit-background": "DEFINED_STORY_COMPONENT",
-          "orbit-token-node": "DEFINED_STORY_COMPONENT",
+          "orbit-token-node": "DEFINED_REACTIVE_STORY_COMPONENT",
           "token-chip-set": "DEFINED_REACTIVE_STORY_COMPONENT",
           "token-control-base": "DEFINED_REACTIVE_STORY_COMPONENT",
           "token-icon": "DEFINED_STORY_COMPONENT",
@@ -4700,16 +4651,16 @@
           "token-text": "DEFINED_REACTIVE_STORY_COMPONENT"
         },
         "molecule": {
-          "domain-descriptor-panel": "DEFINED_STORY_COMPONENT",
+          "domain-descriptor-panel": "DEFINED_REACTIVE_STORY_COMPONENT",
           "orbit": "DEFINED_STORY_COMPONENT",
-          "ribbon-menu": "DEFINED_STORY_COMPONENT",
+          "ribbon-menu": "DEFINED_REACTIVE_STORY_COMPONENT",
           "token": "DEFINED_REACTIVE_STORY_COMPONENT",
-          "token-setting": "DEFINED_STORY_COMPONENT"
+          "token-setting": "DEFINED_REACTIVE_STORY_COMPONENT"
         },
         "organism": {
-          "domain-builder": "DEFINED_STORY_COMPONENT",
-          "orbit-contract-l5": "DEFINED_STORY_COMPONENT",
-          "prismatic-orbit-l6": "DEFINED_STORY_COMPONENT",
+          "domain-builder": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "orbit-contract-l5": "DEFINED_REACTIVE_STORY_COMPONENT",
+          "prismatic-orbit-l6": "DEFINED_REACTIVE_STORY_COMPONENT",
           "token-settings": "DEFINED_REACTIVE_STORY_COMPONENT"
         }
       },
@@ -4951,10 +4902,10 @@
           "turtle-dissolve-scene": "DEFINED_RENDERED_STORY_COMPONENT"
         },
         "organism": {
-          "scene-launcher": "DEFINED_STORY_COMPONENT"
+          "scene-launcher": "DEFINED_REACTIVE_STORY_COMPONENT"
         },
         "page": {
-          "shader-field": "DEFINED_STORY_COMPONENT"
+          "shader-field": "DEFINED_REACTIVE_STORY_COMPONENT"
         }
       },
       "const": {
@@ -4991,9 +4942,6 @@
           "scene-launcher": "INDEXED_INTERFACE",
           "shader-field": "INDEXED_INTERFACE",
           "turtle-dissolve-scene": "INDEXED_INTERFACE"
-        },
-        "slot": {
-          "shader-field": "INDEXED_INTERFACE"
         }
       },
       "test": {
@@ -5032,7 +4980,7 @@
         },
         "organism": {
           "minimap": "DEFINED_REACTIVE_STORY_COMPONENT",
-          "stylist-graph-workspace": "DEFINED_STORY_COMPONENT",
+          "stylist-graph-workspace": "DEFINED_REACTIVE_STORY_COMPONENT",
           "workspace": "DEFINED_RENDERED_REACTIVE_STORY_COMPONENT",
           "workspace-node": "DEFINED_REACTIVE_STORY_COMPONENT",
           "workspace-palette": "DEFINED_REACTIVE_STORY_COMPONENT"

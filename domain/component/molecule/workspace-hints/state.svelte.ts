@@ -70,21 +70,22 @@ export function createWorkspaceHintsComponentState(
 	});
 	onMount(() => {
 		let mounted = true;
-		const converted = new Map<HTMLElement, string>();
-		const iconTitles = new Map<SVGTitleElement, Node>();
+		// What convert() changed, restored on unmount; an element converted twice restores its last title.
+		const converted: [HTMLElement, string][] = [];
+		const iconTitles: [SVGTitleElement, Node][] = [];
 		const convert = () => {
 			// SVG title elements trigger native tooltips independently of HTML title attributes.
 			// Controls already get their accessible name and styled hint from the button/link.
 			for (const title of document.querySelectorAll<SVGTitleElement>(
 				`${props['root']} button svg title, ${props['root']} a svg title, ${props['root']} svg[aria-hidden="true"] title`
 			)) {
-				if (title.parentNode) iconTitles.set(title, title.parentNode);
+				if (title.parentNode) iconTitles.push([title, title.parentNode]);
 				title.remove();
 			}
 			for (const element of document.querySelectorAll<HTMLElement>(`${props['root']} [title]`)) {
 				const title = element.getAttribute('title');
 				if (!title) continue;
-				converted.set(element, title);
+				converted.push([element, title]);
 				element.dataset.hint = title;
 				element.removeAttribute('title');
 			}

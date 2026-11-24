@@ -23,6 +23,7 @@
 		storyDevice = $bindable('desktop'),
 		storyWidth,
 		fullscreen = $bindable(false),
+		// eslint-disable-next-line @typescript-eslint/no-unused-vars -- output-only binding, read by the parent
 		deviceViewportVisible = $bindable(false),
 		class: className = ''
 	}: RecipeDomainExplorer = $props();

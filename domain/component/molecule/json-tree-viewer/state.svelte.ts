@@ -1,4 +1,6 @@
 import type { RecipeJsonTreeViewer } from '$stylist/domain/interface/recipe/json-tree-viewer';
+import { toSet } from '$stylist/theme/function/script/collection/to-set';
+import { toggleInSet } from '$stylist/theme/function/script/collection/toggle-in-set';
 /** Reactive behavior of json-tree-viewer; props are read lazily when needed. */
 export function createJsonTreeViewerComponentState(
 	getProps: () => Pick<RecipeJsonTreeViewer, 'content'> & {
@@ -13,12 +15,9 @@ export function createJsonTreeViewerComponentState(
 			return { value: null, error: (e as Error).message };
 		}
 	});
-	let collapsed = $state(new Set<string>());
+	let collapsed = $state(toSet<string>());
 	function toggle(path: string) {
-		const next = new Set(collapsed);
-		if (next.has(path)) next.delete(path);
-		else next.add(path);
-		collapsed = next;
+		collapsed = toggleInSet(collapsed, path);
 	}
 	function isOpen(path: string) {
 		return !collapsed.has(path);

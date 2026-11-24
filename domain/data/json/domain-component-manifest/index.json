@@ -384,10 +384,12 @@
       "component": {
         "atom": [
           "form-footer",
-          "form-header"
+          "form-header",
+          "form-honeypot"
         ],
         "molecule": [
           "checkbox-group",
+          "form-consent",
           "form-selection",
           "toggle-button-group",
           "validation"

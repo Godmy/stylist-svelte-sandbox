@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { RecipeJsonTreeViewer } from '$stylist/domain/interface/recipe/json-tree-viewer';
+
 	import createJsonTreeViewerComponentState from '$stylist/domain/component/molecule/json-tree-viewer/state.svelte';
 
 	let { content = '', class: className = '' }: RecipeJsonTreeViewer = $props();

@@ -1,6 +1,8 @@
 import { onMount, untrack } from 'svelte';
 
 import type { RecipeDomainBuilder } from '$stylist/token/interface/recipe/domain-builder';
+import { toMap } from '$stylist/theme/function/script/collection/to-map';
+import { toSet } from '$stylist/theme/function/script/collection/to-set';
 /** Reactive behavior of domain-builder; props are read lazily when needed. */
 export function createDomainBuilderComponentState(
 	getProps: () => Pick<RecipeDomainBuilder, 'tree' | 'descriptors'> & {
@@ -128,9 +130,6 @@ export function createDomainBuilderComponentState(
 	const selectedInstance = $derived(
 		instances.find((instance) => instance.id === selectedInstanceId) ?? null
 	);
-	const selectedSection = $derived(
-		sections.find((section) => section.id === selectedSectionId) ?? null
-	);
 	const selectedDescriptor = $derived(
 		selectedInstance
 			? (props['descriptors'].find(
@@ -142,23 +141,14 @@ export function createDomainBuilderComponentState(
 				: null
 	);
 	const entityDirectory = $derived.by(() => {
-		const directory = new Map<string, BuilderEntity>();
-
-		for (const domain of componentDomains) {
-			for (const cluster of domain.clusters) {
-				if (cluster.name !== 'component') {
-					continue;
-				}
-
-				for (const joint of cluster.joints) {
-					for (const entity of joint.entities) {
-						directory.set(entity.path, entity);
-					}
-				}
-			}
-		}
-
-		return directory;
+		return toMap(
+			componentDomains
+				.flatMap((domain) => domain.clusters)
+				.filter((cluster) => cluster.name === 'component')
+				.flatMap((cluster) => cluster.joints)
+				.flatMap((joint) => joint.entities)
+				.map((entity): [string, BuilderEntity] => [entity.path, entity])
+		);
 	});
 	$effect(() => {
 		if (!activeDomainNode && componentDomains.length > 0) {
@@ -235,7 +225,6 @@ export function createDomainBuilderComponentState(
 
 			const payload = (await response.json()) as BuilderStoredLayout;
 			const nextInstances: BuilderInstance[] = [];
-			const instanceIds = new Set<string>();
 
 			for (const entry of payload.instances) {
 				const descriptorEntityPath =
@@ -256,8 +245,8 @@ export function createDomainBuilderComponentState(
 				instance.descriptorEntityPath = descriptorEntityPath;
 				instance.config = entry.config ?? getDefaultInstanceConfig(descriptorEntityPath);
 				nextInstances.push(instance);
-				instanceIds.add(entry.id);
 			}
+			const instanceIds = toSet(nextInstances.map((instance) => instance.id));
 
 			instances = nextInstances;
 			sections = payload.sections

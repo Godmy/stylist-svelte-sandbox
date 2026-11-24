@@ -3,6 +3,7 @@
 	import DomainDescriptorPanel from '$stylist/token/component/molecule/domain-descriptor-panel/index.svelte';
 	import DomainSidebar from '$stylist/domain/component/organism/domain-sidebar/index.svelte';
 	import type { RecipeDomainBuilder } from '$stylist/token/interface/recipe/domain-builder';
+
 	import createDomainBuilderComponentState from '$stylist/token/component/organism/domain-builder/state.svelte';
 	type BuilderDomain = NonNullable<RecipeDomainBuilder['tree']>[number];
 	type BuilderCluster = BuilderDomain['clusters'][number];
