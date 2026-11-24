@@ -5,6 +5,7 @@
 	import type { RecipeDomainSettings } from '$stylist/domain/interface/recipe/domain-settings';
 	import createDomainSettingsState from '$stylist/domain/component/organism/domain-settings/state.svelte';
 	import { createSwipeDismiss } from '$stylist/domain/function/create/swipe-dismiss';
+	import TopAppBar from '$stylist/navigation/component/organism/top-app-bar/index.svelte';
 
 	let {
 		open = false,
@@ -53,32 +54,29 @@
 			onClose?.();
 		}}
 	>
-		<header class="panel-head" class:panel-head--mobile={modal}>
-			<div>
-				{#if !modal}<p class="eyebrow">Settings</p>{/if}
-				<h2>{modal ? 'Settings' : 'Domain settings'}</h2>
-			</div>
-			<button
-				type="button"
-				class="close-button"
-				onclick={onClose}
-				aria-label={modal ? 'Back from settings' : 'Close settings panel'}
-			>
-				{#if modal}
-					<svg
-						width="24"
-						height="24"
-						viewBox="0 0 24 24"
-						fill="none"
-						stroke="currentColor"
-						stroke-width="2"
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						aria-hidden="true"><path d="m12 19-7-7 7-7M5 12h14" /></svg
-					>
-				{:else}Close{/if}
-			</button>
-		</header>
+		{#if modal}
+			<TopAppBar
+				heading="Settings"
+				navigation="up"
+				navigationLabel="Back from settings"
+				onNavigation={onClose}
+			/>
+		{:else}
+			<header class="panel-head">
+				<div>
+					<p class="eyebrow">Settings</p>
+					<h2>Domain settings</h2>
+				</div>
+				<button
+					type="button"
+					class="close-button"
+					onclick={onClose}
+					aria-label="Close settings panel"
+				>
+					Close
+				</button>
+			</header>
+		{/if}
 
 		<div class="panel-body">
 			{#if navigation}
@@ -298,20 +296,6 @@
 		padding: 1rem 1rem 0.85rem;
 		border-bottom: 1px solid color-mix(in srgb, var(--color-border-primary) 78%, transparent);
 	}
-	.panel-head--mobile {
-		justify-content: flex-start;
-	}
-	.panel-head--mobile .close-button {
-		order: -1;
-		display: grid;
-		place-items: center;
-		width: 44px;
-		height: 44px;
-		padding: 0;
-		border: 0;
-		background: none;
-		flex-shrink: 0;
-	}
 
 	.eyebrow {
 		margin: 0 0 0.25rem;
@@ -447,6 +431,10 @@
 	}
 
 	@media (max-width: 840px) {
+		.c-domain-settings :global(.c-top-app-bar__icon-button) {
+			-webkit-tap-highlight-color: transparent;
+			background: transparent;
+		}
 		.c-domain-settings {
 			inset: 0;
 			width: 100vw;

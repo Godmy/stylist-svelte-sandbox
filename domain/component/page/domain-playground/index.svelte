@@ -188,17 +188,15 @@
 <WorkspaceHints />
 
 {#snippet displaySettings()}
-	{#if screenState.currentScreen === DOMAIN_SCREEN.DOMAIN}
-		<DeviceViewport
-			value={screenState.storyDevice}
-			width={storyWidths[screenState.storyDevice]}
-			widths={storyWidths}
-			onWidthChange={(width) => (storyWidths[screenState.storyDevice] = width)}
-			fullscreen={screenState.fullscreen}
-			onChange={(next) => (screenState.storyDevice = next)}
-			onFullscreenChange={(next) => (screenState.fullscreen = next)}
-		/>
-	{/if}
+	<DeviceViewport
+		value={screenState.storyDevice}
+		width={storyWidths[screenState.storyDevice]}
+		widths={storyWidths}
+		onWidthChange={(width) => (storyWidths[screenState.storyDevice] = width)}
+		fullscreen={screenState.fullscreen}
+		onChange={(next) => (screenState.storyDevice = next)}
+		onFullscreenChange={(next) => (screenState.fullscreen = next)}
+	/>
 {/snippet}
 
 {#snippet pageNavigation()}{@render domainMenu('pages')}{/snippet}
@@ -285,7 +283,7 @@
 		}
 
 		.menu-shell {
-			inset: calc(env(safe-area-inset-top, 0px) + 0.75rem) 0.75rem auto 0.75rem;
+			inset: calc(env(safe-area-inset-top, 0px) + 0.5rem) 0.5rem auto auto;
 			width: auto;
 			flex-wrap: wrap;
 			justify-content: flex-end;

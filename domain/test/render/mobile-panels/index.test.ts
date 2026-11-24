@@ -2,6 +2,7 @@ import { cleanup, fireEvent, render } from '@testing-library/svelte';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import DomainSettings from '$stylist/domain/component/organism/domain-settings/index.svelte';
 import DomainExplorer from '$stylist/domain/component/organism/domain-explorer/index.svelte';
+import DomainPlayground from '$stylist/domain/component/page/domain-playground/index.svelte';
 
 afterEach(() => {
 	cleanup();
@@ -9,6 +10,19 @@ afterEach(() => {
 });
 
 describe('mobile playground panels', () => {
+	it.each(['landing', 'components', 'domain', 'how-it-works'] as const)(
+		'keeps Playground settings available when opened from %s',
+		async (initialScreen) => {
+			const matchMedia = window.matchMedia;
+			vi.spyOn(window, 'matchMedia').mockImplementation((query) => ({
+				...matchMedia(query),
+				matches: query.replace(/\s/g, '') === '(max-width:840px)'
+			}));
+			const view = render(DomainPlayground, { tree: {}, route: '/settings', initialScreen });
+			expect(await view.findByRole('heading', { name: 'Playground settings' })).toBeTruthy();
+			expect(view.getByRole('navigation', { name: 'Preview viewport' })).toBeTruthy();
+		}
+	);
 	it('shows Settings with an accessible back arrow and supports swipe dismissal', async () => {
 		const onClose = vi.fn();
 		const view = render(DomainSettings, { open: true, modal: true, onClose });
