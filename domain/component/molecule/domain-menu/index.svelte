@@ -23,7 +23,11 @@
 	}: RecipeDomainMenu = $props();
 </script>
 
-<nav class="c-domain-menu {className}" aria-label="Domain menu">
+<nav
+	class="c-domain-menu {className}"
+	class:mobile-settings={variant === 'settings'}
+	aria-label="Domain menu"
+>
 	{#if variant !== 'settings'}
 		<button
 			type="button"
@@ -61,7 +65,7 @@
 			<Icon name="domain" size={18} />
 		</button>
 
-		{#if onReportsToggle}
+		{#if variant === 'full' && onReportsToggle}
 			<button
 				type="button"
 				class="menu-button menu-button--icon"
@@ -87,7 +91,7 @@
 			<span class="menu-help-mark" aria-hidden="true">?</span>
 		</button>
 
-		{#if DOMAIN_REGIME === 'dev' && onManifestReload}
+		{#if variant === 'full' && DOMAIN_REGIME === 'dev' && onManifestReload}
 			<button
 				type="button"
 				class="menu-button menu-button--icon"
@@ -141,7 +145,7 @@
 			</svg>
 		</button>
 	{/if}
-	{#if variant !== 'settings'}
+	{#if variant === 'full'}
 		<ThemeModeToggle class="menu-button menu-button--theme" />
 	{/if}
 </nav>
@@ -257,6 +261,29 @@
 	}
 
 	@media (max-width: 840px) {
+		.c-domain-menu.mobile-settings {
+			padding: 0;
+			border: 0;
+			border-radius: 0;
+			background: none;
+			box-shadow: none;
+			backdrop-filter: none;
+		}
+		.mobile-settings .menu-button,
+		.mobile-settings .menu-button:hover,
+		.mobile-settings .menu-button.active,
+		.mobile-settings .menu-button.active:hover {
+			box-sizing: border-box;
+			width: 3rem;
+			height: 3rem;
+			padding: 0;
+			border: 0;
+			border-radius: 50%;
+			background: transparent;
+			box-shadow: none;
+			transform: none;
+			-webkit-tap-highlight-color: transparent;
+		}
 		.c-domain-menu {
 			flex-wrap: wrap;
 			justify-content: flex-end;

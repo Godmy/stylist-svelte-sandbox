@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { createSwipeDismiss } from '$stylist/domain/function/create/swipe-dismiss';
 	import NavigationDrawer from '$stylist/navigation/component/organism/navigation-drawer/index.svelte';
 	import TopAppBar from '$stylist/navigation/component/organism/top-app-bar/index.svelte';
 	import Fragment from '$stylist/navigation/component/template/fragment/index.svelte';
@@ -10,7 +11,6 @@
 
 	import type { RecipeDomainExplorer } from '$stylist/domain/interface/recipe/domain-explorer';
 	import createDomainPageState from '$stylist/domain/component/organism/domain-explorer/state.svelte';
-	type StoryModule = { default: unknown };
 	let {
 		menu,
 		tree,
@@ -23,7 +23,6 @@
 		storyDevice = $bindable('desktop'),
 		storyWidth,
 		fullscreen = $bindable(false),
-		// eslint-disable-next-line @typescript-eslint/no-unused-vars -- output-only binding, read by the parent
 		deviceViewportVisible = $bindable(false),
 		class: className = ''
 	}: RecipeDomainExplorer = $props();
@@ -43,6 +42,10 @@
 			deviceViewportVisible = value;
 		}
 	}));
+	const drawerSwipe = createSwipeDismiss(
+		() => state.s.mobile && state.s.drawerOpen,
+		state.s.closeDrawer
+	);
 </script>
 
 {#snippet sidebar()}
@@ -65,15 +68,21 @@
 <main class="c-domain-explorer {className}" class:fullscreen>
 	{#if state.s.mobile}
 		<NavigationDrawer
+			{...drawerSwipe}
 			sections={[]}
 			open={state.s.drawerOpen}
 			onClose={state.s.closeDrawer}
-			label="Components"
+			label="Navigation"
 			class="explorer-drawer"
 		>
-			{#snippet header()}<button type="button" onclick={state.s.closeDrawer}
-					>Close navigation</button
-				>{/snippet}
+			{#snippet header()}
+				<TopAppBar
+					heading="Navigation"
+					navigation="up"
+					navigationLabel="Back from navigation"
+					onNavigation={state.s.closeDrawer}
+				/>
+			{/snippet}
 			{#snippet footer()}{@render sidebar()}{/snippet}
 		</NavigationDrawer>
 	{:else}
@@ -172,10 +181,21 @@
 	:global(.explorer-fragment > .c-domain-file-preview) {
 		flex: 1;
 	}
-	:global(.explorer-drawer.c-navigation-drawer) {
+	:global(.explorer-drawer.c-navigation-drawer[data-mode='modal']) {
 		padding: 0;
-		width: min(32rem, calc(100vw - 1rem));
+		width: 100vw;
+		max-width: none;
+		height: 100dvh;
+		border-radius: 0;
+		padding-block: env(safe-area-inset-top, 0px) env(safe-area-inset-bottom, 0px);
+		touch-action: pan-y;
+		overscroll-behavior: contain;
 		overflow: hidden;
+		transition: none;
+	}
+	:global(.explorer-drawer .c-navigation-drawer__header) {
+		padding: 0;
+		margin: 0;
 	}
 	:global(.explorer-drawer .c-navigation-drawer__nav) {
 		display: none;
@@ -189,15 +209,6 @@
 	:global(.explorer-drawer .c-domain-sidebar) {
 		height: 100%;
 		min-height: 0;
-	}
-	:global(.explorer-drawer .c-navigation-drawer__header button) {
-		min-height: 44px;
-		padding-inline: 1rem;
-		font: inherit;
-		color: var(--color-text-primary);
-		background: var(--color-background-primary);
-		border: 1px solid var(--color-border-primary);
-		border-radius: 8px;
 	}
 
 	.c-domain-explorer {
@@ -301,6 +312,18 @@
 	}
 
 	@media (max-width: 840px) {
+		.content-panel > :global(.c-top-app-bar) {
+			padding-top: env(safe-area-inset-top, 0px);
+			min-height: calc(4rem + env(safe-area-inset-top, 0px));
+			box-sizing: border-box;
+		}
+		.c-domain-explorer :global(.c-top-app-bar button) {
+			-webkit-tap-highlight-color: transparent;
+		}
+		.c-domain-explorer :global(.c-top-app-bar .c-top-app-bar__leading > button:hover),
+		.c-domain-explorer :global(.c-top-app-bar .c-top-app-bar__leading > button:active) {
+			background: transparent;
+		}
 		.content-panel {
 			grid-template-rows: auto minmax(0, 1fr);
 		}

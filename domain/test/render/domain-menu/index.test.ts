@@ -10,6 +10,19 @@ afterEach(() => {
 });
 
 describe('domain menu', () => {
+	it('offers exactly four page buttons without theme, reports or reload controls', () => {
+		const view = render(DomainMenu, {
+			variant: 'pages',
+			onReportsToggle: vi.fn(),
+			onManifestReload: vi.fn()
+		});
+		expect(view.getAllByRole('button').map((button) => button.getAttribute('aria-label'))).toEqual([
+			'Show landing',
+			'Show components',
+			'Show playground',
+			'How it works'
+		]);
+	});
 	it('places the component catalog before the playground and invokes separate actions', async () => {
 		const onComponentsToggle = vi.fn();
 		const onDomainToggle = vi.fn();

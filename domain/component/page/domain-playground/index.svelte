@@ -142,17 +142,15 @@
 <WorkspaceHints />
 
 {#snippet displaySettings()}
-	{#if state.screenState.currentScreen === DOMAIN_SCREEN.DOMAIN}
-		<DeviceViewport
-			value={state.screenState.storyDevice}
-			width={state.storyWidths[state.screenState.storyDevice]}
-			widths={state.storyWidths}
-			onWidthChange={(width) => (state.storyWidths[state.screenState.storyDevice] = width)}
-			fullscreen={state.screenState.fullscreen}
-			onChange={(next) => (state.screenState.storyDevice = next)}
-			onFullscreenChange={(next) => (state.screenState.fullscreen = next)}
-		/>
-	{/if}
+	<DeviceViewport
+		value={state.screenState.storyDevice}
+		width={state.storyWidths[state.screenState.storyDevice]}
+		widths={state.storyWidths}
+		onWidthChange={(width) => (state.storyWidths[state.screenState.storyDevice] = width)}
+		fullscreen={state.screenState.fullscreen}
+		onChange={(next) => (state.screenState.storyDevice = next)}
+		onFullscreenChange={(next) => (state.screenState.fullscreen = next)}
+	/>
 {/snippet}
 
 {#snippet pageNavigation()}{@render domainMenu('pages')}{/snippet}
@@ -240,7 +238,7 @@
 		}
 
 		.menu-shell {
-			inset: calc(env(safe-area-inset-top, 0px) + 0.75rem) 0.75rem auto 0.75rem;
+			inset: calc(env(safe-area-inset-top, 0px) + 0.5rem) 0.5rem auto auto;
 			width: auto;
 			flex-wrap: wrap;
 			justify-content: flex-end;
