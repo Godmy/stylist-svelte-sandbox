@@ -114,20 +114,12 @@
 			class="explorer-drawer"
 		>
 			{#snippet header()}
-				<button type="button" onclick={s.closeDrawer} aria-label="Back from navigation">
-					<svg
-						width="24"
-						height="24"
-						viewBox="0 0 24 24"
-						fill="none"
-						stroke="currentColor"
-						stroke-width="2"
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						aria-hidden="true"><path d="m12 19-7-7 7-7M5 12h14" /></svg
-					>
-				</button>
-				<h2>Navigation</h2>
+				<TopAppBar
+					heading="Navigation"
+					navigation="up"
+					navigationLabel="Back from navigation"
+					onNavigation={s.closeDrawer}
+				/>
 			{/snippet}
 			{#snippet footer()}{@render sidebar()}{/snippet}
 		</NavigationDrawer>
@@ -233,17 +225,11 @@
 		touch-action: pan-y;
 		overscroll-behavior: contain;
 		overflow: hidden;
+		transition: none;
 	}
 	:global(.explorer-drawer .c-navigation-drawer__header) {
-		display: flex;
-		align-items: center;
-		gap: 1rem;
-		padding: 1rem 1.25rem;
-		border-bottom: 1px solid var(--color-border-primary);
-	}
-	:global(.explorer-drawer .c-navigation-drawer__header h2) {
+		padding: 0;
 		margin: 0;
-		font-size: 1.25rem;
 	}
 	:global(.explorer-drawer .c-navigation-drawer__nav) {
 		display: none;
@@ -257,18 +243,6 @@
 	:global(.explorer-drawer .c-domain-sidebar) {
 		height: 100%;
 		min-height: 0;
-	}
-	:global(.explorer-drawer .c-navigation-drawer__header button) {
-		display: grid;
-		place-items: center;
-		min-width: 44px;
-		min-height: 44px;
-		padding: 0;
-		font: inherit;
-		color: var(--color-text-primary);
-		background: var(--color-background-primary);
-		border: 0;
-		border-radius: 8px;
 	}
 
 	.c-domain-explorer {
@@ -372,6 +346,18 @@
 	}
 
 	@media (max-width: 840px) {
+		.content-panel > :global(.c-top-app-bar) {
+			padding-top: env(safe-area-inset-top, 0px);
+			min-height: calc(4rem + env(safe-area-inset-top, 0px));
+			box-sizing: border-box;
+		}
+		.c-domain-explorer :global(.c-top-app-bar button) {
+			-webkit-tap-highlight-color: transparent;
+		}
+		.c-domain-explorer :global(.c-top-app-bar .c-top-app-bar__leading > button:hover),
+		.c-domain-explorer :global(.c-top-app-bar .c-top-app-bar__leading > button:active) {
+			background: transparent;
+		}
 		.content-panel {
 			grid-template-rows: auto minmax(0, 1fr);
 		}
