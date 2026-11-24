@@ -4,54 +4,38 @@
 	import createStoryControlsState from '$stylist/domain/component/molecule/story-controls/state.svelte';
 
 	let props: RecipeStoryControls = $props();
-	const controlsState = createStoryControlsState(() => props);
-	const TEXT = { type: 'text', label: 'Text content' } as const;
-	let copied = $state(false);
-	let copyError = $state('');
 
-	async function copy() {
-		if (!controlsState.markup) return;
-		copyError = '';
-		try {
-			if (!navigator.clipboard)
-				throw new Error('Clipboard is unavailable. Select the HTML to copy it.');
-			await navigator.clipboard.writeText(controlsState.markup);
-			copied = true;
-			setTimeout(() => (copied = false), 1200);
-		} catch {
-			copyError = 'Unable to copy. Select the HTML to copy it.';
-		}
-	}
+	const state = createStoryControlsState(() => props);
 </script>
 
 <section class="c-story-controls {props.class ?? ''}" aria-label="Story controls">
 	<header class="bar">
-		{#if controlsState.markup !== null}
+		{#if state.controlsState.markup !== null}
 			<div class="tabs" role="group" aria-label="Story panel">
 				<button
 					type="button"
-					aria-pressed={controlsState.tab === 'controls'}
-					onclick={() => controlsState.selectTab('controls')}>Controls</button
+					aria-pressed={state.controlsState.tab === 'controls'}
+					onclick={() => state.controlsState.selectTab('controls')}>Controls</button
 				>
 				<button
 					type="button"
-					aria-pressed={controlsState.tab === 'html'}
-					onclick={() => controlsState.selectTab('html')}>HTML</button
+					aria-pressed={state.controlsState.tab === 'html'}
+					onclick={() => state.controlsState.selectTab('html')}>HTML</button
 				>
 			</div>
 		{/if}
-		{#if controlsState.presets.length}
+		{#if state.controlsState.presets.length}
 			<div class="presets" role="group" aria-label="Presets">
 				<button
 					type="button"
-					aria-pressed={controlsState.preset === ''}
-					onclick={() => controlsState.selectPreset('')}>Default</button
+					aria-pressed={state.controlsState.preset === ''}
+					onclick={() => state.controlsState.selectPreset('')}>Default</button
 				>
-				{#each controlsState.presets as name (name)}
+				{#each state.controlsState.presets as name (name)}
 					<button
 						type="button"
-						aria-pressed={controlsState.preset === name}
-						onclick={() => controlsState.selectPreset(name)}>{name}</button
+						aria-pressed={state.controlsState.preset === name}
+						onclick={() => state.controlsState.selectPreset(name)}>{name}</button
 					>
 				{/each}
 			</div>
@@ -59,36 +43,38 @@
 		<button
 			type="button"
 			class="reset"
-			disabled={!controlsState.changed}
-			onclick={controlsState.reset}
+			disabled={!state.controlsState.changed}
+			onclick={state.controlsState.reset}
 		>
 			Reset
 		</button>
 	</header>
 
-	{#if controlsState.tab === 'html' && controlsState.markup !== null}
+	{#if state.controlsState.tab === 'html' && state.controlsState.markup !== null}
 		<div class="markup">
-			<button type="button" class="copy" onclick={copy}>{copied ? 'Copied' : 'Copy'}</button>
-			<pre><code>{controlsState.markup}</code></pre>
-			{#if copyError}<p role="status">{copyError}</p>{/if}
+			<button type="button" class="copy" onclick={state.copy}
+				>{state.copied ? 'Copied' : 'Copy'}</button
+			>
+			<pre><code>{state.controlsState.markup}</code></pre>
+			{#if state.copyError}<p role="status">{state.copyError}</p>{/if}
 		</div>
-	{:else if controlsState.controls.length || controlsState.text !== null}
+	{:else if state.controlsState.controls.length || state.controlsState.text !== null}
 		<div class="grid">
-			{#if controlsState.text !== null}
+			{#if state.controlsState.text !== null}
 				<StoryControl
 					name="content-text"
-					control={TEXT}
-					value={controlsState.text}
-					onChange={controlsState.setText}
+					control={state.TEXT}
+					value={state.controlsState.text}
+					onChange={state.controlsState.setText}
 				/>
 			{/if}
-			{#each controlsState.controls as { name, control, auto } (name)}
+			{#each state.controlsState.controls as { name, control, auto } (name)}
 				<StoryControl
 					{name}
 					{control}
 					{auto}
-					value={controlsState.args[name]}
-					onChange={(value) => controlsState.set(name, value)}
+					value={state.controlsState.args[name]}
+					onChange={(value) => state.controlsState.set(name, value)}
 				/>
 			{/each}
 		</div>

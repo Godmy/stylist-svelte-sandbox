@@ -1,44 +1,39 @@
 <script lang="ts">
-	import { untrack } from 'svelte';
 	import Icon from '$stylist/svg/component/atom/icon/index.svelte';
 	import TokenControlComposer from '$stylist/token/component/molecule/token/index.svelte';
 	import type { RecipeOrbitTokenNode } from '$stylist/token/interface/recipe/orbit-token-node';
-	import type { TokenTokenValue as TokenValue } from '$stylist/design-token/type/alias/token-value';
+
+	import createOrbitTokenNodeComponentState from '$stylist/token/component/atom/orbit-token-node/state.svelte';
 
 	let { id, icon, label, opened = false, style = '', definition }: RecipeOrbitTokenNode = $props();
 
-	let active = $state(false);
-	let value = $state<TokenValue>(untrack(() => definition.defaultValue ?? ''));
-
-	$effect(() => {
-		if (!opened) {
-			active = false;
-		}
-	});
-
-	const controlDefinition = $derived({ ...definition, id: `${definition.id}-${id}` });
+	const state = createOrbitTokenNodeComponentState(() => ({
+		id: id,
+		opened: opened,
+		definition: definition
+	}));
 </script>
 
 <div class="node-wrap" {style}>
 	<button
 		type="button"
 		class="node"
-		class:active
+		class:active={state.active}
 		onclick={() => {
-			if (opened) active = !active;
+			if (opened) state.active = !state.active;
 		}}
 		aria-label={label}
 		title={label}
 	>
-		<Icon name={active ? 'x' : icon} size={12} container="none" />
+		<Icon name={state.active ? 'x' : icon} size={12} container="none" />
 	</button>
 
-	{#if active}
+	{#if state.active}
 		<div class="popover">
 			<TokenControlComposer
-				definition={controlDefinition}
-				{value}
-				onChange={(next) => (value = next)}
+				definition={state.controlDefinition}
+				value={state.value}
+				onChange={(next) => (state.value = next)}
 			/>
 		</div>
 	{/if}

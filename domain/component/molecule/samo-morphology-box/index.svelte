@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { RecipeSamoMorphologyBox } from '$stylist/domain/interface/recipe/samo-morphology-box';
+	import createSamoMorphologyBoxComponentState from '$stylist/domain/component/molecule/samo-morphology-box/state.svelte';
 
 	let {
 		eyebrow = 'Morphological box',
@@ -108,18 +109,7 @@
 		class: className = ''
 	}: RecipeSamoMorphologyBox = $props();
 
-	let activeRow = $state(6);
-	let activeColumn = $state(4);
-
-	const activeCell = $derived(rows[activeRow]?.cells[activeColumn]);
-	const activeAddress = $derived(
-		`${domains[activeColumn] ?? ''}/${rows[activeRow]?.cluster ?? ''}/…`
-	);
-
-	function selectCell(rowIndex: number, columnIndex: number) {
-		activeRow = rowIndex;
-		activeColumn = columnIndex;
-	}
+	const state = createSamoMorphologyBoxComponentState(() => ({ domains: domains, rows: rows }));
 </script>
 
 <section class={`c-samo-morphology-box ${className}`}>
@@ -149,7 +139,11 @@
 					<tr>
 						<th scope="col" class="smb-corner">cluster ↓ / domain →</th>
 						{#each domains as domain, columnIndex (columnIndex)}
-							<th scope="col" class="smb-domain" class:is-active={columnIndex === activeColumn}>
+							<th
+								scope="col"
+								class="smb-domain"
+								class:is-active={columnIndex === state.activeColumn}
+							>
 								{domain}
 							</th>
 						{/each}
@@ -158,7 +152,7 @@
 				<tbody>
 					{#each rows as row, rowIndex (rowIndex)}
 						<tr style={`--smb-accent:${row.accent}`}>
-							<th scope="row" class="smb-cluster" class:is-active={rowIndex === activeRow}>
+							<th scope="row" class="smb-cluster" class:is-active={rowIndex === state.activeRow}>
 								{row.cluster}
 							</th>
 							{#each row.cells as cell, columnIndex (columnIndex)}
@@ -166,12 +160,15 @@
 									<button
 										type="button"
 										class="smb-cell"
-										class:is-active={rowIndex === activeRow && columnIndex === activeColumn}
-										class:is-cross={rowIndex === activeRow || columnIndex === activeColumn}
-										aria-pressed={rowIndex === activeRow && columnIndex === activeColumn}
-										onclick={() => selectCell(rowIndex, columnIndex)}
-										onmouseenter={() => selectCell(rowIndex, columnIndex)}
-										onfocus={() => selectCell(rowIndex, columnIndex)}
+										class:is-active={rowIndex === state.activeRow &&
+											columnIndex === state.activeColumn}
+										class:is-cross={rowIndex === state.activeRow ||
+											columnIndex === state.activeColumn}
+										aria-pressed={rowIndex === state.activeRow &&
+											columnIndex === state.activeColumn}
+										onclick={() => state.selectCell(rowIndex, columnIndex)}
+										onmouseenter={() => state.selectCell(rowIndex, columnIndex)}
+										onfocus={() => state.selectCell(rowIndex, columnIndex)}
 									>
 										{cell.value}
 									</button>
@@ -183,11 +180,11 @@
 			</table>
 		</div>
 
-		{#if activeCell}
-			<div class="smb-detail" style={`--smb-accent:${rows[activeRow]?.accent}`}>
-				<code class="smb-detail-address">{activeAddress}</code>
-				<p class="smb-detail-value">{activeCell.value}</p>
-				<p class="smb-detail-note">{activeCell.note}</p>
+		{#if state.activeCell}
+			<div class="smb-detail" style={`--smb-accent:${rows[state.activeRow]?.accent}`}>
+				<code class="smb-detail-address">{state.activeAddress}</code>
+				<p class="smb-detail-value">{state.activeCell.value}</p>
+				<p class="smb-detail-note">{state.activeCell.note}</p>
 				<p class="smb-detail-hint">
 					The <strong>component</strong> row is the assembly of everything above it. The
 					<strong>control</strong> column read top-down is the button itself.

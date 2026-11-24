@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { RecipeSamoPlatformStack } from '$stylist/domain/interface/recipe/samo-platform-stack';
+	import createSamoPlatformStackComponentState from '$stylist/domain/component/molecule/samo-platform-stack/state.svelte';
 
 	let {
 		eyebrow = 'Chapter 05',
@@ -86,7 +87,7 @@
 		class: className = ''
 	}: RecipeSamoPlatformStack = $props();
 
-	let activeLayer = $state(0);
+	const state = createSamoPlatformStackComponentState();
 </script>
 
 <section class={`c-samo-platform-stack ${className}`}>
@@ -103,10 +104,10 @@
 					<button
 						type="button"
 						class={`sps-slab sps-slab--${index % 4}`}
-						class:is-active={index === activeLayer}
-						aria-pressed={index === activeLayer}
-						onclick={() => (activeLayer = index)}
-						onmouseenter={() => (activeLayer = index)}
+						class:is-active={index === state.activeLayer}
+						aria-pressed={index === state.activeLayer}
+						onclick={() => (state.activeLayer = index)}
+						onmouseenter={() => (state.activeLayer = index)}
 					>
 						<span class="sps-slab-index">L{layers.length - index}</span>
 						<span class="sps-slab-name">{layer.name}</span>
@@ -115,12 +116,12 @@
 			{/each}
 		</ol>
 
-		{#if layers[activeLayer]}
-			<article class={`sps-layer-detail sps-slab--${activeLayer % 4}`}>
-				<h3 class="sps-layer-title">{layers[activeLayer].name}</h3>
-				<p class="sps-layer-desc">{layers[activeLayer].description}</p>
+		{#if layers[state.activeLayer]}
+			<article class={`sps-layer-detail sps-slab--${state.activeLayer % 4}`}>
+				<h3 class="sps-layer-title">{layers[state.activeLayer].name}</h3>
+				<p class="sps-layer-desc">{layers[state.activeLayer].description}</p>
 				<ul class="sps-tags">
-					{#each layers[activeLayer].examples as example, exampleIndex (exampleIndex)}
+					{#each layers[state.activeLayer].examples as example, exampleIndex (exampleIndex)}
 						<li>{example}</li>
 					{/each}
 				</ul>

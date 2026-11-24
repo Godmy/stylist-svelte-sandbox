@@ -1,39 +1,12 @@
 <script lang="ts">
 	import MetricBar from '$stylist/chart/component/atom/metric-bar/index.svelte';
-	import type { DomainFileMetric } from '$stylist/domain/type/object/domain-file-metric';
-	import type { DomainFileComponentMetric } from '$stylist/domain/type/object/domain-file-component-metric';
+
 	import type { RecipeDomainFileDomainGrid } from '$stylist/domain/interface/recipe/domain-file-domain-grid';
+	import createDomainFileDomainGridComponentState from '$stylist/domain/component/organism/domain-file-domain-grid/state.svelte';
 
 	let { domains, class: className = '' }: RecipeDomainFileDomainGrid = $props();
 
-	const componentLabels: Record<keyof DomainFileComponentMetric, string> = {
-		atoms: 'Atoms',
-		molecules: 'Molecules',
-		organisms: 'Organisms',
-		templates: 'Templates',
-		pages: 'Pages'
-	};
-	const componentKeys = Object.keys(componentLabels) as (keyof DomainFileComponentMetric)[];
-	const maxDomainFiles = $derived(Math.max(1, ...domains.map((domain) => domain.fileCount)));
-
-	function formatDomainName(value: string): string {
-		return value
-			.split('-')
-			.filter(Boolean)
-			.map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-			.join(' ');
-	}
-
-	function getPercentage(value: number, max: number): number {
-		return max <= 0 ? 0 : Math.round((value / max) * 100);
-	}
-
-	function getMaxJointCount(domain: DomainFileMetric): number {
-		return Math.max(
-			1,
-			...domain.clusters.flatMap((cluster) => cluster.joints.map((joint) => joint.entityCount))
-		);
-	}
+	const state = createDomainFileDomainGridComponentState(() => ({ domains: domains }));
 </script>
 
 <div class="c-domain-file-domain-grid {className}">
@@ -41,7 +14,7 @@
 		<article class="domain-card">
 			<header class="domain-card__header">
 				<div>
-					<h3>{formatDomainName(domain.name)}</h3>
+					<h3>{state.formatDomainName(domain.name)}</h3>
 					<p>{domain.name}</p>
 				</div>
 				<strong>{domain.fileCount}</strong>
@@ -49,16 +22,16 @@
 
 			<MetricBar
 				text="Total files"
-				percentage={getPercentage(domain.fileCount, maxDomainFiles)}
+				percentage={state.getPercentage(domain.fileCount, state.maxDomainFiles)}
 				valueLabel={domain.fileCount}
 				color="#2563eb"
 				trackColor="color-mix(in srgb, var(--color-border-primary, #cbd5e1) 60%, transparent)"
 			/>
 
 			<div class="component-grid" aria-label={`${domain.name} component counts`}>
-				{#each componentKeys as key, keyIndex (keyIndex)}
+				{#each state.componentKeys as key, keyIndex (keyIndex)}
 					<div>
-						<span>{componentLabels[key]}</span>
+						<span>{state.componentLabels[key]}</span>
 						<strong>{domain.components[key]}</strong>
 					</div>
 				{/each}
@@ -75,7 +48,10 @@
 							{#each cluster.joints as joint (`${domain.name}-${cluster.name}-${joint.name}`)}
 								<MetricBar
 									text={joint.name}
-									percentage={getPercentage(joint.entityCount, getMaxJointCount(domain))}
+									percentage={state.getPercentage(
+										joint.entityCount,
+										state.getMaxJointCount(domain)
+									)}
 									valueLabel={`${joint.entityCount} / ${joint.fileCount} files`}
 									color="#0f766e"
 									trackColor="color-mix(in srgb, var(--color-border-primary, #cbd5e1) 60%, transparent)"

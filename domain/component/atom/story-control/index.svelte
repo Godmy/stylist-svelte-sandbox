@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { RecipeStoryControl } from '$stylist/domain/interface/recipe/story-control';
-	import { transformStoryJson } from '$stylist/domain/function/transform/story-json';
+
+	import createStoryControlComponentState from '$stylist/domain/component/atom/story-control/state.svelte';
 
 	let {
 		name,
@@ -11,45 +12,22 @@
 		class: className = ''
 	}: RecipeStoryControl = $props();
 
-	const id = $derived(`story-control-${name}`);
-	const text = (event: Event) => (event.currentTarget as HTMLInputElement).value;
-	const number = (event: Event) => (event.currentTarget as HTMLInputElement).valueAsNumber;
-	const json = (input: unknown) => (input === undefined ? '' : JSON.stringify(input, null, 2));
-
-	// `json` keeps the typed text while it is invalid; an outside change (preset, reset)
-	// replaces it with the formatted value.
-	let draft = $state<string | null>(null);
-	let error = $state('');
-	let emitted = '';
-	const source = $derived(draft ?? json(value));
-	const example = $derived(json(control.example));
-	$effect(() => {
-		if (JSON.stringify(value) === emitted) return;
-		draft = null;
-		error = '';
-	});
-
-	function editJson(event: Event) {
-		draft = (event.currentTarget as HTMLTextAreaElement).value;
-		const result = transformStoryJson(draft, control.example);
-		if (!result.ok) {
-			error = result.error;
-			return;
-		}
-		error = '';
-		emitted = JSON.stringify(result.value);
-		onChange?.(result.value);
-	}
+	const state = createStoryControlComponentState(() => ({
+		name: name,
+		control: control,
+		value: value,
+		onChange: onChange
+	}));
 </script>
 
 <div class="c-story-control {className}" data-type={control.type}>
-	<label class="label" for={id}>
+	<label class="label" for={state.id}>
 		<span>
 			{control.label ?? name}
 			{#if auto}<span class="auto" title="Inferred from the arg value">auto</span>{/if}
 		</span>
 		{#if control.type === 'range' || control.type === 'number'}
-			<output for={id}>{String(value ?? '')}</output>
+			<output for={state.id}>{String(value ?? '')}</output>
 		{/if}
 	</label>
 	{#if control.description}
@@ -58,7 +36,7 @@
 
 	{#if control.type === 'boolean'}
 		<input
-			{id}
+			id={state.id}
 			class="toggle"
 			type="checkbox"
 			role="switch"
@@ -67,7 +45,7 @@
 		/>
 	{:else if control.type === 'select'}
 		<select
-			{id}
+			id={state.id}
 			class="field"
 			value={String(value ?? '')}
 			onchange={(event) => {
@@ -82,52 +60,53 @@
 		</select>
 	{:else if control.type === 'number' || control.type === 'range'}
 		<input
-			{id}
+			id={state.id}
 			class={control.type === 'range' ? 'slider' : 'field'}
 			type={control.type}
 			min={control.min}
 			max={control.max}
 			step={control.step}
 			value={value ?? ''}
-			oninput={(event) => onChange?.(Number.isNaN(number(event)) ? undefined : number(event))}
+			oninput={(event) =>
+				onChange?.(Number.isNaN(state.number(event)) ? undefined : state.number(event))}
 		/>
 	{:else if control.type === 'color'}
 		<div class="color">
 			<input
-				{id}
+				id={state.id}
 				type="color"
 				value={String(value ?? '#000000')}
-				oninput={(event) => onChange?.(text(event))}
+				oninput={(event) => onChange?.(state.text(event))}
 			/>
 			<input
 				class="field"
 				type="text"
 				value={String(value ?? '')}
 				aria-label="{control.label ?? name} value"
-				oninput={(event) => onChange?.(text(event))}
+				oninput={(event) => onChange?.(state.text(event))}
 			/>
 		</div>
 	{:else if control.type === 'json'}
 		<textarea
-			{id}
+			id={state.id}
 			class="field code"
-			rows={Math.min(14, Math.max(4, source.split('\n').length))}
+			rows={Math.min(14, Math.max(4, state.source.split('\n').length))}
 			spellcheck="false"
-			placeholder={example}
-			aria-invalid={error ? 'true' : undefined}
-			aria-describedby={error ? `${id}-error` : undefined}
-			value={source}
-			oninput={editJson}></textarea>
-		{#if error}
-			<p class="error" id="{id}-error">{error}</p>
+			placeholder={state.example}
+			aria-invalid={state.error ? 'true' : undefined}
+			aria-describedby={state.error ? `${state.id}-error` : undefined}
+			value={state.source}
+			oninput={state.editJson}></textarea>
+		{#if state.error}
+			<p class="error" id="{state.id}-error">{state.error}</p>
 		{/if}
 	{:else}
 		<input
-			{id}
+			id={state.id}
 			class="field"
 			type="text"
 			value={String(value ?? '')}
-			oninput={(event) => onChange?.(text(event))}
+			oninput={(event) => onChange?.(state.text(event))}
 		/>
 	{/if}
 </div>

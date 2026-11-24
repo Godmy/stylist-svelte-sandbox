@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { RecipeSamoLocalDev } from '$stylist/domain/interface/recipe/samo-local-dev';
+	import createSamoLocalDevComponentState from '$stylist/domain/component/molecule/samo-local-dev/state.svelte';
 
 	let {
 		eyebrow = 'Chapter 04',
@@ -127,11 +128,7 @@
 		class: className = ''
 	}: RecipeSamoLocalDev = $props();
 
-	let activeId = $state('');
-
-	const activeScenario = $derived(
-		scenarios.find((scenario) => scenario.id === activeId) ?? scenarios[0]
-	);
+	const state = createSamoLocalDevComponentState(() => ({ scenarios: scenarios }));
 </script>
 
 <section class={`c-samo-local-dev ${className}`}>
@@ -168,10 +165,10 @@
 			<button
 				type="button"
 				role="tab"
-				aria-selected={scenario.id === activeScenario?.id}
+				aria-selected={scenario.id === state.activeScenario?.id}
 				class="sld-tab"
-				class:is-active={scenario.id === activeScenario?.id}
-				onclick={() => (activeId = scenario.id)}
+				class:is-active={scenario.id === state.activeScenario?.id}
+				onclick={() => (state.activeId = scenario.id)}
 			>
 				<span class="sld-tab-index">{String(index + 1).padStart(2, '0')}</span>
 				{scenario.title}
@@ -179,12 +176,12 @@
 		{/each}
 	</div>
 
-	{#if activeScenario}
+	{#if state.activeScenario}
 		<div class="sld-panel" role="tabpanel">
-			<p class="sld-summary">{activeScenario.summary}</p>
+			<p class="sld-summary">{state.activeScenario.summary}</p>
 
 			<div class="sld-snippets">
-				{#each activeScenario.snippets as snippet, snippetIndex (snippetIndex)}
+				{#each state.activeScenario.snippets as snippet, snippetIndex (snippetIndex)}
 					<figure class="sld-snippet">
 						<figcaption class="sld-snippet-bar">
 							<span class="sld-dots" aria-hidden="true"><i></i><i></i><i></i></span>
@@ -196,7 +193,7 @@
 			</div>
 
 			<ul class="sld-notes">
-				{#each activeScenario.notes as note, noteIndex (noteIndex)}
+				{#each state.activeScenario.notes as note, noteIndex (noteIndex)}
 					<li>{note}</li>
 				{/each}
 			</ul>

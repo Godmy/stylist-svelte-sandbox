@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { RecipeSamoNestedMethods } from '$stylist/domain/interface/recipe/samo-nested-methods';
+	import createSamoNestedMethodsComponentState from '$stylist/domain/component/molecule/samo-nested-methods/state.svelte';
 
 	let {
 		eyebrow = 'Nested methodologies',
@@ -248,9 +249,7 @@
 		class: className = ''
 	}: RecipeSamoNestedMethods = $props();
 
-	let activeId = $state('');
-
-	const activeMethod = $derived(methods.find((method) => method.id === activeId) ?? methods[0]);
+	const state = createSamoNestedMethodsComponentState(() => ({ methods: methods }));
 </script>
 
 {#snippet layerBox(depth: number)}
@@ -261,9 +260,9 @@
 				<button
 					type="button"
 					class="snm-chip"
-					class:is-active={method.id === activeMethod?.id}
-					aria-pressed={method.id === activeMethod?.id}
-					onclick={() => (activeId = method.id)}
+					class:is-active={method.id === state.activeMethod?.id}
+					aria-pressed={method.id === state.activeMethod?.id}
+					onclick={() => (state.activeId = method.id)}
 				>
 					{method.title}
 				</button>
@@ -289,17 +288,17 @@
 			{/if}
 		</nav>
 
-		{#if activeMethod}
+		{#if state.activeMethod}
 			<article class="snm-panel">
 				<div class="snm-panel-head">
-					<code class="snm-host">{activeMethod.host}</code>
-					<h3 class="snm-panel-title">{activeMethod.title}</h3>
-					<p class="snm-tagline">{activeMethod.tagline}</p>
-					<p class="snm-summary">{activeMethod.summary}</p>
+					<code class="snm-host">{state.activeMethod.host}</code>
+					<h3 class="snm-panel-title">{state.activeMethod.title}</h3>
+					<p class="snm-tagline">{state.activeMethod.tagline}</p>
+					<p class="snm-summary">{state.activeMethod.summary}</p>
 				</div>
 
 				<ol class="snm-levels">
-					{#each activeMethod.levels as level, index (index)}
+					{#each state.activeMethod.levels as level, index (index)}
 						<li class="snm-level">
 							<span class="snm-level-index">{index + 1}</span>
 							<div>
@@ -315,11 +314,11 @@
 					{/each}
 				</ol>
 
-				{#if activeMethod.code}
-					<pre class="snm-code"><code>{activeMethod.code}</code></pre>
+				{#if state.activeMethod.code}
+					<pre class="snm-code"><code>{state.activeMethod.code}</code></pre>
 				{/if}
 
-				<p class="snm-note">{activeMethod.note}</p>
+				<p class="snm-note">{state.activeMethod.note}</p>
 			</article>
 		{/if}
 	</div>

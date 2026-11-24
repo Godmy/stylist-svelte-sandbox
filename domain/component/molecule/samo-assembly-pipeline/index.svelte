@@ -2,6 +2,7 @@
 	import BaseIcon from '$stylist/svg/component/atom/icon/index.svelte';
 	import type { RecipeSamoAssemblyPipeline } from '$stylist/domain/interface/recipe/samo-assembly-pipeline';
 	import { isIconName } from '$stylist/svg/function/check/icon-name';
+	import createSamoAssemblyPipelineComponentState from '$stylist/domain/component/molecule/samo-assembly-pipeline/state.svelte';
 
 	let {
 		eyebrow = 'Architecture',
@@ -86,10 +87,7 @@
 		class: className = ''
 	}: RecipeSamoAssemblyPipeline = $props();
 
-	let activeIndex = $state(3);
-
-	const activeCluster = $derived(clusters[activeIndex] ?? clusters[0]);
-	const allowedSources = $derived(clusters.slice(0, activeIndex).map((cluster) => cluster.name));
+	const state = createSamoAssemblyPipelineComponentState(() => ({ clusters: clusters }));
 </script>
 
 <section class={`c-samo-assembly-pipeline ${className}`}>
@@ -105,11 +103,11 @@
 				<button
 					type="button"
 					class="sap-node"
-					class:is-active={index === activeIndex}
-					class:is-source={index < activeIndex}
-					class:is-blocked={index > activeIndex}
-					aria-pressed={index === activeIndex}
-					onclick={() => (activeIndex = index)}
+					class:is-active={index === state.activeIndex}
+					class:is-source={index < state.activeIndex}
+					class:is-blocked={index > state.activeIndex}
+					aria-pressed={index === state.activeIndex}
+					onclick={() => (state.activeIndex = index)}
 				>
 					<span class="sap-node-icon" aria-hidden="true">
 						<BaseIcon name={isIconName(cluster.icon) ? cluster.icon : 'box'} size={22} />
@@ -123,32 +121,32 @@
 		{/each}
 	</ol>
 
-	{#if activeCluster}
-		<div class="sap-detail" style={`--sap-accent:${activeCluster.accent}`}>
+	{#if state.activeCluster}
+		<div class="sap-detail" style={`--sap-accent:${state.activeCluster.accent}`}>
 			<div class="sap-detail-copy">
 				<h3 class="sap-detail-title">
-					<code>{activeCluster.name}/</code>
+					<code>{state.activeCluster.name}/</code>
 				</h3>
-				<p class="sap-detail-rule">{activeCluster.rule}</p>
+				<p class="sap-detail-rule">{state.activeCluster.rule}</p>
 
 				<p class="sap-detail-label">Allowed joints</p>
 				<ul class="sap-joints">
-					{#each activeCluster.joints as joint, jointIndex (jointIndex)}
+					{#each state.activeCluster.joints as joint, jointIndex (jointIndex)}
 						<li class="sap-joint">{joint}</li>
 					{/each}
 				</ul>
 
 				<p class="sap-detail-label">May depend on</p>
 				<p class="sap-sources">
-					{#if allowedSources.length > 0}
-						{allowedSources.join(' · ')}
+					{#if state.allowedSources.length > 0}
+						{state.allowedSources.join(' · ')}
 					{:else}
 						nothing — the foundation of the pipeline
 					{/if}
 				</p>
 			</div>
 
-			<pre class="sap-code"><code>{activeCluster.example}</code></pre>
+			<pre class="sap-code"><code>{state.activeCluster.example}</code></pre>
 		</div>
 	{/if}
 

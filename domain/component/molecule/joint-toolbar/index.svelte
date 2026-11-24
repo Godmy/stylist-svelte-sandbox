@@ -1,8 +1,9 @@
 <script lang="ts">
 	import IconToolbar from '$stylist/control/component/molecule/icon-toolbar/index.svelte';
-	import { JOINT_TOOLBAR_ITEMS } from '$stylist/domain/const/value/joint-toolbar-items';
+
 	import { TOKEN_ORIENTATION } from '$stylist/layout/const/array/orientation';
 	import type { RecipeJointToolbar } from '$stylist/domain/interface/recipe/joint-toolbar';
+	import createJointToolbarComponentState from '$stylist/domain/component/molecule/joint-toolbar/state.svelte';
 
 	let {
 		active,
@@ -13,13 +14,11 @@
 		class: className = ''
 	}: RecipeJointToolbar = $props();
 
-	const items = $derived(
-		availableJoints ? availableJoints.map((name) => ({ name })) : JOINT_TOOLBAR_ITEMS
-	);
+	const state = createJointToolbarComponentState(() => ({ availableJoints: availableJoints }));
 </script>
 
 <IconToolbar
-	{items}
+	items={state.items}
 	label="joint"
 	{active}
 	{orientation}

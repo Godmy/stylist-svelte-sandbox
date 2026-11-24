@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { untrack } from 'svelte';
 	import NavigationDrawer from '$stylist/navigation/component/organism/navigation-drawer/index.svelte';
 	import TopAppBar from '$stylist/navigation/component/organism/top-app-bar/index.svelte';
 	import Fragment from '$stylist/navigation/component/template/fragment/index.svelte';
@@ -8,30 +7,10 @@
 	import DomainSidebar from '$stylist/domain/component/organism/domain-sidebar/index.svelte';
 	import JointTabButtons from '$stylist/domain/component/molecule/joint-tab-buttons/index.svelte';
 	import TaxonomyBreadcrumbs from '$stylist/domain/component/molecule/taxonomy-breadcrumbs/index.svelte';
-	import createDomainPageState from '$stylist/domain/component/organism/domain-explorer/state.svelte';
-	import { resolveModuleGroup } from '$stylist/domain/function/resolve/module-group';
+
 	import type { RecipeDomainExplorer } from '$stylist/domain/interface/recipe/domain-explorer';
-	const registries = import.meta.glob('/modules.json', {
-		eager: true,
-		import: 'default'
-	}) as Record<string, Record<string, { path?: string; domains: string[] }>>;
-
+	import createDomainPageState from '$stylist/domain/component/organism/domain-explorer/state.svelte';
 	type StoryModule = { default: unknown };
-
-	const physicalStoryModules = import.meta.glob([
-		'/src/lib/**/component/**/index.story.{svelte,ts}',
-		'/modules/*/*/component/**/index.story.{svelte,ts}',
-		'/modules/*/component/**/index.story.{svelte,ts}'
-	]) as Record<string, () => Promise<StoryModule>>;
-	const storyModules = Object.fromEntries(
-		Object.entries(physicalStoryModules).map(([path, load]) => [
-			path
-				.replace(/^\/modules\/([^/]+)\/component\//, '/src/lib/$1/component/')
-				.replace(/^\/modules\/[^/]+\//, '/src/lib/'),
-			load
-		])
-	);
-
 	let {
 		menu,
 		tree,
@@ -48,69 +27,51 @@
 		class: className = ''
 	}: RecipeDomainExplorer = $props();
 
-	// The tree and initial* props seed the explorer once; later navigation is internal state.
-	const s = untrack(() =>
-		createDomainPageState({
-			tree,
-			storyModules,
-			initialDomain,
-			initialCluster,
-			initialJoint,
-			initialEntityPath,
-			initialPreviewMode
-		})
-	);
-
-	// Same grouping as the sidebar's module rail, so the breadcrumb names the selected module.
-	const activeModule = $derived(
-		resolveModuleGroup(registries['/modules.json'] ?? {}, s.availableDomainNames).find((entry) =>
-			entry.domains.includes(s.activeDomain)
-		)?.name
-	);
-	$effect(() => {
-		onSelectionChange?.({
-			domain: s.activeDomain,
-			cluster: s.activeCluster,
-			joint: s.activeJoint,
-			family: s.activeFamily,
-			entityPath: s.activeEntityPath,
-			files: s.activeEntity?.files ?? []
-		});
-	});
-
-	$effect(() => {
-		// Stays visible while the next story loads, so the toolbar does not blink between stories.
-		deviceViewportVisible = s.previewMode === 'story' && !s.storyPreviewError;
-	});
+	const state = createDomainPageState(() => ({
+		tree: tree,
+		initialDomain: initialDomain,
+		initialCluster: initialCluster,
+		initialJoint: initialJoint,
+		initialEntityPath: initialEntityPath,
+		initialPreviewMode: initialPreviewMode,
+		onSelectionChange: onSelectionChange,
+		get deviceViewportVisible() {
+			return deviceViewportVisible;
+		},
+		set deviceViewportVisible(value) {
+			deviceViewportVisible = value;
+		}
+	}));
 </script>
 
 {#snippet sidebar()}
 	<DomainSidebar
-		activeDomain={s.activeDomain}
-		activeCluster={s.activeCluster}
-		activeJoint={s.activeJoint}
-		availableDomains={s.availableDomainNames}
-		availableClusters={s.availableClusterNames}
-		availableJoints={s.availableJointNames}
-		entities={s.entities}
-		activeEntityPath={s.activeEntityPath}
-		onDomainSelect={s.handleDomainSelect}
-		onClusterSelect={s.handleClusterSelect}
-		onJointSelect={s.handleJointSelect}
-		onEntitySelect={s.selectNavigationEntity}
+		activeDomain={state.s.activeDomain}
+		activeCluster={state.s.activeCluster}
+		activeJoint={state.s.activeJoint}
+		availableDomains={state.s.availableDomainNames}
+		availableClusters={state.s.availableClusterNames}
+		availableJoints={state.s.availableJointNames}
+		entities={state.s.entities}
+		activeEntityPath={state.s.activeEntityPath}
+		onDomainSelect={state.s.handleDomainSelect}
+		onClusterSelect={state.s.handleClusterSelect}
+		onJointSelect={state.s.handleJointSelect}
+		onEntitySelect={state.s.selectNavigationEntity}
 	/>
 {/snippet}
 
 <main class="c-domain-explorer {className}" class:fullscreen>
-	{#if s.mobile}
+	{#if state.s.mobile}
 		<NavigationDrawer
 			sections={[]}
-			open={s.drawerOpen}
-			onClose={s.closeDrawer}
+			open={state.s.drawerOpen}
+			onClose={state.s.closeDrawer}
 			label="Components"
 			class="explorer-drawer"
 		>
-			{#snippet header()}<button type="button" onclick={s.closeDrawer}>Close navigation</button
+			{#snippet header()}<button type="button" onclick={state.s.closeDrawer}
+					>Close navigation</button
 				>{/snippet}
 			{#snippet footer()}{@render sidebar()}{/snippet}
 		</NavigationDrawer>
@@ -119,14 +80,18 @@
 			{@render sidebar()}
 		</div>
 	{/if}
-	<section class="content-panel" aria-label="Content viewer" inert={s.mobile && s.drawerOpen}>
-		{#if s.mobile}
+	<section
+		class="content-panel"
+		aria-label="Content viewer"
+		inert={state.s.mobile && state.s.drawerOpen}
+	>
+		{#if state.s.mobile}
 			<TopAppBar
-				heading={s.activeFamilyName || 'Playground'}
+				heading={state.s.activeFamilyName || 'Playground'}
 				navigation="menu"
 				navigationLabel="Choose component"
-				menuOpen={s.drawerOpen}
-				onNavigation={s.openDrawer}
+				menuOpen={state.s.drawerOpen}
+				onNavigation={state.s.openDrawer}
 				actions={menu}
 			/>
 		{/if}
@@ -134,44 +99,44 @@
 			<div class="viewer-chrome" inert={fullscreen}>
 				<div class="taxonomy-row">
 					<TaxonomyBreadcrumbs
-						module={activeModule}
-						domain={s.activeDomain}
-						cluster={s.activeCluster}
-						joint={s.activeJoint}
-						family={s.activeFamilyName}
-						file={s.breadcrumbFile}
+						module={state.activeModule}
+						domain={state.s.activeDomain}
+						cluster={state.s.activeCluster}
+						joint={state.s.activeJoint}
+						family={state.s.activeFamilyName}
+						file={state.s.breadcrumbFile}
 					/>
 					<DomainSearch
-						entries={s.searchEntries}
+						entries={state.s.searchEntries}
 						currentPath={[
-							s.activeDomain,
-							s.activeCluster,
-							s.activeJoint,
-							s.activeFamilyName,
-							s.breadcrumbFile
+							state.s.activeDomain,
+							state.s.activeCluster,
+							state.s.activeJoint,
+							state.s.activeFamilyName,
+							state.s.breadcrumbFile
 						]
 							.filter(Boolean)
 							.join('\\')}
-						onSelect={s.selectSearchEntry}
+						onSelect={state.s.selectSearchEntry}
 					/>
 				</div>
 
-				{#if s.activeEntity}
+				{#if state.s.activeEntity}
 					<JointTabButtons
-						files={s.activeEntity.files}
-						markdownFile={s.markdownFile}
-						storyFile={s.storyFile}
-						selectedEntityName={s.activeFamily}
-						activeFilePath={s.activeFilePath}
-						previewMode={s.previewMode}
-						previewKind={s.previewKind}
-						activeJoint={s.activeJoint}
-						hasDependencyPreview={s.hasDependencyPreview}
-						onFileSelect={s.handleFileSelect}
-						onMarkdownSelect={s.handleMarkdownSelect}
-						onStorySelect={s.handleStorySelect}
-						onJsonTreeSelect={s.handleJsonTreeSelect}
-						onDependencySelect={() => s.handleDependencySelect()}
+						files={state.s.activeEntity.files}
+						markdownFile={state.s.markdownFile}
+						storyFile={state.s.storyFile}
+						selectedEntityName={state.s.activeFamily}
+						activeFilePath={state.s.activeFilePath}
+						previewMode={state.s.previewMode}
+						previewKind={state.s.previewKind}
+						activeJoint={state.s.activeJoint}
+						hasDependencyPreview={state.s.hasDependencyPreview}
+						onFileSelect={state.s.handleFileSelect}
+						onMarkdownSelect={state.s.handleMarkdownSelect}
+						onStorySelect={state.s.handleStorySelect}
+						onJsonTreeSelect={state.s.handleJsonTreeSelect}
+						onDependencySelect={() => state.s.handleDependencySelect()}
 					/>
 				{/if}
 			</div>
@@ -179,22 +144,22 @@
 				<DomainFilePreview
 					{storyWidth}
 					{fullscreen}
-					storyPath={s.storyFile?.path}
-					previewMode={s.previewMode}
-					fileContent={s.fileContent}
-					fileLoading={s.fileLoading}
-					fileError={s.fileError}
-					storyPreviewComponent={s.storyPreviewComponent}
-					storyPreviewLoading={s.storyPreviewLoading}
-					storyPreviewError={s.storyPreviewError}
-					dependencyItems={s.dependencyItems}
-					dependencyTreeNodes={s.dependencyTreeNodes}
-					selectedDependencyKey={s.selectedDependencyKey}
-					selectedDependencyFiles={s.selectedDependencyFiles}
-					dependencyLoading={s.dependencyLoading}
-					dependencyError={s.dependencyError}
-					onDependencySelect={s.handleDependencySelect}
-					previewKind={s.previewKind}
+					storyPath={state.s.storyFile?.path}
+					previewMode={state.s.previewMode}
+					fileContent={state.s.fileContent}
+					fileLoading={state.s.fileLoading}
+					fileError={state.s.fileError}
+					storyPreviewComponent={state.s.storyPreviewComponent}
+					storyPreviewLoading={state.s.storyPreviewLoading}
+					storyPreviewError={state.s.storyPreviewError}
+					dependencyItems={state.s.dependencyItems}
+					dependencyTreeNodes={state.s.dependencyTreeNodes}
+					selectedDependencyKey={state.s.selectedDependencyKey}
+					selectedDependencyFiles={state.s.selectedDependencyFiles}
+					dependencyLoading={state.s.dependencyLoading}
+					dependencyError={state.s.dependencyError}
+					onDependencySelect={state.s.handleDependencySelect}
+					previewKind={state.s.previewKind}
 					bind:storyDevice
 				/>
 			</Fragment>

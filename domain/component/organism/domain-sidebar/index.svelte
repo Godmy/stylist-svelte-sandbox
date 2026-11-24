@@ -4,16 +4,8 @@
 	import JointToolbar from '$stylist/domain/component/molecule/joint-toolbar/index.svelte';
 	import DomainList from '$stylist/domain/component/molecule/domain-list/index.svelte';
 	import type { RecipeDomainSidebar } from '$stylist/domain/interface/recipe/domain-sidebar';
-	import { resolveModuleGroup } from '$stylist/domain/function/resolve/module-group';
-	const registries = import.meta.glob('/modules.json', {
-		eager: true,
-		import: 'default'
-	}) as Record<string, Record<string, { path?: string; domains: string[] }>>;
-	const moduleIcons = import.meta.glob('../../../data/icon/module/*.svg', {
-		eager: true,
-		query: '?raw',
-		import: 'default'
-	}) as Record<string, string>;
+
+	import createDomainSidebarComponentState from '$stylist/domain/component/organism/domain-sidebar/state.svelte';
 
 	let {
 		activeDomain,
@@ -33,38 +25,36 @@
 		onEntityDragStart,
 		class: className = ''
 	}: RecipeDomainSidebar = $props();
-	const modules = $derived(resolveModuleGroup(registries['/modules.json'] ?? {}, availableDomains));
-	const activeModule = $derived(
-		modules.find((entry) => entry.domains.includes(activeDomain ?? ''))?.name
-	);
-	const visibleDomains = $derived(
-		modules.find((entry) => entry.name === activeModule)?.domains ?? availableDomains
-	);
+
+	const state = createDomainSidebarComponentState(() => ({
+		activeDomain: activeDomain,
+		availableDomains: availableDomains
+	}));
 </script>
 
 <aside class="c-domain-sidebar {className}" aria-label="Taxonomy">
 	<div class="sidebar-grid">
 		<nav class="module-toolbar" aria-label="Modules">
-			{#each modules as module (module.name)}
+			{#each state.modules as module (module.name)}
 				<button
 					type="button"
 					title={module.name}
 					aria-label={module.name}
-					aria-current={activeModule === module.name ? 'page' : undefined}
-					class:active={activeModule === module.name}
+					aria-current={state.activeModule === module.name ? 'page' : undefined}
+					class:active={state.activeModule === module.name}
 					onclick={() => {
-						if (activeModule !== module.name) onDomainSelect?.(module.domains[0]);
+						if (state.activeModule !== module.name) onDomainSelect?.(module.domains[0]);
 					}}
 				>
-					{@html moduleIcons[`../../../data/icon/module/${module.name}.svg`] ??
-						moduleIcons['../../../data/icon/module/default.svg'] ??
+					{@html state.moduleIcons[`../../../data/icon/module/${module.name}.svg`] ??
+						state.moduleIcons['../../../data/icon/module/default.svg'] ??
 						''}
 				</button>
 			{/each}
 		</nav>
 		<DomainToolbar
 			active={activeDomain}
-			domains={visibleDomains}
+			domains={state.visibleDomains}
 			orientation="vertical"
 			showLabel={false}
 			onSelect={onDomainSelect}

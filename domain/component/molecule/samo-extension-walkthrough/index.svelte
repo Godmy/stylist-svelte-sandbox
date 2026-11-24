@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { RecipeSamoExtensionWalkthrough } from '$stylist/domain/interface/recipe/samo-extension-walkthrough';
+	import createSamoExtensionWalkthroughComponentState from '$stylist/domain/component/molecule/samo-extension-walkthrough/state.svelte';
 
 	let {
 		eyebrow = 'Chapter 02',
@@ -51,11 +52,7 @@
 		class: className = ''
 	}: RecipeSamoExtensionWalkthrough = $props();
 
-	const statusMark = { added: '+', changed: '~', untouched: '=' } as const;
-
-	let activeIndex = $state(0);
-
-	const activeStep = $derived(steps[activeIndex] ?? steps[0]);
+	const state = createSamoExtensionWalkthroughComponentState(() => ({ steps: steps }));
 </script>
 
 <section class={`c-samo-extension-walkthrough ${className}`}>
@@ -78,11 +75,11 @@
 						<button
 							type="button"
 							class={`sew-file sew-file--${step.status}`}
-							class:is-active={index === activeIndex}
-							aria-pressed={index === activeIndex}
-							onclick={() => (activeIndex = index)}
+							class:is-active={index === state.activeIndex}
+							aria-pressed={index === state.activeIndex}
+							onclick={() => (state.activeIndex = index)}
 						>
-							<span class="sew-file-mark" aria-hidden="true">{statusMark[step.status]}</span>
+							<span class="sew-file-mark" aria-hidden="true">{state.statusMark[step.status]}</span>
 							<span class="sew-file-copy">
 								<span class="sew-file-title">{step.title}</span>
 								<span class="sew-file-path">{step.path}</span>
@@ -99,21 +96,21 @@
 			</ul>
 		</aside>
 
-		{#if activeStep}
-			<article class={`sew-panel sew-file--${activeStep.status}`}>
+		{#if state.activeStep}
+			<article class={`sew-panel sew-file--${state.activeStep.status}`}>
 				<div class="sew-panel-head">
-					<span class="sew-panel-step">Step {activeIndex + 1} of {steps.length}</span>
-					<span class="sew-panel-status">{activeStep.status}</span>
+					<span class="sew-panel-step">Step {state.activeIndex + 1} of {steps.length}</span>
+					<span class="sew-panel-status">{state.activeStep.status}</span>
 				</div>
-				<h3 class="sew-panel-title">{activeStep.title}</h3>
-				<p class="sew-panel-desc">{activeStep.description}</p>
+				<h3 class="sew-panel-title">{state.activeStep.title}</h3>
+				<p class="sew-panel-desc">{state.activeStep.description}</p>
 
 				<div class="sew-code">
 					<div class="sew-code-bar">
-						<code>{activeStep.path}</code>
+						<code>{state.activeStep.path}</code>
 					</div>
 					<pre><code
-							>{#each activeStep.code.split('\n') as line, lineIndex (lineIndex)}<span
+							>{#each state.activeStep.code.split('\n') as line, lineIndex (lineIndex)}<span
 									class="sew-code-line"
 									class:is-add={line.startsWith('+')}
 									class:is-same={line.startsWith('=')}>{line}</span
@@ -125,16 +122,16 @@
 					<button
 						type="button"
 						class="sew-nav-button"
-						disabled={activeIndex === 0}
-						onclick={() => (activeIndex = Math.max(0, activeIndex - 1))}
+						disabled={state.activeIndex === 0}
+						onclick={() => (state.activeIndex = Math.max(0, state.activeIndex - 1))}
 					>
 						← Previous
 					</button>
 					<button
 						type="button"
 						class="sew-nav-button sew-nav-button--primary"
-						disabled={activeIndex >= steps.length - 1}
-						onclick={() => (activeIndex = Math.min(steps.length - 1, activeIndex + 1))}
+						disabled={state.activeIndex >= steps.length - 1}
+						onclick={() => (state.activeIndex = Math.min(steps.length - 1, state.activeIndex + 1))}
 					>
 						Next →
 					</button>

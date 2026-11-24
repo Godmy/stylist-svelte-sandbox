@@ -2,201 +2,14 @@
 	import OrbitBackground from '$stylist/token/component/atom/orbit-background/index.svelte';
 	import Orbit from '$stylist/token/component/molecule/orbit/index.svelte';
 	import OrbitContractL5 from '$stylist/token/component/organism/orbit-contract-l5/index.svelte';
-	import { L6_TOKEN_DEFINITIONS } from '$stylist/token/const/object/orbit-control-definition';
+
 	import type { RecipeDomainDescriptorPanel } from '$stylist/token/interface/recipe/domain-descriptor-panel';
-	import type { TypeDomainComponentProjection } from '$stylist/domain/type/object/domain-component-projection';
 
+	import createDomainDescriptorPanelComponentState from '$stylist/token/component/molecule/domain-descriptor-panel/state.svelte';
 	type DescriptorMode = 'architecture' | 'information' | 'interaction' | 'controls' | 'contracts';
-
-	const modeLabels: Record<DescriptorMode, string> = {
-		architecture: 'Architecture',
-		information: 'Information',
-		interaction: 'Interaction',
-		controls: 'Controls',
-		contracts: 'Contracts'
-	};
-	const architectureNodes = [
-		{
-			id: 'component-size',
-			icon: 'component-size',
-			label: 'Component Size',
-			definition: L6_TOKEN_DEFINITIONS['component-size']
-		},
-		{
-			id: 'animations',
-			icon: 'animations',
-			label: 'Animations',
-			definition: L6_TOKEN_DEFINITIONS.animations
-		}
-	];
-	const informationNodes = [
-		{
-			id: 'style',
-			icon: 'style',
-			label: 'Style',
-			definition: L6_TOKEN_DEFINITIONS.style
-		},
-		{
-			id: 'variants',
-			icon: 'variants',
-			label: 'Variants',
-			definition: L6_TOKEN_DEFINITIONS.variants
-		},
-		{
-			id: 'text-element',
-			icon: 'text-element',
-			label: 'Text Element',
-			definition: L6_TOKEN_DEFINITIONS['text-element']
-		}
-	];
-	const interactionNodes = [
-		{
-			id: 'controls',
-			icon: 'controls',
-			label: 'Controls',
-			definition: L6_TOKEN_DEFINITIONS.controls
-		},
-		{
-			id: 'state',
-			icon: 'state',
-			label: 'State',
-			definition: L6_TOKEN_DEFINITIONS.state
-		}
-	];
-
 	let { descriptor, class: className = '' }: RecipeDomainDescriptorPanel = $props();
 
-	let activeMode = $state<DescriptorMode>('architecture');
-	let projection = $state<TypeDomainComponentProjection | null>(null);
-	let projectionLoading = $state(false);
-	let projectionError = $state('');
-	const descriptorEntityPath = $derived(descriptor.entityPath);
-
-	function stringifyPreview(value: unknown): string {
-		try {
-			return JSON.stringify(value, null, 2);
-		} catch {
-			return String(value);
-		}
-	}
-
-	function slicePreview(value: unknown): string {
-		const text = stringifyPreview(value);
-		return text.length > 360 ? `${text.slice(0, 360)}...` : text;
-	}
-
-	function readObjectField(value: unknown, key: string): string | null {
-		if (typeof value !== 'object' || value === null || !(key in value)) {
-			return null;
-		}
-
-		const fieldValue = (value as Record<string, unknown>)[key];
-		return fieldValue == null ? null : String(fieldValue);
-	}
-
-	const architectureRows = $derived(
-		projection
-			? [
-					{ label: 'Recipe', value: projection.architecture.recipeTypePath ?? 'missing' },
-					{ label: 'State', value: projection.architecture.stateFunctionPath ?? 'missing' },
-					{ label: 'Component', value: projection.architecture.componentModulePath ?? 'missing' },
-					{
-						label: 'Contracts',
-						value: projection.architecture.contractPaths.length
-							? projection.architecture.contractPaths.join('\n')
-							: 'none'
-					}
-				]
-			: []
-	);
-	const architecturePipeline = $derived(
-		projection
-			? [
-					{
-						label: 'Recipe',
-						value: projection.architecture.recipeTypePath,
-						kind: 'contract'
-					},
-					{
-						label: 'State',
-						value: projection.architecture.stateFunctionPath,
-						kind: 'runtime'
-					},
-					{
-						label: 'Component',
-						value: projection.architecture.componentModulePath,
-						kind: 'render'
-					}
-				]
-			: []
-	);
-
-	const informationGroups = $derived(
-		projection
-			? [
-					{ label: 'Recipe JSON', items: projection.information.recipeJson },
-					{ label: 'Enum JSON', items: projection.information.enumJson },
-					{ label: 'Map JSON', items: projection.information.mapJson }
-				]
-			: []
-	);
-
-	const interactionRows = $derived(
-		projection
-			? [
-					{
-						label: 'State pipeline',
-						value: projection.interaction.hasStatePipeline ? 'available' : 'missing'
-					},
-					{ label: 'Story module', value: projection.interaction.storyModulePath ?? 'missing' },
-					{ label: 'State JSON count', value: String(projection.interaction.stateJson.length) }
-				]
-			: []
-	);
-
-	const controlPreviews = $derived(projection?.controls.controlJson ?? []);
-	const controlCards = $derived(
-		controlPreviews.map((control, index) => ({
-			title: readObjectField(control, 'id') ?? `Control #${index + 1}`,
-			kind: readObjectField(control, 'controlKind') ?? 'unknown',
-			tokenName: readObjectField(control, 'tokenName') ?? 'unknown',
-			taxonomy:
-				readObjectField(control, 'functionalTaxonomy') ??
-				readObjectField(control, 'taxonomy') ??
-				'unknown',
-			preview: slicePreview(control)
-		}))
-	);
-	const contractFiles = $derived(projection?.contracts.files ?? []);
-
-	async function loadProjection(): Promise<void> {
-		projectionLoading = true;
-		projectionError = '';
-
-		try {
-			const response = await fetch(
-				`/api/descriptor?entityPath=${encodeURIComponent(descriptor.entityPath)}`
-			);
-			if (!response.ok) {
-				throw new Error(`Descriptor request failed with ${response.status}`);
-			}
-
-			projection = (await response.json()) as TypeDomainComponentProjection;
-		} catch (error) {
-			projectionError = error instanceof Error ? error.message : String(error);
-		} finally {
-			projectionLoading = false;
-		}
-	}
-
-	$effect(() => {
-		// Read only to re-run the projection when the descriptor path changes.
-		// eslint-disable-next-line @typescript-eslint/no-unused-expressions
-		descriptorEntityPath;
-		projection = null;
-		projectionError = '';
-		void loadProjection();
-	});
+	const state = createDomainDescriptorPanelComponentState(() => ({ descriptor: descriptor }));
 </script>
 
 <aside class="c-domain-descriptor-panel {className}" aria-label="Descriptor orbit surface">
@@ -214,15 +27,15 @@
 	</div>
 
 	<div class="mode-row" role="tablist" aria-label="Descriptor modes">
-		{#each Object.entries(modeLabels) as [mode, label], entryIndex (entryIndex)}
+		{#each Object.entries(state.modeLabels) as [mode, label], entryIndex (entryIndex)}
 			<button
 				type="button"
-				class:active={activeMode === mode}
+				class:active={state.activeMode === mode}
 				class="mode-button"
 				role="tab"
-				aria-selected={activeMode === mode}
+				aria-selected={state.activeMode === mode}
 				onclick={() => {
-					activeMode = mode as DescriptorMode;
+					state.activeMode = mode as DescriptorMode;
 				}}
 			>
 				{label}
@@ -232,75 +45,75 @@
 
 	<div class="panel-body">
 		<div class="orbit-stage">
-			{#if activeMode === 'contracts'}
+			{#if state.activeMode === 'contracts'}
 				<div class="contract-stage">
 					<OrbitContractL5 opened={true} showCore={false} showCaption={false} />
 				</div>
 			{:else}
 				<OrbitBackground opened={true}>
 					<div class="orbit-core">
-						<span class="orbit-core__label">{modeLabels[activeMode]}</span>
+						<span class="orbit-core__label">{state.modeLabels[state.activeMode]}</span>
 						<strong class="orbit-core__value">{descriptor.family}</strong>
 					</div>
 
-					{#if activeMode === 'architecture'}
-						<Orbit opened={true} radius={72} nodes={architectureNodes} />
-					{:else if activeMode === 'information'}
-						<Orbit opened={true} radius={104} nodes={informationNodes} />
+					{#if state.activeMode === 'architecture'}
+						<Orbit opened={true} radius={72} nodes={state.architectureNodes} />
+					{:else if state.activeMode === 'information'}
+						<Orbit opened={true} radius={104} nodes={state.informationNodes} />
 					{:else}
-						<Orbit opened={true} radius={136} nodes={interactionNodes} />
+						<Orbit opened={true} radius={136} nodes={state.interactionNodes} />
 					{/if}
 				</OrbitBackground>
 			{/if}
 		</div>
 
 		<div class="summary-card">
-			{#if projectionLoading}
+			{#if state.projectionLoading}
 				<p class="summary-card__title">Loading projection</p>
 				<div class="summary-card__list">
 					<p>Fetching descriptor projection data...</p>
 				</div>
-			{:else if projectionError}
+			{:else if state.projectionError}
 				<p class="summary-card__title">Projection error</p>
 				<div class="summary-card__list">
-					<p>{projectionError}</p>
+					<p>{state.projectionError}</p>
 				</div>
-			{:else if !projection}
+			{:else if !state.projection}
 				<p class="summary-card__title">Projection unavailable</p>
 				<div class="summary-card__list">
 					<p>Projection data has not been loaded yet.</p>
 				</div>
-			{:else if activeMode === 'architecture'}
+			{:else if state.activeMode === 'architecture'}
 				<p class="summary-card__title">Recipe and state pipeline</p>
 				<div class="pipeline-graph" aria-label="Architecture pipeline">
-					{#each architecturePipeline as node, index (index)}
+					{#each state.architecturePipeline as node, index (index)}
 						<div class:missing={!node.value} class="pipeline-node">
 							<span class="pipeline-node__kind">{node.kind}</span>
 							<strong class="pipeline-node__label">{node.label}</strong>
 							<p class="pipeline-node__path">{node.value ?? 'missing'}</p>
 						</div>
-						{#if index < architecturePipeline.length - 1}
+						{#if index < state.architecturePipeline.length - 1}
 							<div class="pipeline-arrow" aria-hidden="true">-></div>
 						{/if}
 					{/each}
 				</div>
 				<div class="summary-card__stack">
-					{#each architectureRows as row, rowIndex (rowIndex)}
+					{#each state.architectureRows as row, rowIndex (rowIndex)}
 						<div class="summary-item">
 							<p class="summary-item__label">{row.label}</p>
 							<pre class="summary-item__value">{row.value}</pre>
 						</div>
 					{/each}
 				</div>
-			{:else if activeMode === 'information'}
+			{:else if state.activeMode === 'information'}
 				<p class="summary-card__title">JSON information sources</p>
 				<div class="summary-card__stack">
-					{#each informationGroups as group, groupIndex (groupIndex)}
+					{#each state.informationGroups as group, groupIndex (groupIndex)}
 						<div class="summary-item">
 							<p class="summary-item__label">{group.label}</p>
 							{#if group.items.length > 0}
 								{#each group.items as item, index (index)}
-									<pre class="summary-item__value">#{index + 1} {slicePreview(item)}</pre>
+									<pre class="summary-item__value">#{index + 1} {state.slicePreview(item)}</pre>
 								{/each}
 							{:else}
 								<p class="summary-item__empty">No data.</p>
@@ -308,10 +121,10 @@
 						</div>
 					{/each}
 				</div>
-			{:else if activeMode === 'interaction'}
+			{:else if state.activeMode === 'interaction'}
 				<p class="summary-card__title">Interactive runtime surface</p>
 				<div class="summary-card__stack">
-					{#each interactionRows as row, rowIndex2 (rowIndex2)}
+					{#each state.interactionRows as row, rowIndex2 (rowIndex2)}
 						<div class="summary-item">
 							<p class="summary-item__label">{row.label}</p>
 							<pre class="summary-item__value">{row.value}</pre>
@@ -319,20 +132,20 @@
 					{/each}
 					<div class="summary-item">
 						<p class="summary-item__label">State JSON preview</p>
-						{#if projection.interaction.stateJson.length > 0}
-							<pre class="summary-item__value">{slicePreview(
-									projection.interaction.stateJson[0]
+						{#if state.projection.interaction.stateJson.length > 0}
+							<pre class="summary-item__value">{state.slicePreview(
+									state.projection.interaction.stateJson[0]
 								)}</pre>
 						{:else}
 							<p class="summary-item__empty">No state JSON.</p>
 						{/if}
 					</div>
 				</div>
-			{:else if activeMode === 'controls'}
+			{:else if state.activeMode === 'controls'}
 				<p class="summary-card__title">Control definition sources</p>
 				<div class="summary-card__stack">
-					{#if controlCards.length > 0}
-						{#each controlCards as control, controlIndex (controlIndex)}
+					{#if state.controlCards.length > 0}
+						{#each state.controlCards as control, controlIndex (controlIndex)}
 							<div class="control-card">
 								<div class="control-card__header">
 									<strong>{control.title}</strong>
@@ -352,12 +165,12 @@
 			{:else}
 				<p class="summary-card__title">Contract sources</p>
 				<div class="summary-card__stack">
-					{#if contractFiles.length > 0}
-						{#each contractFiles as file, fileIndex (fileIndex)}
+					{#if state.contractFiles.length > 0}
+						{#each state.contractFiles as file, fileIndex (fileIndex)}
 							<div class="summary-item">
 								<p class="summary-item__label">{file.path}</p>
 								<pre class="summary-item__value">{file.content
-										? slicePreview(file.content)
+										? state.slicePreview(file.content)
 										: 'unreadable'}</pre>
 							</div>
 						{/each}

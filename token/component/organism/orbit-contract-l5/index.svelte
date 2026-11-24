@@ -2,15 +2,8 @@
 	import Icon from '$stylist/svg/component/atom/icon/index.svelte';
 	import type { RecipeOrbitContractL5 } from '$stylist/token/interface/recipe/orbit-contract-l5';
 	import type { TokenIconName } from '$stylist/svg/type/alias/icon-name';
-
-	let {
-		opened: openedExternal = null,
-		showCore = true,
-		showCaption = true
-	}: RecipeOrbitContractL5 = $props();
-
+	import createOrbitContractL5ComponentState from '$stylist/token/component/organism/orbit-contract-l5/state.svelte';
 	type OrbitGroup = 'architecture' | 'information' | 'interaction';
-
 	type OrbitNode = {
 		id: string;
 		icon: TokenIconName;
@@ -19,69 +12,33 @@
 		count: number;
 		radius: string;
 	};
+	let {
+		opened: openedExternal = null,
+		showCore = true,
+		showCaption = true
+	}: RecipeOrbitContractL5 = $props();
 
-	const nodes: OrbitNode[] = [
-		{
-			id: 'component-size',
-			icon: 'component-size',
-			group: 'architecture',
-			index: 0,
-			count: 2,
-			radius: '68px'
-		},
-		{ id: 'style', icon: 'style', group: 'architecture', index: 1, count: 2, radius: '68px' },
-
-		{ id: 'variants', icon: 'variants', group: 'information', index: 0, count: 2, radius: '102px' },
-		{
-			id: 'text-element',
-			icon: 'text-element',
-			group: 'information',
-			index: 1,
-			count: 2,
-			radius: '102px'
-		},
-
-		{
-			id: 'animations',
-			icon: 'animations',
-			group: 'interaction',
-			index: 0,
-			count: 3,
-			radius: '136px'
-		},
-		{ id: 'controls', icon: 'controls', group: 'interaction', index: 1, count: 3, radius: '136px' },
-		{ id: 'state', icon: 'state', group: 'interaction', index: 2, count: 3, radius: '136px' }
-	];
-
-	let openedLocal = $state(false);
-	let active = $state<string>('component-size');
-	const opened = $derived(openedExternal ?? openedLocal);
-
-	function toggleOpened(): void {
-		if (openedExternal === null) {
-			openedLocal = !openedLocal;
-		}
-	}
+	const state = createOrbitContractL5ComponentState(() => ({ opened: openedExternal }));
 </script>
 
-<div class="orbit-l5" class:opened>
+<div class="orbit-l5" class:opened={state.opened}>
 	<div class="stage">
-		<div class="system" class:opened>
+		<div class="system" class:opened={state.opened}>
 			<div class="orbit orbit-architecture" aria-hidden="true"></div>
 			<div class="orbit orbit-information" aria-hidden="true"></div>
 			<div class="orbit orbit-interaction" aria-hidden="true"></div>
 
-			{#each nodes as node (node.id)}
+			{#each state.nodes as node (node.id)}
 				<button
 					type="button"
 					class="node"
-					class:opened
-					class:active={active === node.id}
+					class:opened={state.opened}
+					class:active={state.active === node.id}
 					class:architecture={node.group === 'architecture'}
 					class:information={node.group === 'information'}
 					class:interaction={node.group === 'interaction'}
 					style={`--index:${node.index}; --count:${node.count}; --radius:${node.radius};`}
-					onclick={() => (active = node.id)}
+					onclick={() => (state.active = node.id)}
 					aria-label={node.id}
 					title={node.id}
 				>
@@ -94,14 +51,14 @@
 			<button
 				type="button"
 				class="core"
-				onclick={toggleOpened}
-				aria-expanded={opened}
+				onclick={state.toggleOpened}
+				aria-expanded={state.opened}
 				aria-label="Toggle L5 orbit menu"
 			>
-				<span class="face icon-face" aria-hidden={opened}>
+				<span class="face icon-face" aria-hidden={state.opened}>
 					<Icon name="ontology-node-component" size={16} container="none" />
 				</span>
-				<span class="face close-face" aria-hidden={!opened}>
+				<span class="face close-face" aria-hidden={!state.opened}>
 					<span></span>
 					<span></span>
 				</span>
@@ -111,7 +68,7 @@
 
 	{#if showCaption}
 		<p class="caption">
-			Graph node contract controls: <strong>{active}</strong>
+			Graph node contract controls: <strong>{state.active}</strong>
 		</p>
 	{/if}
 </div>

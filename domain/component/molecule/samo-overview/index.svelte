@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { RecipeSamoOverview } from '$stylist/domain/interface/recipe/samo-overview';
+	import createSamoOverviewComponentState from '$stylist/domain/component/molecule/samo-overview/state.svelte';
 
 	let {
 		eyebrow = 'The methodology behind the library',
@@ -110,17 +111,10 @@
 		class: className = ''
 	}: RecipeSamoOverview = $props();
 
-	let activeAddressIndex = $state(0);
-	let activeCoordinateIndex = $state(0);
-
-	const activeAddress = $derived(addresses[activeAddressIndex] ?? addresses[0]);
-	const activeCoordinate = $derived(coordinates[activeCoordinateIndex] ?? coordinates[0]);
-	const addressSegments = $derived(
-		activeAddress
-			? [activeAddress.domain, activeAddress.cluster, activeAddress.joint, activeAddress.family]
-			: []
-	);
-	const logicalImport = $derived(`$stylist/${addressSegments.join('/')}`);
+	const state = createSamoOverviewComponentState(() => ({
+		coordinates: coordinates,
+		addresses: addresses
+	}));
 </script>
 
 <section class={`c-samo-overview ${className}`}>
@@ -155,10 +149,10 @@
 				<button
 					type="button"
 					role="tab"
-					aria-selected={index === activeAddressIndex}
+					aria-selected={index === state.activeAddressIndex}
 					class="so-address-chip"
-					class:is-active={index === activeAddressIndex}
-					onclick={() => (activeAddressIndex = index)}
+					class:is-active={index === state.activeAddressIndex}
+					onclick={() => (state.activeAddressIndex = index)}
 				>
 					{address.family}
 				</button>
@@ -167,20 +161,20 @@
 
 		<div class="so-path" aria-label="Entity address">
 			<span class="so-path-root">modules/</span>
-			{#if activeAddress}
+			{#if state.activeAddress}
 				<span class="so-path-owner">
-					<span class="so-path-value">{activeAddress.module}</span>
+					<span class="so-path-value">{state.activeAddress.module}</span>
 					<span class="so-path-label">owner</span>
 				</span>
 				<span class="so-path-slash" aria-hidden="true">/</span>
 			{/if}
-			{#each addressSegments as segment, index (index)}
+			{#each state.addressSegments as segment, index (index)}
 				<button
 					type="button"
 					class={`so-path-segment so-path-segment--${index}`}
-					class:is-active={index === activeCoordinateIndex}
-					aria-pressed={index === activeCoordinateIndex}
-					onclick={() => (activeCoordinateIndex = index)}
+					class:is-active={index === state.activeCoordinateIndex}
+					aria-pressed={index === state.activeCoordinateIndex}
+					onclick={() => (state.activeCoordinateIndex = index)}
 				>
 					<span class="so-path-value">{segment}</span>
 					<span class="so-path-label">{coordinates[index]?.name}</span>
@@ -192,32 +186,32 @@
 
 		<p class="so-import">
 			<span class="so-import-label">imported as</span>
-			<code>{logicalImport}</code>
+			<code>{state.logicalImport}</code>
 			<span class="so-import-note">— the module never appears in imports</span>
 		</p>
 
-		{#if activeAddress}
-			<p class="so-caption">{activeAddress.caption}</p>
+		{#if state.activeAddress}
+			<p class="so-caption">{state.activeAddress.caption}</p>
 		{/if}
 
-		{#if activeCoordinate}
-			<div class={`so-coordinate so-coordinate--${activeCoordinateIndex}`}>
+		{#if state.activeCoordinate}
+			<div class={`so-coordinate so-coordinate--${state.activeCoordinateIndex}`}>
 				<div class="so-coordinate-main">
-					<span class="so-coordinate-name">{activeCoordinate.name}</span>
-					<p class="so-coordinate-defines">{activeCoordinate.defines}</p>
+					<span class="so-coordinate-name">{state.activeCoordinate.name}</span>
+					<p class="so-coordinate-defines">{state.activeCoordinate.defines}</p>
 				</div>
 				<dl class="so-coordinate-facts">
 					<div>
 						<dt>Ask yourself</dt>
-						<dd>{activeCoordinate.question}</dd>
+						<dd>{state.activeCoordinate.question}</dd>
 					</div>
 					<div>
 						<dt>Typical values</dt>
-						<dd><code>{activeCoordinate.example}</code></dd>
+						<dd><code>{state.activeCoordinate.example}</code></dd>
 					</div>
 					<div>
 						<dt>Typical mistake</dt>
-						<dd>{activeCoordinate.mistake}</dd>
+						<dd>{state.activeCoordinate.mistake}</dd>
 					</div>
 				</dl>
 			</div>

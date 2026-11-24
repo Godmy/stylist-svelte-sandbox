@@ -1,8 +1,6 @@
 <script lang="ts">
-	import { untrack } from 'svelte';
-	import type { TokenControlDefinition } from '$stylist/token/type/object/token-control-definition';
-	import type { TokenTokenValue as TokenValue } from '$stylist/design-token/type/alias/token-value';
 	import type { RecipeTokenSetting } from '$stylist/token/interface/recipe/token-setting';
+	import createTokenSettingComponentState from '$stylist/token/component/molecule/token-setting/state.svelte';
 
 	let {
 		definition,
@@ -15,117 +13,23 @@
 		onChange
 	}: RecipeTokenSetting = $props();
 
-	const architectureSvgs = import.meta.glob<string>('/src/lib/architecture/data/svg/*.svg', {
-		eager: true,
-		query: '?raw',
-		import: 'default'
-	}) as Record<string, string>;
-	const informationSvgs = import.meta.glob<string>('/src/lib/information/data/svg/*.svg', {
-		eager: true,
-		query: '?raw',
-		import: 'default'
-	}) as Record<string, string>;
-
-	function normalizeSlug(input: string): string {
-		return input
-			.toLowerCase()
-			.replace(/\[[^\]]*]/g, '')
-			.replace(/_/g, '-')
-			.replace(/[^a-z0-9-]+/g, '-')
-			.replace(/--+/g, '-')
-			.replace(/^-|-$/g, '');
-	}
-
-	function mapSvgByName(source: Record<string, string>): Record<string, string> {
-		const out: Record<string, string> = {};
-		for (const [path, svg] of Object.entries(source)) {
-			const fileName = path.split('/').pop() ?? '';
-			const iconName = fileName.replace(/\.svg$/i, '');
-			out[normalizeSlug(iconName)] = svg;
-		}
-		return out;
-	}
-
-	const svgByDomain = {
-		architecture: mapSvgByName(architectureSvgs),
-		information: mapSvgByName(informationSvgs)
-	} as const;
-	const svgByNameGlobal: Record<string, string> = {
-		...svgByDomain.architecture,
-		...svgByDomain.information
-	};
-	const fallbackSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>`;
-
-	function resolveIconSvg(def: TokenControlDefinition): string {
-		const local =
-			svgByDomain[def.functionalTaxonomy as keyof typeof svgByDomain] ?? svgByNameGlobal;
-		const candidates = [normalizeSlug(def.tokenFile), normalizeSlug(def.tokenName)].filter(
-			(name, index, arr) => name.length > 0 && arr.indexOf(name) === index
-		);
-
-		for (const candidate of candidates) {
-			if (local[candidate]) return local[candidate];
-		}
-		for (const candidate of candidates) {
-			if (svgByNameGlobal[candidate]) return svgByNameGlobal[candidate];
-		}
-		return fallbackSvg;
-	}
-
-	function decorateSvg(svg: string): string {
-		return svg.replace('<svg', '<svg class="token-setting-molecule__icon-svg" aria-hidden="true"');
-	}
-
-	function firstOptionValue(def: TokenControlDefinition): TokenValue {
-		if (def.controlKind === 'radio' || def.controlKind === 'select') {
-			return def.options[0]?.value ?? '';
-		}
-		if (def.controlKind === 'range') {
-			return def.min;
-		}
-		return typeof def.defaultValue === 'string' ? def.defaultValue : '';
-	}
-
-	let internalValue = $state<TokenValue>(
-		untrack(() => value ?? definition.defaultValue ?? firstOptionValue(definition))
-	);
-	let dataOnlyOpened = $state(false);
-
-	$effect(() => {
-		if (value !== undefined && value !== internalValue) {
-			internalValue = value;
-		}
-	});
-
-	$effect(() => {
-		if (showTokenDetails && dataOnlyOpened) {
-			dataOnlyOpened = false;
-		}
-	});
-
-	function setValue(next: TokenValue): void {
-		internalValue = next;
-		onChange?.(next);
-	}
-
-	function onIconClick(): void {
-		if (showTokenDetails) return;
-		dataOnlyOpened = !dataOnlyOpened;
-	}
-
-	const iconMarkup = $derived.by(() => decorateSvg(resolveIconSvg(definition)));
-	const panelVisible = $derived.by(() => showTokenDetails || dataOnlyOpened);
+	const state = createTokenSettingComponentState(() => ({
+		definition: definition,
+		value: value,
+		showTokenDetails: showTokenDetails,
+		onChange: onChange
+	}));
 </script>
 
 <div class="token-setting-molecule">
 	<button
 		type="button"
 		class="token-setting-molecule__icon-button"
-		onclick={onIconClick}
+		onclick={state.onIconClick}
 		aria-label={definition.tokenName}
 	>
 		<div class="token-setting-molecule__icon-ring">
-			{@html iconMarkup}
+			{@html state.iconMarkup}
 		</div>
 
 		{#if showDependencies}
@@ -137,7 +41,7 @@
 		{/if}
 	</button>
 
-	{#if panelVisible}
+	{#if state.panelVisible}
 		<aside class="token-setting-molecule__panel">
 			{#if showTokenDetails}
 				<header class="token-setting-molecule__panel-header">
@@ -154,25 +58,29 @@
 							min={definition.min}
 							max={definition.max}
 							step={definition.step ?? 1}
-							value={typeof internalValue === 'number' ? internalValue : Number(definition.min)}
-							oninput={(event) => setValue(Number((event.target as HTMLInputElement).value))}
+							value={typeof state.internalValue === 'number'
+								? state.internalValue
+								: Number(definition.min)}
+							oninput={(event) => state.setValue(Number((event.target as HTMLInputElement).value))}
 						/>
-						<span>{String(internalValue)}</span>
+						<span>{String(state.internalValue)}</span>
 					</div>
 				{:else if definition.controlKind === 'text'}
 					<input
 						class="token-setting-molecule__select"
 						type="text"
-						value={typeof internalValue === 'string' ? internalValue : String(internalValue ?? '')}
-						oninput={(event) => setValue((event.target as HTMLInputElement).value)}
+						value={typeof state.internalValue === 'string'
+							? state.internalValue
+							: String(state.internalValue ?? '')}
+						oninput={(event) => state.setValue((event.target as HTMLInputElement).value)}
 					/>
 				{:else if defaultTokenView === 'radio'}
 					<div class="token-setting-molecule__chips">
 						{#each definition.options as option, optionIndex (optionIndex)}
 							<button
 								type="button"
-								class={`token-setting-molecule__chip ${internalValue === option.value ? 'token-setting-molecule__chip--active' : ''}`.trim()}
-								onclick={() => setValue(option.value)}
+								class={`token-setting-molecule__chip ${state.internalValue === option.value ? 'token-setting-molecule__chip--active' : ''}`.trim()}
+								onclick={() => state.setValue(option.value)}
 							>
 								{option.label}
 							</button>
@@ -181,11 +89,11 @@
 				{:else}
 					<select
 						class="token-setting-molecule__select"
-						value={String(internalValue)}
+						value={String(state.internalValue)}
 						onchange={(event) => {
 							const next = (event.target as HTMLSelectElement).value;
 							const option = definition.options.find((item) => String(item.value) === next);
-							setValue(option?.value ?? next);
+							state.setValue(option?.value ?? next);
 						}}
 					>
 						{#each definition.options as option, optionIndex2 (optionIndex2)}

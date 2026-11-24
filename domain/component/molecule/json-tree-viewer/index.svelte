@@ -1,48 +1,23 @@
 <script lang="ts">
 	import type { RecipeJsonTreeViewer } from '$stylist/domain/interface/recipe/json-tree-viewer';
+	import createJsonTreeViewerComponentState from '$stylist/domain/component/molecule/json-tree-viewer/state.svelte';
 
 	let { content = '', class: className = '' }: RecipeJsonTreeViewer = $props();
 
-	const parsed = $derived.by(() => {
-		try {
-			return { value: JSON.parse(content) as unknown, error: null };
-		} catch (e) {
-			return { value: null, error: (e as Error).message };
-		}
-	});
-
-	let collapsed = $state(new Set<string>());
-
-	function toggle(path: string) {
-		const next = new Set(collapsed);
-		if (next.has(path)) next.delete(path);
-		else next.add(path);
-		collapsed = next;
-	}
-
-	function isOpen(path: string) {
-		return !collapsed.has(path);
-	}
-
-	function typeOf(value: unknown): 'object' | 'array' | 'string' | 'number' | 'boolean' | 'null' {
-		if (value === null) return 'null';
-		if (Array.isArray(value)) return 'array';
-		if (typeof value === 'object') return 'object';
-		return typeof value as 'string' | 'number' | 'boolean';
-	}
+	const state = createJsonTreeViewerComponentState(() => ({ content: content }));
 </script>
 
 {#snippet renderNode(value: unknown, key: string | null, path: string, depth: number)}
-	{@const t = typeOf(value)}
+	{@const t = state.typeOf(value)}
 	{#if t === 'object' || t === 'array'}
 		{@const entries =
 			t === 'array'
 				? (value as unknown[]).map((v, i) => [String(i), v] as [string, unknown])
 				: Object.entries(value as Record<string, unknown>)}
-		{@const open = isOpen(path)}
+		{@const open = state.isOpen(path)}
 		{@const count = entries.length}
 		<div class="node" style:padding-left="{depth * 16}px">
-			<button type="button" class="toggle" onclick={() => toggle(path)} aria-expanded={open}>
+			<button type="button" class="toggle" onclick={() => state.toggle(path)} aria-expanded={open}>
 				<span class="chevron">{open ? '▾' : '▸'}</span>
 			</button>
 			{#if key !== null}<span class="key">"{key}"</span><span class="punct">: </span>{/if}
@@ -77,11 +52,11 @@
 {/snippet}
 
 <div class="c-json-tree-viewer {className}">
-	{#if parsed.error}
-		<p class="parse-error">Invalid JSON: {parsed.error}</p>
+	{#if state.parsed.error}
+		<p class="parse-error">Invalid JSON: {state.parsed.error}</p>
 	{:else}
 		<div class="tree">
-			{@render renderNode(parsed.value, null, 'root', 0)}
+			{@render renderNode(state.parsed.value, null, 'root', 0)}
 		</div>
 	{/if}
 </div>

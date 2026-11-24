@@ -4,157 +4,49 @@
 	import CardShell from '$stylist/token/component/atom/card-shell/index.svelte';
 	import OrbitBackground from '$stylist/token/component/atom/orbit-background/index.svelte';
 	import Orbit from '$stylist/token/component/molecule/orbit/index.svelte';
-	import { L6_TOKEN_DEFINITIONS } from '$stylist/token/const/object/orbit-control-definition';
+
 	import type { RecipePrismaticOrbitL6 } from '$stylist/token/interface/recipe/prismatic-orbit-l6';
+	import createPrismaticOrbitL6ComponentState from '$stylist/token/component/organism/prismatic-orbit-l6/state.svelte';
 
 	let _props: RecipePrismaticOrbitL6 = $props();
 
-	let expanded = $state(false);
-	let orbitOpen = $state(false);
-	let seedX = $state(64);
-	let seedY = $state(118);
-	let draggingSeed = $state(false);
-	let seedMoved = $state(false);
-	let shellElement = $state<HTMLElement | null>(null);
-
-	let dragOffsetX = 0;
-	let dragOffsetY = 0;
-	const SEED_SIZE = 48;
-	const SHELL_WIDTH = 500;
-	const SHELL_HEIGHT = 230;
-	const CARD_OFFSET_X = 0;
-	const CARD_OFFSET_Y = 0;
-	const ORBIT_OFFSET_X = -155;
-	const ORBIT_OFFSET_Y = -160;
-
-	const items = [
-		{ id: 'architecture', label: 'Architecture', icon: 'component-size' },
-		{ id: 'information', label: 'Information', icon: 'variants' },
-		{ id: 'interaction', label: 'Interaction', icon: 'controls' },
-		{ id: 'state', label: 'State', icon: 'state' }
-	] as const;
-
-	const architectureNodes = [
-		{
-			id: 'component-size',
-			icon: 'component-size',
-			label: 'Component Size',
-			definition: L6_TOKEN_DEFINITIONS['component-size']
-		},
-		{ id: 'style', icon: 'style', label: 'Style', definition: L6_TOKEN_DEFINITIONS.style }
-	] as const;
-
-	const informationNodes = [
-		{
-			id: 'variants',
-			icon: 'variants',
-			label: 'Variants',
-			definition: L6_TOKEN_DEFINITIONS.variants
-		},
-		{
-			id: 'text-element',
-			icon: 'text-element',
-			label: 'Text Element',
-			definition: L6_TOKEN_DEFINITIONS['text-element']
-		}
-	] as const;
-
-	const interactionNodes = [
-		{
-			id: 'animations',
-			icon: 'animations',
-			label: 'Animations',
-			definition: L6_TOKEN_DEFINITIONS.animations
-		},
-		{
-			id: 'controls',
-			icon: 'controls',
-			label: 'Controls',
-			definition: L6_TOKEN_DEFINITIONS.controls
-		},
-		{ id: 'state', icon: 'state', label: 'State', definition: L6_TOKEN_DEFINITIONS.state }
-	] as const;
-
-	function clamp(value: number, min: number, max: number): number {
-		return Math.max(min, Math.min(max, value));
-	}
-
-	function handleSeedPointerDown(event: PointerEvent): void {
-		if (event.button !== 0) return;
-		const rect = shellElement?.getBoundingClientRect();
-		if (!rect) return;
-		draggingSeed = true;
-		seedMoved = false;
-		dragOffsetX = event.clientX - rect.left - seedX;
-		dragOffsetY = event.clientY - rect.top - seedY;
-		(event.currentTarget as HTMLElement).setPointerCapture(event.pointerId);
-	}
-
-	function handleWindowPointerMove(event: PointerEvent): void {
-		if (!draggingSeed) return;
-		const rect = shellElement?.getBoundingClientRect();
-		if (!rect) return;
-		seedMoved = true;
-		seedX = clamp(event.clientX - rect.left - dragOffsetX, 0, SHELL_WIDTH - SEED_SIZE);
-		seedY = clamp(event.clientY - rect.top - dragOffsetY, 0, SHELL_HEIGHT - SEED_SIZE);
-	}
-
-	function handleWindowPointerUp(): void {
-		draggingSeed = false;
-	}
-
-	function handleSeedClick(): void {
-		if (!seedMoved) {
-			if (!expanded) {
-				expanded = true;
-				orbitOpen = false;
-			} else {
-				orbitOpen = !orbitOpen;
-			}
-		}
-		seedMoved = false;
-	}
-
-	function closeCard(): void {
-		expanded = false;
-		orbitOpen = false;
-	}
+	const state = createPrismaticOrbitL6ComponentState();
 </script>
 
 <svelte:window
-	onpointermove={handleWindowPointerMove}
-	onpointerup={handleWindowPointerUp}
-	onpointercancel={handleWindowPointerUp}
+	onpointermove={state.handleWindowPointerMove}
+	onpointerup={state.handleWindowPointerUp}
+	onpointercancel={state.handleWindowPointerUp}
 />
 
-<div class="l6-shell" bind:this={shellElement}>
+<div class="l6-shell" bind:this={state.shellElement}>
 	<CardOpen
-		{orbitOpen}
-		dragging={draggingSeed}
-		style={`left:${seedX}px; top:${seedY}px;`}
-		onPointerDown={handleSeedPointerDown}
-		onClick={handleSeedClick}
+		orbitOpen={state.orbitOpen}
+		dragging={state.draggingSeed}
+		style={`left:${state.seedX}px; top:${state.seedY}px;`}
+		onPointerDown={state.handleSeedPointerDown}
+		onClick={state.handleSeedClick}
 	/>
 
 	<div
 		class="orbit-layer"
-		class:opened={orbitOpen}
-		aria-hidden={!orbitOpen}
-		style={`left:${seedX + ORBIT_OFFSET_X}px; top:${seedY + ORBIT_OFFSET_Y}px;`}
+		class:opened={state.orbitOpen}
+		aria-hidden={!state.orbitOpen}
+		style={`left:${state.seedX + state.ORBIT_OFFSET_X}px; top:${state.seedY + state.ORBIT_OFFSET_Y}px;`}
 	>
-		<OrbitBackground opened={orbitOpen}>
-			<Orbit opened={orbitOpen} radius={68} nodes={architectureNodes} />
-			<Orbit opened={orbitOpen} radius={102} nodes={informationNodes} />
-			<Orbit opened={orbitOpen} radius={136} nodes={interactionNodes} />
+		<OrbitBackground opened={state.orbitOpen}>
+			<Orbit opened={state.orbitOpen} radius={68} nodes={state.architectureNodes} />
+			<Orbit opened={state.orbitOpen} radius={102} nodes={state.informationNodes} />
+			<Orbit opened={state.orbitOpen} radius={136} nodes={state.interactionNodes} />
 		</OrbitBackground>
 	</div>
 
 	<div
-		style={`left:${seedX + CARD_OFFSET_X}px; top:${seedY + CARD_OFFSET_Y}px; position:absolute;`}
+		style={`left:${state.seedX + state.CARD_OFFSET_X}px; top:${state.seedY + state.CARD_OFFSET_Y}px; position:absolute;`}
 	>
-		<CardShell {expanded} title="Graph Node Controls">
-			{#each items as item, index (index)}
-				<span class:hidden={!expanded} style={`--i:${index};`}>
+		<CardShell expanded={state.expanded} title="Graph Node Controls">
+			{#each state.items as item, index (index)}
+				<span class:hidden={!state.expanded} style={`--i:${index};`}>
 					<button type="button" class="item-btn" aria-label={item.label} title={item.label}>
 						<span class="dot"></span>
 						<em>{item.label}</em>
@@ -163,7 +55,7 @@
 			{/each}
 
 			{#snippet close()}
-				<CardClose {expanded} onClick={closeCard} />
+				<CardClose expanded={state.expanded} onClick={state.closeCard} />
 			{/snippet}
 		</CardShell>
 	</div>

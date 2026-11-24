@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { RecipeSamoChangeFlow } from '$stylist/domain/interface/recipe/samo-change-flow';
+	import createSamoChangeFlowComponentState from '$stylist/domain/component/molecule/samo-change-flow/state.svelte';
 
 	let {
 		eyebrow = 'Chapter 01',
@@ -85,32 +86,7 @@
 		class: className = ''
 	}: RecipeSamoChangeFlow = $props();
 
-	let activeIndex = $state(0);
-	let playing = $state(false);
-
-	const activeStep = $derived(steps[activeIndex] ?? steps[0]);
-
-	$effect(() => {
-		if (!playing) return;
-		const timer = setInterval(() => {
-			if (activeIndex >= steps.length - 1) {
-				playing = false;
-				return;
-			}
-			activeIndex += 1;
-		}, 1800);
-		return () => clearInterval(timer);
-	});
-
-	function togglePlay() {
-		if (!playing && activeIndex >= steps.length - 1) activeIndex = 0;
-		playing = !playing;
-	}
-
-	function selectStep(index: number) {
-		playing = false;
-		activeIndex = index;
-	}
+	const state = createSamoChangeFlowComponentState(() => ({ steps: steps }));
 </script>
 
 <section class={`c-samo-change-flow ${className}`}>
@@ -120,9 +96,14 @@
 			<h2 class="scf-title">{title}</h2>
 			<p class="scf-description">{description}</p>
 		</div>
-		<button type="button" class="scf-play" class:is-playing={playing} onclick={togglePlay}>
-			<span class="scf-play-icon" aria-hidden="true">{playing ? '❚❚' : '▶'}</span>
-			{playing ? 'Pause' : 'Play the route'}
+		<button
+			type="button"
+			class="scf-play"
+			class:is-playing={state.playing}
+			onclick={state.togglePlay}
+		>
+			<span class="scf-play-icon" aria-hidden="true">{state.playing ? '❚❚' : '▶'}</span>
+			{state.playing ? 'Pause' : 'Play the route'}
 		</button>
 	</header>
 
@@ -133,11 +114,11 @@
 					<button
 						type="button"
 						class="scf-step"
-						class:is-active={index === activeIndex}
-						class:is-done={index < activeIndex}
-						aria-current={index === activeIndex ? 'step' : undefined}
+						class:is-active={index === state.activeIndex}
+						class:is-done={index < state.activeIndex}
+						aria-current={index === state.activeIndex ? 'step' : undefined}
 						data-actor={step.actor.toLowerCase()}
-						onclick={() => selectStep(index)}
+						onclick={() => state.selectStep(index)}
 					>
 						<span class="scf-dot">{index + 1}</span>
 						<span class="scf-step-title">{step.title}</span>
@@ -147,21 +128,22 @@
 			{/each}
 		</ol>
 
-		{#if activeStep}
-			<article class="scf-panel" data-actor={activeStep.actor.toLowerCase()}>
+		{#if state.activeStep}
+			<article class="scf-panel" data-actor={state.activeStep.actor.toLowerCase()}>
 				<div class="scf-panel-head">
-					<span class="scf-panel-actor">{activeStep.actor}</span>
-					<span class="scf-panel-count">{activeIndex + 1} / {steps.length}</span>
+					<span class="scf-panel-actor">{state.activeStep.actor}</span>
+					<span class="scf-panel-count">{state.activeIndex + 1} / {steps.length}</span>
 				</div>
-				<h3 class="scf-panel-title">{activeStep.title}</h3>
-				<p class="scf-panel-desc">{activeStep.description}</p>
-				<pre class="scf-command"><code>{activeStep.command}</code></pre>
+				<h3 class="scf-panel-title">{state.activeStep.title}</h3>
+				<p class="scf-panel-desc">{state.activeStep.description}</p>
+				<pre class="scf-command"><code>{state.activeStep.command}</code></pre>
 				<p class="scf-result">
 					<span class="scf-result-arrow" aria-hidden="true">→</span>
-					{activeStep.result}
+					{state.activeStep.result}
 				</p>
 				<div class="scf-progress" aria-hidden="true">
-					<span style={`width:${((activeIndex + 1) / Math.max(1, steps.length)) * 100}%`}></span>
+					<span style={`width:${((state.activeIndex + 1) / Math.max(1, steps.length)) * 100}%`}
+					></span>
 				</div>
 			</article>
 		{/if}

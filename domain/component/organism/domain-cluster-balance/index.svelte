@@ -1,68 +1,10 @@
 <script lang="ts">
-	import type { DomainFileMetric } from '$stylist/domain/type/object/domain-file-metric';
-	import type { DomainFileComponentMetric } from '$stylist/domain/type/object/domain-file-component-metric';
 	import type { RecipeDomainClusterBalance } from '$stylist/domain/interface/recipe/domain-cluster-balance';
-
+	import createDomainClusterBalanceComponentState from '$stylist/domain/component/organism/domain-cluster-balance/state.svelte';
 	type AnomalyMetricKey = 'components' | 'const' | 'type' | 'interface' | 'class' | 'function';
-
 	let { domains, class: className = '' }: RecipeDomainClusterBalance = $props();
 
-	const anomalyMetricLabels: Record<AnomalyMetricKey, string> = {
-		components: 'Components',
-		const: 'Const files',
-		type: 'Type files',
-		interface: 'Interface files',
-		class: 'Class files',
-		function: 'Function files'
-	};
-	const anomalyMetricKeys = Object.keys(anomalyMetricLabels) as AnomalyMetricKey[];
-	const componentKeys: (keyof DomainFileComponentMetric)[] = [
-		'atoms',
-		'molecules',
-		'organisms',
-		'templates',
-		'pages'
-	];
-
-	function formatDomainName(value: string): string {
-		return value
-			.split('-')
-			.filter(Boolean)
-			.map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-			.join(' ');
-	}
-
-	function getPercentage(value: number, max: number): number {
-		return max <= 0 ? 0 : Math.round((value / max) * 100);
-	}
-
-	function getClusterFileCount(domain: DomainFileMetric, clusterName: string): number {
-		return domain.clusters.find((cluster) => cluster.name === clusterName)?.fileCount ?? 0;
-	}
-
-	function getComponentTotal(domain: DomainFileMetric): number {
-		return componentKeys.reduce((total, key) => total + domain.components[key], 0);
-	}
-
-	const anomalyRows = $derived(
-		domains.map((domain) => ({
-			domain: domain.name,
-			components: getComponentTotal(domain),
-			const: getClusterFileCount(domain, 'const'),
-			type: getClusterFileCount(domain, 'type'),
-			interface: getClusterFileCount(domain, 'interface'),
-			class: getClusterFileCount(domain, 'class'),
-			function: getClusterFileCount(domain, 'function')
-		}))
-	);
-	const anomalyMaxByMetric = $derived({
-		components: Math.max(1, ...anomalyRows.map((row) => row.components)),
-		const: Math.max(1, ...anomalyRows.map((row) => row.const)),
-		type: Math.max(1, ...anomalyRows.map((row) => row.type)),
-		interface: Math.max(1, ...anomalyRows.map((row) => row.interface)),
-		class: Math.max(1, ...anomalyRows.map((row) => row.class)),
-		function: Math.max(1, ...anomalyRows.map((row) => row.function))
-	});
+	const state = createDomainClusterBalanceComponentState(() => ({ domains: domains }));
 </script>
 
 <article class="c-domain-cluster-balance {className}">
@@ -78,24 +20,24 @@
 			<thead>
 				<tr>
 					<th>Domain</th>
-					{#each anomalyMetricKeys as key, keyIndex (keyIndex)}
-						<th>{anomalyMetricLabels[key]}</th>
+					{#each state.anomalyMetricKeys as key, keyIndex (keyIndex)}
+						<th>{state.anomalyMetricLabels[key]}</th>
 					{/each}
 				</tr>
 			</thead>
 			<tbody>
-				{#each anomalyRows as row (row.domain)}
+				{#each state.anomalyRows as row (row.domain)}
 					<tr>
 						<th scope="row">
-							<span>{formatDomainName(row.domain)}</span>
+							<span>{state.formatDomainName(row.domain)}</span>
 							<code>{row.domain}</code>
 						</th>
-						{#each anomalyMetricKeys as key, keyIndex2 (keyIndex2)}
+						{#each state.anomalyMetricKeys as key, keyIndex2 (keyIndex2)}
 							<td>
 								<div
 									class="heat-cell"
-									style={`--heat: ${getPercentage(row[key], anomalyMaxByMetric[key])}%;`}
-									title={`${anomalyMetricLabels[key]}: ${row[key]}`}
+									style={`--heat: ${state.getPercentage(row[key], state.anomalyMaxByMetric[key])}%;`}
+									title={`${state.anomalyMetricLabels[key]}: ${row[key]}`}
 								>
 									<strong>{row[key]}</strong>
 								</div>

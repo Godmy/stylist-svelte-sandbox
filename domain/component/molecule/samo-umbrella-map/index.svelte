@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { RecipeSamoUmbrellaMap } from '$stylist/domain/interface/recipe/samo-umbrella-map';
+	import createSamoUmbrellaMapComponentState from '$stylist/domain/component/molecule/samo-umbrella-map/state.svelte';
 
 	let {
 		eyebrow = 'Chapter 03',
@@ -157,10 +158,7 @@
 		class: className = ''
 	}: RecipeSamoUmbrellaMap = $props();
 
-	let activeIndex = $state(0);
-
-	const activeModule = $derived(modules[activeIndex] ?? modules[0]);
-	const publicCount = $derived(modules.filter((module) => module.visibility === 'public').length);
+	const state = createSamoUmbrellaMapComponentState(() => ({ modules: modules }));
 </script>
 
 <section class={`c-samo-umbrella-map ${className}`}>
@@ -175,7 +173,7 @@
 			<div class="sum-tree-root">
 				<span class="sum-tree-root-name">stylist-svelte/</span>
 				<span class="sum-tree-root-meta">
-					{publicCount} public · {modules.length - publicCount} private
+					{state.publicCount} public · {modules.length - state.publicCount} private
 				</span>
 			</div>
 			<ul class="sum-tree-list">
@@ -184,10 +182,10 @@
 						<button
 							type="button"
 							role="tab"
-							aria-selected={index === activeIndex}
+							aria-selected={index === state.activeIndex}
 							class={`sum-node sum-node--${module.visibility}`}
-							class:is-active={index === activeIndex}
-							onclick={() => (activeIndex = index)}
+							class:is-active={index === state.activeIndex}
+							onclick={() => (state.activeIndex = index)}
 						>
 							<span class="sum-node-branch" aria-hidden="true">├─</span>
 							<span class="sum-node-name">{module.name}/</span>
@@ -200,27 +198,27 @@
 			</ul>
 		</div>
 
-		{#if activeModule}
-			<article class={`sum-detail sum-node--${activeModule.visibility}`}>
-				<code class="sum-detail-path">{activeModule.path}/</code>
-				<h3 class="sum-detail-name">{activeModule.name}</h3>
-				<p class="sum-detail-note">{activeModule.note}</p>
+		{#if state.activeModule}
+			<article class={`sum-detail sum-node--${state.activeModule.visibility}`}>
+				<code class="sum-detail-path">{state.activeModule.path}/</code>
+				<h3 class="sum-detail-name">{state.activeModule.name}</h3>
+				<p class="sum-detail-note">{state.activeModule.note}</p>
 
 				<p class="sum-detail-label">Domains it owns</p>
-				{#if activeModule.domains.length > 0}
+				{#if state.activeModule.domains.length > 0}
 					<ul class="sum-chips">
-						{#each activeModule.domains as domain, domainIndex (domainIndex)}
-							<li class:is-nested={activeModule.nested.includes(domain)}>{domain}</li>
+						{#each state.activeModule.domains as domain, domainIndex (domainIndex)}
+							<li class:is-nested={state.activeModule.nested.includes(domain)}>{domain}</li>
 						{/each}
 					</ul>
 				{:else}
 					<p class="sum-empty">None directly — only nested repositories.</p>
 				{/if}
 
-				{#if activeModule.nested.length > 0}
+				{#if state.activeModule.nested.length > 0}
 					<p class="sum-detail-label">Nested repositories (own .gitmodules)</p>
 					<ul class="sum-chips sum-chips--nested">
-						{#each activeModule.nested as nested, nestedIndex (nestedIndex)}
+						{#each state.activeModule.nested as nested, nestedIndex (nestedIndex)}
 							<li>{nested}</li>
 						{/each}
 					</ul>

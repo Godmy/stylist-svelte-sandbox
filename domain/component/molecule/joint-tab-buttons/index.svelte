@@ -1,10 +1,10 @@
 <script lang="ts">
 	import Icon from '$stylist/svg/component/atom/icon/index.svelte';
 	import Flag from '$stylist/svg/component/atom/flag/index.svelte';
-	import { TOKEN_FLAG_REGISTRY } from '$stylist/svg/const/record/flag-registry';
-	import { resolveFamilyIcon } from '$stylist/domain/function/resolve/family-icon';
+
 	import type { RecipeJointTabButtons } from '$stylist/domain/interface/recipe/joint-tab-buttons';
-	import { isIconName } from '$stylist/svg/function/check/icon-name';
+
+	import createJointTabButtonsComponentState from '$stylist/domain/component/molecule/joint-tab-buttons/state.svelte';
 
 	let {
 		files = [],
@@ -24,27 +24,27 @@
 		class: className = ''
 	}: RecipeJointTabButtons = $props();
 
-	// Flags of `data/flag` show themselves; everything else takes a fitting icon or stays empty.
-	const flagCode = $derived(
-		activeJoint === 'flag' && selectedEntityName in TOKEN_FLAG_REGISTRY ? selectedEntityName : null
-	);
-	const iconName = $derived.by(() => {
-		const picked = flagCode ? null : resolveFamilyIcon(selectedEntityName, isIconName);
-		return isIconName(picked) ? picked : null;
-	});
+	const state = createJointTabButtonsComponentState(() => ({
+		selectedEntityName: selectedEntityName,
+		activeJoint: activeJoint
+	}));
 </script>
 
 <div class="c-joint-tab-buttons {className}" aria-label="Files">
 	<div class="action-group">
 		<div
 			class="entity-icon-shell"
-			class:entity-icon-shell--empty={!iconName && !flagCode}
-			title={flagCode ? `Flag: ${flagCode}` : iconName ? `Icon: ${iconName}` : undefined}
+			class:entity-icon-shell--empty={!state.iconName && !state.flagCode}
+			title={state.flagCode
+				? `Flag: ${state.flagCode}`
+				: state.iconName
+					? `Icon: ${state.iconName}`
+					: undefined}
 		>
-			{#if flagCode}
-				<Flag code={flagCode} size={16} />
-			{:else if iconName}
-				<Icon name={iconName} size="sm" />
+			{#if state.flagCode}
+				<Flag code={state.flagCode} size={16} />
+			{:else if state.iconName}
+				<Icon name={state.iconName} size="sm" />
 			{/if}
 		</div>
 	</div>

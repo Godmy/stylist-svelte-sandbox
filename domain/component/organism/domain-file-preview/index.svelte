@@ -1,21 +1,17 @@
 <script lang="ts">
+	// Fullscreen hides the panel behind a bookmark tab on the right edge; it opens as a drawer.
 	import type { Component } from 'svelte';
 	import MarkdownRenderer from '$stylist/domain/component/organism/markdown-renderer/index.svelte';
 	import JsonTreeViewer from '$stylist/domain/component/molecule/json-tree-viewer/index.svelte';
 	import FlatTree from '$stylist/tree/component/molecule/flat-tree/index.svelte';
 	import StoryControls from '$stylist/domain/component/molecule/story-controls/index.svelte';
-	import { ManagerStoryViewportContext } from '$stylist/theme/class/manager/story-viewport-context';
+
 	import type { RecipeDomainFilePreview } from '$stylist/domain/interface/recipe/domain-file-preview';
 	import type { ContractStory } from '$stylist/html/interface/contract/story';
-	import type { HtmlNode } from '$stylist/html/type/alias/html-node';
-	import { createHtmlStoryNode } from '$stylist/html/function/create/html-story-node';
-	import { serializeHtmlMarkup } from '$stylist/html/function/serialize/html-markup';
+
 	import PreviewSettings from '$stylist/domain/component/molecule/preview-settings/index.svelte';
-	import { resolvePreviewSkin } from '$stylist/domain/function/resolve/preview-skin';
-	import type { ContractPreviewEnvironment } from '$stylist/domain/interface/contract/preview-environment';
-	import { captureElementImage } from '$stylist/domain/function/capture/element-image';
-	import { resolveContentArea } from '$stylist/domain/function/resolve/content-area';
-	import { serializeUnknownError } from '$stylist/domain/function/serialize/unknown-error';
+
+	import createDomainFilePreviewComponentState from '$stylist/domain/component/organism/domain-file-preview/state.svelte';
 
 	let {
 		previewMode = 'file',
@@ -39,202 +35,19 @@
 		storyPath = '',
 		class: className = ''
 	}: RecipeDomainFilePreview = $props();
-
-	ManagerStoryViewportContext.set(
-		() => storyDevice,
-		() => fullscreen,
-		() => true
-	);
-	let frame = $state<HTMLIFrameElement>();
-	let frameHost = $state<HTMLDivElement>();
-	let availableWidth = $state(0);
-	let availableHeight = $state(0);
-	const viewportWidth = $derived(
-		storyWidth ?? { mobile: 375, tablet: 768, desktop: 1440, fullscreen: null }[storyDevice]
-	);
-	const frameScale = $derived(
-		viewportWidth && availableWidth ? Math.min(1, availableWidth / viewportWidth) : 1
-	);
-	$effect(() => {
-		if (!frameHost) return;
-		const observer = new ResizeObserver(([entry]) => {
-			availableWidth = entry.contentRect.width;
-			availableHeight = entry.contentRect.height;
-		});
-		observer.observe(frameHost);
-		return () => observer.disconnect();
-	});
-	const frameStory = $derived(storyPath.replace(/^\/?src\/lib\//, '').replace(/^\//, ''));
-	const frameUrl = $derived(`/preview?story=${encodeURIComponent(frameStory)}`);
-	// `index.story.ts`: controls live here, the iframe only renders the component with args.
-	const story = $derived(
-		storyPath.endsWith('.story.ts') ? (storyPreviewComponent as ContractStory) : null
-	);
-	let storyArgs: Record<string, unknown> | undefined;
-	let storyContent: readonly HtmlNode[] | undefined;
-	let environment = $state<ContractPreviewEnvironment>({});
-	const visualHtml = $derived(resolvePreviewSkin(storyPath));
-	$effect(() => {
-		// Story args are per story. Appearance is a shared explicit environment choice.
-		// eslint-disable-next-line @typescript-eslint/no-unused-expressions
-		storyPath;
-		storyArgs = undefined;
-		storyContent = undefined;
-	});
-	const family = $derived(storyPath.split('/').at(-2) ?? '');
-	const storyTitle = $derived(
-		story?.title ??
-			family
-				.split('-')
-				.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-				.join(' ')
-	);
-	// `/src/lib/html/component/atom/a/index.story.ts` -> `html / atom / a`
-	const storyLocation = $derived(
-		storyPath
-			.replace(/^\/?src\/lib\//, '')
-			.split('/')
-			.slice(0, -1)
-			.filter((part) => part !== 'component')
-			.join(' / ')
-	);
-	// Fullscreen hides the panel behind a bookmark tab on the right edge; it opens as a drawer.
 	const panelId = $props.id();
-	let panelOpen = $state(false);
-	$effect(() => {
-		if (!fullscreen) panelOpen = false;
-	});
-	let capturing = $state(false);
-	let captureError = $state('');
-	/** One click: the painted component (not the whole frame) is saved as `<family>.png`. */
-	async function takeScreenshot() {
-		// Contract canvas first, then the legacy `Story` surface (its own controls stay out).
-		const canvas = ['.c-story-canvas', '.component-preview__surface', '.preview-story > *']
-			.map((selector) => frame?.contentDocument?.querySelector(selector))
-			.find(Boolean);
-		if (!canvas || capturing) return;
-		capturing = true;
-		captureError = '';
-		try {
-			const blob = await captureElementImage(canvas, resolveContentArea(canvas));
-			const link = document.createElement('a');
-			link.href = URL.createObjectURL(blob);
-			link.download = `${family || 'story'}.png`;
-			link.click();
-			setTimeout(() => URL.revokeObjectURL(link.href));
-		} catch (error) {
-			captureError = `Screenshot failed: ${serializeUnknownError(error).message}`;
-		} finally {
-			capturing = false;
-		}
-	}
-	// html stories are elements: the HTML tab shows the story tree (context included) as markup.
-	const storyMarkup = $derived.by(() => {
-		if (!story || !storyPath.includes('/html/component/')) return undefined;
-		// Foreign content is supplied by custom render components, not HtmlNode.
-		if (family === 'svg' || family === 'math') return undefined;
-		const current = story;
-		return (args: Record<string, unknown>, content?: readonly HtmlNode[]) => {
-			try {
-				const node = createHtmlStoryNode(family, current, args, content);
-				return node ? serializeHtmlMarkup(node) : null;
-			} catch {
-				return 'Unable to serialize this content as HTML.';
-			}
-		};
-	});
-	// The frame stays transparent until it has the theme and the story painted: no white flash.
-	// Readiness belongs to one iframe element: returning from another tab mounts a new frame.
-	let readyUrl = $state('');
-	let readyFrame = $state<HTMLIFrameElement>();
-	const frameReady = $derived(readyUrl === frameUrl && !!frame && readyFrame === frame);
-	$effect(() => {
-		// Every navigation of the frame starts unready, also when it returns to an earlier story.
-		// eslint-disable-next-line @typescript-eslint/no-unused-expressions
-		frameUrl;
-		readyUrl = '';
-	});
-	// Loading has two stages (story module, then frame) with a shine each; the second picks up
-	// the first one's phase, so a slow load shows one continuous sweep instead of a restart.
-	let shineStart = 0;
-	let shineEnd = -Infinity;
-	let shinesShown = 0;
-	const continueShine = (node: HTMLElement) => {
-		const now = performance.now();
-		if (shinesShown === 0 && now - shineEnd > 100) shineStart = now;
-		shinesShown++;
-		node.style.setProperty('--shine-elapsed', `${now - shineStart}ms`);
-		return () => {
-			shinesShown--;
-			shineEnd = performance.now();
-		};
-	};
-	function sendArgs(args: Record<string, unknown>, content?: readonly HtmlNode[]) {
-		storyArgs = args;
-		storyContent = content;
-		frame?.contentWindow?.postMessage(
-			{ type: 'stylist:story-args', args, content },
-			window.location.origin
-		);
-	}
-	function syncFrame() {
-		frame?.contentWindow?.postMessage(
-			{ type: 'stylist:viewport', device: storyDevice, fullscreen },
-			window.location.origin
-		);
-		if (storyArgs) sendArgs(storyArgs, storyContent);
-		frame?.contentWindow?.postMessage(
-			{
-				type: 'stylist:preview-environment',
-				settings: visualHtml ? $state.snapshot(environment) : { locale: environment.locale }
-			},
-			window.location.origin
-		);
-	}
-	function receiveFrame(event: MessageEvent) {
-		if (event.origin !== window.location.origin || event.source !== frame?.contentWindow) return;
-		if (event.data?.type === 'stylist:preview-ready') syncFrame();
-		// A late message from the previous document must not mark the next story as ready.
-		if (event.data?.type === 'stylist:story-ready' && event.data.story === frameStory) {
-			readyUrl = frameUrl;
-			readyFrame = frame;
-		}
-		if (event.data?.type === 'stylist:exit-fullscreen')
-			window.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
-	}
-	$effect(() => {
-		// Read only to re-sync the frame when the device or fullscreen mode changes.
-		// eslint-disable-next-line @typescript-eslint/no-unused-expressions
-		storyDevice;
-		// eslint-disable-next-line @typescript-eslint/no-unused-expressions
-		fullscreen;
-		// eslint-disable-next-line @typescript-eslint/no-unused-expressions
-		environment;
-		// eslint-disable-next-line @typescript-eslint/no-unused-expressions
-		visualHtml;
-		syncFrame();
-	});
-	$effect(() => {
-		if (!frame) return;
-		const observer = new MutationObserver(syncFrame);
-		observer.observe(document.documentElement, {
-			attributes: true,
-			attributeFilter: ['style', 'class', 'data-theme']
-		});
-		return () => observer.disconnect();
-	});
-
-	const renderedContent = $derived.by(() => {
-		if (previewKind !== 'json') return fileContent;
-		try {
-			return JSON.stringify(JSON.parse(fileContent), null, 2);
-		} catch {
-			return fileContent;
-		}
-	});
+	const state = createDomainFilePreviewComponentState(() => ({
+		fileContent: fileContent,
+		storyPreviewComponent: storyPreviewComponent,
+		previewKind: previewKind,
+		storyDevice: storyDevice,
+		storyWidth: storyWidth,
+		fullscreen: fullscreen,
+		storyPath: storyPath
+	}));
 </script>
 
-<svelte:window onmessage={receiveFrame} />
+<svelte:window onmessage={state.receiveFrame} />
 
 <div
 	class="c-domain-file-preview {className}"
@@ -243,7 +56,7 @@
 >
 	<!-- One loader for both stages (story module, then frame): same shell, place and text. -->
 	{#snippet storyLoading()}
-		<div class="story-frame-shine" role="status" {@attach continueShine}>
+		<div class="story-frame-shine" role="status" {@attach state.continueShine}>
 			<span class="story-frame-shine__label">Loading story…</span>
 		</div>
 	{/snippet}
@@ -270,8 +83,8 @@
 				class:story-screenshot--floating={floating}
 				aria-label="Save component screenshot"
 				title="Save component screenshot (PNG)"
-				disabled={!frameReady || capturing}
-				onclick={takeScreenshot}
+				disabled={!state.frameReady || state.capturing}
+				onclick={state.takeScreenshot}
 			>
 				<svg
 					width="18"
@@ -291,33 +104,38 @@
 				</svg>
 			</button>
 		{/snippet}
-		<div class="story-preview-shell" class:story-preview-shell--controls={story && !fullscreen}>
+		<div
+			class="story-preview-shell"
+			class:story-preview-shell--controls={state.story && !fullscreen}
+		>
 			{#if storyPath}
-				<div class="story-frame-scroll" bind:this={frameHost}>
-					{#if !frameReady}
+				<div class="story-frame-scroll" bind:this={state.frameHost}>
+					{#if !state.frameReady}
 						{@render storyLoading()}
 					{/if}
 					<iframe
-						bind:this={frame}
-						src={frameUrl}
+						bind:this={state.frame}
+						src={state.frameUrl}
 						title="Component story preview"
-						class:story-frame--pending={!frameReady}
-						onload={syncFrame}
-						style:width={viewportWidth ? `${viewportWidth}px` : '100%'}
-						style:height={availableHeight ? `${availableHeight / frameScale}px` : '100%'}
-						style:transform={`translateX(-50%) scale(${frameScale})`}
+						class:story-frame--pending={!state.frameReady}
+						onload={state.syncFrame}
+						style:width={state.viewportWidth ? `${state.viewportWidth}px` : '100%'}
+						style:height={state.availableHeight
+							? `${state.availableHeight / state.frameScale}px`
+							: '100%'}
+						style:transform={`translateX(-50%) scale(${state.frameScale})`}
 					></iframe>
 				</div>
-				{#if story && fullscreen}
+				{#if state.story && fullscreen}
 					<button
 						type="button"
 						class="story-panel-tab"
-						class:story-panel-tab--open={panelOpen}
+						class:story-panel-tab--open={state.panelOpen}
 						aria-controls={panelId}
-						aria-expanded={panelOpen}
-						aria-label={panelOpen ? 'Hide story controls' : 'Show story controls'}
-						title={panelOpen ? 'Hide story controls' : 'Show story controls'}
-						onclick={() => (panelOpen = !panelOpen)}
+						aria-expanded={state.panelOpen}
+						aria-label={state.panelOpen ? 'Hide story controls' : 'Show story controls'}
+						title={state.panelOpen ? 'Hide story controls' : 'Show story controls'}
+						onclick={() => (state.panelOpen = !state.panelOpen)}
 					>
 						<svg
 							width="16"
@@ -336,41 +154,52 @@
 						</svg>
 					</button>
 				{/if}
-				{#if story}
+				{#if state.story}
 					<!-- Kept mounted in fullscreen (only hidden): control values survive the drawer. -->
 					<aside
 						id={panelId}
 						class="story-panel"
 						class:story-panel--drawer={fullscreen}
-						hidden={fullscreen && !panelOpen}
+						hidden={fullscreen && !state.panelOpen}
 						aria-label="Story controls"
 					>
 						<header class="story-panel__header">
 							<div class="story-panel__heading">
-								<h2 class="story-panel__title">{storyTitle}</h2>
-								{#if storyLocation}<p class="story-panel__location">{storyLocation}</p>{/if}
-								{#if story.description}<p class="story-panel__description">
-										{story.description}
+								<h2 class="story-panel__title">{state.storyTitle}</h2>
+								{#if state.storyLocation}<p class="story-panel__location">
+										{state.storyLocation}
+									</p>{/if}
+								{#if state.story.description}<p class="story-panel__description">
+										{state.story.description}
 									</p>{/if}
 							</div>
 							{@render screenshotButton(false)}
 						</header>
-						{#if captureError}<p class="story-panel__error" role="alert">{captureError}</p>{/if}
+						{#if state.captureError}<p class="story-panel__error" role="alert">
+								{state.captureError}
+							</p>{/if}
 						<div class="story-controls">
 							<PreviewSettings
-								value={environment}
-								appearance={visualHtml}
-								onChange={(next) => (environment = next)}
+								value={state.environment}
+								appearance={state.visualHtml}
+								onChange={(next) => (state.environment = next)}
 							/>
 							{#key storyPath}
-								<StoryControls {story} onChange={sendArgs} markup={storyMarkup} />
+								<StoryControls
+									story={state.story}
+									onChange={state.sendArgs}
+									markup={state.storyMarkup}
+								/>
 							{/key}
 						</div>
 					</aside>
 				{:else}
 					{@render screenshotButton(true)}
-					{#if captureError}<p class="story-panel__error story-panel__error--floating" role="alert">
-							{captureError}
+					{#if state.captureError}<p
+							class="story-panel__error story-panel__error--floating"
+							role="alert"
+						>
+							{state.captureError}
 						</p>{/if}
 				{/if}
 			{:else if typeof StoryPreviewComponent === 'function'}
@@ -435,7 +264,7 @@
 			<pre><code>{fileContent}</code></pre>
 		</div>
 	{:else if fileContent}
-		<pre class:json-content={previewKind === 'json'}><code>{renderedContent}</code></pre>
+		<pre class:json-content={previewKind === 'json'}><code>{state.renderedContent}</code></pre>
 	{:else}
 		<p class="empty-state">Select an entity with files to preview content.</p>
 	{/if}

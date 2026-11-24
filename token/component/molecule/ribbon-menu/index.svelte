@@ -2,40 +2,34 @@
 	import Icon from '$stylist/svg/component/atom/icon/index.svelte';
 	import type { RecipeRibbonMenu } from '$stylist/token/interface/recipe/ribbon-menu';
 	import type { TokenIconName } from '$stylist/svg/type/alias/icon-name';
-
+	import createRibbonMenuComponentState from '$stylist/token/component/molecule/ribbon-menu/state.svelte';
 	type RibbonItem = {
 		id: string;
 		label: string;
 		icon: TokenIconName;
 	};
-
-	const items: RibbonItem[] = [
-		{ id: 'components', label: 'Components', icon: 'stylist-organism' },
-		{ id: 'models', label: 'Models', icon: 'design-tokens-organism' },
-		{ id: 'contracts', label: 'Contracts', icon: 'style' },
-		{ id: 'colors', label: 'Colors', icon: 'colors' },
-		{ id: 'styles', label: 'Styles', icon: 'style' },
-		{ id: 'themes', label: 'Themes', icon: 'color-swatch' },
-		{ id: 'tokens', label: 'Tokens', icon: 'design-tokens-organism' },
-		{ id: 'icons', label: 'Icons', icon: 'favicon' }
-	];
-
 	let _props: RecipeRibbonMenu = $props();
-	let opened = $state(false);
+
+	const state = createRibbonMenuComponentState();
 </script>
 
-<div class="stylist-ribbon" class:opened>
-	<button type="button" class="seed" onclick={() => (opened = true)} aria-label="Open stylist menu">
+<div class="stylist-ribbon" class:opened={state.opened}>
+	<button
+		type="button"
+		class="seed"
+		onclick={() => (state.opened = true)}
+		aria-label="Open stylist menu"
+	>
 		<Icon name="stylist-organism" size={16} container="none" />
 	</button>
 
-	<div class="strip" class:opened aria-hidden={!opened}>
+	<div class="strip" class:opened={state.opened} aria-hidden={!state.opened}>
 		<div class="strip-items">
-			{#each items as item, index (index)}
+			{#each state.items as item, index (index)}
 				<button
 					type="button"
 					class="node"
-					class:opened
+					class:opened={state.opened}
 					style={`--i:${index};`}
 					aria-label={item.label}
 					title={item.label}
@@ -48,8 +42,8 @@
 			<button
 				type="button"
 				class="close"
-				class:opened
-				onclick={() => (opened = false)}
+				class:opened={state.opened}
+				onclick={() => (state.opened = false)}
 				aria-label="Close menu"
 			>
 				<Icon name="x" size={14} container="none" />
