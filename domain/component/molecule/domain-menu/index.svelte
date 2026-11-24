@@ -61,7 +61,7 @@
 			<Icon name="domain" size={18} />
 		</button>
 
-		{#if onReportsToggle}
+		{#if variant === 'full' && onReportsToggle}
 			<button
 				type="button"
 				class="menu-button menu-button--icon"
@@ -87,7 +87,7 @@
 			<span class="menu-help-mark" aria-hidden="true">?</span>
 		</button>
 
-		{#if DOMAIN_REGIME === 'dev' && onManifestReload}
+		{#if variant === 'full' && DOMAIN_REGIME === 'dev' && onManifestReload}
 			<button
 				type="button"
 				class="menu-button menu-button--icon"
@@ -141,7 +141,7 @@
 			</svg>
 		</button>
 	{/if}
-	{#if variant !== 'settings'}
+	{#if variant === 'full'}
 		<ThemeModeToggle class="menu-button menu-button--theme" />
 	{/if}
 </nav>
