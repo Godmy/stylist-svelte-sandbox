@@ -1,6 +1,7 @@
+import type { ComputeIntersectAll } from '$stylist/theme/type/compute/intersect-all';
 import type { HTMLAttributes } from 'svelte/elements';
 
-export interface RecipeCubeControl extends HTMLAttributes<HTMLDivElement> {
+export interface RecipeCubeControl extends ComputeIntersectAll<[HTMLAttributes<HTMLDivElement>]> {
 	size?: number;
 	perspective?: number;
 	autoRotate?: boolean;

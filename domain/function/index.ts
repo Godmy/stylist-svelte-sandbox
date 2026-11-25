@@ -2,6 +2,7 @@
 export { captureElementImage } from './capture';
 export { cloneStyledElement } from './clone';
 export { countDomainStories } from './count';
+export { createSwipeDismiss } from './create';
 export {
 	resolveComponentDescriptor,
 	resolveContentArea,

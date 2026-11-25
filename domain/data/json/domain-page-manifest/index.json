@@ -1309,6 +1309,9 @@
         "count": {
           "stories": "INDEXED_FUNCTION"
         },
+        "create": {
+          "swipe-dismiss": "INDEXED_FUNCTION"
+        },
         "resolve": {
           "component-descriptor": "INDEXED_FUNCTION",
           "content-area": "INDEXED_FUNCTION",
@@ -1404,6 +1407,7 @@
           "domain-file-preview": "FUNCTION_TEST",
           "domain-menu": "FUNCTION_TEST",
           "joint-tab-buttons": "FUNCTION_TEST",
+          "mobile-panels": "FUNCTION_TEST",
           "preview-environment": "FUNCTION_TEST",
           "private-story-contract": "FUNCTION_TEST",
           "story-canvas": "FUNCTION_TEST",
@@ -1424,7 +1428,8 @@
           "story-controls": "FUNCTION_TEST",
           "story-json": "FUNCTION_TEST",
           "styled-element": "FUNCTION_TEST",
-          "stylist-preview-catalog": "FUNCTION_TEST"
+          "stylist-preview-catalog": "FUNCTION_TEST",
+          "swipe-dismiss": "FUNCTION_TEST"
         }
       },
       "type": {

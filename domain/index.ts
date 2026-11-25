@@ -78,6 +78,7 @@ export {
 	createClusterToolbarItems,
 	createComponentFeedbackState,
 	createStylistPreviewCatalogState,
+	createSwipeDismiss,
 	expandComponentTree,
 	normalizeDomainTree,
 	resolveComponentDescriptor,

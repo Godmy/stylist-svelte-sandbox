@@ -1283,7 +1283,7 @@
     },
     {
       "name": "domain",
-      "fileCount": 423,
+      "fileCount": 427,
       "components": {
         "atoms": 3,
         "molecules": 33,
@@ -1372,7 +1372,7 @@
         },
         {
           "name": "function",
-          "fileCount": 29,
+          "fileCount": 31,
           "joints": [
             {
               "name": "capture",
@@ -1386,6 +1386,11 @@
             },
             {
               "name": "count",
+              "entityCount": 1,
+              "fileCount": 2
+            },
+            {
+              "name": "create",
               "entityCount": 1,
               "fileCount": 2
             },
@@ -1434,17 +1439,17 @@
         },
         {
           "name": "test",
-          "fileCount": 23,
+          "fileCount": 25,
           "joints": [
             {
               "name": "render",
-              "entityCount": 13,
-              "fileCount": 13
+              "entityCount": 14,
+              "fileCount": 14
             },
             {
               "name": "unit",
-              "entityCount": 10,
-              "fileCount": 10
+              "entityCount": 11,
+              "fileCount": 11
             }
           ]
         },
@@ -4483,7 +4488,7 @@
   ],
   "totals": {
     "domains": 39,
-    "files": 6237,
+    "files": 6241,
     "atoms": 295,
     "molecules": 200,
     "organisms": 164,
