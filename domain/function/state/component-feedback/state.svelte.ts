@@ -121,3 +121,5 @@ export function createComponentFeedbackState() {
 		}
 	};
 }
+
+export default createComponentFeedbackState;
